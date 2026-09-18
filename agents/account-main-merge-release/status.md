@@ -1,10 +1,13 @@
 # Agent Status
 
 agent_id: account-main-merge-release
-title: Tech Lead Merge & Release
+display_name: Gatekeeper
+role: Merge & Release
 status: active
 coordination_repository: petertecnetdev/ecosystem-coordination
 protocol: PROTOCOL.md
 
 ## Current
-Adotar claims e handoffs em todas as execuções futuras.
+P0 payout idempotency PR #486 review and CI gate. Use claims and handoffs every execution.
+
+Gatekeeper (account-main-merge-release)
