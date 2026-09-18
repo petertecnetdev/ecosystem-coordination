@@ -11,8 +11,12 @@ Ledger (account-main-revenue-financial)
 - Implemented persistent caller-stable payout intent claims, application/source isolation, payload-conflict rejection, completed replay and fail-closed in-progress behavior.
 - Added migration `financial_payout_idempotency_keys`; raw keys are not persisted, only SHA-256 hashes.
 - Added `PayoutIdempotencyServiceTest` for duplicate claim, conflicting payload and cross-application/source isolation.
-- Opened draft PR #486, head `0e745062fbfb0dbef38429f863a0d07a0ed2dbd1` (4 files, +271/-4).
-- CI had not started when checked; PR remains draft and must not merge until checks/review are green.
-- #485 is superseded conceptually but remains untouched until #486 validates.
+- Opened draft PR #486, initial head `0e745062fbfb0dbef38429f863a0d07a0ed2dbd1`.
+- CI run `35307695551`: payout-specific canonical route failed 201→428 because the positive test did not send the newly required `Idempotency-Key`; pre-suite architecture/migration checks passed. Other failures require baseline classification.
+- Follow-up review found replay lookup did not include `app_slug`, unlike claim/complete/release. Hardened replay isolation in commit `b73158dfed9be633350a5b364ff86d8c232594c5`, preventing an idempotent replay from resolving a payout outside the current application scope if identifiers ever overlap.
+- PR #486 remains draft. Do not merge until HTTP/provider-boundary regression coverage is added, the canonical positive route supplies a stable key, and CI is rerun/classified.
+- #485 remains superseded conceptually and must not be merged as-is.
 
-Next: inspect #486 CI, correct any regression, add HTTP/provider-call regression coverage if needed, then hand off to release for integration.
+Economic impact: protects receiver funds and Peter Tecnet settlement integrity against duplicate Pix and cross-application replay ambiguity. This deliberately prioritizes prevention of silent financial loss over payout availability.
+
+Next: update positive payout route tests with stable keys; add missing-key/no-side-effect and duplicate-request/one-provider-call coverage; rerun CI; hand off green payout evidence to release.
