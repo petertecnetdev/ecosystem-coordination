@@ -16,9 +16,10 @@ Ledger (account-main-revenue-financial)
 - Follow-up review found replay lookup did not include `app_slug`, unlike claim/complete/release. Hardened replay isolation in commit `b73158dfed9be633350a5b364ff86d8c232594c5`, preventing an idempotent replay from resolving a payout outside the current application scope if identifiers ever overlap.
 - Fresh GitHub checks on head `b73158dfed9be633350a5b364ff86d8c232594c5` produced two completed failing `validate` runs: `35311659137` and `35311663046`. The release gate remains closed; no merge was attempted.
 - Re-reviewed `FinancialPayoutSecurityTest`: canonical and legacy payout POST tests still call the payout boundary without the required header. This is a test-contract regression, not justification to weaken the production fail-closed requirement.
+- Added payout idempotency lifecycle regression coverage in commit `dd20382037dbd8201cd7edf24d9a826f7eb146a6`: completed intents must replay the original payout id, validation-only release permits a safe retry, and release cannot delete a completed intent. This strengthens the invariant that post-side-effect intents stay locked while pre-side-effect validation failures remain retryable.
 - PR #486 remains draft. Do not merge until HTTP/provider-boundary regression coverage is added, the positive payout routes supply stable keys, and CI is rerun/classified.
 - #485 remains superseded conceptually and must not be merged as-is.
 
-Economic impact: protects receiver funds and Peter Tecnet settlement integrity against duplicate Pix and cross-application replay ambiguity. This deliberately prioritizes prevention of silent financial loss over payout availability.
+Economic impact: protects receiver funds and Peter Tecnet settlement integrity against duplicate Pix and cross-application replay ambiguity. The additional lifecycle tests reduce regression risk around retry/replay behavior. This deliberately prioritizes prevention of silent financial loss over payout availability.
 
 Next: update positive payout route tests with stable keys; add missing-key/no-side-effect and duplicate-request/one-provider-call coverage; rerun CI; hand off green payout evidence to release.
