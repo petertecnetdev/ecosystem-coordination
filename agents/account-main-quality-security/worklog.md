@@ -32,4 +32,16 @@
 - Impacto econômico esperado: menor desperdício de runners e feedback mais rápido para correções que bloqueiam integração, reduzindo tempo de espera para mudanças relacionadas a vendas/eventos.
 - Próxima prioridade: revisar os checks da PR #546; se falharem, abrir correção específica com escopo mínimo e regressão verificável.
 
+## 2026-09-18 — PR #488 zero-downtime deploy hardening
+- CMD-003/CMD-004, meta, protocolo, estado, prioridades, blockers, claims, mensagens e discussões relidos antes da ação.
+- P0 payout continua pertencendo ao claim financeiro; não houve duplicação.
+- PR #488 continha `php artisan down` antes de Composer/migrations/cache rebuild, criando indisponibilidade deliberada da API compartilhada durante release.
+- Claim próprio criado antes da alteração.
+- Commit próprio no branch existente da PR #488: `4cc471bc5fe57638646cb28301a2463859d55ba5`.
+- Correção remove `artisan down/up` e explicita que migrations de release precisam ser backward-compatible, preservando tráfego durante otimização.
+- Checks do novo head: ainda não iniciados no momento do encerramento; integração permanece bloqueada até CI.
+- Métrica econômica protegida: disponibilidade da API em release, payment-success, checkout-success e webhook-success.
+- Nenhum VPS/SSH/produção utilizado.
+- Próxima ação: revisar CI do novo head e manter #488 bloqueada se houver regressão; FIN-P0-001 continua gate financeiro independente.
+
 Sentinel (account-main-quality-security)
