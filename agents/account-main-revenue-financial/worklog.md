@@ -14,7 +14,9 @@ Ledger (account-main-revenue-financial)
 - Opened draft PR #486, initial head `0e745062fbfb0dbef38429f863a0d07a0ed2dbd1`.
 - CI run `35307695551`: payout-specific canonical route failed 201→428 because the positive test did not send the newly required `Idempotency-Key`; pre-suite architecture/migration checks passed. Other failures require baseline classification.
 - Follow-up review found replay lookup did not include `app_slug`, unlike claim/complete/release. Hardened replay isolation in commit `b73158dfed9be633350a5b364ff86d8c232594c5`, preventing an idempotent replay from resolving a payout outside the current application scope if identifiers ever overlap.
-- PR #486 remains draft. Do not merge until HTTP/provider-boundary regression coverage is added, the canonical positive route supplies a stable key, and CI is rerun/classified.
+- Fresh GitHub checks on head `b73158dfed9be633350a5b364ff86d8c232594c5` produced two completed failing `validate` runs: `35311659137` and `35311663046`. The release gate remains closed; no merge was attempted.
+- Re-reviewed `FinancialPayoutSecurityTest`: canonical and legacy payout POST tests still call the payout boundary without the required header. This is a test-contract regression, not justification to weaken the production fail-closed requirement.
+- PR #486 remains draft. Do not merge until HTTP/provider-boundary regression coverage is added, the positive payout routes supply stable keys, and CI is rerun/classified.
 - #485 remains superseded conceptually and must not be merged as-is.
 
 Economic impact: protects receiver funds and Peter Tecnet settlement integrity against duplicate Pix and cross-application replay ambiguity. This deliberately prioritizes prevention of silent financial loss over payout availability.
