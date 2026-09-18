@@ -55,3 +55,55 @@ priority: P1-COORDINATION
 Regularizar agent_id/display_name duplicados ou namespaces de conta conflitantes. Cada conta deve possuir namespace exclusivo e cada agente deve possuir display_name único e estável.
 
 Quando concluído, registrar no status do agente e no worklog.
+
+
+## CMD-003 — Profitability north star
+status: ACTIVE
+target: ALL_AGENTS
+priority: P0-BUSINESS
+
+### Goal
+Colocar o ecossistema Peter Tecnet em produção estável e rentável, perseguindo a meta empresarial de R$ 100.000/mês de lucro operacional recorrente.
+
+A meta é um norte de priorização, não uma promessa de resultado. Toda execução deve preferir trabalho com relação clara a receita, aquisição orgânica, conversão, retenção, estabilidade operacional ou redução de perdas/custos.
+
+### Revenue decision order
+1. Não perder venda existente: login, catálogo/evento, carrinho, checkout, PIX/cartão, confirmação, emissão/entrega e pós-pagamento.
+2. Não perder dinheiro: idempotência, webhooks, reconciliação, ledger, fees, refunds, chargebacks, settlement e payout.
+3. Captar demanda orgânica: SEO técnico, páginas públicas indexáveis, conteúdo de alta intenção, blog, dados estruturados, sitemap, canonical, performance e links internos.
+4. Converter tráfego: proposta de valor, CTA, onboarding self-service, prova de produto, pricing/plans quando aplicável, recuperação de checkout e follow-up.
+5. Reter/expandir: recorrência, assinatura, recompra, upsell/cross-sell legítimos, indicação e automações úteis.
+6. Reduzir custo operacional e retrabalho.
+
+### Gateway policy
+- Não trocar um gateway que está processando vendas de forma estável sem evidência objetiva.
+- Manter cobrança funcionando com o provedor saudável atual.
+- Implementar abstração/failover apenas de forma genérica e testável.
+- Se um provedor falhar, bloquear vendas ou não suportar um requisito financeiro essencial, priorizar o provedor compatível e operacional, preservando idempotência, reconciliação e contratos.
+- Nunca simular suporte de gateway que a documentação/API não oferece.
+
+### SEO/content policy
+Cada produto com intenção comercial deve possuir:
+- landing pública indexável;
+- title/description/canonical/OG corretos;
+- schema.org apropriado;
+- sitemap e robots coerentes;
+- páginas de intenção comercial úteis;
+- blog/conteúdo editorial original e substancial;
+- links internos para produto, serviço e CTA;
+- métricas de impressão → clique → visita → lead/cadastro → checkout → receita.
+Evitar páginas finas, duplicadas ou geradas apenas para palavras-chave.
+
+## CMD-004 — Production + revenue war room
+status: ACTIVE
+target: ALL_AGENTS
+priority: P0-BUSINESS
+
+Até que o funil de monetização esteja saudável, todos os agentes devem contribuir para uma das frentes abaixo sem duplicar claims:
+- PAYMENT/REVENUE: checkout, cobrança, confirmação, repasse/payout, reconciliação.
+- PRODUCTION/STABILITY: P0/P1, CI, deployability, erros que bloqueiam uso/venda.
+- SEO/CONTENT: indexação, conteúdo de alta intenção, blogs, páginas públicas, performance.
+- CONVERSION: onboarding, CTA, pricing/plans, abandono, recuperação e funil.
+- ANALYTICS: medir receita, GMV, take rate, margem, CAC orgânico proxy, conversão, retenção e falhas.
+
+Ao final de cada ciclo, registrar impacto econômico esperado e a próxima ação de maior retorno.
