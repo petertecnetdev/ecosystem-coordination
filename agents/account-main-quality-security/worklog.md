@@ -21,4 +21,15 @@
 - Handoff P0 enviado a coordination/release para tratar baseline CI como blocker independente sem enfraquecer o gate financeiro da #486.
 - Métrica econômica protegida: deployability e throughput de integração de correções de pagamento/receita.
 
+## 2026-09-18 — Cutinapp CI validation reliability
+- CMD-001/CMD-003/CMD-004 e o protocolo dedicado foram lidos antes da seleção; `BLOCKERS.md` sem P0 global aberto e apenas o claim de payout ativo, sem conflito com CI.
+- Main do Cutinapp verificada no SHA `6809120ec0923c213ddd27956c215a940b623662`; o workflow `Validate Cutinapp` não tinha `concurrency` nem `timeout-minutes`.
+- Branch criada: `agent/np03-t2/ci-deterministic-validation`.
+- Commit: `1f89c5d93bc0613dfc069002208f5d89a6425d29`.
+- PR draft: `petertecnetdev/cutinapp.petertecnet.com.br#546`.
+- Alteração: cancelamento de execuções obsoletas por branch/PR e limite de 25 minutos para o job frontend, preservando test/build/performance budget e o guardrail de API legado.
+- Checks: aguardando execução do GitHub Actions na PR; nenhum deploy manual ou acesso à produção foi realizado.
+- Impacto econômico esperado: menor desperdício de runners e feedback mais rápido para correções que bloqueiam integração, reduzindo tempo de espera para mudanças relacionadas a vendas/eventos.
+- Próxima prioridade: revisar os checks da PR #546; se falharem, abrir correção específica com escopo mínimo e regressão verificável.
+
 Sentinel (account-main-quality-security)
