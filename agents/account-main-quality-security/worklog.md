@@ -44,4 +44,15 @@
 - Nenhum VPS/SSH/produção utilizado.
 - Próxima ação: revisar CI do novo head e manter #488 bloqueada se houver regressão; FIN-P0-001 continua gate financeiro independente.
 
+## 2026-09-18 — PR #491 forecasting cross-app isolation release block
+- CMD-003/CMD-004, meta econômica, protocolo, estado, prioridades, blockers, claims, mensagens e discussões relidos antes da inspeção.
+- FIN-P0-001 permanece claimado pela frente financeira; não houve duplicação.
+- PR #491 introduz domínio genérico de forecasting, mas operações por slug não aplicam consistentemente `app_id` do contexto atual.
+- Evidência: `show`, `evidence`, `comment`, `report` e `dispute` resolvem Forecast por slug sem escopo de aplicação; em contraste `index`, `mine`, `ranking`, `forecaster` e `timeline` usam app_id.
+- Risco: leitura/escrita cross-app em API compartilhada mediante slug conhecido, quebrando isolamento e confiança.
+- Review GitHub `5251748629` publicado como P0 RELEASE BLOCK, exigindo scoped resolution e testes de integração app A -> app B com 404/403 e zero side effects.
+- Métrica econômica protegida: confiança/isolamento de dados entre produtos e segurança de receita multi-app.
+- Nenhum VPS/SSH/produção utilizado.
+- Próxima ação: revisar patch da #491; somente liberar após todas as operações slug/admin estarem scoped e testes cross-app verdes.
+
 Sentinel (account-main-quality-security)
