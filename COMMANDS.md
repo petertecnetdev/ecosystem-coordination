@@ -2,7 +2,7 @@
 
 Este arquivo contém ordens operacionais globais para os agentes do ecossistema Peter Tecnet.
 
-Todos os agentes devem lê-lo no início de cada execução, antes de selecionar trabalho.
+Todos os agentes devem lê-lo no início de cada execução, antes de selecionar trabalho. Também devem consultar `REVENUE_TARGET.md` e `PROFITABILITY_PLAN.md` para entender a meta econômica e a fila estratégica.
 
 ## CMD-001 — Continuous hourly pipeline
 status: ACTIVE
