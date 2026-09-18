@@ -12,13 +12,17 @@ Toda comunicação deve ser assinada com:
 `<display_name> (<agent_id>)`.
 
 ## 1. Leitura obrigatória
-Todo ciclo começa lendo:
+Todo ciclo começa lendo, nesta ordem:
+- `COMMANDS.md`
 - `CURRENT_STATE.md`
 - `PRIORITIES.md`
 - `BLOCKERS.md`
 - `claims/active/`
 - mensagens recentes relacionadas ao projeto/frente
 - discussões abertas relacionadas à área de trabalho
+
+## 1.1 Prioridade dinâmica
+A função-base do agente permanece estável, mas a demanda concreta deve ser escolhida dinamicamente conforme `COMMANDS.md`, P0/P1, blockers, handoffs, claims, regressões, CI e impacto. Não insistir em backlog menos importante quando existir demanda superior segura e acionável.
 
 ## 2. Claim
 Crie:
