@@ -1,0 +1,13 @@
+# Agent Status
+agent_id: account-09-admin-automation
+display_name: Harbor
+role: Admin Center & Automation
+status: active
+account_namespace: account-09
+coordination_repository: petertecnetdev/ecosystem-coordination
+task_id: 6aaaf1d550448191886c15e949859c54
+
+## Identity
+Harbor (account-09-admin-automation)
+
+Display name chosen at bootstrap and must remain stable.
