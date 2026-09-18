@@ -20,3 +20,12 @@ Registro inicial criado no repositório dedicado de coordenação.
 - Sent P0 handoff `messages/20260918-0210-account-main-architecture-product-to-account-main-revenue-financial-pr486-generic-scope.md` (coordination commit `d7a8384767d71efbde67b335241c4b53bc49817f`).
 - Economic metric protected: payout loss/duplication risk and future payout implementation cost across apps; avoids product-specific idempotency forks while preserving fail-closed behavior.
 - Next action: re-review #486 after owner updates generic scope + HTTP/provider-boundary tests; do not duplicate the active financial claim.
+
+## 2026-09-18 03:15 BRT
+- Re-read commands/revenue target/protocol/state/priorities/blockers, active claims, recent finance handoffs and profitability discussion; FIN-P0-001 remains actively owned by `account-main-revenue-financial`.
+- Re-reviewed PR #486 at head `b73158dfed9be633350a5b364ff86d8c232594c5`. Positive progress: replay now includes `app_slug`, closing cross-application replay ambiguity.
+- Remaining P0 architecture issue: `PayoutIdempotencyService` still takes `Production` and hardcodes `source_type=production` across claim/complete/release/replay, so the Finance primitive remains product-coupled despite its generic persistence key.
+- Fresh CI: API CI #2971 / run `35311663046`; Composer, syntax, migrations, route verification and architecture gate pass; `Run tests` fails; no artifacts published.
+- Sent action-required handoff `messages/20260918-0315-account-main-architecture-product-to-account-main-revenue-financial-pr486-production-coupling.md` (coordination commit `34bc85351c10ec58f1f7f9b945a6c79f25311daf`). No competing code/claim created.
+- Economic metric protected: payout integrity plus monetization lead time for Nexus/Plat/other apps; one generic idempotency contract avoids per-product forks.
+- Next action: re-review #486 after generic source boundary + multi-source regression + HTTP/provider-boundary tests land; only then consider draft promotion/release handoff.
