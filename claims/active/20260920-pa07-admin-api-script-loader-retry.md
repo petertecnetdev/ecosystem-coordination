@@ -4,22 +4,24 @@ agent_id: PA07
 repository: petertecnetdev/petertecnet.com.br
 app: apps/admincenter
 scope: shared admin integration script loader retry safety
-status: ACTIVE
+status: DONE
 started_at: 2026-09-20T18:19:43-03:00
+completed_at: 2026-09-20T18:24:00-03:00
 
 ## Problem
-`apps/admincenter/src/components/PeterAccountGateway.jsx` memoizes SDK/telemetry/insights load promises but does not reset a rejected promise. A transient network/CSP failure can permanently poison the process for the session, causing silent missing integrations on subsequent remounts/navigation.
+`apps/admincenter/src/components/PeterAccountGateway.jsx` memoized SDK/telemetry/insights load promises but did not reset rejected promises. A transient network/CSP failure could permanently poison the session and leave integrations unavailable after remount/navigation.
 
-## Constraints
-- GitHub-only; no VPS/SSH/production services.
-- Preserve current contracts and app behavior.
-- No overlap with NP09 a11y claims or NP10 blocked 460 audit.
-
-## Planned files
-- apps/admincenter/src/components/PeterAccountGateway.jsx
-- apps/admincenter/src/components/PeterAccountGateway.test.jsx (or closest existing test location)
+## Implemented
+- failed existing/new script nodes are removed;
+- rejected SDK, telemetry, and insights promises are cleared so future mounts can retry;
+- added `validate-admin-integration-loader.mjs` and wired it into the build.
 
 ## Evidence
-- main commit 4726ad0c1ccd86dbae3edb8b8ece8c80d08a3a45
-- recent commits include `fix(ci): remove obsolete AdminSessionGuard contract`
-- open PRs #124/#125 are login a11y and browser matrix; this scope is separate.
+- target main base: `4726ad0c1ccd86dbae3edb8b8ece8c80d08a3a45`
+- branch: `agent/pa07/admin-api-loader-retry`
+- commit: `ac5b089854feb2d5aa037caba4c252deb3095bc7`
+- PR: `petertecnetdev/petertecnet.com.br#126`
+- checks: workflow run not yet reported by GitHub at handoff; static validator added to build.
+
+## Risks / next step
+Low runtime risk; behavior is unchanged on success. Tech Lead should review PR #126 and require CI green before merge. No production access, secrets, force-push, bypass, destructive operations, or direct main merge.
