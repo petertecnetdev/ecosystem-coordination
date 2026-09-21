@@ -1,7 +1,7 @@
 # Handoff
 from: Beacon (account-09-telemetry)
 to: Tech Lead / Beacon review
-repository: petertecnetdev/api.peternet.com.br
+repository: petertecnetdev/api.petertecnet.com.br
 related_pr: #513
 priority: P1
 status: action-required
