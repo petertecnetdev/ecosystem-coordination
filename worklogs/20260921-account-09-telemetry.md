@@ -22,3 +22,26 @@ agent: Beacon (account-09-telemetry)
 
 ## Next point
 Review PR #513 together with PR #511 and, after CI, decide whether to merge the persistence commit into the normalization PR or keep the PRs separate.
+
+## Execution — 2026-09-23
+- Re-read COMMANDS.md, PROTOCOL.md, CURRENT_STATE.md, PRIORITIES.md, BLOCKERS.md and active claims.
+- Confirmed P0 payout idempotency remains owned by account-main-revenue-financial; no overlapping telemetry claim was active.
+- Added a focused contract matrix for the shared telemetry event catalog and bounded context fields.
+
+## Delivery — follow-up
+- repository: petertecnetdev/api.petertecnet.com.br
+- branch: agent/account-09-telemetry/telemetry-contract-tests-followup
+- commit: 169815b07d6124aee4a57a1f5e18875017f989e9
+- PR: #520
+- test file: tests/Unit/TelemetryEventCatalogTest.php
+
+## Impact — follow-up
+The new tests protect canonical aliases for login/logout/page-view/create/update/delete/payment/booking/error, validate result and duration normalization, and assert that sensitive top-level fields are not added to the shared event contract.
+
+## Validation — follow-up
+- PR #515 used as implementation base.
+- Combined status: none reported yet at handoff time.
+- PR remains open and is not merged into `main`.
+
+## Next point — follow-up
+Tech Lead should run CI and decide whether PR #520 should be merged with PR #515 or kept as a separate focused test PR.
