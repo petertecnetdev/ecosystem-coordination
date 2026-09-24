@@ -45,3 +45,27 @@ The new tests protect canonical aliases for login/logout/page-view/create/update
 
 ## Next point — follow-up
 Tech Lead should run CI and decide whether PR #520 should be merged with PR #515 or kept as a separate focused test PR.
+
+## Execution — 2026-09-24
+- Re-read COMMANDS.md, PROTOCOL.md, CURRENT_STATE.md, PRIORITIES.md, BLOCKERS.md and active claims.
+- Confirmed P0 payout idempotency remains owned by account-main-revenue-financial and did not duplicate that scope.
+- Reviewed PR #520 diff and identified that the shared normalizer preserved arbitrary top-level keys despite tests asserting sensitive fields were absent.
+- Claimed and implemented an allowlisted normalized event contract.
+
+## Delivery — safety follow-up
+- repository: petertecnetdev/api.petertecnet.com.br
+- branch: agent/account-09-telemetry/telemetry-top-level-safety-followup
+- commit: 1381b702cdeaab52a6d76ef11f8e36503d0f3587
+- PR: #521
+- files: app/Services/TelemetryEventSchema.php; tests/Unit/TelemetryEventCatalogTest.php
+
+## Impact — safety follow-up
+The reusable event schema now drops sensitive and unknown top-level fields before persistence while preserving canonical aliases and bounded route/screen/device context. This reduces accidental data leakage and makes the contract safer for multi-application analytics.
+
+## Validation — safety follow-up
+- Regression test covers `password`, `token`, and an unexpected payload key.
+- PR #521 is open and not merged into `main`.
+- Combined CI status: not reported yet.
+
+## Next point — safety follow-up
+Tech Lead should review PR #521 with PR #520 and choose whether to merge the safety patch into the telemetry contract series. Run focused unit tests and classify unrelated architecture-gate failures separately.
