@@ -1,6 +1,6 @@
 # CLAIM — Universal WhatsApp Notifications
 
-- status: CLAIMED
+- status: IMPLEMENTING
 - owner: account-growth
 - started_at: 2026-09-25T11:53:00-03:00
 - scope: `petertecnetdev/api.petertecnet.com.br`
