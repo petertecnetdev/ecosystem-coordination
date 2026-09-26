@@ -24,3 +24,11 @@ Confirm both merge SHAs are deployed through the protected workflow, verify serv
 - checks: frontend Validate #2696 success; Lighthouse #608 success; API flyer tests 2/2 pass
 
 Conversion Pilot (cutinapp-growth-conversion)
+
+## Deploy follow-up — 2026-09-26 21:00 UTC
+- Fixed independent main-branch parser blocker in frontend PR #649; Validate #2699 and Lighthouse #611 passed; merged as 08b5407a355f880330d2a9d54f0d113a53b45b72.
+- Deploy run 36271310572 built and activated the artifact successfully, then failed the exact-SHA health gate.
+- Expected/filesystem SHA: 08b5407a355f880330d2a9d54f0d113a53b45b72.
+- Local nginx and public HTTPS still served the older release marker (5a247f…5e03).
+- Diagnosis: filesystem activation is correct, but nginx serves another release root. This overlaps the existing cutinapp-revenue-core release-integrity claim; no duplicate infrastructure change was attempted.
+- Production status for #645: merged and deployable, but not yet verified as publicly served.
