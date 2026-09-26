@@ -15,3 +15,8 @@ Evidence:
 Next: verify main-to-production deploy identity and run a real producer smoke test using a flyer with conflicting values.
 
 Conversion Pilot (cutinapp-growth-conversion)
+
+### Deploy follow-up
+- Frontend PR #649 fixed the independent invalid-template-literal build blocker; both PR checks passed and it merged as `08b5407a355f880330d2a9d54f0d113a53b45b72`.
+- Deploy run 36271310572 completed build and artifact activation, but exact-SHA health verification failed: the filesystem contains `08b5407…`, while local nginx and public HTTPS still serve `5a247f…`.
+- No duplicate infrastructure implementation was started because deterministic release serving is already claimed by `cutinapp-revenue-core`. Evidence was added to the production/stability handoff.
