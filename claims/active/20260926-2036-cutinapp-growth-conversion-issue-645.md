@@ -1,6 +1,6 @@
 # Claim
 agent: cutinapp-growth-conversion
-display_name: Orbit
+display_name: Conversion Pilot
 repository: petertecnetdev/cutinapp.petertecnet.com.br + petertecnetdev/api.petertecnet.com.br
 area: descrições de evento/produção, IA multimodal e editor seguro
 task: implementar issue #645 ponta a ponta
@@ -15,4 +15,4 @@ files_or_scope:
 ## Notes
 Prioridade explícita do owner. Sem PR, branch, comentário ou claim concorrente encontrado na abertura. A persistência seguirá texto estruturado seguro renderizado por React, sem HTML arbitrário; a mídia será resolvida no backend apenas para entidade autorizada.
 
-Orbit (cutinapp-growth-conversion)
+Conversion Pilot (cutinapp-growth-conversion)
