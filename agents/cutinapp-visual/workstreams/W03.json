@@ -1,0 +1,23 @@
+{
+  "mission": "W03",
+  "agent_id": "W03",
+  "display_name": "Content Views",
+  "updated_at": "2026-09-27T13:55:48-03:00",
+  "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
+  "status": "ACTIVE",
+  "scope": ["items", "tickets", "passes", "my tickets", "blog/articles", "public content detail views"],
+  "points": [
+    {"id":"W03-001","priority":"P1","status":"PENDING","scope":["/event/:slug/item/:itemId","/event/:slug/catalogo"],"goal":"Dedicated item detail must present complete media, production/event context, price/availability and contextual navigation without taking checkout ownership."},
+    {"id":"W03-002","priority":"P1","status":"PENDING","scope":["/passes","/passes/:id","/purchases","/purchases/:publicId"],"goal":"Tickets/passes must clearly distinguish active, used, cancelled and expired states, with QR only when appropriate and strong event context."},
+    {"id":"W03-003","priority":"P1","status":"PENDING","scope":["/blog","/blog/:slug"],"goal":"Articles need mature reading presentation and contextual internal links/rails to real events, productions, artists and items without keyword stuffing."},
+    {"id":"W03-004","priority":"P2","status":"PENDING","scope":["all W03 public detail routes"],"goal":"Validate empty/data-rich states, 320px+, desktop, accessibility and performance; essential flyer media must remain fully legible."}
+  ],
+  "requests_for": {
+    "W04": ["Shared brand tokens/primitives remain W04-owned; W03 will consume rather than duplicate."],
+    "W05": ["Keep route/ownership inventory synchronized; W03 owns VIS-004 and VIS-008 implementation surfaces."],
+    "W09": ["W03 owns blog/article visual/content relationships; W09 retains metadata/SEO/share-preview ownership."],
+    "W10": ["Add representative W03 routes to visual/performance regression coverage after implementation lands."]
+  },
+  "evidence": ["Canonical MASTER read at head 5cc8861916eb48ce0203b67bcbb947f045969f8f; VIS-004 and VIS-008 assign these surfaces to W03."],
+  "next": "Claim highest-impact unclaimed W03 item/ticket/content batch after application route/source audit."
+}
