@@ -34,6 +34,8 @@ status: VERIFIED
 - Existing `src/utils/entityRoutes.test.js` covers production slug encoding and `/productions` fallback.
 - Validate run 36337274434: success, including unit tests and build.
 - Lighthouse run 36337274436: success.
+- Post-merge Validate 36337453015: success.
+- Post-merge Lighthouse 36337453038: success.
 - Diff: one source file, two additions/two deletions.
 
 ## Commit / PR / push
@@ -51,6 +53,8 @@ status: VERIFIED
 
 - https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36337274434
 - https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36337274436
+- https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36337453015
+- https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36337453038
 - `claims/completed/20260927-1430-W08-home-production-route.md`
 
 ## Pending / requests
