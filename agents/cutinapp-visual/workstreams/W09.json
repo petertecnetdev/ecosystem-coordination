@@ -2,24 +2,25 @@
   "workstream": "W09",
   "mission": "Apresentação pública, conversão, SEO e compartilhamento",
   "status": "IMPLEMENTING",
-  "updated_at": "2026-09-27T13:52:00-03:00",
+  "updated_at": "2026-09-27T16:44:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "points": [
     {
       "id": "W09-001",
       "priority": "P1",
-      "status": "IMPLEMENTING",
+      "status": "IMPLEMENTED",
       "title": "SEO dinâmico da página pública de Produção",
       "scope": ["/production/:slug/public"],
       "problem": "Metadata de Produção era baseada em slug/logo genérica, enquanto Evento já possuía SEO dinâmico por entidade.",
       "acceptance": "title/description/canonical/OG/Twitter usam dados reais disponíveis e imagem real quando houver; structured data não inventa localização, disponibilidade ou prova social; fallback permanece seguro.",
       "implementation": {
         "commit": "fa8e9bae6b2f0e556e3425ff3092f7aa615947b1",
+        "merge_commit": "e11d6cee1a0be357d821fac3e0f457f52c03af49",
         "pr": 672,
         "files": ["src/components/SeoManager.js"],
         "changes": ["Busca a produção pública por slug no SeoManager", "Deriva title/description/canonical/imagem de dados reais", "Publica JSON-LD ProfilePage com Organization como mainEntity", "Só inclui endereço estruturado quando location_public permite", "Mantém fallback baseado em rota se API falhar"],
-        "validation": "PR aberto; Actions ainda sem workflow run associado ao commit. Não VERIFIED."
+        "validation": "Validate Cutinapp #2817 SUCCESS; Lighthouse CI #729 SUCCESS; PR #672 squash-merged. Preview crawler real ainda pendente, portanto não VERIFIED."
       }
     },
     {
@@ -40,17 +41,17 @@
   ],
   "requests_for": [
     {"worker":"W01","request":"Preservar ownership visual de Evento/Produção; W09 alterou somente SeoManager no PR #672, sem hero/layout."},
-    {"worker":"W05","request":"PR #669 contém W09.json no repositório de código e deve ser tratado como coordenação histórica/incorreta; PR funcional atual é #672 e coordenação canônica permanece em ecosystem-coordination."}
+    {"worker":"W05","request":"PR #669 contém W09.json no repositório de código e deve ser tratado como coordenação histórica/incorreta; coordenação canônica permanece em ecosystem-coordination."}
   ],
   "evidence": [
-    "SeoManager main antes do lote buscava entidade real apenas para Evento; Produção usava publicProductionSeo baseado no slug.",
-    "ProductionPublicPage confirma publicProduction(slug), campos production.name/description/background/logo e proteção location_public.",
-    "Commit fa8e9bae implementa metadata dinâmica em branch w09/production-public-seo; PR #672 aberto.",
-    "Nenhum workflow run associado ao commit no momento da verificação; preview crawler ainda não validado."
+    "PR #672 passou Validate Cutinapp e Lighthouse CI antes do merge.",
+    "PR #672 squash-merged em main como e11d6cee1a0be357d821fac3e0f457f52c03af49.",
+    "Metadata dinâmica usa dados reais da Produção e mantém fallback seguro.",
+    "Preview por crawler social real ainda não validado; W09-001 não está VERIFIED."
   ],
   "next": [
-    "Acompanhar CI do PR #672 e corrigir regressões se houver",
-    "Validar preview HTTP/crawler real antes de marcar W09-001 VERIFIED",
-    "Depois atacar W09-003; W09-002 somente após revalidar ownership/claims"
+    "Validar preview HTTP/crawler real e indexabilidade após deploy antes de marcar W09-001 VERIFIED",
+    "Atacar W09-003 para garantir que crawlers sem JavaScript recebam metadata útil",
+    "W09-002 somente após revalidar ownership/claims"
   ]
 }
