@@ -56,3 +56,11 @@ Release:
 - The repaired diagnostic proved public HTTPS still serves `5a247f…`, while cloudflared is inactive and its executable is absent on the configured VPS.
 - Action-required handoff: `messages/20260927-0039-cutinapp-growth-conversion-to-production-stability-edge-origin.md`.
 - Production remains unconfirmed until public `release-sha.txt` equals current main.
+
+
+### SSH outage diagnostic hardening
+- Deploy run 36285563893 exhausted four SSH connection attempts; build, activation and health were skipped.
+- PR https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/659 keeps the public release identity probe actionable during SSH outages and merged as `d737167336252a85b8e3a881dd03e1cbd305bf9c`.
+- Frontend and Lighthouse checks passed.
+- P0 action-required handoff: `messages/20260927-0137-cutinapp-growth-conversion-to-production-stability-ssh-outage.md`.
+- Production remains unconfirmed pending restored SSH delivery and exact public SHA equality.
