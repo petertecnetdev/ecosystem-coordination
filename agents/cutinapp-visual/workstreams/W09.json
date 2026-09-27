@@ -2,52 +2,15 @@
   "workstream": "W09",
   "mission": "Apresentação pública, conversão, SEO e compartilhamento",
   "status": "IMPLEMENTING",
-  "updated_at": "2026-09-27T19:52:00-03:00",
+  "updated_at": "2026-09-27T20:43:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "points": [
-    {
-      "id": "W09-001",
-      "priority": "P1",
-      "status": "IMPLEMENTED",
-      "title": "SEO dinâmico da página pública de Produção",
-      "scope": ["/production/:slug/public"],
-      "problem": "Metadata de Produção era baseada em slug/logo genérica, enquanto Evento já possuía SEO dinâmico por entidade.",
-      "implementation": {"commit":"fa8e9bae6b2f0e556e3425ff3092f7aa615947b1","merge_commit":"e11d6cee1a0be357d821fac3e0f457f52c03af49","pr":672,"files":["src/components/SeoManager.js"],"validation":"Validate Cutinapp #2817 SUCCESS; Lighthouse CI #729 SUCCESS; crawler real ainda pendente."}
-    },
-    {
-      "id": "W09-002",
-      "priority": "P1",
-      "status": "IMPLEMENTED",
-      "title": "Locale estrutural configurável no head",
-      "scope": ["src/components/SeoHead.js"],
-      "problem": "SeoHead forçava og:locale=pt_BR em todas as rotas.",
-      "implementation": {"commit":"91e8a23adb760b6d5d3078fe5c49468fa0e573d1","files":["src/components/SeoHead.js"],"validation":"Frontend/Lighthouse passaram anteriormente; produção não promovida a VERIFIED sem evidência de deploy/crawler."}
-    },
-    {
-      "id": "W09-003",
-      "priority": "P1",
-      "status": "IMPLEMENTING",
-      "title": "Crawler-visible previews de Evento e Produção",
-      "scope": ["/event/:slug", "/production/:slug/public", "scripts/generate-seo-snapshots.mjs", ".github/workflows/refresh-seo-sitemap.yml"],
-      "problem": "Evento já possui snapshots HTML crawler-visible, mas Produção continua dependendo de metadata client-side; o gerador também contém defaults estruturais BR/America-Sao_Paulo incompatíveis com produto global.",
-      "evidence": ["refresh-seo-sitemap.yml publica seo-snapshots após deploy e a cada hora", "generate-seo-snapshots.mjs gera event/* e eventos/*, sem production/*", "SeoManager resolve Produção no cliente via /organizations/public/:slug"],
-      "next_action": "Confirmar contrato paginado de /organizations/public e implementar snapshots de Produção; remover defaults geográficos implícitos sem degradar eventos existentes; validar HTML gerado antes de push."
-    }
+    {"id":"W09-001","priority":"P1","status":"IMPLEMENTED","title":"SEO dinâmico da página pública de Produção","scope":["/production/:slug/public"],"implementation":{"commit":"fa8e9bae6b2f0e556e3425ff3092f7aa615947b1","merge_commit":"e11d6cee1a0be357d821fac3e0f457f52c03af49","pr":672,"validation":"Validate Cutinapp #2817 SUCCESS; Lighthouse CI #729 SUCCESS; crawler real pendente."}},
+    {"id":"W09-002","priority":"P1","status":"IMPLEMENTED","title":"Locale estrutural configurável no head","scope":["src/components/SeoHead.js"],"implementation":{"commit":"91e8a23adb760b6d5d3078fe5c49468fa0e573d1","validation":"Frontend/Lighthouse passaram; produção não promovida a VERIFIED sem evidência de deploy/crawler."}},
+    {"id":"W09-003","priority":"P1","status":"IMPLEMENTING","title":"Crawler-visible previews de Evento e Produção","scope":["/event/:slug","/production/:slug/public","scripts/generate-seo-snapshots.mjs",".github/workflows/refresh-seo-sitemap.yml"],"problem":"Evento possui snapshots crawler-visible; Produção dependia de metadata client-side. Gerador tinha defaults BR/America-Sao_Paulo incompatíveis com produto global.","evidence":["API real /organizations/public confirmou paginator organizations.data e last_page, com slug/name/location_public/country/logo/background.","Implementação local W09 adicionou paginação de produções, snapshot /production/:slug/public, ProfilePage/Organization, OG/canonical/imagem e remoção de country=BR implícito.","TIME_ZONE default alterado de America/Sao_Paulo para UTC, configurável por CUTINAPP_SEO_TIME_ZONE.","node --check e git diff --check passaram; npm ci/build ficou bloqueado no host e foi interrompido sem evidência de falha de código."],"next_action":"Executar build + gerador em ambiente limpo, inspecionar HTML de Produção, reler coordenação/main e então commit/push/PR. Não promover VERIFIED antes disso."}
   ],
-  "requests_for": [
-    {"worker":"W01","request":"Preservar ownership visual de Evento/Produção; W09 atua em metadata/SEO sem alterar hero/layout."},
-    {"worker":"W05","request":"Preservar W09 ownership do gerador SEO para Production prerender e sinalizar conflitos; gap confirmado em 2026-09-27."}
-  ],
-  "evidence": [
-    "PR #672 passou Validate Cutinapp e Lighthouse CI antes do merge.",
-    "Commit W09-002: 91e8a23adb760b6d5d3078fe5c49468fa0e573d1.",
-    "Auditoria W09-003 confirmou prerender de Evento já existente e ausência de prerender de Produção.",
-    "Gerador atual ainda assume addressCountry=BR quando ausente e TIME_ZONE=America/Sao_Paulo."
-  ],
-  "next": [
-    "Implementar Production snapshots no gerador existente após confirmar payload público",
-    "Eliminar defaults BR/timezone indevidos do snapshot SEO preservando dados explícitos",
-    "Validar HTML crawler-visible de Evento/Produção e só então promover VERIFIED"
-  ]
+  "requests_for":[{"worker":"W01","request":"Preservar ownership visual de Evento/Produção; W09 atua em metadata/SEO sem alterar hero/layout."},{"worker":"W05","request":"Preservar W09 ownership do gerador SEO para Production prerender; implementação está em validação antes de push."}],
+  "evidence":["PR #672 passou Validate Cutinapp e Lighthouse CI antes do merge.","Commit W09-002: 91e8a23adb760b6d5d3078fe5c49468fa0e573d1.","W09-003 confirmou contrato paginado real de /organizations/public em 2026-09-27.","W09-003 local: 68 inserções/5 remoções em scripts/generate-seo-snapshots.mjs; syntax/diff checks OK."],
+  "next":["Concluir build/runtime validation do W09-003","Releitura de coordenação e main antes do push","Commit/push/PR somente após HTML crawler-visible validado"]
 }
