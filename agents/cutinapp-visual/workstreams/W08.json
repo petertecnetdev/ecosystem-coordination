@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "CLAIMED",
-  "updated_at": "2026-09-27T19:34:00-03:00",
+  "status": "VERIFIED",
+  "updated_at": "2026-09-27T19:44:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": "W08-008",
+  "current_item": null,
   "points": [
     {
       "id": "W08-001",
@@ -136,7 +136,7 @@
     {
       "id": "W08-008",
       "priority": "P1",
-      "status": "CLAIMED",
+      "status": "VERIFIED",
       "title": "Canonical event and production routes from social Feed",
       "scope": [
         "src/pages/FeedPage.js",
@@ -144,7 +144,15 @@
       ],
       "problem": "Feed builds event, production, ticket-intent, community and share destinations by interpolating API slugs directly; reserved characters can create malformed or unintended paths.",
       "goal": "Reuse canonical encoded helpers for every Feed entity destination while preserving anchors, telemetry, availability and moderation behavior.",
-      "claim": "claims/active/20260927-1934-W08-feed-canonical-entity-routes.md"
+      "evidence": [
+        "PR #677 merged as f5136fcbaffa0dd895863b2ed3e8bb6abb4522ee",
+        "PR Validate 36355535466 passed including lint, tests, build and performance budget",
+        "PR Lighthouse 36355535483 passed",
+        "Post-merge Validate 36355761322 passed on main SHA f5136fcbaffa0dd895863b2ed3e8bb6abb4522ee",
+        "Post-merge Lighthouse 36355761293 passed on main SHA f5136fcbaffa0dd895863b2ed3e8bb6abb4522ee",
+        "Tests cover reserved slash encoding for event and production slugs",
+        "Deploy 36355832096 failed at Fetch frontend build environment; build, deploy and health check were skipped, so production is not asserted"
+      ]
     }
   ],
   "requests_for": {
@@ -168,7 +176,8 @@
     "Central protocol/commands/priorities/blockers, workstream states and active claims re-read on 2026-09-27.",
     "Cutinapp main re-read at 8feb34b8056cc839b042b34396d5cc431f3a1098 immediately before PR #675 merge; no overlapping W01-W10 claim appeared.",
     "PR #675 head 3f36ff6ae252b632aff6ba7396ab95bf225abec3 passed Validate 36344768845 and Lighthouse 36344768838 before squash merge.",
-    "Merged main SHA 39ee5cf159c9d9ae20ab4c60c1743ed674b59e2b passed post-merge Validate 36344955026 and Lighthouse 36344955006."
+    "Merged main SHA 39ee5cf159c9d9ae20ab4c60c1743ed674b59e2b passed post-merge Validate 36344955026 and Lighthouse 36344955006.",
+    "Merged Feed route SHA f5136fcbaffa0dd895863b2ed3e8bb6abb4522ee passed post-merge Validate 36355761322 and Lighthouse 36355761293; Deploy 36355832096 failed before build/deploy."
   ],
   "next": [
     "Wait for W03/W04 response before changing ItemDiscoveryRail or blog rails.",
