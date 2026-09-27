@@ -1,0 +1,109 @@
+{
+  "worker": "W08",
+  "agent_id": "W08",
+  "display_name": "Navigation Weaver",
+  "role": "entity_relations_carousels_navigation",
+  "status": "CLAIMED",
+  "updated_at": "2026-09-27T14:30:00-03:00",
+  "coordination_repository": "petertecnetdev/ecosystem-coordination",
+  "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
+  "current_item": "W08-005",
+  "points": [
+    {
+      "id": "W08-001",
+      "priority": "P1",
+      "status": "VERIFIED",
+      "title": "Home item cards open canonical public item detail",
+      "scope": [
+        "src/pages/HomeHubPage.js",
+        "src/utils/entityRoutes.js",
+        "src/utils/entityRoutes.test.js"
+      ],
+      "evidence": [
+        "PR #670 merged as 28bd09442b1e40c26a79b6c19979a4470ece388b",
+        "Validate 36334777827 passed",
+        "Lighthouse 36334777908 passed"
+      ]
+    },
+    {
+      "id": "W08-002",
+      "priority": "P1",
+      "status": "REQUESTED",
+      "title": "Remove dead fallback from shared ItemDiscoveryRail",
+      "scope": [
+        "src/components/event/ItemDiscoveryRail.js"
+      ],
+      "request_for": [
+        "W03",
+        "W04"
+      ],
+      "notes": "Shared item component is within W03/W04 ownership; W08 will not edit without handoff."
+    },
+    {
+      "id": "W08-003",
+      "priority": "P1",
+      "status": "REQUESTED",
+      "title": "Reduce blog related-item request fan-out",
+      "scope": [
+        "blog relations",
+        "API batch/pagination"
+      ],
+      "request_for": [
+        "W03"
+      ],
+      "notes": "Blog surfaces are W03-owned; prefer bounded batch endpoint or server aggregation."
+    },
+    {
+      "id": "W08-004",
+      "priority": "P2",
+      "status": "REQUESTED",
+      "title": "Validate pagination and lazy loading on entity relation rails",
+      "scope": [
+        "event",
+        "production",
+        "artist"
+      ],
+      "request_for": [
+        "W01",
+        "W02",
+        "W10"
+      ]
+    },
+    {
+      "id": "W08-005",
+      "priority": "P1",
+      "status": "CLAIMED",
+      "title": "Use canonical safe production route in Home relational cards",
+      "scope": [
+        "src/pages/HomeHubPage.js"
+      ],
+      "goal": "Avoid /production/undefined/public when relational payload lacks a slug; preserve direct public route when complete.",
+      "claim": "claims/active/20260927-1430-W08-home-production-route.md"
+    }
+  ],
+  "requests_for": {
+    "W03": [
+      "Own W08-002/W08-003 or provide explicit handoff."
+    ],
+    "W04": [
+      "Review shared ItemDiscoveryRail navigation contract; W08 will reuse shared primitives."
+    ],
+    "W01": [
+      "Keep production public route contract /production/:slug/public; W08 only consumes it from Home."
+    ],
+    "W05": [
+      "Ingest this canonical central W08 record and resolve ownership conflicts if any."
+    ],
+    "W10": [
+      "Add missing-slug navigation fallback to representative regression coverage when practical."
+    ]
+  },
+  "evidence": [
+    "Central protocol/commands/priorities/blockers and active claims re-read on 2026-09-27.",
+    "Cutinapp main observed at e5b9436de271c8594afdff715978947a2d211059 before claim."
+  ],
+  "next": [
+    "Implement W08-005 on an isolated branch, validate tests/build, open PR, re-read coordination and main before merge.",
+    "Record worklog and completed claim with exact evidence."
+  ]
+}
