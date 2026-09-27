@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "CLAIMED",
-  "updated_at": "2026-09-27T14:30:00-03:00",
+  "status": "ACTIVE",
+  "updated_at": "2026-09-27T14:36:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": "W08-005",
@@ -72,13 +72,18 @@
     {
       "id": "W08-005",
       "priority": "P1",
-      "status": "CLAIMED",
+      "status": "VERIFIED",
       "title": "Use canonical safe production route in Home relational cards",
       "scope": [
         "src/pages/HomeHubPage.js"
       ],
       "goal": "Avoid /production/undefined/public when relational payload lacks a slug; preserve direct public route when complete.",
-      "claim": "claims/active/20260927-1430-W08-home-production-route.md"
+      "evidence": [
+        "PR #673 merged as af666ad1d959eee2496820e1f5900e375f3472bd",
+        "Validate 36337274434 passed including unit tests and build",
+        "Lighthouse 36337274436 job completed successfully",
+        "Existing entityRoutes test covers production slug encoding and /productions fallback"
+      ]
     }
   ],
   "requests_for": {
@@ -100,10 +105,11 @@
   },
   "evidence": [
     "Central protocol/commands/priorities/blockers and active claims re-read on 2026-09-27.",
-    "Cutinapp main observed at e5b9436de271c8594afdff715978947a2d211059 before claim."
+    "Cutinapp main observed at e5b9436de271c8594afdff715978947a2d211059 before claim.",
+    "Cutinapp main re-read at e5b9436de271c8594afdff715978947a2d211059 immediately before merge; no overlapping W01-W10 claim appeared."
   ],
   "next": [
-    "Implement W08-005 on an isolated branch, validate tests/build, open PR, re-read coordination and main before merge.",
-    "Record worklog and completed claim with exact evidence."
+    "Wait for an explicit W03/W04 handoff before changing ItemDiscoveryRail or blog rails.",
+    "Continue auditing unclaimed relational navigation and bounded loading paths."
   ]
 }
