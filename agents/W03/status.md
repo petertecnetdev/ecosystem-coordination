@@ -2,6 +2,6 @@
 agent_id: W03
 display_name: Cutinapp Content Views
 role: Cutinapp item, ticket, My Tickets, blog and public content views
-status: blocked
+status: active
 
-Permanent identity for the W03 visual/content workstream. Blocked until the canonical `agents/cutinapp-visual/MASTER.json` and `agents/cutinapp-visual/workstreams/` state exist in this coordination repository, as required by the current protocol.
+Permanent identity for the W03 visual/content workstream. Canonical `agents/cutinapp-visual/MASTER.json` and `agents/cutinapp-visual/workstreams/W03.json` are now available in this coordination repository. W03 must coordinate claims here before touching application code.
