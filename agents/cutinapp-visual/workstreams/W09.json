@@ -2,7 +2,7 @@
   "workstream": "W09",
   "mission": "Apresentação pública, conversão, SEO e compartilhamento",
   "status": "IMPLEMENTING",
-  "updated_at": "2026-09-27T17:41:00-03:00",
+  "updated_at": "2026-09-27T19:52:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "points": [
@@ -13,14 +13,7 @@
       "title": "SEO dinâmico da página pública de Produção",
       "scope": ["/production/:slug/public"],
       "problem": "Metadata de Produção era baseada em slug/logo genérica, enquanto Evento já possuía SEO dinâmico por entidade.",
-      "acceptance": "title/description/canonical/OG/Twitter usam dados reais disponíveis e imagem real quando houver; structured data não inventa localização, disponibilidade ou prova social; fallback permanece seguro.",
-      "implementation": {
-        "commit": "fa8e9bae6b2f0e556e3425ff3092f7aa615947b1",
-        "merge_commit": "e11d6cee1a0be357d821fac3e0f457f52c03af49",
-        "pr": 672,
-        "files": ["src/components/SeoManager.js"],
-        "validation": "Validate Cutinapp #2817 SUCCESS; Lighthouse CI #729 SUCCESS; preview crawler real ainda pendente."
-      }
+      "implementation": {"commit":"fa8e9bae6b2f0e556e3425ff3092f7aa615947b1","merge_commit":"e11d6cee1a0be357d821fac3e0f457f52c03af49","pr":672,"files":["src/components/SeoManager.js"],"validation":"Validate Cutinapp #2817 SUCCESS; Lighthouse CI #729 SUCCESS; crawler real ainda pendente."}
     },
     {
       "id": "W09-002",
@@ -28,36 +21,33 @@
       "status": "IMPLEMENTED",
       "title": "Locale estrutural configurável no head",
       "scope": ["src/components/SeoHead.js"],
-      "problem": "SeoHead forçava og:locale=pt_BR em todas as rotas, criando limite estrutural incompatível com produto global.",
-      "implementation": {
-        "commit": "91e8a23adb760b6d5d3078fe5c49468fa0e573d1",
-        "files": ["src/components/SeoHead.js"],
-        "changes": ["Adiciona prop locale opcional", "Deriva locale do html lang quando não informado", "Normaliza BCP 47 para html lang e formato Open Graph", "Mantém pt-BR apenas como fallback compatível"],
-        "validation": "Alteração estrutural revisada no código; CI pós-push ainda pendente, portanto não VERIFIED."
-      }
+      "problem": "SeoHead forçava og:locale=pt_BR em todas as rotas.",
+      "implementation": {"commit":"91e8a23adb760b6d5d3078fe5c49468fa0e573d1","files":["src/components/SeoHead.js"],"validation":"Frontend/Lighthouse passaram anteriormente; produção não promovida a VERIFIED sem evidência de deploy/crawler."}
     },
     {
       "id": "W09-003",
       "priority": "P1",
-      "status": "PENDING",
-      "title": "Validar previews reais de Evento e Produção",
-      "scope": ["/event/:slug", "/production/:slug/public"],
-      "problem": "Metadata client-side pode não ser consumida por crawlers sociais sem JavaScript."
+      "status": "IMPLEMENTING",
+      "title": "Crawler-visible previews de Evento e Produção",
+      "scope": ["/event/:slug", "/production/:slug/public", "scripts/generate-seo-snapshots.mjs", ".github/workflows/refresh-seo-sitemap.yml"],
+      "problem": "Evento já possui snapshots HTML crawler-visible, mas Produção continua dependendo de metadata client-side; o gerador também contém defaults estruturais BR/America-Sao_Paulo incompatíveis com produto global.",
+      "evidence": ["refresh-seo-sitemap.yml publica seo-snapshots após deploy e a cada hora", "generate-seo-snapshots.mjs gera event/* e eventos/*, sem production/*", "SeoManager resolve Produção no cliente via /organizations/public/:slug"],
+      "next_action": "Confirmar contrato paginado de /organizations/public e implementar snapshots de Produção; remover defaults geográficos implícitos sem degradar eventos existentes; validar HTML gerado antes de push."
     }
   ],
   "requests_for": [
     {"worker":"W01","request":"Preservar ownership visual de Evento/Produção; W09 atua em metadata/SEO sem alterar hero/layout."},
-    {"worker":"W05","request":"Coordenação canônica de W09 permanece em ecosystem-coordination; acompanhar W09-003 por possível necessidade de renderização server-side/prerender."}
+    {"worker":"W05","request":"Preservar W09 ownership do gerador SEO para Production prerender e sinalizar conflitos; gap confirmado em 2026-09-27."}
   ],
   "evidence": [
     "PR #672 passou Validate Cutinapp e Lighthouse CI antes do merge.",
-    "W09-002 removeu o hardcode pt_BR do SeoHead reutilizável sem remover o fallback pt-BR.",
     "Commit W09-002: 91e8a23adb760b6d5d3078fe5c49468fa0e573d1.",
-    "Preview por crawler social real ainda não validado; W09-001/W09-003 não estão VERIFIED."
+    "Auditoria W09-003 confirmou prerender de Evento já existente e ausência de prerender de Produção.",
+    "Gerador atual ainda assume addressCountry=BR quando ausente e TIME_ZONE=America/Sao_Paulo."
   ],
   "next": [
-    "Observar CI do commit 91e8a23a antes de promover W09-002 para VERIFIED",
-    "Atacar W09-003 para garantir metadata útil a crawlers sem JavaScript",
-    "Validar preview HTTP/crawler real e indexabilidade de Evento/Produção após deploy"
+    "Implementar Production snapshots no gerador existente após confirmar payload público",
+    "Eliminar defaults BR/timezone indevidos do snapshot SEO preservando dados explícitos",
+    "Validar HTML crawler-visible de Evento/Produção e só então promover VERIFIED"
   ]
 }
