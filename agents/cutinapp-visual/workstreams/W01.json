@@ -1,0 +1,21 @@
+{
+  "workstream":"W01",
+  "agent_id":"W01",
+  "display_name":"ViewForge",
+  "mission":"Evoluir views públicas/detalhadas de Evento e Produção e paridade visual create/edit para conversão de produtores.",
+  "status":"IMPLEMENTING",
+  "updated_at":"2026-09-27T13:49:00-03:00",
+  "coordination":{"source_of_truth":"petertecnetdev/ecosystem-coordination","legacy_app_state":"agents/cutinapp-visual/workstreams/W01.json in app repo is obsolete and must receive no further coordination writes","master":"W05 only"},
+  "inventory":{"event":["EventViewPage already composes EventArtwork, EventCommercePanel, EventCommunitySection and EventDiscoveryRail and uses ProcessingIndicator.","P1 globalization defect remains: pt-BR, America/Sao_Paulo and BRL are hardcoded in public Event view formatting/date-key helpers.","Related-event loading already tries scoped city/UF/category then global fallback, so discovery is not structurally limited to one city."],"production":["Actual route components confirmed: ProductionPublicPage for /production/:slug/public; ProductionViewPage is protected management view; create is ProductionCreatePage; edit is ProductionUpdatePage.","Recent commit efab1c improved public Production About/Location cards; must preserve it while auditing parity."]},
+  "points":[
+    {"id":"W01-001","priority":"P1","status":"CLAIMED","title":"Remove pt-BR/BRL/America-Sao_Paulo hardcodes from EventViewPage without inventing another geographic fallback","files":["src/pages/event/EventViewPage.js"],"acceptance":"Formatting derives from real event/context/browser capabilities; discovery date keys do not assume São Paulo."},
+    {"id":"W01-002","priority":"P1","status":"PENDING","title":"Validate Event hero mobile/desktop and full flyer presentation","files":["src/pages/event/EventViewPage.js","src/pages/event/EventViewPage.css"]},
+    {"id":"W01-003","priority":"P1","status":"PENDING","title":"Guarantee Event View/Create/Edit visual parity","files":["src/pages/event/EventViewPage.js","src/pages/event/EventCreatePage.js","src/pages/event/EventUpdatePage.js"]},
+    {"id":"W01-004","priority":"P1","status":"PENDING","title":"Audit and align Production Public/Create/Update","files":["src/pages/production/ProductionPublicPage.js","src/pages/production/ProductionCreatePage.js","src/pages/production/ProductionUpdatePage.js"]},
+    {"id":"W01-005","priority":"P2","status":"PENDING","title":"Validate at least two useful paginated relational rails on Event when data exists","files":["src/components/event/EventDiscoveryRail.js","src/pages/event/EventViewPage.js"]},
+    {"id":"W01-006","priority":"P1","status":"PENDING","title":"Keep city discovery routes contextual rather than product identity","files":["src/pages/event/EventDiscoverySeoPage.js"]}
+  ],
+  "requests_for":[],
+  "evidence":["Central PROTOCOL/COMMANDS/CURRENT_STATE/PRIORITIES/BLOCKERS read before claim.","No overlapping active central claim found for W01 Event/Production visual scope.","App main head observed at d8519a8ebb8675fb5e1834f74b86b6f6db212f81; latest commits include legacy W01/W05 coordination files that must no longer be maintained in app repo."],
+  "next":["Map actual event locale/timezone/currency contract before changing W01-001.","Read ProductionPublicPage/Create/Update and deduplicate parity issues.","Validate real desktop/mobile appearance before any VERIFIED state."]
+}
