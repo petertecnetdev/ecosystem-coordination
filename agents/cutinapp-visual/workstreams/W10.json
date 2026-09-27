@@ -1,15 +1,16 @@
 {
   "worker":"W10",
   "mission":"REGRESSAO VISUAL, PERFORMANCE E QUALIDADE DAS VIEWS",
-  "updated_at":"2026-09-27T13:49:00-03:00",
+  "updated_at":"2026-09-27T13:50:00-03:00",
   "status":"IMPLEMENTING",
   "coordination_repository":"petertecnetdev/ecosystem-coordination",
   "code_repository":"petertecnetdev/cutinapp.petertecnet.com.br",
   "points":[
-    {"id":"W10-001","priority":"P1","status":"CLAIMED","scope":["lighthouserc.json","public route performance"],"problem":"Lighthouse CI audits only the home page and only with desktop preset; mobile and representative public entity routes can regress without a performance/accessibility/SEO gate.","evidence":"main lighthouserc.json: collect.url=[http://localhost/] and settings.preset=desktop","next":"Add safe representative-route coverage without depending on production data; validate LHCI configuration and CI behavior."},
-    {"id":"W10-002","priority":"P1","status":"DISCOVERED","scope":["global navigation","public presentation routes"],"problem":"MASTER flags navigation as regression-sensitive after recent mobile hamburger fix; dedicated responsive smoke coverage is required.","requests_for":["W04"],"next":"Audit existing navigation tests before adding non-duplicative smoke coverage."},
+    {"id":"W10-001","priority":"P1","status":"IMPLEMENTING","scope":["lighthouserc.json","lighthouserc.mobile.json",".github/workflows/lighthouse-ci.yml"],"problem":"Lighthouse CI audited only home desktop, leaving mobile regressions ungated.","implementation":"PR #671 preserves desktop gate and adds a 390x844 mobile Lighthouse gate with performance, accessibility, best-practices, SEO, FCP, LCP, CLS and TBT assertions.","commit":"44ba39a9a8dd351a232f73d3c139b603852f48e3","evidence":"PR opened; GitHub Actions had not started at first check, so VERIFIED is intentionally withheld.","next":"Observe PR #671 checks; if green, merge safely and then extend coverage to representative deterministic public routes."},
+    {"id":"W10-002","priority":"P1","status":"DISCOVERED","scope":["global navigation","public presentation routes"],"problem":"MASTER flags navigation as regression-sensitive; recent W07 commit c94bf662 explicitly returns navbar ownership to W04.","requests_for":["W04"],"next":"Add non-duplicative responsive smoke coverage after W04 shared-nav state stabilizes."},
     {"id":"W10-003","priority":"P2","status":"DISCOVERED","scope":["public views"],"problem":"Need systematic checks for broken images, overflow, console errors, keyboard focus and reduced-motion across representative public routes.","next":"Inventory current test infrastructure and deduplicate before implementation."}
   ],
-  "constraints":["Do not write MASTER.json","Do not write W01-W09.json","Do not overwrite CLAIMED/IMPLEMENTING work","VERIFIED requires test evidence"],
-  "requests_for":{"W04":["Coordinate shared-navigation regression smoke coverage; W10 owns test/performance infrastructure, not shared visual primitives."]}
+  "requests_for":{"W04":["Coordinate shared-navigation regression smoke coverage; W10 owns test/performance infrastructure, not shared visual primitives."]},
+  "evidence":[{"type":"main_head","value":"c94bf6622e7794e13b941616538303416c010188"},{"type":"pull_request","value":"https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/671"}],
+  "constraints":["Do not write MASTER.json","Do not write W01-W09.json","Do not overwrite CLAIMED/IMPLEMENTING work","VERIFIED requires test evidence"]
 }
