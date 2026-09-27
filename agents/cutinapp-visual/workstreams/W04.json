@@ -1,0 +1,44 @@
+{
+  "worker": "W04",
+  "display_name": "Cutinapp Design System",
+  "role": "shared_visual_foundations",
+  "status": "IMPLEMENTED_PENDING_CI",
+  "updated_at": "2026-09-27T13:55:56-03:00",
+  "current_item": "W04-001",
+  "items": [
+    {
+      "id": "W04-001",
+      "priority": "P1",
+      "title": "Canonical navbar/menu base uses official design tokens",
+      "status": "IMPLEMENTED_PENDING_CI",
+      "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
+      "files": ["src/styles/cut-navbar-three-regions.css"],
+      "commit": "c8d7002112518a9832aa325ff4de04b7f497ac32",
+      "evidence": ["VIS-005", "VIS-009", "W07 navbar/mobile menu request", "commit status pending with zero published statuses at observation time"],
+      "notes": "Replaced duplicated navbar color/spacing/focus constants with canonical Cutinapp tokens, preserved opaque black/graphite surfaces and electric-red focus, added solid mobile expanded-menu containment, safe-area-aware 100dvh max height, touch targets and reduced-motion handling. No W01/W02/W03 route-specific view implementation touched."
+    },
+    {
+      "id": "W04-002",
+      "priority": "P1",
+      "title": "Consolidate legacy navigation cascade",
+      "status": "PENDING",
+      "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
+      "files": ["src/styles/app.css", "src/styles/advanced-navbar.css", "src/styles/navbar-interaction-fix.css", "src/styles/cut-navbar-three-regions.css"],
+      "notes": "Audit found many sequential navbar layers. Migrate incrementally after W04-001 CI/runtime evidence; do not destructively collapse them in one change."
+    }
+  ],
+  "requests_consumed": [
+    {
+      "from": "W07",
+      "priority": "P1",
+      "topic": "navbar/mobile menu ownership",
+      "response": "Implemented canonical W04 navbar/menu token and mobile containment layer in c8d7002112518a9832aa325ff4de04b7f497ac32; awaiting CI/runtime regression evidence before VERIFIED."
+    }
+  ],
+  "validation": {
+    "static": ["token contract reviewed", "360/390/430 rules use mobile breakpoint with safe-area and 100dvh containment", "1280/1366/1440/1920 share bounded 1360px desktop container", "focus-visible and prefers-reduced-motion covered"],
+    "build": "pending CI",
+    "runtime_visual": "pending W10/CI evidence; not marked VERIFIED"
+  },
+  "regressions": ["Do not remove interaction safety layers until runtime hamburger tests prove equivalent behavior."]
+}
