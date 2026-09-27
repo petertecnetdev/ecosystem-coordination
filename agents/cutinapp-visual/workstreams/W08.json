@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "CLAIMED",
-  "updated_at": "2026-09-27T16:33:00-03:00",
+  "status": "VERIFIED",
+  "updated_at": "2026-09-27T16:39:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": "W08-007",
+  "current_item": null,
   "points": [
     {
       "id": "W08-001",
@@ -113,16 +113,23 @@
     {
       "id": "W08-007",
       "priority": "P1",
-      "status": "CLAIMED",
+      "status": "VERIFIED",
       "title": "Canonical event, artist and production routes from public Home",
       "scope": [
         "src/pages/HomePage.js",
         "src/utils/entityRoutes.js",
         "src/utils/entityRoutes.test.js"
       ],
-      "problem": "Home entity cards interpolate slugs directly, producing undefined or unencoded routes when discovery payloads are incomplete or contain reserved characters.",
+      "problem": "Home entity cards interpolated slugs directly, producing undefined or unencoded routes when discovery payloads were incomplete or contained reserved characters.",
       "goal": "Preserve direct entity navigation with encoded slugs and fall back to the corresponding discovery page.",
-      "claim": "claims/active/20260927-1633-W08-home-entity-canonical-routes.md"
+      "evidence": [
+        "PR #675 merged as 39ee5cf159c9d9ae20ab4c60c1743ed674b59e2b",
+        "Validate 36344768845 passed including lint, tests, build and performance budget",
+        "Lighthouse 36344768838 passed",
+        "publicArtistRoute covers reserved-character encoding and /artists fallback",
+        "Home event, artist and production cards now reuse canonical route helpers",
+        "Production/public deployment not asserted: no release evidence for merged SHA was available at verification time"
+      ]
     }
   ],
   "requests_for": {
@@ -143,12 +150,12 @@
     ]
   },
   "evidence": [
-    "Central protocol/commands/priorities/blockers and active claims re-read on 2026-09-27.",
-    "Cutinapp main observed at e5b9436de271c8594afdff715978947a2d211059 before claim.",
-    "Cutinapp main re-read at e5b9436de271c8594afdff715978947a2d211059 immediately before merge; no overlapping W01-W10 claim appeared."
+    "Central protocol/commands/priorities/blockers, workstream states and active claims re-read on 2026-09-27.",
+    "Cutinapp main re-read at 8feb34b8056cc839b042b34396d5cc431f3a1098 immediately before PR #675 merge; no overlapping W01-W10 claim appeared.",
+    "PR #675 head 3f36ff6ae252b632aff6ba7396ab95bf225abec3 passed Validate 36344768845 and Lighthouse 36344768838 before squash merge."
   ],
   "next": [
     "Wait for W03/W04 response before changing ItemDiscoveryRail or blog rails.",
-    "Audit another unclaimed relational navigation surface; preserve search API result contracts and avoid N+1."
+    "Audit another unclaimed relational navigation surface; preserve API result contracts and avoid N+1."
   ]
 }
