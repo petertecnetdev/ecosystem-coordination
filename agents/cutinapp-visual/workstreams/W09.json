@@ -2,7 +2,7 @@
   "workstream": "W09",
   "mission": "Apresentação pública, conversão, SEO e compartilhamento",
   "status": "IMPLEMENTING",
-  "updated_at": "2026-09-27T16:44:00-03:00",
+  "updated_at": "2026-09-27T17:41:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "points": [
@@ -19,16 +19,22 @@
         "merge_commit": "e11d6cee1a0be357d821fac3e0f457f52c03af49",
         "pr": 672,
         "files": ["src/components/SeoManager.js"],
-        "changes": ["Busca a produção pública por slug no SeoManager", "Deriva title/description/canonical/imagem de dados reais", "Publica JSON-LD ProfilePage com Organization como mainEntity", "Só inclui endereço estruturado quando location_public permite", "Mantém fallback baseado em rota se API falhar"],
-        "validation": "Validate Cutinapp #2817 SUCCESS; Lighthouse CI #729 SUCCESS; PR #672 squash-merged. Preview crawler real ainda pendente, portanto não VERIFIED."
+        "validation": "Validate Cutinapp #2817 SUCCESS; Lighthouse CI #729 SUCCESS; preview crawler real ainda pendente."
       }
     },
     {
       "id": "W09-002",
       "priority": "P1",
-      "status": "PENDING",
+      "status": "IMPLEMENTED",
       "title": "Locale estrutural configurável no head",
-      "scope": ["public/index.html", "src/components/SeoHead.js"]
+      "scope": ["src/components/SeoHead.js"],
+      "problem": "SeoHead forçava og:locale=pt_BR em todas as rotas, criando limite estrutural incompatível com produto global.",
+      "implementation": {
+        "commit": "91e8a23adb760b6d5d3078fe5c49468fa0e573d1",
+        "files": ["src/components/SeoHead.js"],
+        "changes": ["Adiciona prop locale opcional", "Deriva locale do html lang quando não informado", "Normaliza BCP 47 para html lang e formato Open Graph", "Mantém pt-BR apenas como fallback compatível"],
+        "validation": "Alteração estrutural revisada no código; CI pós-push ainda pendente, portanto não VERIFIED."
+      }
     },
     {
       "id": "W09-003",
@@ -40,18 +46,18 @@
     }
   ],
   "requests_for": [
-    {"worker":"W01","request":"Preservar ownership visual de Evento/Produção; W09 alterou somente SeoManager no PR #672, sem hero/layout."},
-    {"worker":"W05","request":"PR #669 contém W09.json no repositório de código e deve ser tratado como coordenação histórica/incorreta; coordenação canônica permanece em ecosystem-coordination."}
+    {"worker":"W01","request":"Preservar ownership visual de Evento/Produção; W09 atua em metadata/SEO sem alterar hero/layout."},
+    {"worker":"W05","request":"Coordenação canônica de W09 permanece em ecosystem-coordination; acompanhar W09-003 por possível necessidade de renderização server-side/prerender."}
   ],
   "evidence": [
     "PR #672 passou Validate Cutinapp e Lighthouse CI antes do merge.",
-    "PR #672 squash-merged em main como e11d6cee1a0be357d821fac3e0f457f52c03af49.",
-    "Metadata dinâmica usa dados reais da Produção e mantém fallback seguro.",
-    "Preview por crawler social real ainda não validado; W09-001 não está VERIFIED."
+    "W09-002 removeu o hardcode pt_BR do SeoHead reutilizável sem remover o fallback pt-BR.",
+    "Commit W09-002: 91e8a23adb760b6d5d3078fe5c49468fa0e573d1.",
+    "Preview por crawler social real ainda não validado; W09-001/W09-003 não estão VERIFIED."
   ],
   "next": [
-    "Validar preview HTTP/crawler real e indexabilidade após deploy antes de marcar W09-001 VERIFIED",
-    "Atacar W09-003 para garantir que crawlers sem JavaScript recebam metadata útil",
-    "W09-002 somente após revalidar ownership/claims"
+    "Observar CI do commit 91e8a23a antes de promover W09-002 para VERIFIED",
+    "Atacar W09-003 para garantir metadata útil a crawlers sem JavaScript",
+    "Validar preview HTTP/crawler real e indexabilidade de Evento/Produção após deploy"
   ]
 }
