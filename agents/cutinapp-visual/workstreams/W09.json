@@ -1,0 +1,49 @@
+{
+  "workstream": "W09",
+  "mission": "Apresentação pública, conversão, SEO e compartilhamento",
+  "status": "IMPLEMENTING",
+  "updated_at": "2026-09-27T13:47:00-03:00",
+  "coordination_repository": "petertecnetdev/ecosystem-coordination",
+  "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
+  "points": [
+    {
+      "id": "W09-001",
+      "priority": "P1",
+      "status": "CLAIMED",
+      "title": "SEO dinâmico da página pública de Produção",
+      "scope": ["/production/:slug/public"],
+      "problem": "A auditoria anterior confirmou metadata de Produção baseada em slug/logo genérica, enquanto Evento já possui SEO dinâmico por entidade.",
+      "acceptance": "title/description/canonical/OG/Twitter usam dados reais disponíveis e imagem real quando houver; structured data não inventa localização, disponibilidade ou prova social; fallback permanece seguro."
+    },
+    {
+      "id": "W09-002",
+      "priority": "P1",
+      "status": "PENDING",
+      "title": "Locale estrutural configurável no head",
+      "scope": ["public/index.html", "src/components/SeoHead.js"]
+    },
+    {
+      "id": "W09-003",
+      "priority": "P1",
+      "status": "PENDING",
+      "title": "Validar previews reais de Evento e Produção",
+      "scope": ["/event/:slug", "/production/:slug/public"],
+      "problem": "Metadata client-side pode não ser consumida por crawlers sociais sem JavaScript."
+    }
+  ],
+  "requests_for": [
+    {"worker":"W01","request":"Preservar ownership visual de Evento/Produção; W09 limitará este lote a SEO/metadata/compartilhamento."},
+    {"worker":"W05","request":"PR #669 contém W09.json no repositório de código, localização agora considerada histórica/incorreta. Coordenação canônica foi migrada para ecosystem-coordination; evitar integrar esse arquivo no app como fonte de coordenação."}
+  ],
+  "evidence": [
+    "MASTER central lido em ecosystem-coordination; W09 ainda não existia no diretório central.",
+    "PR #669 permanece aberto e altera apenas agents/cutinapp-visual/workstreams/W09.json no repositório da aplicação.",
+    "MASTER registra W01 como owner de events/productions e W05 como coordenador cross-workstream."
+  ],
+  "next": [
+    "Registrar claim central para W09-001",
+    "Revalidar main e arquivos SEO antes de qualquer alteração funcional",
+    "Implementar em branch de código sem tocar hero/layout de W01",
+    "Testar e registrar evidência antes de VERIFIED"
+  ]
+}
