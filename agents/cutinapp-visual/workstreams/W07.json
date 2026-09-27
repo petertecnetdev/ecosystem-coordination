@@ -1,0 +1,29 @@
+{
+  "worker": "W07",
+  "display_name": "W07 Mobile Views",
+  "role": "mobile_responsive_interaction",
+  "status": "IMPLEMENTING",
+  "updated_at": "2026-09-27T16:49:00Z",
+  "current_item": "W07-001",
+  "items": [
+    {
+      "id": "W07-001",
+      "priority": "P1",
+      "title": "Mobile view safe-area, keyboard, modal and touch hardening",
+      "status": "IMPLEMENTED_PENDING_CI",
+      "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
+      "files": ["src/styles/cutinapp-mobile-final.css"],
+      "commit": "c94bf6622e7794e13b941616538303416c010188",
+      "evidence": ["Deploy VPS run 36334591564 queued"],
+      "notes": "View-level changes only. Navbar/menu base remains W04 responsibility. Added safe-area-aware modal/page spacing, 100dvh modal constraints, scroll containment, mobile input sizing to avoid iOS zoom, 44px action targets, narrow-screen action stacking and anchor scroll margin."
+    }
+  ],
+  "requests": [
+    {
+      "request_for": "W04",
+      "priority": "P1",
+      "topic": "navbar/mobile menu ownership",
+      "detail": "Review canonical navbar/menu mobile rules separately; W07 will not reimplement navbar/menu base."
+    }
+  ]
+}
