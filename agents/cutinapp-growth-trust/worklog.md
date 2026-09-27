@@ -33,11 +33,13 @@ Proceed with a safe first increment in `petertecnetdev/petertecnet.com.br`, star
 - branch: `feat/argos-readonly-v1`
 - PR: `petertecnetdev/petertecnet.com.br#159`
 - branch synchronized with current main via merge commit; diff remains additive under ARGOS directories.
-- frontend CI for PR #159 started and was still in progress at last check.
+- frontend CI completed with failure only at `Verify monorepo Admin Center sources`; checkout, dependency install, lint, ecosystem validation, PWA validation, production build and real-browser Admin Center validation all passed.
+- root cause verified against current remote `main`: `apps/admincenter/` returns 404, while the workflow requires files under that path. This is a repository/workflow contract mismatch outside the ARGOS diff, not an ARGOS runtime failure.
 
 ### Remaining gates
 - model API credential is intentionally absent from VPS, so current runtime does not call OpenAI yet.
 - `Linger=no` for user `petertecnet`; service is active now but unattended restart after full VPS reboot is not yet guaranteed.
+- PR #159 should not be called CI-green until the unrelated Admin Center workflow contract is reconciled by its owning scope.
 - keep claim active until these operational gates and PR integration are resolved.
 
 ### Evidence
