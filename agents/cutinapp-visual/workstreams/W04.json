@@ -2,31 +2,31 @@
   "worker": "W04",
   "display_name": "Cutinapp Design System",
   "role": "shared_visual_foundations",
-  "status": "IMPLEMENTED_PENDING_CI",
-  "updated_at": "2026-09-27T15:18:00-03:00",
+  "status": "IMPLEMENTED_PENDING_RUNTIME",
+  "updated_at": "2026-09-27T16:14:53-03:00",
   "current_item": "W04-002",
   "items": [
     {
       "id": "W04-001",
       "priority": "P1",
       "title": "Canonical navbar/menu base uses official design tokens",
-      "status": "IMPLEMENTED_PENDING_CI",
+      "status": "IMPLEMENTED_PENDING_RUNTIME",
       "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
       "files": ["src/styles/cut-navbar-three-regions.css"],
       "commit": "c8d7002112518a9832aa325ff4de04b7f497ac32",
-      "evidence": ["VIS-005", "VIS-009", "W07 navbar/mobile menu request"],
-      "notes": "Canonical tokens, opaque surfaces, mobile containment, safe-area, touch targets and reduced-motion are implemented. Runtime/CI evidence is still required before VERIFIED."
+      "evidence": ["VIS-005", "VIS-009", "W07 navbar/mobile menu request", "main 8feb34b includes W04 commits; Validate 36341496361 success; Lighthouse 36341496350 success"],
+      "notes": "Canonical tokens, opaque surfaces, mobile containment, safe-area, touch targets and reduced-motion are implemented. Main CI and Lighthouse are green on a descendant commit; explicit runtime hamburger/unread-dot evidence is still required before VERIFIED."
     },
     {
       "id": "W04-002",
       "priority": "P1",
       "title": "Consolidate legacy navigation cascade",
-      "status": "IMPLEMENTED_PENDING_CI",
+      "status": "IMPLEMENTED_PENDING_RUNTIME",
       "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
       "files": ["src/styles/app.css", "src/styles/cut-navbar-three-regions.css"],
-      "commits": ["baf9c5e39c81c62091b587418805c3ea2f9fb1fe", "b25438fbd92aafda74fa80521e854e45d8c117a9"],
-      "evidence": ["latest badge behavior from f4892beb absorbed into canonical W04 layer", "duplicate app.css notification badge patch removed", "canonical navbar import now has explicit clean boundary/comment", "zero published commit statuses at observation time"],
-      "notes": "First safe consolidation batch only. Preserved navbar-interaction-fix.css and other interaction safety layers. No destructive collapse and no W01/W02/W03 route-specific views touched. Continue incremental migration only after runtime hamburger/badge equivalence evidence."
+      "commits": ["baf9c5e39c81c62091b587418805c3ea2f9fb1fe", "b25438fbd92aafda74fa80521e854e45d8c117a9", "aede3e8838697b16946a7dc6815c0578708fec16"],
+      "evidence": ["latest badge behavior absorbed into canonical W04 layer", "duplicate app.css notification badge patch removed", "aede3e8 changed unread count to Instagram-style red dot in canonical layer", "main 8feb34b Validate 36341496361 success", "main 8feb34b Lighthouse 36341496350 success"],
+      "notes": "First safe consolidation batch only. Preserved navbar-interaction-fix.css and other interaction safety layers. No destructive collapse and no W01/W02/W03 route-specific views touched. CI/build/performance gate is now green on current main; continue incremental migration only after W10 runtime hamburger/dot equivalence evidence."
     }
   ],
   "requests_consumed": [
@@ -34,13 +34,15 @@
       "from": "W07",
       "priority": "P1",
       "topic": "navbar/mobile menu ownership",
-      "response": "Canonical W04 navbar/menu base remains owner; latest notification badge regression fix is now centralized in the same W04 layer instead of app.css."
+      "response": "Canonical W04 navbar/menu base remains owner; notification unread state is centralized in the same W04 layer instead of app.css."
     }
   ],
   "validation": {
-    "static": ["token contract preserved", "360/390/430 mobile rules retain safe-area and 100dvh containment", "1280/1366/1440/1920 retain bounded 1360px desktop container", "focus-visible and prefers-reduced-motion preserved", "notification badge hit-area overflow and two-digit containment preserved in canonical layer"],
-    "build": "pending CI; no published status observed for b25438fbd92aafda74fa80521e854e45d8c117a9",
-    "runtime_visual": "pending W10 runtime hamburger/badge evidence; not marked VERIFIED"
+    "static": ["token contract preserved", "360/390/430 mobile rules retain safe-area and 100dvh containment", "1280/1366/1440/1920 retain bounded 1360px desktop container", "focus-visible and prefers-reduced-motion preserved", "unread state centralized as brand-red dot in canonical layer"],
+    "build": "green on current main 8feb34b8056cc839b042b34396d5cc431f3a1098: Validate Cutinapp run 36341496361 success",
+    "performance": "green on current main: Lighthouse CI run 36341496350 success",
+    "runtime_visual": "pending W10 explicit hamburger/unread-dot evidence; not marked VERIFIED"
   },
-  "regressions": ["Do not remove navbar-interaction-fix.css or remaining safety layers until runtime hamburger tests prove equivalent behavior.", "Do not collapse legacy navbar layers wholesale; continue one proven behavior at a time."]
+  "regressions": ["Do not remove navbar-interaction-fix.css or remaining safety layers until runtime hamburger tests prove equivalent behavior.", "Do not collapse legacy navbar layers wholesale; continue one proven behavior at a time."],
+  "next_action": "W10 runtime validation of hamburger open/close, menu containment and unread dot on representative mobile/desktop widths; after evidence, W04 can safely continue cascade reduction."
 }
