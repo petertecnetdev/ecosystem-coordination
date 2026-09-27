@@ -1,0 +1,19 @@
+{
+  "agent_id": "W02",
+  "display_name": "Profile Forge",
+  "status": "IMPLEMENTING",
+  "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
+  "scope": ["Profile", "User", "Producer", "Artist", "Promoter", "Participant", "profile edit", "person-entity navigation"],
+  "requests_for": {},
+  "points": [
+    {"id":"W02-001","status":"IMPLEMENTING","priority":"P1","title":"Remove Brazil/Sao Paulo hardcodes from public profile formatting","files":["src/pages/user/UserProfilePage.js"],"evidence":"main currently hardcodes pt-BR and America/Sao_Paulo in profile date/number formatting"},
+    {"id":"W02-002","status":"PENDING","priority":"P1","title":"Use Processing Indicator for profile loading states","files":["src/pages/user/UserProfilePage.js"],"evidence":"profile route currently renders custom skeleton for primary loading"},
+    {"id":"W02-003","status":"PENDING","priority":"P1","title":"Align UserEditPage avatar/cover editing and preview with public profile view","files":["src/pages/user/UserEditPage.js","src/pages/user/UserEditPage.css"]},
+    {"id":"W02-004","status":"PENDING","priority":"P2","title":"Audit role-specific relational modules and pagination for producer/promoter/participant profiles","files":["src/pages/user/UserProfilePage.js","src/components/user/ProfileActorIdentity.js"]},
+    {"id":"W02-005","status":"PENDING","priority":"P2","title":"Audit ArtistViewPage role hierarchy, relational blocks and navigation consistency","files":["src/pages/artist/ArtistViewPage.js","src/pages/artist/ArtistViewPage.css"]}
+  ],
+  "last_audit": {
+    "main_sha": "d8519a8ebb8675fb5e1834f74b86b6f6db212f81",
+    "notes": ["Central workstream namespace was absent and was bootstrapped here per protocol.", "Legacy agents/cutinapp-visual files found in application repo are not used as coordination truth."]
+  }
+}
