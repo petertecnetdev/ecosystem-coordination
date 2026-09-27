@@ -29,8 +29,10 @@ The public Home interpolated event, artist and production slugs directly into li
 
 - PR #675: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/675
 - Merge commit: `39ee5cf159c9d9ae20ab4c60c1743ed674b59e2b`
-- Validate run `36344768845`: success; lint, unit suite, build and performance budget completed.
-- Lighthouse CI run `36344768838`: success.
+- PR Validate run `36344768845`: success; lint, unit suite, build and performance budget completed.
+- PR Lighthouse CI run `36344768838`: success.
+- Post-merge Validate run `36344955026`: success on merged main SHA.
+- Post-merge Lighthouse CI run `36344955006`: success on merged main SHA.
 - The artist helper test covers reserved-character encoding and missing-slug fallback.
 - Main and active claims were re-read immediately before merge; no overlapping W01-W10 claim appeared.
 
