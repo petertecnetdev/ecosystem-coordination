@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "ACTIVE",
-  "updated_at": "2026-09-27T15:48:00-03:00",
+  "status": "CLAIMED",
+  "updated_at": "2026-09-27T16:33:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": "W08-006",
+  "current_item": "W08-007",
   "points": [
     {
       "id": "W08-001",
@@ -109,6 +109,20 @@
         "Post-merge Validate 36341496361 passed",
         "Post-merge Lighthouse 36341496350 passed"
       ]
+    },
+    {
+      "id": "W08-007",
+      "priority": "P1",
+      "status": "CLAIMED",
+      "title": "Canonical event, artist and production routes from public Home",
+      "scope": [
+        "src/pages/HomePage.js",
+        "src/utils/entityRoutes.js",
+        "src/utils/entityRoutes.test.js"
+      ],
+      "problem": "Home entity cards interpolate slugs directly, producing undefined or unencoded routes when discovery payloads are incomplete or contain reserved characters.",
+      "goal": "Preserve direct entity navigation with encoded slugs and fall back to the corresponding discovery page.",
+      "claim": "claims/active/20260927-1633-W08-home-entity-canonical-routes.md"
     }
   ],
   "requests_for": {
