@@ -30,6 +30,13 @@ status: implemented-awaiting-runtime-validation
 - source contract: new layout styles contain no `!important`, `rgba()` or decorative gradients
 - runtime: cloud browser could not access the local loopback server; 390/1366/1920 production visual evidence remains pending
 
+## Delivery gate
+- `Validate Cutinapp #2850`: successful for `172a0375`.
+- `Lighthouse CI #762`: successful for `172a0375`.
+- `Deploy VPS #1744`: failed; all four SSH attempts from the GitHub-hosted runner timed out.
+- Diagnostic job confirmed the configured VPS SSH endpoint was unavailable and public HTTPS still served `99fe15cb9b035804f1eee7b5ab6ad336875eeff7`.
+- Result: code is integrated and validated on main, but not published to production; W01-008 remains IMPLEMENTED, not VERIFIED.
+
 ## Economic impact
 A denser, clearer public Production page exposes agenda/ticket intent earlier, removes off-brand trust friction and keeps visitors navigating into events rather than confronting a second oversized banner.
 
