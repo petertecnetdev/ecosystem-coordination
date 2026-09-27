@@ -3,8 +3,8 @@
   "display_name": "W07 Mobile Views",
   "role": "mobile_responsive_interaction",
   "status": "IMPLEMENTING",
-  "updated_at": "2026-09-27T19:17:00Z",
-  "current_item": "W07-002",
+  "updated_at": "2026-09-27T20:19:00Z",
+  "current_item": "W07-003",
   "items": [
     {
       "id": "W07-001",
@@ -27,6 +27,17 @@
       "commit": "5cc8861916eb48ce0203b67bcbb947f045969f8f",
       "evidence": ["Commit exists on main lineage", "GitHub commit status remains pending with zero reported statuses at reconciliation time"],
       "notes": "Mobile chat viewport/safe-area hardening for 320-430px class devices, composer/keyboard behavior, bottom-sheet/modal constraints, touch targets and overscroll. Navbar/menu base intentionally untouched."
+    },
+    {
+      "id": "W07-003",
+      "priority": "P1",
+      "title": "Checkout mobile touch, safe-area and narrow-screen hardening",
+      "status": "IMPLEMENTED_PENDING_CI",
+      "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
+      "files": ["src/styles/checkout-mobile-hardening.css", "src/index.js"],
+      "commits": ["467cfe9dd19f7bab90db040e131aa2f8b874a6c2", "02eb7c4854f3421f6b93066de878d0a46de3c458"],
+      "evidence": ["Lighthouse CI run 36347566611 pending for final import commit at reconciliation time", "Validate run 36347557029 in progress for stylesheet commit"],
+      "notes": "Revenue-critical checkout only: 44px quantity/remove controls, safe-area-aware page/paybar spacing, 100dvh/overflow containment, 16px mobile inputs to avoid iOS zoom, narrow 320/360/390/430px layout hardening. Payment logic/API and W04 navbar ownership untouched."
     }
   ],
   "requests": [
