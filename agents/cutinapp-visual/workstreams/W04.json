@@ -3,8 +3,8 @@
   "display_name": "Cutinapp Design System",
   "role": "shared_visual_foundations",
   "status": "IMPLEMENTED_PENDING_RUNTIME",
-  "updated_at": "2026-09-27T16:14:53-03:00",
-  "current_item": "W04-002",
+  "updated_at": "2026-09-27T20:18:00-03:00",
+  "current_item": "W04-003",
   "items": [
     {
       "id": "W04-001",
@@ -15,7 +15,7 @@
       "files": ["src/styles/cut-navbar-three-regions.css"],
       "commit": "c8d7002112518a9832aa325ff4de04b7f497ac32",
       "evidence": ["VIS-005", "VIS-009", "W07 navbar/mobile menu request", "main 8feb34b includes W04 commits; Validate 36341496361 success; Lighthouse 36341496350 success"],
-      "notes": "Canonical tokens, opaque surfaces, mobile containment, safe-area, touch targets and reduced-motion are implemented. Main CI and Lighthouse are green on a descendant commit; explicit runtime hamburger/unread-dot evidence is still required before VERIFIED."
+      "notes": "Canonical tokens, opaque surfaces, mobile containment, safe-area, touch targets and reduced-motion are implemented. Explicit runtime hamburger/unread-dot evidence is still required before VERIFIED."
     },
     {
       "id": "W04-002",
@@ -26,7 +26,18 @@
       "files": ["src/styles/app.css", "src/styles/cut-navbar-three-regions.css"],
       "commits": ["baf9c5e39c81c62091b587418805c3ea2f9fb1fe", "b25438fbd92aafda74fa80521e854e45d8c117a9", "aede3e8838697b16946a7dc6815c0578708fec16"],
       "evidence": ["latest badge behavior absorbed into canonical W04 layer", "duplicate app.css notification badge patch removed", "aede3e8 changed unread count to Instagram-style red dot in canonical layer", "main 8feb34b Validate 36341496361 success", "main 8feb34b Lighthouse 36341496350 success"],
-      "notes": "First safe consolidation batch only. Preserved navbar-interaction-fix.css and other interaction safety layers. No destructive collapse and no W01/W02/W03 route-specific views touched. CI/build/performance gate is now green on current main; continue incremental migration only after W10 runtime hamburger/dot equivalence evidence."
+      "notes": "Preserved navbar-interaction-fix.css and emergency interaction safety. Continue incremental migration only after W10 runtime hamburger/dot equivalence evidence."
+    },
+    {
+      "id": "W04-003",
+      "priority": "P1",
+      "title": "Shared flyer thumbnail uses solid tokenized surfaces without decorative blur",
+      "status": "IMPLEMENTED_PENDING_CI",
+      "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
+      "files": ["src/components/event/EventPosterThumbnail.css"],
+      "commit": "007a13b1c3bc69bf9ae5e960dd6eaf0066b10618",
+      "evidence": ["shared component remains object-fit:contain so complete flyer is visible", "removed oversized blurred duplicate artwork repaint", "hardcoded surface/border/text values migrated to official design tokens", "commit status pending immediately after push"],
+      "notes": "Cross-cutting component only; no W01/W02/W03 route-specific view changed. Existing markup remains compatible because decorative background layer is retained structurally but not painted."
     }
   ],
   "requests_consumed": [
@@ -38,11 +49,11 @@
     }
   ],
   "validation": {
-    "static": ["token contract preserved", "360/390/430 mobile rules retain safe-area and 100dvh containment", "1280/1366/1440/1920 retain bounded 1360px desktop container", "focus-visible and prefers-reduced-motion preserved", "unread state centralized as brand-red dot in canonical layer"],
-    "build": "green on current main 8feb34b8056cc839b042b34396d5cc431f3a1098: Validate Cutinapp run 36341496361 success",
-    "performance": "green on current main: Lighthouse CI run 36341496350 success",
-    "runtime_visual": "pending W10 explicit hamburger/unread-dot evidence; not marked VERIFIED"
+    "static": ["token contract preserved", "360/390/430 mobile navbar rules retain safe-area and 100dvh containment", "1280/1366/1440/1920 retain bounded desktop container", "focus-visible and prefers-reduced-motion preserved", "EventPosterThumbnail keeps object-fit:contain and responsive aspect contract", "decorative blur removed from shared flyer thumbnail"],
+    "build": "W04-003 pending CI on 007a13b1c3bc69bf9ae5e960dd6eaf0066b10618",
+    "performance": "expected improvement: one oversized blurred duplicate image layer removed per EventPosterThumbnail instance; Lighthouse evidence pending",
+    "runtime_visual": "navbar pending W10 explicit evidence; W04-003 requires carousel/runtime equivalence before VERIFIED"
   },
-  "regressions": ["Do not remove navbar-interaction-fix.css or remaining safety layers until runtime hamburger tests prove equivalent behavior.", "Do not collapse legacy navbar layers wholesale; continue one proven behavior at a time."],
-  "next_action": "W10 runtime validation of hamburger open/close, menu containment and unread dot on representative mobile/desktop widths; after evidence, W04 can safely continue cascade reduction."
+  "regressions": ["Do not remove navbar-interaction-fix.css or emergency hamburger layer until runtime tests prove equivalent behavior.", "Do not collapse legacy navbar layers wholesale; continue one proven behavior at a time.", "W04-003 intentionally favors solid black/graphite letterboxing over blurred decorative artwork to preserve full flyer and reduce paint cost."],
+  "next_action": "Wait for CI/runtime evidence on W04-003 and W10 hamburger evidence; then continue shared carousel/card migration without touching route-specific view ownership."
 }
