@@ -40,6 +40,8 @@ status: VERIFIED
 - Replaced the regex with character-code inspection; behavior remained covered.
 - Validate 36341305128 passed: 138 suites, 850 tests, build and performance budget.
 - Lighthouse 36341305134 passed.
+- Post-merge Validate 36341496361 passed.
+- Post-merge Lighthouse 36341496350 passed.
 
 ## Commit / PR / push
 
@@ -56,6 +58,8 @@ status: VERIFIED
 
 - https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36341305128
 - https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36341305134
+- https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36341496361
+- https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36341496350
 - `claims/completed/20260927-1534-W08-global-search-safe-route.md`
 
 ## Pending / requests
