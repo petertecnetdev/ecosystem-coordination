@@ -4,7 +4,7 @@
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
   "status": "ACTIVE",
-  "updated_at": "2026-09-27T14:36:00-03:00",
+  "updated_at": "2026-09-27T14:40:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": "W08-005",
@@ -82,7 +82,9 @@
         "PR #673 merged as af666ad1d959eee2496820e1f5900e375f3472bd",
         "Validate 36337274434 passed including unit tests and build",
         "Lighthouse 36337274436 job completed successfully",
-        "Existing entityRoutes test covers production slug encoding and /productions fallback"
+        "Existing entityRoutes test covers production slug encoding and /productions fallback",
+        "Post-merge Validate 36337453015 passed",
+        "Post-merge Lighthouse 36337453038 passed"
       ]
     }
   ],
