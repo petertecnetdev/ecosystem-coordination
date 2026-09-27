@@ -4,7 +4,7 @@
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
   "status": "ACTIVE",
-  "updated_at": "2026-09-27T15:44:00-03:00",
+  "updated_at": "2026-09-27T15:48:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": "W08-006",
@@ -105,7 +105,9 @@
         "Validate 36341305128 passed: 138 suites, 850 tests, build and performance budget",
         "Lighthouse 36341305134 passed",
         "Three new route-safety tests cover internal route, absent/external destination and unsafe fallback",
-        "Initial CI caught ESLint no-control-regex; corrected without weakening the guard in d70a81af6f2f6a12cc67dcf927e90509e86e7945"
+        "Initial CI caught ESLint no-control-regex; corrected without weakening the guard in d70a81af6f2f6a12cc67dcf927e90509e86e7945",
+        "Post-merge Validate 36341496361 passed",
+        "Post-merge Lighthouse 36341496350 passed"
       ]
     }
   ],
