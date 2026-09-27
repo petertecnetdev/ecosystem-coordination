@@ -47,3 +47,12 @@ Release:
 - Deploy run https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36280644821 activated the expected SHA on filesystem and local nginx.
 - Public HTTPS still serves `5a247f…`, so production is not claimed.
 - Edge/proxy blocker and diagnostic-workflow heredoc defect recorded in `handoffs/20260926-2352-cutinapp-flyer-date-edge-release-blocker.md`.
+
+
+### Release diagnostic follow-up
+- PR https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/658 fixed the malformed diagnostic heredoc and merged as `f14e648cb5501f998b9b9837605ef3abb2021c92`.
+- PR frontend and Lighthouse checks passed; main Validate run 36282864463 passed.
+- Deploy run 36282954294 activated `f14e648c…` successfully on the filesystem and local nginx.
+- The repaired diagnostic proved public HTTPS still serves `5a247f…`, while cloudflared is inactive and its executable is absent on the configured VPS.
+- Action-required handoff: `messages/20260927-0039-cutinapp-growth-conversion-to-production-stability-edge-origin.md`.
+- Production remains unconfirmed until public `release-sha.txt` equals current main.
