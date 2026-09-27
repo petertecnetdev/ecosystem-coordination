@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "ACTIVE",
-  "updated_at": "2026-09-27T14:40:00-03:00",
+  "status": "CLAIMED",
+  "updated_at": "2026-09-27T15:34:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": "W08-005",
+  "current_item": "W08-006",
   "points": [
     {
       "id": "W08-001",
@@ -86,6 +86,21 @@
         "Post-merge Validate 36337453015 passed",
         "Post-merge Lighthouse 36337453038 passed"
       ]
+    },
+    {
+      "id": "W08-006",
+      "priority": "P1",
+      "status": "CLAIMED",
+      "title": "Keep global search result navigation inside safe application routes",
+      "scope": [
+        "src/utils/entityRoutes.js",
+        "src/utils/entityRoutes.test.js",
+        "src/pages/search/GlobalSearchPage.js",
+        "src/components/GlobalSearchOverlay.js"
+      ],
+      "problem": "Both global-search surfaces call navigate with API-provided item.url directly; absent or external values can create dead ends or leave the application.",
+      "goal": "Preserve valid internal destinations and fall back to /search for missing, protocol-relative or external URLs.",
+      "claim": "claims/active/20260927-1534-W08-global-search-safe-route.md"
     }
   ],
   "requests_for": {
