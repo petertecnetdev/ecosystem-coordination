@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "CLAIMED",
-  "updated_at": "2026-09-27T20:36:00-03:00",
+  "status": "VERIFIED",
+  "updated_at": "2026-09-27T20:45:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": "W08-009",
+  "current_item": null,
   "points": [
     {
       "id": "W08-001",
@@ -157,7 +157,7 @@
     {
       "id": "W08-009",
       "priority": "P1",
-      "status": "CLAIMED",
+      "status": "VERIFIED",
       "title": "Typed entity fallbacks for notifications with missing references",
       "scope": [
         "src/pages/NotificationsPage.js",
@@ -166,7 +166,15 @@
       ],
       "problem": "Notifications with absent or invalid reference_url only fall back for event references; known production, artist, pass, purchase and profile references become dead clicks.",
       "goal": "Preserve valid reference URLs and route known entity types to a legitimate in-app discovery, wallet or profile fallback.",
-      "claim": "claims/active/20260927-2036-W08-notification-entity-fallbacks.md"
+      "evidence": [
+        "PR #678 merged as d1dd3e821940268e8d82fe359654f147d4ff7400",
+        "PR Validate 36359001433 passed including lint, tests, build and performance budget",
+        "PR Lighthouse 36359001429 passed",
+        "Post-merge Validate 36359179636 passed on main SHA d1dd3e821940268e8d82fe359654f147d4ff7400",
+        "Post-merge Lighthouse 36359179556 passed on main SHA d1dd3e821940268e8d82fe359654f147d4ff7400",
+        "Unit tests cover event/item, production, artist, ticket/pass, purchase/order, user/profile, unknown and absent types",
+        "Deploy 36359284496 failed at Fetch frontend build environment; build, deploy and health check were skipped"
+      ]
     }
   ],
   "requests_for": {
@@ -191,7 +199,8 @@
     "Cutinapp main re-read at 8feb34b8056cc839b042b34396d5cc431f3a1098 immediately before PR #675 merge; no overlapping W01-W10 claim appeared.",
     "PR #675 head 3f36ff6ae252b632aff6ba7396ab95bf225abec3 passed Validate 36344768845 and Lighthouse 36344768838 before squash merge.",
     "Merged main SHA 39ee5cf159c9d9ae20ab4c60c1743ed674b59e2b passed post-merge Validate 36344955026 and Lighthouse 36344955006.",
-    "Merged Feed route SHA f5136fcbaffa0dd895863b2ed3e8bb6abb4522ee passed post-merge Validate 36355761322 and Lighthouse 36355761293; Deploy 36355832096 failed before build/deploy."
+    "Merged Feed route SHA f5136fcbaffa0dd895863b2ed3e8bb6abb4522ee passed post-merge Validate 36355761322 and Lighthouse 36355761293; Deploy 36355832096 failed before build/deploy.",
+    "Notification fallback SHA d1dd3e821940268e8d82fe359654f147d4ff7400 passed post-merge Validate 36359179636 and Lighthouse 36359179556; Deploy 36359284496 failed before build/deploy."
   ],
   "next": [
     "Wait for W03/W04 response before changing ItemDiscoveryRail or blog rails.",
