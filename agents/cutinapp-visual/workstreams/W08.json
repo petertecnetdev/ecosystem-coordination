@@ -3,27 +3,40 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "VERIFIED",
-  "updated_at": "2026-09-27T16:42:00-03:00",
+  "status": "CLAIMED",
+  "updated_at": "2026-09-27T19:34:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": null,
+  "current_item": "W08-008",
   "points": [
     {
       "id": "W08-001",
       "priority": "P1",
       "status": "VERIFIED",
       "title": "Home item cards open canonical public item detail",
-      "scope": ["src/pages/HomeHubPage.js", "src/utils/entityRoutes.js", "src/utils/entityRoutes.test.js"],
-      "evidence": ["PR #670 merged as 28bd09442b1e40c26a79b6c19979a4470ece388b", "Validate 36334777827 passed", "Lighthouse 36334777908 passed"]
+      "scope": [
+        "src/pages/HomeHubPage.js",
+        "src/utils/entityRoutes.js",
+        "src/utils/entityRoutes.test.js"
+      ],
+      "evidence": [
+        "PR #670 merged as 28bd09442b1e40c26a79b6c19979a4470ece388b",
+        "Validate 36334777827 passed",
+        "Lighthouse 36334777908 passed"
+      ]
     },
     {
       "id": "W08-002",
       "priority": "P1",
       "status": "REQUESTED",
       "title": "Remove dead fallback from shared ItemDiscoveryRail",
-      "scope": ["src/components/event/ItemDiscoveryRail.js"],
-      "request_for": ["W03", "W04"],
+      "scope": [
+        "src/components/event/ItemDiscoveryRail.js"
+      ],
+      "request_for": [
+        "W03",
+        "W04"
+      ],
       "notes": "Shared item component is within W03/W04 ownership; W08 will not edit without handoff."
     },
     {
@@ -31,8 +44,13 @@
       "priority": "P1",
       "status": "REQUESTED",
       "title": "Reduce blog related-item request fan-out",
-      "scope": ["blog relations", "API batch/pagination"],
-      "request_for": ["W03"],
+      "scope": [
+        "blog relations",
+        "API batch/pagination"
+      ],
+      "request_for": [
+        "W03"
+      ],
       "notes": "Blog surfaces are W03-owned; prefer bounded batch endpoint or server aggregation."
     },
     {
@@ -40,15 +58,25 @@
       "priority": "P2",
       "status": "REQUESTED",
       "title": "Validate pagination and lazy loading on entity relation rails",
-      "scope": ["event", "production", "artist"],
-      "request_for": ["W01", "W02", "W10"]
+      "scope": [
+        "event",
+        "production",
+        "artist"
+      ],
+      "request_for": [
+        "W01",
+        "W02",
+        "W10"
+      ]
     },
     {
       "id": "W08-005",
       "priority": "P1",
       "status": "VERIFIED",
       "title": "Use canonical safe production route in Home relational cards",
-      "scope": ["src/pages/HomeHubPage.js"],
+      "scope": [
+        "src/pages/HomeHubPage.js"
+      ],
       "goal": "Avoid /production/undefined/public when relational payload lacks a slug; preserve direct public route when complete.",
       "evidence": [
         "PR #673 merged as af666ad1d959eee2496820e1f5900e375f3472bd",
@@ -64,7 +92,12 @@
       "priority": "P1",
       "status": "VERIFIED",
       "title": "Keep global search result navigation inside safe application routes",
-      "scope": ["src/utils/entityRoutes.js", "src/utils/entityRoutes.test.js", "src/pages/search/GlobalSearchPage.js", "src/components/GlobalSearchOverlay.js"],
+      "scope": [
+        "src/utils/entityRoutes.js",
+        "src/utils/entityRoutes.test.js",
+        "src/pages/search/GlobalSearchPage.js",
+        "src/components/GlobalSearchOverlay.js"
+      ],
       "problem": "Both global-search surfaces call navigate with API-provided item.url directly; absent or external values can create dead ends or leave the application.",
       "goal": "Preserve valid internal destinations and fall back to /search for missing, protocol-relative or external URLs.",
       "evidence": [
@@ -82,7 +115,11 @@
       "priority": "P1",
       "status": "VERIFIED",
       "title": "Canonical event, artist and production routes from public Home",
-      "scope": ["src/pages/HomePage.js", "src/utils/entityRoutes.js", "src/utils/entityRoutes.test.js"],
+      "scope": [
+        "src/pages/HomePage.js",
+        "src/utils/entityRoutes.js",
+        "src/utils/entityRoutes.test.js"
+      ],
       "problem": "Home entity cards interpolated slugs directly, producing undefined or unencoded routes when discovery payloads were incomplete or contained reserved characters.",
       "goal": "Preserve direct entity navigation with encoded slugs and fall back to the corresponding discovery page.",
       "evidence": [
@@ -95,14 +132,37 @@
         "Home event, artist and production cards now reuse canonical route helpers",
         "Production/public deployment not asserted: no release identity evidence for merged SHA was available at verification time"
       ]
+    },
+    {
+      "id": "W08-008",
+      "priority": "P1",
+      "status": "CLAIMED",
+      "title": "Canonical event and production routes from social Feed",
+      "scope": [
+        "src/pages/FeedPage.js",
+        "src/utils/entityRoutes.test.js"
+      ],
+      "problem": "Feed builds event, production, ticket-intent, community and share destinations by interpolating API slugs directly; reserved characters can create malformed or unintended paths.",
+      "goal": "Reuse canonical encoded helpers for every Feed entity destination while preserving anchors, telemetry, availability and moderation behavior.",
+      "claim": "claims/active/20260927-1934-W08-feed-canonical-entity-routes.md"
     }
   ],
   "requests_for": {
-    "W03": ["Own W08-002/W08-003 or provide explicit handoff."],
-    "W04": ["Review shared ItemDiscoveryRail navigation contract; W08 will reuse shared primitives."],
-    "W01": ["Keep production public route contract /production/:slug/public; W08 only consumes it from Home."],
-    "W05": ["Ingest this canonical central W08 record and resolve ownership conflicts if any."],
-    "W10": ["Add missing-slug navigation fallback to representative regression coverage when practical."]
+    "W03": [
+      "Own W08-002/W08-003 or provide explicit handoff."
+    ],
+    "W04": [
+      "Review shared ItemDiscoveryRail navigation contract; W08 will reuse shared primitives."
+    ],
+    "W01": [
+      "Keep production public route contract /production/:slug/public; W08 only consumes it from Home."
+    ],
+    "W05": [
+      "Ingest this canonical central W08 record and resolve ownership conflicts if any."
+    ],
+    "W10": [
+      "Add missing-slug navigation fallback to representative regression coverage when practical."
+    ]
   },
   "evidence": [
     "Central protocol/commands/priorities/blockers, workstream states and active claims re-read on 2026-09-27.",
