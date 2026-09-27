@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "VERIFIED",
-  "updated_at": "2026-09-27T19:44:00-03:00",
+  "status": "CLAIMED",
+  "updated_at": "2026-09-27T20:36:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": null,
+  "current_item": "W08-009",
   "points": [
     {
       "id": "W08-001",
@@ -153,6 +153,20 @@
         "Tests cover reserved slash encoding for event and production slugs",
         "Deploy 36355832096 failed at Fetch frontend build environment; build, deploy and health check were skipped, so production is not asserted"
       ]
+    },
+    {
+      "id": "W08-009",
+      "priority": "P1",
+      "status": "CLAIMED",
+      "title": "Typed entity fallbacks for notifications with missing references",
+      "scope": [
+        "src/pages/NotificationsPage.js",
+        "src/utils/entityRoutes.js",
+        "src/utils/entityRoutes.test.js"
+      ],
+      "problem": "Notifications with absent or invalid reference_url only fall back for event references; known production, artist, pass, purchase and profile references become dead clicks.",
+      "goal": "Preserve valid reference URLs and route known entity types to a legitimate in-app discovery, wallet or profile fallback.",
+      "claim": "claims/active/20260927-2036-W08-notification-entity-fallbacks.md"
     }
   ],
   "requests_for": {
