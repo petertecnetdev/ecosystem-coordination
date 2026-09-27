@@ -1,0 +1,15 @@
+{
+  "worker":"W10",
+  "mission":"REGRESSAO VISUAL, PERFORMANCE E QUALIDADE DAS VIEWS",
+  "updated_at":"2026-09-27T13:49:00-03:00",
+  "status":"IMPLEMENTING",
+  "coordination_repository":"petertecnetdev/ecosystem-coordination",
+  "code_repository":"petertecnetdev/cutinapp.petertecnet.com.br",
+  "points":[
+    {"id":"W10-001","priority":"P1","status":"CLAIMED","scope":["lighthouserc.json","public route performance"],"problem":"Lighthouse CI audits only the home page and only with desktop preset; mobile and representative public entity routes can regress without a performance/accessibility/SEO gate.","evidence":"main lighthouserc.json: collect.url=[http://localhost/] and settings.preset=desktop","next":"Add safe representative-route coverage without depending on production data; validate LHCI configuration and CI behavior."},
+    {"id":"W10-002","priority":"P1","status":"DISCOVERED","scope":["global navigation","public presentation routes"],"problem":"MASTER flags navigation as regression-sensitive after recent mobile hamburger fix; dedicated responsive smoke coverage is required.","requests_for":["W04"],"next":"Audit existing navigation tests before adding non-duplicative smoke coverage."},
+    {"id":"W10-003","priority":"P2","status":"DISCOVERED","scope":["public views"],"problem":"Need systematic checks for broken images, overflow, console errors, keyboard focus and reduced-motion across representative public routes.","next":"Inventory current test infrastructure and deduplicate before implementation."}
+  ],
+  "constraints":["Do not write MASTER.json","Do not write W01-W09.json","Do not overwrite CLAIMED/IMPLEMENTING work","VERIFIED requires test evidence"],
+  "requests_for":{"W04":["Coordinate shared-navigation regression smoke coverage; W10 owns test/performance infrastructure, not shared visual primitives."]}
+}
