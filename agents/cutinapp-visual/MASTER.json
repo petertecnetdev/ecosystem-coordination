@@ -2,12 +2,13 @@
   "mission": "W05",
   "agent_id": "W05",
   "display_name": "Visual Integrator",
-  "updated_at": "2026-09-27T22:49:22-03:00",
+  "updated_at": "2026-09-28T00:49:00-03:00",
   "source": {
     "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
     "branch": "main",
-    "head": "eedbb3152155263a5081f12b9fc17add5955bbfb",
-    "routes_file": "src/App.js"
+    "head": "1662ed633a9ce7e34e524fbbc54321b4c8c2ce33",
+    "routes_file": "src/App.js",
+    "audit_note": "Current main enumerated from src/App.js; latest visual/release commits reviewed through 1662ed6."
   },
   "coordination": {
     "status": "ACTIVE",
@@ -427,6 +428,57 @@
         "eedbb3152155263a5081f12b9fc17add5955bbfb"
       ],
       "acceptance": "Verify deployed Admin Center navigation after release recovery."
+    },
+    {
+      "id": "VIS-031",
+      "priority": "P1",
+      "owner": "W01",
+      "status": "IMPLEMENTED_PENDING_RUNTIME",
+      "scope": [
+        "/production/:slug/public"
+      ],
+      "problem": "Latest public Production first-fold composition was compacted and overlay contrast aligned; commercial readability and CTA hierarchy require deployed mobile/desktop runtime evidence.",
+      "evidence": [
+        "main 0bf39d295aea27cde26b6d6cd01cdb623062d3ef",
+        "no combined statuses published on audited SHA"
+      ],
+      "dependencies": [
+        "W10 runtime visual QA",
+        "VIS-020 release gate"
+      ]
+    },
+    {
+      "id": "VIS-032",
+      "priority": "P1",
+      "owner": "W08",
+      "status": "VERIFIED_CODE_NOT_DEPLOYED",
+      "scope": [
+        "/admin/productions"
+      ],
+      "problem": "Admin production cards now link to canonical public production pages only when slug exists; code change is merged but production publication remains unverified.",
+      "evidence": [
+        "main 1662ed633a9ce7e34e524fbbc54321b4c8c2ce33",
+        "PR #682",
+        "no combined statuses published on audited SHA"
+      ],
+      "dependencies": [
+        "VIS-020 release gate"
+      ]
+    },
+    {
+      "id": "VIS-033",
+      "priority": "P0",
+      "owner": "W05",
+      "status": "BLOCKED_RELEASE",
+      "scope": [
+        "main release",
+        "visual verification"
+      ],
+      "problem": "Current main has multiple relevant visual commits but no published combined statuses on the audited latest SHAs, and no fresh build/deploy/health evidence was available in this audit; runtime visual approval must remain blocked.",
+      "acceptance": "Publish successful Validate/Lighthouse/build/deploy/health evidence for current or newer main, then collect runtime evidence for mobile navigation, production first fold, brand assets and public links.",
+      "evidence": [
+        "statuses empty for 1662ed6, 0bf39d2, 22f7e52, 3c86078 and bb215ec"
+      ]
     }
   ],
   "conflicts": [
@@ -457,6 +509,7 @@
     }
   ],
   "evidence": [
+    "W05 audit 2026-09-28: current main 1662ed633a9ce7e34e524fbbc54321b4c8c2ce33; latest commits 0bf39d2, 22f7e52, 3c86078, e15558b, 1bf906d, bb215ec reviewed; combined statuses returned empty for audited SHAs.",
     {
       "type": "worker_discovery",
       "result": "Canonical records present for W01,W02,W03,W04,W06,W07,W08,W09,W10; W05 uses MASTER."
@@ -539,5 +592,19 @@
     "W03 finish pass QR/token gating",
     "W06 finish EventFlyerAssistant globalization/Processing Indicator",
     "W05 continue cross-stream reconciliation and public-route monitoring"
+  ],
+  "priorities": [
+    {
+      "id": "ROUND-20260928-01",
+      "priority": "P0",
+      "title": "Restore release evidence before promoting visual work to VERIFIED",
+      "owner": "W05",
+      "status": "OPEN",
+      "next": [
+        "obtain current-main Validate/Lighthouse/build/deploy/health evidence",
+        "run deployed mobile hamburger and Production public first-fold checks",
+        "then reclassify VIS-019/VIS-031/VIS-032"
+      ]
+    }
   ]
 }
