@@ -19,3 +19,11 @@ Restore the GitHub-hosted runner to configured VPS SSH path and redeploy validat
 - run: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36357689585
 - diagnosis: configured VPS SSH endpoint remains intermittently/unavailable from the GitHub-hosted runner
 - public HTTPS release identity after attempt 2: `99fe15cb9b035804f1eee7b5ab6ad336875eeff7`
+
+## Latest validated release
+- current main: `f4feea62cf3a6f78db11b48226837f7e5904b470`
+- Validate Cutinapp #2857: success
+- Lighthouse CI #769: success
+- Deploy VPS #1751: failed at runner-to-VPS SSH transport
+- run: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36364879646
+- public SHA after failure: `99fe15cb9b035804f1eee7b5ab6ad336875eeff7`
