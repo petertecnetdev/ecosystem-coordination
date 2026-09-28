@@ -4,7 +4,7 @@
   "display_name": "ViewForge",
   "mission": "Evoluir views públicas/detalhadas de Evento e Produção e paridade visual create/edit para conversão de produtores.",
   "status": "IMPLEMENTING",
-  "updated_at": "2026-09-28T07:00:00-03:00",
+  "updated_at": "2026-09-28T09:01:00-03:00",
   "coordination": {
     "source_of_truth": "petertecnetdev/ecosystem-coordination",
     "active_claim": "claims/active/20260927-1401-W01-event-production-views.md",
@@ -150,6 +150,18 @@
       "acceptance": "Current main retains the canonical route-scoped Production composition (not a placeholder), with bounded cover, compact identity, proportional actions, sticky tabs, compact next-event flyer and no new cascade layer.",
       "commit": "be574c82fae709e84a07465313b859d5b82e7cc0",
       "validation": "Remote main inspection confirms canonical profile stylesheet is present (blob 47f4bc08) and page imports it after legacy production styles. Runtime 390/1366/1920, CI/deploy/health evidence remain required before VERIFIED."
+    },
+    {
+      "id": "W01-012",
+      "priority": "P1",
+      "status": "IMPLEMENTED_PENDING_RUNTIME",
+      "title": "Keep public Production follow action proportional without widening the entire header action row",
+      "files": [
+        "src/pages/production/production-public-profile.css"
+      ],
+      "acceptance": "Desktop/tablet follow action sizes to content with a bounded minimum; mobile retains full-width accessible action layout; no horizontal overflow or new !important layer.",
+      "commit": "b23ed3e1b78c94ab72154560ee0962237f9d62e5",
+      "validation": "CSS source patch applied on main; runtime screenshots and public deploy SHA still required before VERIFIED."
     }
   ],
   "requests_for": [
@@ -177,7 +189,8 @@
     "Latest validated main f4feea62 includes W01-009 owner-action hierarchy; local content-identical blobs passed build, 138 suites/851 tests and 31/31 Production guard. Deploy VPS #1748 attempts 1 and 2 failed at runner-to-VPS SSH transport; public SHA remained 99fe15cb.",
     "GitHub Validate Cutinapp #2857 and Lighthouse CI #769 passed for f4feea62. Deploy VPS #1751 then failed at the configured VPS SSH transport, with public HTTPS still serving 99fe15cb.",
     "Main updated with W01-010 at 523e628b4a5f01f3dde8589de6e04b4de840369c; no API changes. CSS remains route-scoped and reusable across Production public pages.",
-    "Automation 2026-09-28 07:00: current main be574c82 inspected. production-public-profile.css is canonical (not the one-line placeholder described in stale MASTER evidence), and ProductionPublicPage imports the route-scoped stylesheet after production-experience/production-view-evolution. No duplicate CSS patch was applied to avoid reintroducing cascade debt; coordination state updated with W01-011."
+    "Automation 2026-09-28 07:00: current main be574c82 inspected. production-public-profile.css is canonical (not the one-line placeholder described in stale MASTER evidence), and ProductionPublicPage imports the route-scoped stylesheet after production-experience/production-view-evolution. No duplicate CSS patch was applied to avoid reintroducing cascade debt; coordination state updated with W01-011.",
+    "Automation 2026-09-28 08:58-09:01: re-read central protocol, active W01 claim, current main CSS/page lineage; applied b23ed3e1b78c94ab72154560ee0962237f9d62e5 to bound the follow action on desktop/tablet while preserving mobile full-width behavior."
   ],
   "next": [
     "Obtain current-main Validate/Lighthouse/build/deploy/health evidence and public SHA.",
