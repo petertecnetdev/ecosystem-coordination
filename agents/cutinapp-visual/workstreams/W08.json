@@ -4,7 +4,7 @@
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
   "status": "VERIFIED_CODE_NOT_DEPLOYED",
-  "updated_at": "2026-09-27T22:43:00-03:00",
+  "updated_at": "2026-09-28T00:43:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -195,6 +195,27 @@
         "Post-merge Lighthouse 36366575975 passed",
         "Deploy 36366688119 failed at Fetch frontend build environment; build, deploy and health check were skipped"
       ]
+    },
+    {
+      "id": "W08-011",
+      "priority": "P2",
+      "status": "VERIFIED_CODE_NOT_DEPLOYED",
+      "title": "Connect Admin Center production cards to canonical public production pages",
+      "scope": [
+        "src/pages/admin/ApplicationAdminProductionsPage.js",
+        "src/utils/entityRoutes.js"
+      ],
+      "problem": "Production cards ended in administrative mutations and offered no path to inspect the related public entity.",
+      "goal": "Expose a public-view action only when a production slug exists, without extra requests or fabricated fallback destinations.",
+      "evidence": [
+        "PR #682 merged as 1662ed633a9ce7e34e524fbbc54321b4c8c2ce33",
+        "PR Validate 36374067481 passed",
+        "PR Lighthouse 36374067518 passed",
+        "Post-merge Validate 36374243183 passed",
+        "Post-merge Lighthouse 36374243184 passed",
+        "Deploy 36374361741 failed at Fetch frontend build environment; build, deploy and health check were skipped"
+      ],
+      "notes": "Code is verified on main. Production publication is not claimed because the deploy workflow failed before build/deploy."
     }
   ],
   "requests_for": {
