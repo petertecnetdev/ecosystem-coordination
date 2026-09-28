@@ -28,9 +28,11 @@ The reusable public Production header still offered the social Follow control to
 - UX/performance guard: passed
 - production build: compiled, 18 SEO snapshots
 - tests: 138 suites / 851 tests passed
+- GitHub Validate Cutinapp #2857: passed
+- GitHub Lighthouse CI #769: passed
 
 ## Release
-Deploy VPS #1748 attempts 1 and 2 failed before build/deploy/health because the GitHub runner could not reach the VPS SSH endpoint. Public HTTPS still served `99fe15cb9b035804f1eee7b5ab6ad336875eeff7` at the last check, so W01-009 is IMPLEMENTED but not runtime VERIFIED.
+Deploy VPS #1751 started after Validate #2857 passed, but failed before build/deploy/health because the GitHub runner could not reach the VPS SSH endpoint. Public HTTPS still served `99fe15cb9b035804f1eee7b5ab6ad336875eeff7` after the failure, so W01-009 is IMPLEMENTED but not runtime VERIFIED.
 
 ## Economic impact
 A clearer owner management action reduces friction for producers maintaining public pages, while preserving the visitor conversion path for agenda/tickets/follow/share.
