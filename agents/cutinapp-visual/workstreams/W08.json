@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "IMPLEMENTING",
-  "updated_at": "2026-09-28T05:35:00-03:00",
+  "status": "VERIFIED_CODE_NOT_DEPLOYED",
+  "updated_at": "2026-09-28T05:40:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": "W08-016",
+  "current_item": null,
   "points": [
     {
       "id": "W08-001",
@@ -308,7 +308,7 @@
     {
       "id": "W08-016",
       "priority": "P2",
-      "status": "CLAIMED",
+      "status": "VERIFIED_CODE_NOT_DEPLOYED",
       "title": "Connect delegated admin assignments to the exact Admin Center user",
       "scope": [
         "src/pages/admin/ApplicationAdminAccessPage.js",
@@ -318,8 +318,15 @@
       "goal": "Use the existing email search contract to open the exact related Admin Center user without new requests or authorization changes.",
       "evidence": [
         "ApplicationAdminUserService already filters users by email via the existing q parameter.",
-        "ApplicationAdminAccessPage assignment payload already includes assignment.user.email."
-      ]
+        "ApplicationAdminAccessPage assignment payload already includes assignment.user.email.",
+        "PR #688 merged as 609df19157954ea18f4ba292c9b4651ad735fd61.",
+        "PR Validate 36397956470 passed.",
+        "PR Lighthouse 36397954170 passed.",
+        "Post-merge Validate 36398244878 passed.",
+        "Post-merge Lighthouse 36398244561 passed.",
+        "Deploy 36398402824 failed at Fetch frontend build environment; build, deployment and health check were skipped."
+      ],
+      "notes": "Code is verified on main. Production publication is not claimed because the deploy workflow failed before build/deploy."
     }
   ],
   "requests_for": {
@@ -350,10 +357,11 @@
     "Admin ticket event route SHA be574c82fae709e84a07465313b859d5b82e7cc0 passed post-merge Validate 36378528580 and Lighthouse 36378528584; Deploy 36378655878 failed before build/deploy.",
     "Admin order relation SHA bb64b41e6a545f545d089ae5e9c8e5afbaa21417 passed post-merge Validate 36382444226 and Lighthouse 36382444251; Deploy 36382584760 failed before build/deploy.",
     "Admin check-in relation SHA c60738ede77aede612b7571232549ec45fe02890 passed post-merge Validate 36387600772 and Lighthouse 36387600792; Deploy 36387738714 failed before build/deploy.",
-    "Finance-to-order deep link SHA 9c359d263d8ae6154267d69a26cb990f03e5d083 passed post-merge Validate 36392612053 and Lighthouse 36392612060; Deploy 36392756934 failed before build/deploy."
+    "Finance-to-order deep link SHA 9c359d263d8ae6154267d69a26cb990f03e5d083 passed post-merge Validate 36392612053 and Lighthouse 36392612060; Deploy 36392756934 failed before build/deploy.",
+    "Admin access-to-user deep link SHA 609df19157954ea18f4ba292c9b4651ad735fd61 passed post-merge Validate 36398244878 and Lighthouse 36398244561; Deploy 36398402824 failed before build/deploy."
   ],
   "next": [
-    "Audit another unclaimed relational navigation surface; preserve API result contracts and avoid N+1.",
-    "Await W05/release recovery of the repeated Fetch frontend build environment deployment failure before claiming runtime verification."
+    "Audit another unclaimed relational navigation surface; preserve permission and API contracts.",
+    "Await W05/release recovery of Fetch frontend build environment before runtime verification."
   ]
 }
