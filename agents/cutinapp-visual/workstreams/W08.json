@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "VERIFIED",
-  "updated_at": "2026-09-27T20:45:00-03:00",
+  "status": "VERIFIED_CODE_NOT_DEPLOYED",
+  "updated_at": "2026-09-27T22:43:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -175,6 +175,26 @@
         "Unit tests cover event/item, production, artist, ticket/pass, purchase/order, user/profile, unknown and absent types",
         "Deploy 36359284496 failed at Fetch frontend build environment; build, deploy and health check were skipped"
       ]
+    },
+    {
+      "id": "W08-010",
+      "priority": "P2",
+      "status": "VERIFIED_CODE_NOT_DEPLOYED",
+      "title": "Canonical public event route from Admin Center",
+      "scope": [
+        "src/pages/admin/ApplicationAdminEventsPage.js",
+        "src/utils/entityRoutes.js"
+      ],
+      "problem": "The Admin Center public-view action interpolated API event slugs directly, allowing reserved characters to form malformed paths.",
+      "goal": "Reuse the canonical encoded event route while preserving the edit fallback when a slug is absent.",
+      "evidence": [
+        "PR #680 merged as eedbb3152155263a5081f12b9fc17add5955bbfb",
+        "PR Validate 36366360797 passed",
+        "PR Lighthouse 36366360878 passed",
+        "Post-merge Validate 36366575959 passed",
+        "Post-merge Lighthouse 36366575975 passed",
+        "Deploy 36366688119 failed at Fetch frontend build environment; build, deploy and health check were skipped"
+      ]
     }
   ],
   "requests_for": {
@@ -200,7 +220,8 @@
     "PR #675 head 3f36ff6ae252b632aff6ba7396ab95bf225abec3 passed Validate 36344768845 and Lighthouse 36344768838 before squash merge.",
     "Merged main SHA 39ee5cf159c9d9ae20ab4c60c1743ed674b59e2b passed post-merge Validate 36344955026 and Lighthouse 36344955006.",
     "Merged Feed route SHA f5136fcbaffa0dd895863b2ed3e8bb6abb4522ee passed post-merge Validate 36355761322 and Lighthouse 36355761293; Deploy 36355832096 failed before build/deploy.",
-    "Notification fallback SHA d1dd3e821940268e8d82fe359654f147d4ff7400 passed post-merge Validate 36359179636 and Lighthouse 36359179556; Deploy 36359284496 failed before build/deploy."
+    "Notification fallback SHA d1dd3e821940268e8d82fe359654f147d4ff7400 passed post-merge Validate 36359179636 and Lighthouse 36359179556; Deploy 36359284496 failed before build/deploy.",
+    "Admin Center canonical event route SHA eedbb3152155263a5081f12b9fc17add5955bbfb passed post-merge Validate 36366575959 and Lighthouse 36366575975; Deploy 36366688119 failed before build/deploy."
   ],
   "next": [
     "Wait for W03/W04 response before changing ItemDiscoveryRail or blog rails.",
