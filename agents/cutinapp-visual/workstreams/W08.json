@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "VERIFIED_CODE_NOT_DEPLOYED",
-  "updated_at": "2026-09-28T02:43:00-03:00",
+  "status": "IMPLEMENTING",
+  "updated_at": "2026-09-28T03:38:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": null,
+  "current_item": "W08-014",
   "points": [
     {
       "id": "W08-001",
@@ -259,6 +259,18 @@
         "Deploy 36382584760 failed at Fetch frontend build environment; build, deploy and health check were skipped"
       ],
       "notes": "Code is verified on main. Production publication is not claimed because the deploy workflow failed before build/deploy."
+    },
+    {
+      "id": "W08-014",
+      "priority": "P2",
+      "status": "CLAIMED",
+      "title": "Connect Admin Center check-ins to canonical public event and production pages",
+      "scope": [
+        "src/pages/admin/ApplicationAdminCheckinsPage.js",
+        "src/utils/entityRoutes.js"
+      ],
+      "problem": "Check-in cards expose Event and Production context but end in invalidation controls.",
+      "goal": "Use already eager-loaded slugs to expose both public relationships without extra requests or pass-state changes."
     }
   ],
   "requests_for": {
