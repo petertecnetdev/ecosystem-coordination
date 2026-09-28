@@ -1,23 +1,145 @@
 {
-  "workstream":"W01",
-  "agent_id":"W01",
-  "display_name":"ViewForge",
-  "mission":"Evoluir views públicas/detalhadas de Evento e Produção e paridade visual create/edit para conversão de produtores.",
-  "status":"IMPLEMENTING",
-  "updated_at":"2026-09-27T20:00:00-03:00",
-  "coordination":{"source_of_truth":"petertecnetdev/ecosystem-coordination","active_claim":"claims/active/20260927-1401-W01-event-production-views.md","legacy_app_state":"agents/cutinapp-visual/workstreams/W01.json in app repo is obsolete and must receive no further coordination writes","master":"W05 only"},
-  "inventory":{"event":["EventViewPage composes EventArtwork, EventCommercePanel, EventCommunitySection and EventDiscoveryRail and uses ProcessingIndicator.","P1 globalization defect remains on current main: pt-BR, America/Sao_Paulo and BRL are hardcoded in public Event view formatting/date-key helpers.","A sibling public Item view demonstrates a safe context-derived currency/locale pattern (commit 8875e593), so Event can adopt the same no-invented-fallback strategy."],"production":["ProductionPublicPage is the shareable public route; ProductionCreatePage/ProductionUpdatePage are the create/edit parity targets.","Production public About/Location hierarchy from a08a02a is retained.","W01 removed decorative rgba/gradients from production-public-polish.css in e5b9436, replacing them with solid Cutinapp token surfaces, borders and red action states while preserving spacing, responsive grids and >=44px actions.","Main commit 172a0375 replaces the legacy-overridden public header with an isolated route-specific composition, consolidates metrics, adds a readable privacy-aware viewers modal and turns the next event into a compact full-flyer card shared by Public/Create/Edit."]},
-  "points":[
-    {"id":"W01-001","priority":"P1","status":"CLAIMED","title":"Remove pt-BR/BRL/America-Sao_Paulo hardcodes from EventViewPage without inventing another geographic fallback","files":["src/pages/event/EventViewPage.js"],"acceptance":"Formatting derives from real event/context/browser capabilities; discovery date keys do not assume São Paulo."},
-    {"id":"W01-002","priority":"P1","status":"PENDING","title":"Validate Event hero mobile/desktop and full flyer presentation","files":["src/pages/event/EventViewPage.js","src/pages/event/EventViewPage.css"]},
-    {"id":"W01-003","priority":"P1","status":"PENDING","title":"Guarantee Event View/Create/Edit visual parity","files":["src/pages/event/EventViewPage.js","src/pages/event/EventCreatePage.js","src/pages/event/EventUpdatePage.js"]},
-    {"id":"W01-004","priority":"P1","status":"PENDING","title":"Audit and align Production Public/Create/Update","files":["src/pages/production/ProductionPublicPage.js","src/pages/production/ProductionCreatePage.js","src/pages/production/ProductionUpdatePage.js"]},
-    {"id":"W01-005","priority":"P2","status":"PENDING","title":"Validate at least two useful paginated relational rails on Event when data exists","files":["src/components/event/EventDiscoveryRail.js","src/pages/event/EventViewPage.js"]},
-    {"id":"W01-006","priority":"P1","status":"PENDING","title":"Keep city discovery routes contextual rather than product identity","files":["src/pages/event/EventDiscoverySeoPage.js"]},
-    {"id":"W01-007","priority":"P1","status":"IMPLEMENTED","title":"Remove decorative transparency/gradients introduced in Production public content cards while preserving hierarchy and spacing","files":["src/pages/production/production-public-polish.css"],"acceptance":"Solid Cutinapp surfaces/tokens; no decorative rgba opacity or generic gradients; AA contrast and 44px actions preserved.","commit":"e5b9436de271c8594afdff715978947a2d211059","validation":"Source audit passed: rgba/gradients removed from this polish file; visual runtime/build verification still pending, so not VERIFIED."},
-    {"id":"W01-008","priority":"P1","status":"IMPLEMENTED","title":"Rebuild public Production header and next-event presentation without legacy cascade overrides","files":["src/pages/production/ProductionPublicPage.js","src/pages/production/production-public-profile.css","src/components/production/ProductionNextEventHero.js","src/components/production/ProductionNextEventHero.css"],"acceptance":"Bounded responsive cover; compact identity; proportional red/graphite actions; no duplicate KPI cards; legible viewer modal; sticky accessible tabs; compact complete flyer; no new !important layer.","commit":"172a0375c5977f482f7fdb9f00a4dd88f91158d4","validation":"Build compiled; 138 suites/850 tests green; production-view guard 29/29; overlay/dialog/react-stability/UX guards green. Runtime 390/1366/1920 and public SHA evidence still required before VERIFIED."}
+  "workstream": "W01",
+  "agent_id": "W01",
+  "display_name": "ViewForge",
+  "mission": "Evoluir views públicas/detalhadas de Evento e Produção e paridade visual create/edit para conversão de produtores.",
+  "status": "IMPLEMENTING",
+  "updated_at": "2026-09-27T21:10:00-03:00",
+  "coordination": {
+    "source_of_truth": "petertecnetdev/ecosystem-coordination",
+    "active_claim": "claims/active/20260927-1401-W01-event-production-views.md",
+    "legacy_app_state": "agents/cutinapp-visual/workstreams/W01.json in app repo is obsolete and must receive no further coordination writes",
+    "master": "W05 only"
+  },
+  "inventory": {
+    "event": [
+      "EventViewPage composes EventArtwork, EventCommercePanel, EventCommunitySection and EventDiscoveryRail and uses ProcessingIndicator.",
+      "P1 globalization defect remains on current main: pt-BR, America/Sao_Paulo and BRL are hardcoded in public Event view formatting/date-key helpers.",
+      "A sibling public Item view demonstrates a safe context-derived currency/locale pattern (commit 8875e593), so Event can adopt the same no-invented-fallback strategy."
+    ],
+    "production": [
+      "ProductionPublicPage is the shareable public route; ProductionCreatePage/ProductionUpdatePage are the create/edit parity targets.",
+      "Production public About/Location hierarchy from a08a02a is retained.",
+      "W01 removed decorative rgba/gradients from production-public-polish.css in e5b9436, replacing them with solid Cutinapp token surfaces, borders and red action states while preserving spacing, responsive grids and >=44px actions.",
+      "Main commit 172a0375 replaces the legacy-overridden public header with an isolated route-specific composition, consolidates metrics, adds a readable privacy-aware viewers modal and turns the next event into a compact full-flyer card shared by Public/Create/Edit."
+    ]
+  },
+  "points": [
+    {
+      "id": "W01-001",
+      "priority": "P1",
+      "status": "CLAIMED",
+      "title": "Remove pt-BR/BRL/America-Sao_Paulo hardcodes from EventViewPage without inventing another geographic fallback",
+      "files": [
+        "src/pages/event/EventViewPage.js"
+      ],
+      "acceptance": "Formatting derives from real event/context/browser capabilities; discovery date keys do not assume São Paulo."
+    },
+    {
+      "id": "W01-002",
+      "priority": "P1",
+      "status": "PENDING",
+      "title": "Validate Event hero mobile/desktop and full flyer presentation",
+      "files": [
+        "src/pages/event/EventViewPage.js",
+        "src/pages/event/EventViewPage.css"
+      ]
+    },
+    {
+      "id": "W01-003",
+      "priority": "P1",
+      "status": "PENDING",
+      "title": "Guarantee Event View/Create/Edit visual parity",
+      "files": [
+        "src/pages/event/EventViewPage.js",
+        "src/pages/event/EventCreatePage.js",
+        "src/pages/event/EventUpdatePage.js"
+      ]
+    },
+    {
+      "id": "W01-004",
+      "priority": "P1",
+      "status": "PENDING",
+      "title": "Audit and align Production Public/Create/Update",
+      "files": [
+        "src/pages/production/ProductionPublicPage.js",
+        "src/pages/production/ProductionCreatePage.js",
+        "src/pages/production/ProductionUpdatePage.js"
+      ]
+    },
+    {
+      "id": "W01-005",
+      "priority": "P2",
+      "status": "PENDING",
+      "title": "Validate at least two useful paginated relational rails on Event when data exists",
+      "files": [
+        "src/components/event/EventDiscoveryRail.js",
+        "src/pages/event/EventViewPage.js"
+      ]
+    },
+    {
+      "id": "W01-006",
+      "priority": "P1",
+      "status": "PENDING",
+      "title": "Keep city discovery routes contextual rather than product identity",
+      "files": [
+        "src/pages/event/EventDiscoverySeoPage.js"
+      ]
+    },
+    {
+      "id": "W01-007",
+      "priority": "P1",
+      "status": "IMPLEMENTED",
+      "title": "Remove decorative transparency/gradients introduced in Production public content cards while preserving hierarchy and spacing",
+      "files": [
+        "src/pages/production/production-public-polish.css"
+      ],
+      "acceptance": "Solid Cutinapp surfaces/tokens; no decorative rgba opacity or generic gradients; AA contrast and 44px actions preserved.",
+      "commit": "e5b9436de271c8594afdff715978947a2d211059",
+      "validation": "Source audit passed: rgba/gradients removed from this polish file; visual runtime/build verification still pending, so not VERIFIED."
+    },
+    {
+      "id": "W01-008",
+      "priority": "P1",
+      "status": "IMPLEMENTED",
+      "title": "Rebuild public Production header and next-event presentation without legacy cascade overrides",
+      "files": [
+        "src/pages/production/ProductionPublicPage.js",
+        "src/pages/production/production-public-profile.css",
+        "src/components/production/ProductionNextEventHero.js",
+        "src/components/production/ProductionNextEventHero.css"
+      ],
+      "acceptance": "Bounded responsive cover; compact identity; proportional red/graphite actions; no duplicate KPI cards; legible viewer modal; sticky accessible tabs; compact complete flyer; no new !important layer.",
+      "commit": "172a0375c5977f482f7fdb9f00a4dd88f91158d4",
+      "validation": "Build compiled; 138 suites/850 tests green; production-view guard 29/29; overlay/dialog/react-stability/UX guards green. Deploy VPS #1744 attempts 1 and 2 both failed at VPS SSH transport; public runtime still lacks the new isolated profile classes and serves SHA 99fe15cb. Runtime 390/1366/1920 and public SHA evidence are still required before VERIFIED."
+    }
   ],
-  "requests_for":[{"to":"W10","priority":"P1","request":"After 172a0375 is deployed, capture Production public at 390/1366/1920 and verify first-fold density, no horizontal overflow, sticky tabs and full next-event flyer."},{"to":"W05/release","priority":"P1","request":"Restore GitHub-hosted runner to VPS SSH connectivity and redeploy validated main SHA 172a0375 or newer; run 1744 timed out on all four SSH attempts."}],
-  "evidence":["Central PROTOCOL/COMMANDS/CURRENT_STATE/PRIORITIES/BLOCKERS and active claims re-read before work.","Active claim validated and extended to the user-prioritized Production public composition before edit.","Concurrent main 3239477 was ingested before implementation; W01 preserved its red/graphite direction while replacing the legacy override dependency with isolated route-specific classes.","Production public structural redesign committed to main as 172a0375c5977f482f7fdb9f00a4dd88f91158d4.","Local production build compiled successfully and generated 18 SEO snapshots.","Validation green locally and in GitHub: Validate Cutinapp #2850 and Lighthouse CI #762 succeeded; 138 test suites, 850 tests and all local guards passed.","Deploy VPS #1744 failed because the GitHub runner timed out connecting to the configured VPS SSH endpoint on four attempts; public release-sha remains 99fe15cb9b035804f1eee7b5ab6ad336875eeff7.","Cloud browser could not reach the local loopback app, so no runtime visual approval is claimed."],
-  "next":["Wait for deploy identity of 172a0375 and visually validate /production/la-fyesta-pub/public at 390/1366/1920 before VERIFIED.","Continue Production Public/Create/Update header parity without reintroducing legacy overrides.","Apply the context-derived locale/currency strategy to EventViewPage and derive timezone without a geographic fallback."]
+  "requests_for": [
+    {
+      "to": "W10",
+      "priority": "P1",
+      "request": "After 172a0375 is deployed, capture Production public at 390/1366/1920 and verify first-fold density, no horizontal overflow, sticky tabs and full next-event flyer."
+    },
+    {
+      "to": "W05/release",
+      "priority": "P1",
+      "request": "Restore GitHub-hosted runner to VPS SSH connectivity and redeploy validated main SHA 172a0375 or newer; run 1744 timed out on all four SSH attempts."
+    }
+  ],
+  "evidence": [
+    "Central PROTOCOL/COMMANDS/CURRENT_STATE/PRIORITIES/BLOCKERS and active claims re-read before work.",
+    "Active claim validated and extended to the user-prioritized Production public composition before edit.",
+    "Concurrent main 3239477 was ingested before implementation; W01 preserved its red/graphite direction while replacing the legacy override dependency with isolated route-specific classes.",
+    "Production public structural redesign committed to main as 172a0375c5977f482f7fdb9f00a4dd88f91158d4.",
+    "Local production build compiled successfully and generated 18 SEO snapshots.",
+    "Validation green locally and in GitHub: Validate Cutinapp #2850 and Lighthouse CI #762 succeeded; 138 test suites, 850 tests and all local guards passed.",
+    "Deploy VPS #1744 failed because the GitHub runner timed out connecting to the configured VPS SSH endpoint on four attempts; public release-sha remains 99fe15cb9b035804f1eee7b5ab6ad336875eeff7.",
+    "Cloud browser could not reach the local loopback app, so no runtime visual approval is claimed.",
+    "Deploy VPS #1744 attempt 2 (run 36357689585) failed again before build/deploy/health because runner-to-VPS SSH timed out; public SHA remained 99fe15cb and a fresh anonymous browser visit still rendered the old duplicated-metrics composition."
+  ],
+  "next": [
+    "Wait for deploy identity of 172a0375 and visually validate /production/la-fyesta-pub/public at 390/1366/1920 before VERIFIED.",
+    "Continue Production Public/Create/Update header parity without reintroducing legacy overrides.",
+    "Apply the context-derived locale/currency strategy to EventViewPage and derive timezone without a geographic fallback."
+  ]
 }
