@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "IMPLEMENTING",
-  "updated_at": "2026-09-28T01:36:00-03:00",
+  "status": "VERIFIED_CODE_NOT_DEPLOYED",
+  "updated_at": "2026-09-28T01:48:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": "W08-012",
+  "current_item": null,
   "points": [
     {
       "id": "W08-001",
@@ -220,14 +220,23 @@
     {
       "id": "W08-012",
       "priority": "P2",
-      "status": "CLAIMED",
+      "status": "VERIFIED_CODE_NOT_DEPLOYED",
       "title": "Connect Admin Center ticket cards to canonical public event pages",
       "scope": [
         "src/pages/admin/ApplicationAdminTicketsPage.js",
         "src/utils/entityRoutes.js"
       ],
       "problem": "Admin ticket cards show their related event but offer only edit/delete actions, creating a relational dead end.",
-      "goal": "Add a public-event action only when event.slug exists, reusing the canonical encoded helper and adding no requests."
+      "goal": "Add a public-event action only when event.slug exists, reusing the canonical encoded helper and adding no requests.",
+      "evidence": [
+        "PR #683 merged as be574c82fae709e84a07465313b859d5b82e7cc0",
+        "PR Validate 36378295169 passed",
+        "PR Lighthouse 36378295178 passed",
+        "Post-merge Validate 36378528580 passed",
+        "Post-merge Lighthouse 36378528584 passed",
+        "Deploy 36378655878 failed at Fetch frontend build environment; build, deploy and health check were skipped"
+      ],
+      "notes": "Code is verified on main. Production publication is not claimed because the deploy workflow failed before build/deploy."
     }
   ],
   "requests_for": {
@@ -254,7 +263,8 @@
     "Merged main SHA 39ee5cf159c9d9ae20ab4c60c1743ed674b59e2b passed post-merge Validate 36344955026 and Lighthouse 36344955006.",
     "Merged Feed route SHA f5136fcbaffa0dd895863b2ed3e8bb6abb4522ee passed post-merge Validate 36355761322 and Lighthouse 36355761293; Deploy 36355832096 failed before build/deploy.",
     "Notification fallback SHA d1dd3e821940268e8d82fe359654f147d4ff7400 passed post-merge Validate 36359179636 and Lighthouse 36359179556; Deploy 36359284496 failed before build/deploy.",
-    "Admin Center canonical event route SHA eedbb3152155263a5081f12b9fc17add5955bbfb passed post-merge Validate 36366575959 and Lighthouse 36366575975; Deploy 36366688119 failed before build/deploy."
+    "Admin Center canonical event route SHA eedbb3152155263a5081f12b9fc17add5955bbfb passed post-merge Validate 36366575959 and Lighthouse 36366575975; Deploy 36366688119 failed before build/deploy.",
+    "Admin ticket event route SHA be574c82fae709e84a07465313b859d5b82e7cc0 passed post-merge Validate 36378528580 and Lighthouse 36378528584; Deploy 36378655878 failed before build/deploy."
   ],
   "next": [
     "Wait for W03/W04 response before changing ItemDiscoveryRail or blog rails.",
