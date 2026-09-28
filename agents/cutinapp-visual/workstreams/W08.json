@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "VERIFIED_CODE_NOT_DEPLOYED",
-  "updated_at": "2026-09-28T07:43:00-03:00",
+  "status": "IMPLEMENTING",
+  "updated_at": "2026-09-28T08:38:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": null,
+  "current_item": "W08-019",
   "points": [
     {
       "id": "W08-001",
@@ -371,6 +371,18 @@
         "Deploy 36410817451 failed at Fetch frontend build environment; build, deploy and health check were skipped"
       ],
       "notes": "Code is verified on main. Production publication is not claimed because the deploy workflow failed before build/deploy."
+    },
+    {
+      "id": "W08-019",
+      "priority": "P1",
+      "status": "IMPLEMENTING",
+      "title": "Connect artist identity claims to exact artist and claimant profiles",
+      "scope": [
+        "src/pages/admin/ArtistIdentityClaimsAdminPage.js",
+        "api: app/Domain/People/Services/ArtistOnboardingService.php"
+      ],
+      "problem": "Identity-review cards show the claimed artist and requesting user but end at approve/reject controls, making verification a manual search task.",
+      "goal": "Expose the already joined artist slug and use exact internal profile links without extra queries, authorization changes or review mutation changes."
     }
   ],
   "requests_for": {
