@@ -2,13 +2,13 @@
   "mission": "W05",
   "agent_id": "W05",
   "display_name": "Visual Integrator",
-  "updated_at": "2026-09-28T01:49:30-03:00",
+  "updated_at": "2026-09-28T12:48:00-03:00",
   "source": {
     "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
     "branch": "main",
-    "head": "be574c82fae709e84a07465313b859d5b82e7cc0",
+    "head": "c080b9ea93aeacd14e6aa090511758c5f3fafbf0",
     "routes_file": "src/App.js",
-    "audit_note": "Current main enumerated from src/App.js at be574c8; visual/release commits reviewed through be574c8."
+    "audit_note": "Current main enumerated from src/App.js at c080b9e; recent visual/commerce commits reviewed through c080b9e."
   },
   "coordination": {
     "status": "ACTIVE",
@@ -535,6 +535,78 @@
         "combined statuses empty for be574c82, 5f39a94, b170fb3, 3654d89, 0bf39d2, 22f7e52",
         "Existing W10-005 deployment failure remains the last explicit release evidence"
       ]
+    },
+    {
+      "id": "VIS-068",
+      "priority": "P1",
+      "owner": "W03",
+      "status": "IMPLEMENTED_PENDING_RUNTIME",
+      "scope": [
+        "/passes",
+        "/passes/:id"
+      ],
+      "problem": "Digital passes received a large visual redesign for wallet/validation states; requires runtime validation for active, used, ended, invalid and mobile overflow states.",
+      "evidence": [
+        "802c491f00f7b9eced1b4dec2d0a449db84a017d"
+      ],
+      "dependencies": [
+        "W10 runtime QA",
+        "VIS-020 release gate"
+      ]
+    },
+    {
+      "id": "VIS-069",
+      "priority": "P1",
+      "owner": "W01",
+      "status": "IMPLEMENTED_PENDING_RUNTIME",
+      "scope": [
+        "/event/:slug",
+        "public sharing"
+      ],
+      "problem": "Public event sharing now attributes share origin/intent; verify share CTA hierarchy, accessible feedback, canonical URL preservation and no duplicate analytics on mobile.",
+      "evidence": [
+        "048209b17a186c565d9a271690a960df40035cdb",
+        "c080b9ea93aeacd14e6aa090511758c5f3fafbf0"
+      ],
+      "dependencies": [
+        "W09 metadata/share validation",
+        "W10 runtime QA"
+      ]
+    },
+    {
+      "id": "VIS-070",
+      "priority": "P1",
+      "owner": "W10",
+      "status": "IMPLEMENTED_PENDING_RUNTIME",
+      "scope": [
+        "scripts/check-performance-budget.js",
+        "build artifacts"
+      ],
+      "problem": "Performance budget now fails closed when build artifacts are missing and measures only manifest-referenced assets; validate against current release artifact and ensure no false green in CI.",
+      "evidence": [
+        "cb1f74d892504e8d8371a76d612abaa4c0d4f7c6"
+      ],
+      "dependencies": [
+        "release pipeline"
+      ]
+    },
+    {
+      "id": "VIS-071",
+      "priority": "P0",
+      "owner": "W05",
+      "status": "BLOCKED_RELEASE",
+      "scope": [
+        "main",
+        "build/deploy/health"
+      ],
+      "problem": "Current head c080b9e and recent related SHAs have no published combined statuses or associated workflow runs; visual/runtime approval remains invalid.",
+      "evidence": [
+        "c080b9ea93aeacd14e6aa090511758c5f3fafbf0",
+        "048209b17a186c565d9a271690a960df40035cdb",
+        "cb1f74d892504e8d8371a76d612abaa4c0d4f7c6",
+        "802c491f00f7b9eced1b4dec2d0a449db84a017d"
+      ],
+      "acceptance": "Obtain Validate/Lighthouse plus successful build, deploy and health evidence for current-or-newer main, then collect runtime screenshots/smoke for affected routes."
     }
   ],
   "conflicts": [
@@ -589,7 +661,8 @@
     {
       "type": "qa_policy",
       "result": "No application code edited by W05 because navbar implementation is W04-owned; W05 coordinated evidence and handoff only."
-    }
+    },
+    "W05 audit 2026-09-28 12:48 - current main c080b9e; combined statuses and workflow runs empty for c080b9e, 048209b1, cb1f74d, 802c491f."
   ],
   "regressions_and_risks": [
     {
@@ -664,6 +737,8 @@
     }
   ],
   "next": [
+    "Recover release evidence for c080b9e before promoting any new visual or sharing change.",
+    "Validate /passes and /passes/:id redesign at mobile/desktop before VERIFIED.",
     "W01: reconcile production-public-profile.css lineage before approving Production first fold.",
     "W08/W10: validate Admin Center ticket public-event action after release recovery.",
     "W05/W10: restore release evidence and runtime mobile/desktop verification; do not promote code-only changes to VERIFIED."
