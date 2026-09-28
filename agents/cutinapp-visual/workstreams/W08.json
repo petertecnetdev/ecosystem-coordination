@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "VERIFIED_CODE_NOT_DEPLOYED",
-  "updated_at": "2026-09-28T05:40:00-03:00",
+  "status": "IMPLEMENTING",
+  "updated_at": "2026-09-28T06:37:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": null,
+  "current_item": "W08-017",
   "points": [
     {
       "id": "W08-001",
@@ -327,6 +327,21 @@
         "Deploy 36398402824 failed at Fetch frontend build environment; build, deployment and health check were skipped."
       ],
       "notes": "Code is verified on main. Production publication is not claimed because the deploy workflow failed before build/deploy."
+    },
+    {
+      "id": "W08-017",
+      "priority": "P1",
+      "status": "CLAIMED",
+      "title": "Connect search-demand analytics terms to live discovery results",
+      "scope": [
+        "src/pages/admin/AdminSearchAnalyticsPage.js",
+        "/search?q="
+      ],
+      "problem": "Top search terms and zero-result demand signals are displayed as terminal analytics rows, forcing administrators to manually retype the query to inspect live discovery.",
+      "goal": "Deep-link each term into the existing public search query contract without new requests, ranking changes or fabricated entity destinations.",
+      "evidence": [
+        "GlobalSearchPage already initializes query from the q URL parameter and runs the existing search flow."
+      ]
     }
   ],
   "requests_for": {
