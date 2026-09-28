@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "VERIFIED_CODE_NOT_DEPLOYED",
-  "updated_at": "2026-09-28T06:46:00-03:00",
+  "status": "IMPLEMENTING",
+  "updated_at": "2026-09-28T07:34:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": null,
+  "current_item": "W08-018",
   "points": [
     {
       "id": "W08-001",
@@ -348,6 +348,18 @@
         "Post-merge Lighthouse 36404729430 passed",
         "Deploy 36404918922 failed at Fetch frontend build environment; build, deploy and health check were skipped, so production is not asserted"
       ]
+    },
+    {
+      "id": "W08-018",
+      "priority": "P1",
+      "status": "IMPLEMENTING",
+      "title": "Connect assisted onboarding rows to related production and producer administration",
+      "scope": [
+        "src/pages/admin/AssistedProducerOnboardingPage.js",
+        "src/pages/admin/ApplicationAdminProductionsPage.js"
+      ],
+      "problem": "Onboarding rows expose production and producer identity but end at email resend, forcing operators to manually repeat searches.",
+      "goal": "Reuse encoded Admin Center search routes for the related production and producer without new endpoints, requests on the source page or onboarding mutation changes."
     }
   ],
   "requests_for": {
