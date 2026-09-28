@@ -5,9 +5,9 @@ repository: petertecnetdev/cutinapp.petertecnet.com.br
 area: identidade visual / produção
 task: restaurar a logo oficial da Cutinapp em produção e remover fallback textual causado pela ausência/quebra visual da marca
 branch: main
-status: working
+status: blocked
 started_at: 2026-09-28T10:20:00-03:00
-depends_on: none
+depends_on: VPS SSH reachability
 files_or_scope:
 - public/images/logo.png
 - src/images/logo.png
@@ -17,11 +17,14 @@ files_or_scope:
 ## Notes
 Hotfix solicitado diretamente pelo usuário. Diagnóstico confirmou que NavlogComponent e ProcessingIndicatorComponent apontam para /images/logo.png, enquanto esse asset ainda não continha a arte oficial enviada pelo usuário. O navbar também mascara falha de imagem ao ocultá-la no onError.
 
+O código/asset foi corrigido na main e toda a validação do frontend passou. A publicação na VPS não ocorreu na primeira tentativa porque o workflow falhou em `Fetch frontend build environment`, etapa que acessa a VPS por SSH antes do build/deploy. O dispositivo `petertecnetserver` também aparece offline no Remote Desktop Commander. Um retry do job de deploy foi disparado.
+
 ## Evidence
 - commit: 145f8f2bb341c9bc0af58bf3a081e6559bad86f4
 - public/images/logo.png -> official Cutinapp artwork
 - src/images/logo.png -> official Cutinapp artwork
 - Validate Cutinapp run 36491972251: success
-- Deploy VPS run 36492109610: in progress
+- Deploy VPS run 36492109610 attempt 1: failure at Fetch frontend build environment
+- Deploy VPS run 36492109610 attempt 2: retry in progress
 
 Cutinapp Live Fix (plus2-live-hotfix)
