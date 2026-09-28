@@ -2,16 +2,18 @@
   "workstream": "W09",
   "mission": "Apresentação pública, conversão, SEO e compartilhamento",
   "status": "IMPLEMENTING",
-  "updated_at": "2026-09-28T12:48:00-03:00",
+  "updated_at": "2026-09-28T14:46:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "points": [
     {"id":"W09-001","priority":"P1","status":"IMPLEMENTED","title":"SEO dinâmico da página pública de Produção","scope":["/production/:slug/public"],"implementation":{"commit":"fa8e9bae6b2f0e556e3425ff3092f7aa615947b1","merge_commit":"e11d6cee1a0be357d821fac3e0f457f52c03af49","pr":672,"validation":"Validate Cutinapp #2817 SUCCESS; Lighthouse CI #729 SUCCESS; crawler real pendente."}},
     {"id":"W09-002","priority":"P1","status":"IMPLEMENTED","title":"Locale estrutural configurável no head","scope":["src/components/SeoHead.js"],"implementation":{"commit":"91e8a23adb760b6d5d3078fe5c49468fa0e573d1","validation":"Frontend/Lighthouse passaram; produção não promovida a VERIFIED sem evidência de deploy/crawler."}},
     {"id":"W09-003","priority":"P1","status":"IMPLEMENTING","title":"Crawler-visible previews de Evento e Produção","scope":["/event/:slug","/production/:slug/public","scripts/generate-seo-snapshots.mjs"],"next_action":"Validar crawler real após pipeline/deploy servir a main atual."},
-    {"id":"W09-004","priority":"P1","status":"IMPLEMENTED","title":"Atribuição de compartilhamento público de Evento","scope":["src/utils/eventShareUrl.js","src/utils/eventShareUrl.test.js"],"problem":"Links públicos compartilhados de Evento não carregavam atribuição de aquisição, impedindo separar tráfego gerado pelo próprio compartilhamento da Cutinapp.","implementation":{"vps_commit":"6817ad6c","remote_commits":["048209b17a186c565d9a271690a960df40035cdb","c080b9ea93aeacd14e6aa090511758c5f3fafbf0"],"validation":"CI=true npm test -- --watchAll=false src/utils/eventShareUrl.test.js: 3/3 PASS; git diff --check PASS."},"impact":"Permite atribuir visitas originadas de compartilhamentos públicos de eventos por utm_source/utm_medium/utm_campaign sem alterar canonical/SEO head."}
+    {"id":"W09-004","priority":"P1","status":"IMPLEMENTED","title":"Atribuição de compartilhamento público de Evento","scope":["src/utils/eventShareUrl.js","src/utils/eventShareUrl.test.js"],"implementation":{"remote_commits":["048209b17a186c565d9a271690a960df40035cdb","c080b9ea93aeacd14e6aa090511758c5f3fafbf0"],"validation":"eventShareUrl.test.js: 3/3 PASS; git diff --check PASS."}},
+    {"id":"W09-005","priority":"P1","status":"IMPLEMENTED_VPS_PUSH_BLOCKED","title":"Globalizar metadata e compartilhamento da agenda pública de Produção","scope":["src/pages/production/ProductionAgendaPublicPage.js"],"implementation":{"vps_commit":"58135fd2","validation":"eslint PASS; build PASS; 25 SEO snapshots; runtime ainda em release anterior"}},
+    {"id":"W09-006","priority":"P2","status":"IMPLEMENTED_VPS_PUSH_BLOCKED","title":"Distinguir canal nativo no compartilhamento público de Evento","scope":["src/pages/event/EventViewPage.js"],"implementation":{"vps_commit":"6e1864f8b7cee4b9da19bd87b1ce867377176a26","validation":"eslint PASS; git diff --check PASS; eventShareUrl.test.js 3/3 PASS"},"impact":"utm_medium=native_share passa a separar compartilhamento nativo do canal genérico event_share; canonical permanece intocado.","blocker":"git push HTTPS da VPS expirou aguardando autenticação; main VPS está 20 commits à frente de origin/main."}
   ],
   "requests_for":[{"worker":"W05","request":"W09-003 permanece sob ownership W09; crawler real ainda depende de deploy saudável."},{"worker":"W10","request":"Após deploy saudável, medir release servida e executar regressão/runtime das páginas públicas Evento/Produção."}],
-  "evidence":["W09-004 validado primeiro na VPS main worktree.","Teste unitário eventShareUrl: 3/3 PASS.","GitHub main atualizado por canal autenticado nos commits 048209b1 e c080b9ea."],
-  "next":["Medir tráfego event_share por UTMs quando analytics disponibilizar dados","Validar W09-003 com crawler real após deploy","Continuar melhoria de conversão das páginas públicas sem duplicar claims"]
+  "evidence":["W09-006 implementado e testado primeiro no worktree main da VPS.","Teste unitário eventShareUrl: 3/3 PASS.","ESLint EventViewPage.js PASS; git diff --check PASS."],
+  "next":["Restaurar transporte autenticado VPS→GitHub sem perder os 20 commits locais","Validar W09-003 com crawler real após deploy","Medir aquisição por utm_medium native_share"]
 }
