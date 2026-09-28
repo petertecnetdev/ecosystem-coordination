@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "VERIFIED_CODE_NOT_DEPLOYED",
-  "updated_at": "2026-09-28T04:42:00-03:00",
+  "status": "IMPLEMENTING",
+  "updated_at": "2026-09-28T05:35:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": null,
+  "current_item": "W08-016",
   "points": [
     {
       "id": "W08-001",
@@ -304,6 +304,22 @@
         "Deploy 36392756934 failed at Fetch frontend build environment; build, deployment and health check were skipped."
       ],
       "notes": "Code is verified on main. Production publication is not claimed because the deploy workflow failed before build/deploy."
+    },
+    {
+      "id": "W08-016",
+      "priority": "P2",
+      "status": "CLAIMED",
+      "title": "Connect delegated admin assignments to the exact Admin Center user",
+      "scope": [
+        "src/pages/admin/ApplicationAdminAccessPage.js",
+        "src/pages/admin/ApplicationAdminUsersPage.js"
+      ],
+      "problem": "Delegated administrator cards identify their related user but end at the revoke mutation.",
+      "goal": "Use the existing email search contract to open the exact related Admin Center user without new requests or authorization changes.",
+      "evidence": [
+        "ApplicationAdminUserService already filters users by email via the existing q parameter.",
+        "ApplicationAdminAccessPage assignment payload already includes assignment.user.email."
+      ]
     }
   ],
   "requests_for": {
