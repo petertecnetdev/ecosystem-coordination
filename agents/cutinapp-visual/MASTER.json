@@ -2,13 +2,13 @@
   "mission": "W05",
   "agent_id": "W05",
   "display_name": "Visual Integrator",
-  "updated_at": "2026-09-28T00:49:00-03:00",
+  "updated_at": "2026-09-28T01:49:30-03:00",
   "source": {
     "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
     "branch": "main",
-    "head": "1662ed633a9ce7e34e524fbbc54321b4c8c2ce33",
+    "head": "be574c82fae709e84a07465313b859d5b82e7cc0",
     "routes_file": "src/App.js",
-    "audit_note": "Current main enumerated from src/App.js; latest visual/release commits reviewed through 1662ed6."
+    "audit_note": "Current main enumerated from src/App.js at be574c8; visual/release commits reviewed through be574c8."
   },
   "coordination": {
     "status": "ACTIVE",
@@ -479,6 +479,62 @@
       "evidence": [
         "statuses empty for 1662ed6, 0bf39d2, 22f7e52, 3c86078 and bb215ec"
       ]
+    },
+    {
+      "id": "VIS-034",
+      "priority": "P1",
+      "owner": "W01",
+      "status": "REGRESSION_REVIEW_REQUIRED",
+      "scope": [
+        "/production/:slug/public",
+        "src/pages/production/production-public-profile.css"
+      ],
+      "problem": "The public Production profile stylesheet was replaced by a one-line placeholder in 3654d892 and only compact override rules were appended in 5f39a94; the canonical composition from b170fb3 is not present in the current file.",
+      "acceptance": "Reconcile the stylesheet lineage so current main contains the intended canonical public Production composition plus compact responsive rules, then validate desktop/mobile screenshots and overflow.",
+      "evidence": [
+        "b170fb3 restored 571-line canonical profile stylesheet",
+        "3654d89 replaced it with a one-line placeholder",
+        "5f39a94 appended compact rules to the placeholder",
+        "Current main be574c8 includes the post-5f39 file lineage; no combined status published"
+      ],
+      "dependencies": [
+        "W10 visual regression/runtime evidence",
+        "global release gate VIS-033"
+      ]
+    },
+    {
+      "id": "VIS-035",
+      "priority": "P2",
+      "owner": "W08",
+      "status": "VERIFIED_CODE_NOT_DEPLOYED",
+      "scope": [
+        "/admin/tickets",
+        "Admin Center ticket cards"
+      ],
+      "problem": "Admin Center ticket cards now expose a public-event action only when event.slug exists, but the current head has no published status or deploy evidence.",
+      "evidence": [
+        "be574c82fae709e84a07465313b859d5b82e7cc0",
+        "PR #683",
+        "get_commit_combined_status returned zero statuses"
+      ],
+      "acceptance": "After release recovery, verify the action routes to encoded /event/:slug and remains usable at mobile widths without card overflow."
+    },
+    {
+      "id": "VIS-036",
+      "priority": "P0",
+      "owner": "W05",
+      "status": "BLOCKED_RELEASE",
+      "scope": [
+        "main",
+        "build/deploy/health"
+      ],
+      "problem": "Current main advanced to be574c82, but latest audited commits have no published combined statuses and no successful build/deploy/health evidence in the coordination record; public visual verification remains invalid.",
+      "acceptance": "Obtain fresh Validate/Lighthouse plus build, deploy and health evidence for current-or-newer main before promoting any newly audited visual surface to VERIFIED.",
+      "evidence": [
+        "be574c82 current head",
+        "combined statuses empty for be574c82, 5f39a94, b170fb3, 3654d89, 0bf39d2, 22f7e52",
+        "Existing W10-005 deployment failure remains the last explicit release evidence"
+      ]
     }
   ],
   "conflicts": [
@@ -606,5 +662,10 @@
         "then reclassify VIS-019/VIS-031/VIS-032"
       ]
     }
+  ],
+  "next": [
+    "W01: reconcile production-public-profile.css lineage before approving Production first fold.",
+    "W08/W10: validate Admin Center ticket public-event action after release recovery.",
+    "W05/W10: restore release evidence and runtime mobile/desktop verification; do not promote code-only changes to VERIFIED."
   ]
 }
