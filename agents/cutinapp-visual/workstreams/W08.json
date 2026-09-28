@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "IMPLEMENTING",
-  "updated_at": "2026-09-28T07:34:00-03:00",
+  "status": "VERIFIED_CODE_NOT_DEPLOYED",
+  "updated_at": "2026-09-28T07:43:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": "W08-018",
+  "current_item": null,
   "points": [
     {
       "id": "W08-001",
@@ -352,14 +352,25 @@
     {
       "id": "W08-018",
       "priority": "P1",
-      "status": "IMPLEMENTING",
+      "status": "VERIFIED_CODE_NOT_DEPLOYED",
       "title": "Connect assisted onboarding rows to related production and producer administration",
       "scope": [
         "src/pages/admin/AssistedProducerOnboardingPage.js",
         "src/pages/admin/ApplicationAdminProductionsPage.js"
       ],
       "problem": "Onboarding rows expose production and producer identity but end at email resend, forcing operators to manually repeat searches.",
-      "goal": "Reuse encoded Admin Center search routes for the related production and producer without new endpoints, requests on the source page or onboarding mutation changes."
+      "goal": "Reuse encoded Admin Center search routes for the related production and producer without new endpoints, requests on the source page or onboarding mutation changes.",
+      "evidence": [
+        "ApplicationAdminUsersPage already initializes its existing q search from URL parameters",
+        "ApplicationAdminProductionsPage now initializes the existing paginated q search from URL parameters",
+        "PR #690 merged as e744659b44d514df0fdf7f67431320c044cc9da1",
+        "PR Validate 36410332347 passed",
+        "PR Lighthouse 36410332210 passed",
+        "Post-merge Validate 36410632047 passed",
+        "Post-merge Lighthouse 36410632159 passed",
+        "Deploy 36410817451 failed at Fetch frontend build environment; build, deploy and health check were skipped"
+      ],
+      "notes": "Code is verified on main. Production publication is not claimed because the deploy workflow failed before build/deploy."
     }
   ],
   "requests_for": {
@@ -391,7 +402,8 @@
     "Admin order relation SHA bb64b41e6a545f545d089ae5e9c8e5afbaa21417 passed post-merge Validate 36382444226 and Lighthouse 36382444251; Deploy 36382584760 failed before build/deploy.",
     "Admin check-in relation SHA c60738ede77aede612b7571232549ec45fe02890 passed post-merge Validate 36387600772 and Lighthouse 36387600792; Deploy 36387738714 failed before build/deploy.",
     "Finance-to-order deep link SHA 9c359d263d8ae6154267d69a26cb990f03e5d083 passed post-merge Validate 36392612053 and Lighthouse 36392612060; Deploy 36392756934 failed before build/deploy.",
-    "Admin access-to-user deep link SHA 609df19157954ea18f4ba292c9b4651ad735fd61 passed post-merge Validate 36398244878 and Lighthouse 36398244561; Deploy 36398402824 failed before build/deploy."
+    "Admin access-to-user deep link SHA 609df19157954ea18f4ba292c9b4651ad735fd61 passed post-merge Validate 36398244878 and Lighthouse 36398244561; Deploy 36398402824 failed before build/deploy.",
+    "Assisted onboarding relation SHA e744659b44d514df0fdf7f67431320c044cc9da1 passed post-merge Validate 36410632047 and Lighthouse 36410632159; Deploy 36410817451 failed before build/deploy."
   ],
   "next": [
     "Audit another unclaimed relational navigation surface; preserve permission and API contracts.",
