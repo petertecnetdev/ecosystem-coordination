@@ -4,7 +4,7 @@
   "display_name": "ViewForge",
   "mission": "Evoluir views públicas/detalhadas de Evento e Produção e paridade visual create/edit para conversão de produtores.",
   "status": "IMPLEMENTING",
-  "updated_at": "2026-09-28T04:10:00-03:00",
+  "updated_at": "2026-09-28T07:00:00-03:00",
   "coordination": {
     "source_of_truth": "petertecnetdev/ecosystem-coordination",
     "active_claim": "claims/active/20260927-1401-W01-event-production-views.md",
@@ -137,6 +137,19 @@
       "acceptance": "Cover remains restrained at desktop/mobile, primary agenda/tickets action remains first, secondary actions follow, keyboard focus is visible, and tab anchors account for navbar/sticky tabs.",
       "commit": "523e628b4a5f01f3dde8589de6e04b4de840369c",
       "validation": "Source-level CSS integration completed on main; runtime visual and public deploy verification remain pending."
+    },
+    {
+      "id": "W01-011",
+      "priority": "P1",
+      "status": "IMPLEMENTED_PENDING_RUNTIME",
+      "title": "Reconcile current-main Production public stylesheet lineage and preserve canonical first-fold composition",
+      "files": [
+        "src/pages/production/production-public-profile.css",
+        "src/pages/production/ProductionPublicPage.js"
+      ],
+      "acceptance": "Current main retains the canonical route-scoped Production composition (not a placeholder), with bounded cover, compact identity, proportional actions, sticky tabs, compact next-event flyer and no new cascade layer.",
+      "commit": "be574c82fae709e84a07465313b859d5b82e7cc0",
+      "validation": "Remote main inspection confirms canonical profile stylesheet is present (blob 47f4bc08) and page imports it after legacy production styles. Runtime 390/1366/1920, CI/deploy/health evidence remain required before VERIFIED."
     }
   ],
   "requests_for": [
@@ -163,11 +176,12 @@
     "Deploy VPS #1744 attempt 2 (run 36357689585) failed again before build/deploy/health because runner-to-VPS SSH timed out; public SHA remained 99fe15cb and a fresh anonymous browser visit still rendered the old duplicated-metrics composition.",
     "Latest validated main f4feea62 includes W01-009 owner-action hierarchy; local content-identical blobs passed build, 138 suites/851 tests and 31/31 Production guard. Deploy VPS #1748 attempts 1 and 2 failed at runner-to-VPS SSH transport; public SHA remained 99fe15cb.",
     "GitHub Validate Cutinapp #2857 and Lighthouse CI #769 passed for f4feea62. Deploy VPS #1751 then failed at the configured VPS SSH transport, with public HTTPS still serving 99fe15cb.",
-    "Main updated with W01-010 at 523e628b4a5f01f3dde8589de6e04b4de840369c; no API changes. CSS remains route-scoped and reusable across Production public pages."
+    "Main updated with W01-010 at 523e628b4a5f01f3dde8589de6e04b4de840369c; no API changes. CSS remains route-scoped and reusable across Production public pages.",
+    "Automation 2026-09-28 07:00: current main be574c82 inspected. production-public-profile.css is canonical (not the one-line placeholder described in stale MASTER evidence), and ProductionPublicPage imports the route-scoped stylesheet after production-experience/production-view-evolution. No duplicate CSS patch was applied to avoid reintroducing cascade debt; coordination state updated with W01-011."
   ],
   "next": [
-    "Wait for deploy identity of 172a0375 and visually validate /production/la-fyesta-pub/public at 390/1366/1920 before VERIFIED.",
-    "Continue Production Public/Create/Update header parity without reintroducing legacy overrides.",
-    "Apply the context-derived locale/currency strategy to EventViewPage and derive timezone without a geographic fallback."
+    "Obtain current-main Validate/Lighthouse/build/deploy/health evidence and public SHA.",
+    "Capture /production/la-fyesta-pub/public at 390/1366/1920 and verify no overflow, sticky tabs, action hierarchy and next-event flyer.",
+    "Continue Event locale/currency hardcode removal and Create/Edit parity after release gate clears."
   ]
 }
