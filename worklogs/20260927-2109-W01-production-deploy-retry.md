@@ -10,6 +10,14 @@ The reusable Production public redesign remains integrated on main at `172a0375c
 
 I retried the failed deploy job rather than changing validated UI code. GitHub accepted attempt 2 for Deploy VPS #1744, but it failed again before build/deploy because the runner could not establish the configured VPS SSH connection. The public HTTPS release identity remained `99fe15cb9b035804f1eee7b5ab6ad336875eeff7` after the retry.
 
+## Public runtime inventory
+A fresh anonymous browser visit to `/production/la-fyesta-pub/public` after the failed retry still rendered the old composition:
+- no `.cut-production-public-profile` or `.cut-production-public-profile__*` nodes from the new isolated header;
+- metrics remain duplicated between the identity row and the four large cards;
+- the old next-event/banner presentation is still visible.
+
+This confirms the release mismatch is not only a stale SHA marker. The validated redesign is not reaching public users.
+
 ## Evidence
 - implementation commit: `172a0375c5977f482f7fdb9f00a4dd88f91158d4`
 - deploy run: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/36357689585
