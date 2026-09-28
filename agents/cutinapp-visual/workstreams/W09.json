@@ -2,7 +2,7 @@
   "workstream": "W09",
   "mission": "Apresentação pública, conversão, SEO e compartilhamento",
   "status": "IMPLEMENTING",
-  "updated_at": "2026-09-28T14:46:00-03:00",
+  "updated_at": "2026-09-28T16:48:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "points": [
@@ -11,9 +11,10 @@
     {"id":"W09-003","priority":"P1","status":"IMPLEMENTING","title":"Crawler-visible previews de Evento e Produção","scope":["/event/:slug","/production/:slug/public","scripts/generate-seo-snapshots.mjs"],"next_action":"Validar crawler real após pipeline/deploy servir a main atual."},
     {"id":"W09-004","priority":"P1","status":"IMPLEMENTED","title":"Atribuição de compartilhamento público de Evento","scope":["src/utils/eventShareUrl.js","src/utils/eventShareUrl.test.js"],"implementation":{"remote_commits":["048209b17a186c565d9a271690a960df40035cdb","c080b9ea93aeacd14e6aa090511758c5f3fafbf0"],"validation":"eventShareUrl.test.js: 3/3 PASS; git diff --check PASS."}},
     {"id":"W09-005","priority":"P1","status":"IMPLEMENTED_VPS_PUSH_BLOCKED","title":"Globalizar metadata e compartilhamento da agenda pública de Produção","scope":["src/pages/production/ProductionAgendaPublicPage.js"],"implementation":{"vps_commit":"58135fd2","validation":"eslint PASS; build PASS; 25 SEO snapshots; runtime ainda em release anterior"}},
-    {"id":"W09-006","priority":"P2","status":"IMPLEMENTED_VPS_PUSH_BLOCKED","title":"Distinguir canal nativo no compartilhamento público de Evento","scope":["src/pages/event/EventViewPage.js"],"implementation":{"vps_commit":"6e1864f8b7cee4b9da19bd87b1ce867377176a26","validation":"eslint PASS; git diff --check PASS; eventShareUrl.test.js 3/3 PASS"},"impact":"utm_medium=native_share passa a separar compartilhamento nativo do canal genérico event_share; canonical permanece intocado.","blocker":"git push HTTPS da VPS expirou aguardando autenticação; main VPS está 20 commits à frente de origin/main."}
+    {"id":"W09-006","priority":"P2","status":"IMPLEMENTED_VPS_PUSH_BLOCKED","title":"Distinguir canal nativo no compartilhamento público de Evento","scope":["src/pages/event/EventViewPage.js"],"implementation":{"vps_commit":"6e1864f8b7cee4b9da19bd87b1ce867377176a26","validation":"eslint PASS; git diff --check PASS; eventShareUrl.test.js 3/3 PASS"},"impact":"utm_medium=native_share passa a separar compartilhamento nativo do canal genérico event_share; canonical permanece intocado.","blocker":"git push HTTPS da VPS expirou aguardando autenticação; main VPS está à frente de origin/main."},
+    {"id":"W09-007","priority":"P1","status":"IMPLEMENTED","title":"Não anunciar ingressos de evento cancelado como disponíveis no Schema.org","scope":["src/utils/eventSeo.js","src/utils/eventSeo.test.js"],"implementation":{"vps_commit":"c0af2c6708c2515431fe3970ab23040282c6d1c7","remote_commits":["2e20dd1ce0cfa2d0ea2d5f70b044f6afac3d7d3c","19cde10a0460d2d907156d74e741bcc051747d34"],"validation":"eventSeo.test.js: 2/2 PASS on VPS; git diff --check PASS"},"impact":"EventCancelled e Offer availability ficam semanticamente coerentes; evento cancelado nunca emite InStock mesmo que o lote ainda esteja marcado disponível."}
   ],
-  "requests_for":[{"worker":"W05","request":"W09-003 permanece sob ownership W09; crawler real ainda depende de deploy saudável."},{"worker":"W10","request":"Após deploy saudável, medir release servida e executar regressão/runtime das páginas públicas Evento/Produção."}],
-  "evidence":["W09-006 implementado e testado primeiro no worktree main da VPS.","Teste unitário eventShareUrl: 3/3 PASS.","ESLint EventViewPage.js PASS; git diff --check PASS."],
-  "next":["Restaurar transporte autenticado VPS→GitHub sem perder os 20 commits locais","Validar W09-003 com crawler real após deploy","Medir aquisição por utm_medium native_share"]
+  "requests_for":[{"worker":"W05","request":"W09-003 permanece sob ownership W09; crawler real ainda depende de deploy saudável."},{"worker":"W10","request":"Após deploy saudável, medir release servida e executar regressão/runtime das páginas públicas Evento/Produção, incluindo W09-007."}],
+  "evidence":["W09-007 implementado e testado no worktree main da VPS.","Teste unitário eventSeo: 2/2 PASS.","Mudança equivalente publicada na main remota via conector GitHub autenticado após push HTTPS da VPS permanecer indisponível."],
+  "next":["Validar W09-003/W09-007 com crawler real após deploy da main","Reconciliar os commits locais acumulados da main VPS com origin/main sem reset destrutivo","Medir aquisição por compartilhamento público"]
 }
