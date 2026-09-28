@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "IMPLEMENTING",
-  "updated_at": "2026-09-28T08:38:00-03:00",
+  "status": "IMPLEMENTED_CI_BASELINE_BLOCKED_NOT_DEPLOYED",
+  "updated_at": "2026-09-28T08:47:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": "W08-019",
+  "current_item": null,
   "points": [
     {
       "id": "W08-001",
@@ -375,14 +375,25 @@
     {
       "id": "W08-019",
       "priority": "P1",
-      "status": "IMPLEMENTING",
+      "status": "IMPLEMENTED_CI_BASELINE_BLOCKED_NOT_DEPLOYED",
       "title": "Connect artist identity claims to exact artist and claimant profiles",
       "scope": [
         "src/pages/admin/ArtistIdentityClaimsAdminPage.js",
         "api: app/Domain/People/Services/ArtistOnboardingService.php"
       ],
       "problem": "Identity-review cards show the claimed artist and requesting user but end at approve/reject controls, making verification a manual search task.",
-      "goal": "Expose the already joined artist slug and use exact internal profile links without extra queries, authorization changes or review mutation changes."
+      "goal": "Expose the already joined artist slug and use exact internal profile links without extra queries, authorization changes or review mutation changes.",
+      "evidence": [
+        "API claimQueue already joined artists and users; change selects artists.slug as artist_slug without another query",
+        "API PR #536 merged as 5fea1752fb674dd463b65bb2069f2c13117e2749",
+        "API PR CI 36416672518 and post-merge CI 36417038869 passed syntax, migrations, canonical routes and architecture; both failed in the same existing Run tests/Enforce architecture gate pattern as base main run 36408040102",
+        "API deploy 36417196397 was skipped because API CI remained red",
+        "Frontend PR #691 merged as 9144f147d9e1252d07001b756167868d99183779",
+        "Frontend PR Validate 36416670747 and Lighthouse 36416670751 passed",
+        "Frontend post-merge Validate 36417049343 and Lighthouse 36417049430 passed",
+        "Frontend Deploy 36417209670 failed at Fetch frontend build environment; build, deploy and health check were skipped"
+      ],
+      "notes": "Both contracts are merged. Frontend CI is green, but the API retains its pre-existing red test baseline and neither API nor frontend deployment completed. Runtime verification is not claimed."
     }
   ],
   "requests_for": {
@@ -415,10 +426,12 @@
     "Admin check-in relation SHA c60738ede77aede612b7571232549ec45fe02890 passed post-merge Validate 36387600772 and Lighthouse 36387600792; Deploy 36387738714 failed before build/deploy.",
     "Finance-to-order deep link SHA 9c359d263d8ae6154267d69a26cb990f03e5d083 passed post-merge Validate 36392612053 and Lighthouse 36392612060; Deploy 36392756934 failed before build/deploy.",
     "Admin access-to-user deep link SHA 609df19157954ea18f4ba292c9b4651ad735fd61 passed post-merge Validate 36398244878 and Lighthouse 36398244561; Deploy 36398402824 failed before build/deploy.",
-    "Assisted onboarding relation SHA e744659b44d514df0fdf7f67431320c044cc9da1 passed post-merge Validate 36410632047 and Lighthouse 36410632159; Deploy 36410817451 failed before build/deploy."
+    "Assisted onboarding relation SHA e744659b44d514df0fdf7f67431320c044cc9da1 passed post-merge Validate 36410632047 and Lighthouse 36410632159; Deploy 36410817451 failed before build/deploy.",
+    "Artist identity relation frontend SHA 9144f147d9e1252d07001b756167868d99183779 passed post-merge Validate 36417049343 and Lighthouse 36417049430; frontend Deploy 36417209670 failed before build/deploy. API SHA 5fea1752fb674dd463b65bb2069f2c13117e2749 preserved the same red test-gate pattern as base main."
   ],
   "next": [
-    "Audit another unclaimed relational navigation surface; preserve permission and API contracts.",
-    "Await W05/release recovery of Fetch frontend build environment before runtime verification."
+    "Await API baseline test recovery and release rerun for artist_slug contract.",
+    "Await W05/release recovery of frontend build-environment fetch before runtime verification.",
+    "Continue auditing only unclaimed relational navigation surfaces."
   ]
 }
