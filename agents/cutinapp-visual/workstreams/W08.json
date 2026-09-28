@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "VERIFIED_CODE_NOT_DEPLOYED",
-  "updated_at": "2026-09-28T01:48:00-03:00",
+  "status": "IMPLEMENTING",
+  "updated_at": "2026-09-28T02:36:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": null,
+  "current_item": "W08-013",
   "points": [
     {
       "id": "W08-001",
@@ -237,6 +237,18 @@
         "Deploy 36378655878 failed at Fetch frontend build environment; build, deploy and health check were skipped"
       ],
       "notes": "Code is verified on main. Production publication is not claimed because the deploy workflow failed before build/deploy."
+    },
+    {
+      "id": "W08-013",
+      "priority": "P2",
+      "status": "CLAIMED",
+      "title": "Connect Admin Center orders to canonical public event and production pages",
+      "scope": [
+        "src/pages/admin/ApplicationAdminOrdersPage.js",
+        "src/utils/entityRoutes.js"
+      ],
+      "problem": "Order cards expose related event and production names but end in refund/status actions.",
+      "goal": "Use already eager-loaded slugs to expose both public relationships without additional requests or financial-flow changes."
     }
   ],
   "requests_for": {
