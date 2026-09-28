@@ -3,11 +3,11 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "VERIFIED_CODE_NOT_DEPLOYED",
-  "updated_at": "2026-09-28T00:43:00-03:00",
+  "status": "IMPLEMENTING",
+  "updated_at": "2026-09-28T01:36:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
-  "current_item": null,
+  "current_item": "W08-012",
   "points": [
     {
       "id": "W08-001",
@@ -216,6 +216,18 @@
         "Deploy 36374361741 failed at Fetch frontend build environment; build, deploy and health check were skipped"
       ],
       "notes": "Code is verified on main. Production publication is not claimed because the deploy workflow failed before build/deploy."
+    },
+    {
+      "id": "W08-012",
+      "priority": "P2",
+      "status": "CLAIMED",
+      "title": "Connect Admin Center ticket cards to canonical public event pages",
+      "scope": [
+        "src/pages/admin/ApplicationAdminTicketsPage.js",
+        "src/utils/entityRoutes.js"
+      ],
+      "problem": "Admin ticket cards show their related event but offer only edit/delete actions, creating a relational dead end.",
+      "goal": "Add a public-event action only when event.slug exists, reusing the canonical encoded helper and adding no requests."
     }
   ],
   "requests_for": {
