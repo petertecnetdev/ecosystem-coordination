@@ -3,8 +3,8 @@
   "display_name": "W07 Mobile Views",
   "role": "mobile_responsive_interaction",
   "status": "MONITORING",
-  "updated_at": "2026-09-27T21:24:00Z",
-  "current_item": "W07-003",
+  "updated_at": "2026-09-29T19:16:00Z",
+  "current_item": "W07-004",
   "items": [
     {
       "id": "W07-001",
@@ -38,6 +38,18 @@
       "commits": ["467cfe9dd19f7bab90db040e131aa2f8b874a6c2", "02eb7c4854f3421f6b93066de878d0a46de3c458"],
       "evidence": ["Lighthouse CI #750 run 36347566611 completed SUCCESS on 02eb7c4", "Validate #2837 for 467cfe9 was cancelled after the immediate follow-up import commit, not recorded as a functional failure"],
       "notes": "Revenue-critical checkout only: 44px quantity/remove controls, safe-area-aware page/paybar spacing, 100dvh/overflow containment, 16px mobile inputs to avoid iOS zoom, narrow 320/360/390/430px layout hardening. Payment logic/API and W04 navbar ownership untouched. Runtime checkout evidence is still required before VERIFIED."
+    },
+    {
+      "id": "W07-004",
+      "priority": "P2",
+      "title": "Home Hub mobile rail, touch and safe-area hardening",
+      "status": "IMPLEMENTED_PENDING_DEPLOY",
+      "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
+      "files": ["src/pages/HomeHubPage.css"],
+      "commit": "9e54bd405e66900d301b09b4412714187989c976",
+      "evidence": ["Commit written directly to main through GitHub fallback", "Commit patch limited to HomeHubPage.css mobile media queries", "GitHub commit status pending with zero reported statuses at reconciliation"],
+      "pending_deploy_vps": true,
+      "notes": "VPS petertecnetserver was offline. Added bottom/right/left safe-area handling, 44px section CTA target, touch-action, stronger horizontal overscroll/snap behavior and explicit <=359px rail/title sizing. No navbar/menu base or business logic changed. Must be revalidated on VPS/runtime at 320/360/390/430px when server returns."
     }
   ],
   "requests": [
@@ -52,6 +64,12 @@
       "priority": "P1",
       "topic": "checkout runtime validation",
       "detail": "Validate checkout at 320/360/390/430px, including quantity/remove touch targets, sticky paybar safe-area, no horizontal overflow and keyboard/form behavior. W07-003 must remain pending runtime until evidence exists."
+    },
+    {
+      "request_for": "W10",
+      "priority": "P2",
+      "topic": "home hub mobile runtime validation",
+      "detail": "After VPS/deploy returns, validate W07-004 at 320/360/390/430px: horizontal rails, right-edge safe area, section CTA touch target, no horizontal page overflow and card snap behavior."
     }
   ]
 }
