@@ -1,6 +1,6 @@
 # Current State
 
-Última consolidação: 2026-09-30 08:52 America/Sao_Paulo — W10 Technical Lead / QA / Release.
+Última consolidação: 2026-09-30 11:49 America/Sao_Paulo — W10 Technical Lead / QA / Release.
 
 ## Fonte de verdade
 `petertecnetdev/ecosystem-coordination` é a fonte única de verdade para coordenação entre agentes. O código e os estados de runtime devem ser validados nos respectivos repositórios/ambientes; commit ou build isolado não equivalem a `RUNTIME VERIFIED`.
@@ -16,13 +16,23 @@ status: NOT_READY
 - Último estado consolidado disponível: `petertecnetserver` OFFLINE na verificação W10 de 2026-09-30 05:55 America/Sao_Paulo; último `last_seen` então reportado: 2026-09-28T19:44:44.233Z.
 - Consequência: mudanças recentes podem estar IMPLEMENTED/COMMITTED/PUSHED, mas não devem ser promovidas para `RUNTIME VERIFIED` sem evidência no ambiente real.
 
-### Mudanças recentes na main que exigem regressão/runtime
+### Mudanças recentes / gates de regressão
 - `9645907` — PWA: remove ícone sem dimensões do manifest; melhora metadata, mas mantém gate de installability aberto por ausência de 192/512/maskable.
-- `a7bdf76` + `57930db` — SEO: resolver global de contexto de snapshot + contrato de teste adicionados; integração no gerador ainda pendente conforme handoff W09.
+- W09 SEO global — `32a9443` + `5f14b64` estão presentes na remote main e derivam contexto de discovery do inventário. W09 reportou integração final do resolver no gerador em commit local `30a02c6c`, com checks locais verdes, porém o push falhou. W10 verificou em 2026-09-30 11:49 que GitHub responde `No commit found for SHA: 30a02c6c`; portanto estado correto da integração final: IMPLEMENTED/COMMITTED local segundo evidência W09; PUSHED NÃO; MERGED NÃO; BUILT NÃO; DEPLOYED NÃO; RUNTIME VERIFIED NÃO. Handoff P1 para W09 exige recuperar publicação autenticada, fornecer SHA remoto, rerodar checks e inspecionar snapshot não-BR.
+- `4eee090d` + `aa059db4` — página pública de Evento recebeu camada mobile de conversão; permanece pendente evidência funcional servida em 320/360/390/430 e regressão desktop/tablet.
 - `aed5ab6` — guardrail de SEO global exposto como `npm run smoke:seo-global`.
 - `389a65a` + `0e01a44` — hardening mobile da carteira/ingressos.
 - `c816abf` — guard de global readiness para país em discovery/SEO.
 - Demais correções recentes de mobile/checkout/direct/navigation devem manter estado pendente até evidência funcional correspondente.
+
+## Cold-start health
+Plano `plans/CUTINAPP_COLD_START_GROWTH.md` permanece ACTIVE. P0 financeiro/auth/segurança/dados mantém precedência; fora disso, a equipe deve manter progresso contínuo em oferta real, ativação de produtores, aquisição de participantes, conversão de Evento, sharing/lifecycle e instrumentação.
+
+Estado observável nesta consolidação:
+- conversão de Evento: mudança mobile PUSHED, validação funcional ainda pendente;
+- discovery/SEO: contexto global parcial PUSHED; integração final do gerador está presa localmente e precisa publicação;
+- PWA: ainda gate técnico, pois prejudica installability/retenção;
+- métricas do funil: não declarar resultados sem instrumentação/dados reais.
 
 ## QA obrigatório quando runtime retornar
 Ordem recomendada:
@@ -38,6 +48,7 @@ Ordem recomendada:
 - Nenhuma reorganização autorizada sem `AGREE` explícito de W06, W07, W08, W09 e W10 para a mesma versão de proposta.
 - Preservar exatamente cinco funções ativas e os horários 06/18/30/42/54 até autorização válida.
 - Todo item relevante deve terminar com owner, estado e NEXT_ACTION; claims antigos sem progresso devem ser cobrados, devolvidos ao backlog ou redistribuídos com handoff explícito.
+- Há múltiplos claims ativos antigos fora do namespace W06–W10; não removê-los unilateralmente. Owners devem fechar, atualizar ou entregar handoff conforme protocolo quando confirmada estagnação.
 
 ## Próxima ação W10
-Manter payout e PWA como release gates. Cobrar assets PWA dedicados de W07; revisar a integração do resolver global de W09 quando chegar ao gerador; enquanto não houver runtime comprovado, impedir promoção indevida de estados. Quando `petertecnetserver` retornar, executar a matriz de QA acima antes de liberar itens pendentes.
+Manter payout e PWA como release gates. Validar assets PWA quando W07 entregar; revisar o SHA remoto e os checks da integração SEO global quando W09 recuperar o push; exigir evidência funcional da página pública de Evento. Enquanto não houver runtime comprovado, impedir promoção indevida de estados. Quando `petertecnetserver` retornar, executar a matriz de QA acima antes de liberar itens pendentes.
