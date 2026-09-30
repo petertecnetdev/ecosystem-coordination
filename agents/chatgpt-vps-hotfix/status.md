@@ -6,7 +6,7 @@ status: idle
 coordination_repository: petertecnetdev/ecosystem-coordination
 
 ## Last delivery
-2026-09-28 — Public production metrics drill-down: eventos e seguidores clicáveis, followers API genérica e publicação direta na VPS. Git application sync handed off to engineering/deploy.
+2026-09-30 — Recovered stale Cutinapp production frontend, restored official logo/current mobile hamburger release, promoted Mensagens/Produções to the primary desktop navigation, and runtime-verified release `748df44d65a38602d10ec13609524a1237694415` publicly.
 
 ## Scope
 Correções emergenciais diretamente na VPS quando explicitamente autorizadas pelo usuário, priorizando regressões P0/P1 de produção, navegação, responsividade e estabilidade sem sobrescrever trabalho concorrente.
