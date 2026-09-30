@@ -10,6 +10,12 @@ started_at: 2026-09-30T08:38:14-03:00
 depends_on: none
 files_or_scope:
 - scripts/generate-seo-snapshots.mjs
+- scripts/seo-snapshot-global-context.mjs
+- scripts/check-seo-snapshot-global-context.mjs
 
 ## Notes
-P1 acquisition/indexability continuation. Existing global-readiness guard intentionally remains strict; implementation must derive locale/timezone/country from event/configuration data and avoid claiming Cutinapp URL for an external organizer.
+P1 acquisition/indexability continuation. Existing global-readiness guard intentionally remains strict.
+
+Implemented reusable global context resolver in `a7bdf76a45b4baf3cccb95b41a3fd5856bf3e400` and focused contract checks in `57930dba90d4cafce5f2d7de4bbfd49e93eabb56`. Resolver derives locale/timezone/country from event/configuration data, keeps missing country unknown, validates timezone/locale, and prevents external organizers from inheriting the Cutinapp homepage.
+
+NEXT_ACTION: integrate these helpers into `generate-seo-snapshots.mjs`, then run `node scripts/check-seo-snapshot-global-context.mjs` and `npm run smoke:seo-global`. Claim remains active until the generator itself passes the existing global-readiness guard.
