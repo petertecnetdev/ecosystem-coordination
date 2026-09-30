@@ -11,6 +11,8 @@ depends_on: none
 files_or_scope:
 - scripts/generate-seo-snapshots.mjs
 - scripts/seo-snapshot-global-context.mjs
+- scripts/check-seo-snapshot-global-context.mjs
 
 ## Notes
 Continuation of commits a7bdf76 and 57930db. FIN-P0-001 has separate owner and is not duplicated.
+Progress this cycle: aec7482 adds locale/timezone-aware date helpers; 879a7be adds international boundary regression coverage. Generator integration remains pending, so claim stays active and state remains PARTIAL.
