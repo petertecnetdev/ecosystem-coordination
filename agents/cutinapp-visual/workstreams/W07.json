@@ -1,10 +1,10 @@
 {
   "worker": "W07",
   "display_name": "W07 Mobile Views",
-  "role": "mobile_responsive_interaction",
-  "status": "MONITORING",
-  "updated_at": "2026-09-29T19:16:00Z",
-  "current_item": "W07-004",
+  "role": "mobile_visual_responsive_pwa_navigation",
+  "status": "IMPLEMENTED_PENDING_DEPLOY",
+  "updated_at": "2026-09-28T19:12:00-03:00",
+  "current_item": "W07-005",
   "items": [
     {
       "id": "W07-001",
@@ -25,8 +25,8 @@
       "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
       "files": ["src/pages/MessagesPage.css"],
       "commit": "5cc8861916eb48ce0203b67bcbb947f045969f8f",
-      "evidence": ["Commit exists on main lineage", "GitHub commit status remained pending with zero reported statuses at prior reconciliation"],
-      "notes": "Mobile chat viewport/safe-area hardening for 320-430px class devices, composer/keyboard behavior, bottom-sheet/modal constraints, touch targets and overscroll. Navbar/menu base intentionally untouched."
+      "evidence": ["Commit exists on main lineage"],
+      "notes": "Mobile chat viewport/safe-area hardening for 320-430px class devices."
     },
     {
       "id": "W07-003",
@@ -36,8 +36,8 @@
       "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
       "files": ["src/styles/checkout-mobile-hardening.css", "src/index.js"],
       "commits": ["467cfe9dd19f7bab90db040e131aa2f8b874a6c2", "02eb7c4854f3421f6b93066de878d0a46de3c458"],
-      "evidence": ["Lighthouse CI #750 run 36347566611 completed SUCCESS on 02eb7c4", "Validate #2837 for 467cfe9 was cancelled after the immediate follow-up import commit, not recorded as a functional failure"],
-      "notes": "Revenue-critical checkout only: 44px quantity/remove controls, safe-area-aware page/paybar spacing, 100dvh/overflow containment, 16px mobile inputs to avoid iOS zoom, narrow 320/360/390/430px layout hardening. Payment logic/API and W04 navbar ownership untouched. Runtime checkout evidence is still required before VERIFIED."
+      "evidence": ["Lighthouse CI #750 run 36347566611 completed SUCCESS on 02eb7c4"],
+      "notes": "Revenue-critical checkout mobile hardening; runtime evidence still required."
     },
     {
       "id": "W07-004",
@@ -47,29 +47,25 @@
       "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
       "files": ["src/pages/HomeHubPage.css"],
       "commit": "9e54bd405e66900d301b09b4412714187989c976",
-      "evidence": ["Commit written directly to main through GitHub fallback", "Commit patch limited to HomeHubPage.css mobile media queries", "GitHub commit status pending with zero reported statuses at reconciliation"],
       "pending_deploy_vps": true,
-      "notes": "VPS petertecnetserver was offline. Added bottom/right/left safe-area handling, 44px section CTA target, touch-action, stronger horizontal overscroll/snap behavior and explicit <=359px rail/title sizing. No navbar/menu base or business logic changed. Must be revalidated on VPS/runtime at 320/360/390/430px when server returns."
+      "notes": "Safe-area, touch and narrow-screen rail hardening."
+    },
+    {
+      "id": "W07-005",
+      "priority": "P2",
+      "title": "Home/Discovery premium mobile visual density",
+      "status": "IMPLEMENTED_PENDING_DEPLOY",
+      "repository": "petertecnetdev/cutinapp.petertecnet.com.br",
+      "files": ["src/pages/HomeHubPage.css"],
+      "commit": "3c5262d157f96636e4bb09e3b827a2b6244cfe4e",
+      "evidence": ["GitHub/main fallback commit", "Mobile-only CSS scope; shared navbar untouched", "Explicit <=767px and <=359px responsive rules"],
+      "pending_deploy_vps": true,
+      "notes": "VPS offline. Tightened mobile spacing and section density, reduced card widths/gaps/radii, made event imagery more protagonist with cover treatment, removed decorative mobile blur/shadow, retained 44px CTA targets and safe-area behavior. Requires runtime validation at 320/360/390/430px when VPS returns."
     }
   ],
   "requests": [
-    {
-      "request_for": "W04",
-      "priority": "P1",
-      "topic": "navbar/mobile menu ownership",
-      "detail": "Review canonical navbar/menu mobile rules separately; W07 will not reimplement navbar/menu base."
-    },
-    {
-      "request_for": "W10",
-      "priority": "P1",
-      "topic": "checkout runtime validation",
-      "detail": "Validate checkout at 320/360/390/430px, including quantity/remove touch targets, sticky paybar safe-area, no horizontal overflow and keyboard/form behavior. W07-003 must remain pending runtime until evidence exists."
-    },
-    {
-      "request_for": "W10",
-      "priority": "P2",
-      "topic": "home hub mobile runtime validation",
-      "detail": "After VPS/deploy returns, validate W07-004 at 320/360/390/430px: horizontal rails, right-edge safe area, section CTA touch target, no horizontal page overflow and card snap behavior."
-    }
+    {"request_for":"W04","priority":"P1","topic":"navbar/mobile menu ownership","detail":"Review canonical navbar/menu mobile rules separately; W07 preserves shared navbar ownership."},
+    {"request_for":"W10","priority":"P1","topic":"checkout runtime validation","detail":"Validate checkout at 320/360/390/430px."},
+    {"request_for":"W10","priority":"P2","topic":"home hub runtime validation","detail":"After VPS/deploy returns, validate W07-004/W07-005 at 320/360/390/430px: no horizontal page overflow, rails/snap, safe-area, image crop, text clipping and 44px section CTA."}
   ]
 }
