@@ -2,7 +2,7 @@
   "workstream":"W09",
   "mission":"Apresentação pública, conversão, SEO e compartilhamento",
   "status":"IMPLEMENTING",
-  "updated_at":"2026-09-29T21:47:00-03:00",
+  "updated_at":"2026-09-29T22:58:00-03:00",
   "coordination_repository":"petertecnetdev/ecosystem-coordination",
   "code_repository":"petertecnetdev/cutinapp.petertecnet.com.br",
   "pending_deploy_vps":true,
@@ -18,9 +18,10 @@
     {"id":"W09-009","priority":"P1","status":"IMPLEMENTED_PENDING_VPS","title":"Publicar Offer zero para evento gratuito sem lote retornado","scope":["src/utils/eventSeo.js","src/utils/eventSeo.test.js"],"implementation":{"remote_commits":["1b3aab991014e30b5ef68922a6d1bd6270b77725","39101a57f5da9870303cf260c9917b04e9580189"]}},
     {"id":"W09-012","priority":"P1","status":"IMPLEMENTED_PENDING_VPS","title":"Endurecer identidade pública e localização global no Schema.org de Produção","scope":["src/components/SeoManager.js","/production/:slug/public"],"implementation":{"remote_commit":"85fe593f68b0749f64c105dbd95a5387ce3cada4"}},
     {"id":"W09-013","priority":"P2","status":"IMPLEMENTED_PENDING_VPS","title":"Adicionar texto alternativo à imagem dos Twitter Cards","scope":["src/components/SeoHead.js","public sharing metadata"],"implementation":{"remote_commit":"274eff12625ade7567963df78b655f740b0c6e22","validation":"Diff final: +1 linha, twitter:image:alt usa resolvedTitle; runtime pendente por VPS offline."}},
-    {"id":"W09-014","priority":"P2","status":"IMPLEMENTED_PENDING_VPS","title":"Permitir alt descritivo específico para imagens de compartilhamento","scope":["src/components/SeoHead.js","public sharing metadata"],"implementation":{"remote_commit":"cce2cfbc9ed91177e24801344a77d838ed647120","validation":"imageAlt opcional alimenta OG/Twitter; resolvedTitle preservado como fallback; runtime pendente por VPS offline."},"impact":"Melhora semântica/acessibilidade dos cards e permite previews de Evento/Produção descreverem flyer/capa sem duplicar o título da página."}
+    {"id":"W09-014","priority":"P2","status":"IMPLEMENTED_PENDING_VPS","title":"Permitir alt descritivo específico para imagens de compartilhamento","scope":["src/components/SeoHead.js","public sharing metadata"],"implementation":{"remote_commit":"cce2cfbc9ed91177e24801344a77d838ed647120","validation":"imageAlt opcional alimenta OG/Twitter; resolvedTitle preservado como fallback; runtime pendente por VPS offline."},"impact":"Melhora semântica/acessibilidade dos cards e permite previews de Evento/Produção descreverem flyer/capa sem duplicar o título da página."},
+    {"id":"W09-015","priority":"P2","status":"IMPLEMENTED_PENDING_VPS","title":"Descrever flyer do Evento nos cards sociais","scope":["src/utils/eventSeo.js","src/utils/eventSeo.test.js","/event/:slug"],"implementation":{"remote_commits":["d12820132e6f25c8f521cd6d2a9df05f7cc55b70","a265ee0cbc5548914be9d12c51771792654b7aca"],"validation":"Regressões adicionadas para flyer e fallback; execução pendente porque VPS está offline e conector GitHub não possui command runner."},"impact":"OG/Twitter recebem alt contextual com nome e localização pública do evento, evitando repetir apenas o title."}
   ],
-  "requests_for":[{"worker":"W05","request":"W09-003 permanece sob ownership W09; crawler real ainda depende de deploy saudável."},{"worker":"W10","request":"Após VPS retornar, executar build/regressão runtime e validar metadata social/Schema.org incluindo imageAlt, twitter:image:alt e W09-007/008/009/012."}],
-  "evidence":["petertecnetserver offline; fallback Git aplicado.","W09-014 commit cce2cfbc adiciona contrato imageAlt com fallback compatível.","pending_deploy_vps=true."],
-  "next":["Quando VPS retornar: reconciliar main sem reset destrutivo, executar build/lint e validar crawler/previews reais","Passar imageAlt descritivo nas views públicas de Evento e Produção quando houver descrição confiável da mídia","Continuar W09-003 crawler-visible previews"]
+  "requests_for":[{"worker":"W05","request":"W09-003 permanece sob ownership W09; crawler real ainda depende de deploy saudável."},{"worker":"W10","request":"Após VPS retornar, executar build/regressão runtime e validar metadata social/Schema.org incluindo imageAlt, twitter:image:alt e W09-007/008/009/012/015."}],
+  "evidence":["petertecnetserver offline; fallback Git aplicado.","W09-015 commits d1282013 + a265ee0c adicionam imageAlt contextual de Evento e regressões.","pending_deploy_vps=true."],
+  "next":["Quando VPS retornar: reconciliar main sem reset destrutivo, executar eventSeo tests/build/lint e validar crawler/previews reais","Passar imageAlt descritivo na Produção usando background/logo com semântica confiável","Continuar W09-003 crawler-visible previews"]
 }
