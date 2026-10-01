@@ -1,0 +1,4 @@
+branch,head_sha,classification,evidence,destination,risk
+"automation/acquisition-first-sale-share-20260905","e8a00638dd46e2820a2b19c026da6b0d2ecd4e71","ALREADY_MERGED","merge-base with main equals HEAD; zero branch-exclusive commits; same HEAD as conversion-pix-copy-feedback; unprotected","DELETE_READY","low"
+"automation/conversion-pix-copy-feedback-20260905","e8a00638dd46e2820a2b19c026da6b0d2ecd4e71","EXACT_DUPLICATE","same HEAD as acquisition-first-sale-share; merge-base with main equals HEAD; zero branch-exclusive commits; unprotected","DELETE_READY","low"
+"automation/acquisition-activation-loop-20260905","7b2688c2141a970097abeba33dcd937a2bb45e52","UNIQUE_USEFUL_REVIEW","previous triage found one exclusive commit touching src/pages/event/EventManagePage.js with publication/share/first-sale telemetry absent from main","RECOVER_SELECTIVELY_BEFORE_DELETE","medium"
