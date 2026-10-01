@@ -5,8 +5,9 @@ repository: petertecnetdev/cutinapp.petertecnet.com.br
 coordinator: W10 Branch Cleanup Lead
 reference_count: 751
 reference_observed_at: 2026-09-30T23:59:00-03:00
+last_revalidated_at: 2026-10-01T00:53:40-03:00
 snapshot_owner: W06
-snapshot_artifact: PENDING — not present in ecosystem-coordination when W10 started this cycle
+snapshot_artifact: PENDING — immutable ordered snapshot is still not present in ecosystem-coordination
 
 ## Safety gate
 NO REMOTE BRANCH DELETION AUTHORIZED. No branch enters final DELETE_CANDIDATES by age, prefix or missing PR alone. Commits exclusive to a branch require specific second review before final deletion candidacy.
@@ -43,6 +44,12 @@ RECOVER: 0
 DELETE_CANDIDATES: 0
 STALE_UNCLEAR: 0
 other classified intermediate states: 0
+
+## Revalidation 2026-10-01 00:53 America/Sao_Paulo
+- GitHub branches page 8 remains populated while page 9 is empty, consistent with the previously established 751-branch live count.
+- No immutable W06 snapshot or W06–W09 branch-cleanup audit artifact is discoverable in ecosystem-coordination yet.
+- Coverage therefore remains intentionally at 0%; W10 will not classify against a moving live list and risk index drift or false deletion candidacy.
+- Visible branch families such as repeated `perf/*`, `profitability/*`, and worker-prefixed branches remain only root-cause signals until per-branch equivalence/reachability evidence is produced.
 
 ## Cross-review rule
 Before final DELETE_CANDIDATES:
