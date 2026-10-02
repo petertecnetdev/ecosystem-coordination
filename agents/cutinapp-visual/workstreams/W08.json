@@ -4,7 +4,7 @@
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
   "status": "BRANCH_HYGIENE_RUN_COMPLETED",
-  "updated_at": "2026-10-02T18:34:00-03:00",
+  "updated_at": "2026-10-02T19:36:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -435,26 +435,31 @@
     "Continue auditing only unclaimed relational navigation surfaces."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261002-01",
+    "id": "W08-BH-20261002-02",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "pr_2": "MERGED_DEPLOYED_DELETE_READY_SOURCE",
       "pr_1": "KEEP_API_534_CI_BLOCKED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 14,
-    "high_risk_second_reviews": 11,
-    "unique_useful_this_run": 19,
-    "superseded_family_review": 7,
+    "delete_ready_this_run": 32,
+    "high_risk_second_reviews": 14,
+    "unique_useful_this_run": 8,
+    "superseded_family_review": 13,
+    "prs_closed_without_merge": [
+      154,
+      204,
+      249,
+      264,
+      265
+    ],
     "new_branches_created": 0,
-    "remaining_api_shard": 72,
+    "remaining_api_shard": 32,
     "evidence": [
-      "Admin Center PR #2 merged as 9c649f5537afe1dbd9bc486a4bf7a2e7df765c4f",
-      "Admin Center Validate 37067037810 passed",
-      "Admin Center Deploy 37067179870 passed",
-      "API diagnostic-only PR #523 closed without merge",
-      "branch-audit/w08-admincenter-api-20261002-1826.md",
-      "worklogs/20261002-1834-W08-admincenter-api-branch-hygiene.md"
+      "Admin Center main 9c649f5537afe1dbd9bc486a4bf7a2e7df765c4f reports protected=false and rulesets=[]",
+      "API PR #534 CI 36343439430 failed",
+      "branch-audit/w08-api-fix-round2-20261002-1936.md",
+      "worklogs/20261002-1936-W08-api-fix-branch-hygiene-round2.md"
     ]
   }
 }
