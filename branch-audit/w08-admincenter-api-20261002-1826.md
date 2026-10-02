@@ -65,7 +65,7 @@
 - ADMINCENTER_STATUS: decision closed for all 3 refs; PR #2 merged/deployed, PR #1 KEEP, main KEEP but not protected.
 - REVIEWED_THIS_RUN=40 API branches.
 - DELETE_READY_THIS_RUN=14 API branches; plus merged Admin Center source branch ready after deletion support.
-- HIGH_RISK_SECOND_REVIEWS=10 classifications across acquisition migration, payout/sales, backup, billing, checkout/idempotency, scope and PIX/card retry.
+- HIGH_RISK_SECOND_REVIEWS=11 classifications across acquisition migration, payout/sales, backup, billing, checkout/idempotency, scope and PIX/card retry.
 - UNIQUE_USEFUL_THIS_RUN=19 API branches.
 - SUPERSEDED_FAMILY_REVIEW=7 API branches.
 - NEW_BRANCHES_CREATED=0.
