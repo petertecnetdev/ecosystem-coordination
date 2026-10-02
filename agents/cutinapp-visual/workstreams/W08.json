@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "IMPLEMENTED_CI_BASELINE_BLOCKED_NOT_DEPLOYED",
-  "updated_at": "2026-09-28T08:47:00-03:00",
+  "status": "BRANCH_HYGIENE_RUN_COMPLETED",
+  "updated_at": "2026-10-02T18:34:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -433,5 +433,28 @@
     "Await API baseline test recovery and release rerun for artist_slug contract.",
     "Await W05/release recovery of frontend build-environment fetch before runtime verification.",
     "Continue auditing only unclaimed relational navigation surfaces."
-  ]
+  ],
+  "branch_hygiene_latest": {
+    "id": "W08-BH-20261002-01",
+    "admincenter_status": {
+      "main": "KEEP_PROTECTION_GAP",
+      "pr_2": "MERGED_DEPLOYED_DELETE_READY_SOURCE",
+      "pr_1": "KEEP_API_534_CI_BLOCKED"
+    },
+    "reviewed_this_run": 40,
+    "delete_ready_this_run": 14,
+    "high_risk_second_reviews": 10,
+    "unique_useful_this_run": 19,
+    "superseded_family_review": 7,
+    "new_branches_created": 0,
+    "remaining_api_shard": 72,
+    "evidence": [
+      "Admin Center PR #2 merged as 9c649f5537afe1dbd9bc486a4bf7a2e7df765c4f",
+      "Admin Center Validate 37067037810 passed",
+      "Admin Center Deploy 37067179870 passed",
+      "API diagnostic-only PR #523 closed without merge",
+      "branch-audit/w08-admincenter-api-20261002-1826.md",
+      "worklogs/20261002-1834-W08-admincenter-api-branch-hygiene.md"
+    ]
+  }
 }
