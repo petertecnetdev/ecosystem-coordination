@@ -4,7 +4,7 @@
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
   "status": "BRANCH_HYGIENE_RUN_COMPLETED",
-  "updated_at": "2026-10-02T22:40:00-03:00",
+  "updated_at": "2026-10-02T23:40:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -435,32 +435,35 @@
     "Continue auditing only unclaimed relational navigation surfaces."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261002-05",
+    "id": "W08-BH-20261002-06",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
       "media_library_pr_1": "KEEP_API_534_VALIDATE_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 29,
-    "high_risk_second_reviews": 30,
-    "unique_useful_this_run": 11,
+    "delete_ready_this_run": 28,
+    "high_risk_second_reviews": 31,
+    "unique_useful_this_run": 12,
     "prs_closed_without_merge": [
-      8,
-      200,
-      108,
-      205
+      92,
+      105,
+      102,
+      240,
+      174,
+      68
     ],
     "new_branches_created": 0,
-    "remaining_api_shard": 135,
-    "completed_shard": "feat/* positions 30-69",
-    "next_shard": "feat/* positions 70-109, beginning feat/discovery-learning-loop-20260903",
+    "remaining_api_shard": 95,
+    "completed_shard": "feat/* positions 70-109",
+    "next_shard": "feat/* positions 110-149, beginning feat/generic-lease-contract-templates",
     "evidence": [
       "Admin Center main still reports protected=false",
-      "PR #530 validate failed: actions job 108497004350",
-      "branch-audit/w08-api-feat-round2-20261002-2240.md",
-      "worklogs/20261002-2240-W08-api-feat-round2.md",
-      "messages/20261002-2240-W08-to-W10-api-unique-feat-round2.md"
+      "PR #528 validate failed: actions job 108494860795",
+      "PR #532 validate failed: actions job 108628351807",
+      "branch-audit/w08-api-feat-round3-20261002-2340.md",
+      "worklogs/20261002-2340-W08-api-feat-round3.md",
+      "messages/20261002-2340-W08-to-W06-W10-api-feat-round3.md"
     ]
   }
 }
