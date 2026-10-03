@@ -436,42 +436,48 @@
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-21",
+    "id": "W08-BH-20261003-22",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
       "media_library_pr_1": "KEEP_BLOCKED_API_534_OPEN_CI_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 37,
-    "high_risk_second_reviews": 32,
-    "unique_useful_this_run": 3,
+    "delete_ready_this_run": 31,
+    "high_risk_second_reviews": 26,
+    "unique_useful_this_run": 9,
     "unique_useful_branches": [
-      "feat/platform-readiness-health-20260904",
-      "feat/production-owner-transfer-ready-20260904",
-      "feat/public-developer-platform"
+      "feat/ride-events",
+      "feat/social-feed-v2",
+      "feat/social-timeline-v2",
+      "feat/universal-whatsapp-notifications",
+      "feature/admin-copilot",
+      "feature/ambient-media",
+      "feature/blog-performance-instagram",
+      "feature/cutinapp-event-opening-media",
+      "feature/cutinapp-mercadopago-auto-split-20260918-v2"
     ],
     "new_branches_created": 0,
     "remaining_api_shard": 0,
-    "completed_shard": "historical feat/* positions 150-189 revalidated",
+    "completed_shard": "final feat/* positions 190-204 plus feature/* positions 1-25 revalidated",
     "classification_breakdown": {
-      "main_ancestor": 7,
-      "pr_merged_main": 21,
-      "superseded_duplicate_or_closed_obsolete": 9,
-      "unique_useful": 3
+      "main_ancestor": 10,
+      "pr_merged_main": 15,
+      "superseded_or_historical": 6,
+      "unique_useful": 9
     },
-    "evidence_updates": [
-      "PRs #236, #89 and #333 are now closed without merge and classified DELETE_READY after later owner review",
-      "feat/production-owner-transfer-20260904 is SAME_HEAD with retained canonical PR #143 branch at 4d89a16aba631149c31eecc285217fc70838b3fd"
+    "evidence_corrections": [
+      "PR #212 has a different head; feature/admin-user-communications-mainready-20260906 is DELETE_READY by MAIN_ANCESTOR"
     ],
     "refs_deleted": 0,
-    "next_shard": "owner resolution for three preserved unique deltas or further historical DELETE_READY revalidation",
+    "next_shard": "owner resolution for nine preserved deltas or further historical DELETE_READY revalidation",
     "evidence": [
       "All 40 refs freshly compared with API main 5fea1752fb674dd463b65bb2069f2c13117e2749",
-      "Admin Center still has exactly three branches; PR #1 open/blocked by API #534 and PR #2 merged",
-      "branch-audit/w08-api-feat-round5-revalidation-20261003-1439.md",
-      "worklogs/20261003-1439-W08-api-feat-round5-revalidation.md",
-      "messages/20261003-1439-W08-to-api-owners-feat-round5-revalidation.md"
+      "PR #526 remains open/mergeable but CI failed",
+      "PR #502 remains open/non-mergeable under finance risk",
+      "branch-audit/w08-api-feat-complete-feature-round1-revalidation-20261003-1538.md",
+      "worklogs/20261003-1538-W08-api-feat-complete-feature-round1-revalidation.md",
+      "messages/20261003-1538-W08-to-api-owners-feat-feature-revalidation.md"
     ]
   }
 }
