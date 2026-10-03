@@ -436,55 +436,48 @@
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-23",
+    "id": "W08-BH-20261003-24",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
       "media_library_pr_1": "KEEP_BLOCKED_API_534_OPEN_CI_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 24,
-    "high_risk_second_reviews": 16,
-    "unique_useful_this_run": 16,
-    "unique_useful_branches": [
-      "feature/event-producer-notifications",
-      "feature/event-production-prefill",
-      "feature/generic-commerce-checkout",
-      "feature/global-ecosystem-sso",
-      "feature/global-social-feed",
-      "feature/identity-production-hardening-v3",
-      "feature/identity-sso-hardening",
-      "feature/media-library-multi-media",
-      "feature/nexus-item-social-share-20260902",
-      "feature/peter-account-ecosystem",
-      "feature/peter-identity-core-v2",
-      "feature/producer-assisted-onboarding",
-      "feature/producer-engagement-email",
-      "feature/property-intelligence-20",
-      "feature/property-management",
-      "feature/provider-settlement-statements-20260903"
-    ],
+    "delete_ready_this_run": 0,
+    "high_risk_second_reviews": 26,
+    "unique_useful_this_run": 40,
     "new_branches_created": 0,
     "remaining_api_shard": 0,
-    "completed_shard": "historical feature/* positions 26-65 revalidated",
+    "completed_shard": "40 previously preserved UNIQUE_USEFUL deltas revalidated for owner resolution",
     "classification_breakdown": {
-      "main_ancestor_or_merged": 15,
-      "same_head_or_superseded_family": 9,
-      "unique_useful": 16
+      "still_diverged_unique_useful": 40,
+      "delete_ready_promotions": 0
     },
+    "mergeable_ci_blocked_prs": [
+      152,
+      503,
+      528,
+      246,
+      532,
+      491,
+      161,
+      534,
+      526,
+      153
+    ],
     "high_risk_notes": [
-      "PR #66 has green API CI 33763991738 but targets staging and requires finance review",
-      "PR #296 is mergeable but API CI 34303975115 failed",
-      "identity PRs #70, #78 and #80 remain open/non-mergeable",
+      "26 branches touch finance, checkout, auth/identity, webhook, jobs or migrations",
+      "PR #107 and #109 remain absent from main because they merged only to an intermediate branch",
+      "PR #502 and feat/generic-account-settlement remain isolated under finance risk",
       "no finance/auth/webhook/migration branch was merged or deleted"
     ],
     "refs_deleted": 0,
-    "next_shard": "owner resolution for preserved deltas or additional DELETE_READY revalidation",
+    "next_shard": "API owner resolution/closure of preserved deltas or additional DELETE_READY allowlist revalidation",
     "evidence": [
-      "All 40 refs freshly compared with API main 5fea1752fb674dd463b65bb2069f2c13117e2749",
-      "branch-audit/w08-api-feature-round2-revalidation-20261003-1631.md",
-      "worklogs/20261003-1631-W08-api-feature-round2-revalidation.md",
-      "messages/20261003-1631-W08-to-api-owners-feature-round2-revalidation.md"
+      "All 40 preserved refs freshly compared with API main 5fea1752fb674dd463b65bb2069f2c13117e2749",
+      "branch-audit/w08-api-preserved-deltas-revalidation-20261003-1731.md",
+      "worklogs/20261003-1731-W08-api-preserved-deltas-revalidation.md",
+      "messages/20261003-1731-W08-to-api-owners-preserved-deltas.md"
     ]
   }
 }
