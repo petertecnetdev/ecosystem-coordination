@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "BRANCH_HYGIENE_RUN_COMPLETED",
-  "updated_at": "2026-10-03T07:53:00-03:00",
+  "status": "BRANCH_HYGIENE_INVENTORY_COMPLETE",
+  "updated_at": "2026-10-03T08:52:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -430,46 +430,47 @@
     "Artist identity relation frontend SHA 9144f147d9e1252d07001b756167868d99183779 passed post-merge Validate 36417049343 and Lighthouse 36417049430; frontend Deploy 36417209670 failed before build/deploy. API SHA 5fea1752fb674dd463b65bb2069f2c13117e2749 preserved the same red test-gate pattern as base main."
   ],
   "next": [
-    "Process the final 24 unreviewed mixed-prefix API branches after re-reading W07 and active claims.",
-    "Preserve W07 agent/* and w07/* shards from overlap.",
-    "Request owner review of API PR #473, request-correlation branch, and API PR #234.",
+    "Monitor owner decisions for the 23 selectively preserved API branches; do not merge stale monoliths wholesale.",
+    "Execute the 16-ref DELETE_READY batch when authorized delete-ref capability becomes available.",
     "Await API #534 green validation before advancing Admin Center PR #1.",
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-14",
+    "id": "W08-BH-20261003-15",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
-      "media_library_pr_1": "KEEP_API_534_VALIDATE_FAILED"
+      "media_library_pr_1": "KEEP_BLOCKED_API_534_VALIDATE_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 37,
-    "high_risk_second_reviews": 35,
-    "unique_useful_this_run": 3,
-    "unique_useful_branches": [
-      "automation/support-financial-context-triage-v3",
-      "chore/ecosystem-request-correlation",
-      "perf/acquisition-margin-query"
+    "delete_ready_this_run": 16,
+    "high_risk_second_reviews": 31,
+    "unique_useful_this_run": 23,
+    "keep_environment": [
+      "staging"
     ],
     "prs_closed_without_merge": [
-      340,
-      312
+      290,
+      46,
+      55,
+      236,
+      89,
+      333
     ],
     "new_branches_created": 0,
-    "remaining_api_shard": 24,
-    "completed_shard": "automation/* positions 95-121 plus 13 mixed-prefix branches",
-    "next_shard": "final 24 mixed-prefix branches",
+    "remaining_api_shard": 0,
+    "completed_shard": "final 24 previously unreviewed non-W07 branches plus 16 preserved/high-risk second reviews",
+    "next_shard": "monitor selective-recovery owners and delete-ready execution availability",
     "evidence": [
-      "All 121 automation/* branches are now reviewed",
+      "All non-W07 API branches in the assigned inventory are now reviewed",
       "Admin Center still has exactly three branches; main SHA 9c649f5 reports protected=false",
-      "Admin Center PR #1 is open but API PR #534 validate remains failed",
-      "PR #340 closed as superseded by merged PR #342",
-      "PR #312 closed as superseded by merged PR #315",
-      "finance/fail-closed-payout-release service is byte-identical to main",
-      "branch-audit/w08-api-automation-tail-mixed-20261003-0736.md",
-      "worklogs/20261003-0736-W08-api-automation-tail-mixed.md",
-      "messages/20261003-0736-W08-to-api-owners-automation-tail.md"
+      "Admin Center PR #1 remains open and blocked by failed validation on API PR #534",
+      "PRs #290, #46, #55, #236, #89 and #333 closed without merge after second review",
+      "16 refs classified DELETE_READY; no refs deleted because delete-ref is unavailable",
+      "23 branches preserved for selective recovery; staging retained as environment branch",
+      "branch-audit/w08-api-final-inventory-20261003-0830.md",
+      "worklogs/20261003-0830-W08-api-final-inventory.md",
+      "messages/20261003-0830-W08-to-api-owners-final-inventory.md"
     ]
   }
 }
