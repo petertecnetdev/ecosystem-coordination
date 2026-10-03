@@ -436,48 +436,51 @@
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-19",
+    "id": "W08-BH-20261003-20",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
       "media_library_pr_1": "KEEP_BLOCKED_API_534_OPEN_CI_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 28,
+    "delete_ready_this_run": 29,
     "high_risk_second_reviews": 31,
-    "unique_useful_this_run": 12,
+    "unique_useful_this_run": 11,
     "unique_useful_branches": [
-      "feat/duplicate-event-edit-before-create",
-      "feat/ecosystem-health-readiness",
-      "feat/event-addons-producer-management-20260906",
-      "feat/event-ai-image-fallback-20260919",
-      "feat/event-manager-211-20260918",
-      "feat/event-media-pipeline",
-      "feat/event-poster-normalization-fallback",
-      "feat/event-share-preview-final-20260907",
-      "feat/feed-post-media",
-      "feat/forecasting-core",
-      "feat/generic-account-settlement",
-      "feat/generic-item-ai-content"
+      "feat/generic-portfolio-analytics",
+      "feat/generic-resource-operations",
+      "feat/generic-organization-taxonomy-20260905",
+      "feat/generic-scheduling-domain",
+      "feat/global-public-discovery-search",
+      "feat/google-place-picker-v2",
+      "feat/important-events-center",
+      "feat/kryvion-email-notifications",
+      "feat/leasing-production-governance",
+      "feat/location-aware-event-discovery",
+      "feat/media-library-platform"
     ],
     "new_branches_created": 0,
     "remaining_api_shard": 0,
-    "completed_shard": "historical feat/* positions 70-109 revalidated",
+    "completed_shard": "historical feat/* positions 110-149 revalidated",
     "classification_breakdown": {
       "main_ancestor": 13,
-      "pr_merged": 6,
-      "superseded_family_or_historical": 9,
-      "unique_useful": 12
+      "pr_merged_main": 11,
+      "superseded_family_or_historical": 5,
+      "unique_useful": 11
     },
+    "evidence_corrections": [
+      "PR #107 merged into feat/leasing-lifecycle-intelligence-v2, not main; PortfolioAnalyticsController is absent from main",
+      "PR #109 merged into feat/leasing-lifecycle-intelligence-v2, not main; ResourceOperationsController and its migration are absent from main"
+    ],
     "refs_deleted": 0,
-    "next_shard": "owner resolution for preserved unique deltas or further historical DELETE_READY revalidation",
+    "next_shard": "owner resolution for eleven preserved unique deltas or further historical DELETE_READY revalidation",
     "evidence": [
       "All 40 refs freshly compared with API main 5fea1752fb674dd463b65bb2069f2c13117e2749",
       "Admin Center still has exactly three branches; PR #1 open/blocked by API #534 and PR #2 merged",
       "API #534 CI run 36343439430 failed",
-      "branch-audit/w08-api-feat-round3-revalidation-20261003-1239.md",
-      "worklogs/20261003-1239-W08-api-feat-round3-revalidation.md",
-      "messages/20261003-1239-W08-to-api-owners-feat-round3-revalidation.md"
+      "branch-audit/w08-api-feat-round4-revalidation-20261003-1338.md",
+      "worklogs/20261003-1338-W08-api-feat-round4-revalidation.md",
+      "messages/20261003-1338-W08-to-api-owners-feat-round4-revalidation.md"
     ]
   }
 }
