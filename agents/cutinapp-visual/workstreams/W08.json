@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "BRANCH_HYGIENE_DELETE_READY_BATCH_B_REVALIDATED",
-  "updated_at": "2026-10-03T10:53:00-03:00",
+  "status": "BRANCH_HYGIENE_AUTOMATION_TAIL_REVALIDATED",
+  "updated_at": "2026-10-03T11:57:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -430,42 +430,52 @@
     "Artist identity relation frontend SHA 9144f147d9e1252d07001b756167868d99183779 passed post-merge Validate 36417049343 and Lighthouse 36417049430; frontend Deploy 36417209670 failed before build/deploy. API SHA 5fea1752fb674dd463b65bb2069f2c13117e2749 preserved the same red test-gate pattern as base main."
   ],
   "next": [
-    "Execute the two revalidated 40-ref DELETE_READY allowlists when authorized delete-ref capability becomes available; recheck heads immediately before deletion.",
-    "Continue owner follow-up for the 23 selectively preserved unique API deltas from the final inventory.",
+    "Execute the accumulated revalidated DELETE_READY allowlists when authorized delete-ref capability becomes available; recheck heads immediately before deletion.",
+    "Owner-review PR #473, chore/ecosystem-request-correlation and PR #234; recover selectively and do not delete until resolved.",
     "Await API #534 green validation before advancing Admin Center PR #1.",
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-17",
+    "id": "W08-BH-20261003-18",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
-      "media_library_pr_1": "KEEP_BLOCKED_API_534_NO_GREEN_VALIDATION"
+      "media_library_pr_1": "KEEP_BLOCKED_API_534_OPEN"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 40,
-    "high_risk_second_reviews": 36,
-    "unique_useful_this_run": 0,
+    "delete_ready_this_run": 37,
+    "high_risk_second_reviews": 35,
+    "unique_useful_this_run": 3,
+    "unique_useful_branches": [
+      "automation/support-financial-context-triage-v3",
+      "chore/ecosystem-request-correlation",
+      "perf/acquisition-margin-query"
+    ],
     "new_branches_created": 0,
     "remaining_api_shard": 0,
-    "completed_shard": "revalidation of automation/* positions 55-94 DELETE_READY batch",
+    "completed_shard": "automation/* positions 95-121 plus 13 mixed-prefix refs revalidated",
     "classification_breakdown": {
-      "main_ancestor": 23,
-      "pr_merged_diverged": 13,
-      "superseded_family": 2,
-      "patch_equivalent_or_superseded": 2
+      "main_ancestor": 15,
+      "pr_merged_main": 16,
+      "pr_merged_staging_superseded": 2,
+      "superseded_family": 3,
+      "patch_equivalent": 1,
+      "unique_useful": 3
     },
-    "evidence_correction": "automation/provider-init-failure-r12 is MAIN_ANCESTOR; PR #425 belongs to automation/checkout-readiness-atomic-r11",
+    "evidence_corrections": [
+      "PR #531 belongs to feat/flyer-date-consistency, not hotfix/direct-pusher-email",
+      "PR #129 is not a valid current association for chore/cognition-runtime-config"
+    ],
     "refs_deleted": 0,
-    "next_shard": "revalidate another historical DELETE_READY batch or execute deletion when capability is available",
+    "next_shard": "owner resolution for three preserved unique deltas or further historical DELETE_READY revalidation",
     "evidence": [
-      "All 40 refs re-compared with API main 5fea1752fb674dd463b65bb2069f2c13117e2749",
-      "36 historical PRs freshly confirmed merged=true",
-      "Four no-direct-merge refs rechecked through blob identity and later main behavior",
-      "36 finance/payment/webhook/reconciliation refs received second review",
-      "branch-audit/w08-api-delete-ready-revalidation-b-20261003-1034.md",
-      "worklogs/20261003-1034-W08-api-delete-ready-revalidation-b.md",
-      "messages/20261003-1034-W08-to-repo-admin-delete-ready-b.md"
+      "All 40 refs freshly compared with API main 5fea1752fb674dd463b65bb2069f2c13117e2749",
+      "PR #473 remains open/mergeable but main lacks SupportRequestIntakeService",
+      "PR #234 remains open/non-mergeable and financially sensitive",
+      "Request correlation focused test remains absent from main",
+      "branch-audit/w08-api-automation-tail-revalidation-20261003-1139.md",
+      "worklogs/20261003-1139-W08-api-automation-tail-revalidation.md",
+      "messages/20261003-1139-W08-to-api-owners-tail-revalidation.md"
     ]
   }
 }
