@@ -4,7 +4,7 @@
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
   "status": "BRANCH_HYGIENE_RUN_COMPLETED",
-  "updated_at": "2026-10-03T06:50:00-03:00",
+  "updated_at": "2026-10-03T07:53:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -430,39 +430,46 @@
     "Artist identity relation frontend SHA 9144f147d9e1252d07001b756167868d99183779 passed post-merge Validate 36417049343 and Lighthouse 36417049430; frontend Deploy 36417209670 failed before build/deploy. API SHA 5fea1752fb674dd463b65bb2069f2c13117e2749 preserved the same red test-gate pattern as base main."
   ],
   "next": [
-    "Process automation/* positions 95-121 after re-reading W07 and active claims.",
+    "Process the final 24 unreviewed mixed-prefix API branches after re-reading W07 and active claims.",
     "Preserve W07 agent/* and w07/* shards from overlap.",
-    "Continue with the remaining 37 non-W07/non-automation API branches after automation/*.",
+    "Request owner review of API PR #473, request-correlation branch, and API PR #234.",
     "Await API #534 green validation before advancing Admin Center PR #1.",
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-13",
+    "id": "W08-BH-20261003-14",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
       "media_library_pr_1": "KEEP_API_534_VALIDATE_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 40,
-    "high_risk_second_reviews": 36,
-    "unique_useful_this_run": 0,
+    "delete_ready_this_run": 37,
+    "high_risk_second_reviews": 35,
+    "unique_useful_this_run": 3,
+    "unique_useful_branches": [
+      "automation/support-financial-context-triage-v3",
+      "chore/ecosystem-request-correlation",
+      "perf/acquisition-margin-query"
+    ],
     "prs_closed_without_merge": [
-      450
+      340,
+      312
     ],
     "new_branches_created": 0,
-    "remaining_api_shard": 64,
-    "completed_shard": "automation/* positions 55-94",
-    "next_shard": "automation/* positions 95-121",
+    "remaining_api_shard": 24,
+    "completed_shard": "automation/* positions 95-121 plus 13 mixed-prefix branches",
+    "next_shard": "final 24 mixed-prefix branches",
     "evidence": [
+      "All 121 automation/* branches are now reviewed",
       "Admin Center still has exactly three branches; main SHA 9c649f5 reports protected=false",
       "Admin Center PR #1 is open but API PR #534 validate remains failed",
-      "36 high-risk branches received exact-head, compare and PR-association review",
-      "API PR #450 closed without merge because current main contains and extends event-intent funnel behavior",
-      "automation/rasoio-renewal-final-reminder-r6 changed files are byte-identical to main",
-      "branch-audit/w08-api-automation-round3-20261003-0635.md",
-      "worklogs/20261003-0635-W08-api-automation-round3.md",
-      "messages/20261003-0635-W08-to-api-owners-automation-round3.md"
+      "PR #340 closed as superseded by merged PR #342",
+      "PR #312 closed as superseded by merged PR #315",
+      "finance/fail-closed-payout-release service is byte-identical to main",
+      "branch-audit/w08-api-automation-tail-mixed-20261003-0736.md",
+      "worklogs/20261003-0736-W08-api-automation-tail-mixed.md",
+      "messages/20261003-0736-W08-to-api-owners-automation-tail.md"
     ]
   }
 }
