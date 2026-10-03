@@ -4,7 +4,7 @@
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
   "status": "BRANCH_HYGIENE_RUN_COMPLETED",
-  "updated_at": "2026-10-03T02:35:00-03:00",
+  "updated_at": "2026-10-03T03:50:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -430,39 +430,35 @@
     "Artist identity relation frontend SHA 9144f147d9e1252d07001b756167868d99183779 passed post-merge Validate 36417049343 and Lighthouse 36417049430; frontend Deploy 36417209670 failed before build/deploy. API SHA 5fea1752fb674dd463b65bb2069f2c13117e2749 preserved the same red test-gate pattern as base main."
   ],
   "next": [
-    "Process feature/* positions 26-65 after re-reading W07 and active claims.",
-    "Await owner review of #266, #222, #227, #526, #125, #130, #153, #186 and #502.",
+    "Process feature/* positions 66-70 after re-reading W07 and active claims.",
+    "Await API #534 green validation before advancing Admin Center PR #1.",
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-09",
+    "id": "W08-BH-20261003-10",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
       "media_library_pr_1": "KEEP_API_534_VALIDATE_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 31,
-    "high_risk_second_reviews": 26,
-    "unique_useful_this_run": 9,
-    "prs_closed_without_merge": [
-      9,
-      178
-    ],
+    "delete_ready_this_run": 24,
+    "high_risk_second_reviews": 16,
+    "unique_useful_this_run": 16,
+    "prs_closed_without_merge": [],
     "new_branches_created": 0,
-    "remaining_api_shard": 45,
+    "remaining_api_shard": 5,
     "remaining_feat_shard": 0,
-    "completed_shard": "feat/* positions 190-204 + feature/* positions 1-25",
-    "next_shard": "feature/* positions 26-65",
+    "completed_shard": "feature/* positions 26-65",
+    "next_shard": "feature/* positions 66-70",
     "evidence": [
       "Admin Center still has exactly three branches; main reports protected=false",
-      "Admin Center PR #2 is merged; source is delete-ready",
+      "Admin Center PR #2 is merged; source remains delete-ready",
       "Admin Center PR #1 remains open/mergeable but depends on API PR #534 with failed validation",
-      "API PR #9 closed without merge as stale monolithic Cutinapp domain",
-      "API PR #178 closed without merge as superseded by merged PR #179",
-      "branch-audit/w08-api-feat-complete-feature-round1-20261003-0235.md",
-      "worklogs/20261003-0235-W08-api-feat-complete-feature-round1.md",
-      "messages/20261003-0235-W08-to-owners-feat-complete-feature-round1.md"
+      "Eight producer-media-library branches share head beb2ab3; merged ready head is 2edcbd8 via API PR #278",
+      "branch-audit/w08-api-feature-round2-20261003-0330.md",
+      "worklogs/20261003-0330-W08-api-feature-round2.md",
+      "messages/20261003-0330-W08-to-owners-api-feature-round2.md"
     ]
   }
 }
