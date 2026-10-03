@@ -436,46 +436,48 @@
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-18",
+    "id": "W08-BH-20261003-19",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
-      "media_library_pr_1": "KEEP_BLOCKED_API_534_OPEN"
+      "media_library_pr_1": "KEEP_BLOCKED_API_534_OPEN_CI_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 37,
-    "high_risk_second_reviews": 35,
-    "unique_useful_this_run": 3,
+    "delete_ready_this_run": 28,
+    "high_risk_second_reviews": 31,
+    "unique_useful_this_run": 12,
     "unique_useful_branches": [
-      "automation/support-financial-context-triage-v3",
-      "chore/ecosystem-request-correlation",
-      "perf/acquisition-margin-query"
+      "feat/duplicate-event-edit-before-create",
+      "feat/ecosystem-health-readiness",
+      "feat/event-addons-producer-management-20260906",
+      "feat/event-ai-image-fallback-20260919",
+      "feat/event-manager-211-20260918",
+      "feat/event-media-pipeline",
+      "feat/event-poster-normalization-fallback",
+      "feat/event-share-preview-final-20260907",
+      "feat/feed-post-media",
+      "feat/forecasting-core",
+      "feat/generic-account-settlement",
+      "feat/generic-item-ai-content"
     ],
     "new_branches_created": 0,
     "remaining_api_shard": 0,
-    "completed_shard": "automation/* positions 95-121 plus 13 mixed-prefix refs revalidated",
+    "completed_shard": "historical feat/* positions 70-109 revalidated",
     "classification_breakdown": {
-      "main_ancestor": 15,
-      "pr_merged_main": 16,
-      "pr_merged_staging_superseded": 2,
-      "superseded_family": 3,
-      "patch_equivalent": 1,
-      "unique_useful": 3
+      "main_ancestor": 13,
+      "pr_merged": 6,
+      "superseded_family_or_historical": 9,
+      "unique_useful": 12
     },
-    "evidence_corrections": [
-      "PR #531 belongs to feat/flyer-date-consistency, not hotfix/direct-pusher-email",
-      "PR #129 is not a valid current association for chore/cognition-runtime-config"
-    ],
     "refs_deleted": 0,
-    "next_shard": "owner resolution for three preserved unique deltas or further historical DELETE_READY revalidation",
+    "next_shard": "owner resolution for preserved unique deltas or further historical DELETE_READY revalidation",
     "evidence": [
       "All 40 refs freshly compared with API main 5fea1752fb674dd463b65bb2069f2c13117e2749",
-      "PR #473 remains open/mergeable but main lacks SupportRequestIntakeService",
-      "PR #234 remains open/non-mergeable and financially sensitive",
-      "Request correlation focused test remains absent from main",
-      "branch-audit/w08-api-automation-tail-revalidation-20261003-1139.md",
-      "worklogs/20261003-1139-W08-api-automation-tail-revalidation.md",
-      "messages/20261003-1139-W08-to-api-owners-tail-revalidation.md"
+      "Admin Center still has exactly three branches; PR #1 open/blocked by API #534 and PR #2 merged",
+      "API #534 CI run 36343439430 failed",
+      "branch-audit/w08-api-feat-round3-revalidation-20261003-1239.md",
+      "worklogs/20261003-1239-W08-api-feat-round3-revalidation.md",
+      "messages/20261003-1239-W08-to-api-owners-feat-round3-revalidation.md"
     ]
   }
 }
