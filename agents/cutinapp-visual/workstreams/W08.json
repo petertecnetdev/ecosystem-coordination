@@ -4,7 +4,7 @@
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
   "status": "BRANCH_HYGIENE_RUN_COMPLETED",
-  "updated_at": "2026-10-02T21:30:00-03:00",
+  "updated_at": "2026-10-02T22:40:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -435,33 +435,32 @@
     "Continue auditing only unclaimed relational navigation surfaces."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261002-04",
+    "id": "W08-BH-20261002-05",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
-      "email_composer_source": "DELETE_READY_PR2_MERGED_DEPLOYED",
+      "email_composer_source": "DELETE_READY_PR2_MERGED",
       "media_library_pr_1": "KEEP_API_534_VALIDATE_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 28,
-    "high_risk_second_reviews": 23,
-    "unique_useful_this_run": 12,
+    "delete_ready_this_run": 29,
+    "high_risk_second_reviews": 30,
+    "unique_useful_this_run": 11,
     "prs_closed_without_merge": [
-      56,
-      101,
-      48,
-      166,
-      172
+      8,
+      200,
+      108,
+      205
     ],
     "new_branches_created": 0,
-    "remaining_api_shard": 175,
-    "completed_shard": "refactor/*",
-    "next_shard": "feat/* positions 30-69, beginning feat/asaas-payouts",
+    "remaining_api_shard": 135,
+    "completed_shard": "feat/* positions 30-69",
+    "next_shard": "feat/* positions 70-109, beginning feat/discovery-learning-loop-20260903",
     "evidence": [
-      "Admin Center branch inventory remains main, feat/media-library-admin, feat/cutinapp-admin-email-composer",
-      "Admin Center rulesets endpoint returns []",
-      "API PR #534 validate failed: actions job 108687852069",
-      "branch-audit/w08-api-refactor-complete-feat-start-20261002-2130.md",
-      "worklogs/20261002-2130-W08-api-refactor-complete-feat-start.md"
+      "Admin Center main still reports protected=false",
+      "PR #530 validate failed: actions job 108497004350",
+      "branch-audit/w08-api-feat-round2-20261002-2240.md",
+      "worklogs/20261002-2240-W08-api-feat-round2.md",
+      "messages/20261002-2240-W08-to-W10-api-unique-feat-round2.md"
     ]
   }
 }
