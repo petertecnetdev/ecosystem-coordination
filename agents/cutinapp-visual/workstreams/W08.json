@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "BRANCH_HYGIENE_INVENTORY_COMPLETE",
-  "updated_at": "2026-10-03T08:52:00-03:00",
+  "status": "BRANCH_HYGIENE_DELETE_READY_REVALIDATED",
+  "updated_at": "2026-10-03T09:52:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -430,47 +430,41 @@
     "Artist identity relation frontend SHA 9144f147d9e1252d07001b756167868d99183779 passed post-merge Validate 36417049343 and Lighthouse 36417049430; frontend Deploy 36417209670 failed before build/deploy. API SHA 5fea1752fb674dd463b65bb2069f2c13117e2749 preserved the same red test-gate pattern as base main."
   ],
   "next": [
-    "Monitor owner decisions for the 23 selectively preserved API branches; do not merge stale monoliths wholesale.",
-    "Execute the 16-ref DELETE_READY batch when authorized delete-ref capability becomes available.",
+    "Execute the revalidated 40-ref DELETE_READY allowlist when authorized delete-ref capability becomes available; recheck heads immediately before deletion.",
+    "Continue owner follow-up for the 23 selectively preserved unique API deltas from the final inventory.",
     "Await API #534 green validation before advancing Admin Center PR #1.",
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-15",
+    "id": "W08-BH-20261003-16",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
-      "media_library_pr_1": "KEEP_BLOCKED_API_534_VALIDATE_FAILED"
+      "media_library_pr_1": "KEEP_BLOCKED_API_534_NO_GREEN_VALIDATION"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 16,
-    "high_risk_second_reviews": 31,
-    "unique_useful_this_run": 23,
-    "keep_environment": [
-      "staging"
-    ],
-    "prs_closed_without_merge": [
-      290,
-      46,
-      55,
-      236,
-      89,
-      333
-    ],
+    "delete_ready_this_run": 40,
+    "high_risk_second_reviews": 23,
+    "unique_useful_this_run": 0,
     "new_branches_created": 0,
     "remaining_api_shard": 0,
-    "completed_shard": "final 24 previously unreviewed non-W07 branches plus 16 preserved/high-risk second reviews",
-    "next_shard": "monitor selective-recovery owners and delete-ready execution availability",
+    "completed_shard": "revalidation of automation/* positions 15-54 DELETE_READY batch",
+    "classification_breakdown": {
+      "main_ancestor": 20,
+      "pr_merged": 17,
+      "patch_equivalent_or_superseded": 3
+    },
+    "refs_deleted": 0,
+    "next_shard": "revalidate another historical DELETE_READY batch or execute deletion when capability is available",
     "evidence": [
-      "All non-W07 API branches in the assigned inventory are now reviewed",
-      "Admin Center still has exactly three branches; main SHA 9c649f5 reports protected=false",
-      "Admin Center PR #1 remains open and blocked by failed validation on API PR #534",
-      "PRs #290, #46, #55, #236, #89 and #333 closed without merge after second review",
-      "16 refs classified DELETE_READY; no refs deleted because delete-ref is unavailable",
-      "23 branches preserved for selective recovery; staging retained as environment branch",
-      "branch-audit/w08-api-final-inventory-20261003-0830.md",
-      "worklogs/20261003-0830-W08-api-final-inventory.md",
-      "messages/20261003-0830-W08-to-api-owners-final-inventory.md"
+      "All 40 refs re-compared with API main 5fea1752fb674dd463b65bb2069f2c13117e2749",
+      "20 refs report ahead=0",
+      "37 historical PR associations freshly confirmed merged=true",
+      "Three no-PR refs rechecked via current source contents and blob identity",
+      "23 finance/payment/auth/migration-adjacent refs received second review",
+      "branch-audit/w08-api-delete-ready-revalidation-20261003-0938.md",
+      "worklogs/20261003-0938-W08-api-delete-ready-revalidation.md",
+      "messages/20261003-0938-W08-to-repo-admin-delete-ready.md"
     ]
   }
 }
