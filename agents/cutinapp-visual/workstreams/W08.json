@@ -436,48 +436,55 @@
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-22",
+    "id": "W08-BH-20261003-23",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
       "media_library_pr_1": "KEEP_BLOCKED_API_534_OPEN_CI_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 31,
-    "high_risk_second_reviews": 26,
-    "unique_useful_this_run": 9,
+    "delete_ready_this_run": 24,
+    "high_risk_second_reviews": 16,
+    "unique_useful_this_run": 16,
     "unique_useful_branches": [
-      "feat/ride-events",
-      "feat/social-feed-v2",
-      "feat/social-timeline-v2",
-      "feat/universal-whatsapp-notifications",
-      "feature/admin-copilot",
-      "feature/ambient-media",
-      "feature/blog-performance-instagram",
-      "feature/cutinapp-event-opening-media",
-      "feature/cutinapp-mercadopago-auto-split-20260918-v2"
+      "feature/event-producer-notifications",
+      "feature/event-production-prefill",
+      "feature/generic-commerce-checkout",
+      "feature/global-ecosystem-sso",
+      "feature/global-social-feed",
+      "feature/identity-production-hardening-v3",
+      "feature/identity-sso-hardening",
+      "feature/media-library-multi-media",
+      "feature/nexus-item-social-share-20260902",
+      "feature/peter-account-ecosystem",
+      "feature/peter-identity-core-v2",
+      "feature/producer-assisted-onboarding",
+      "feature/producer-engagement-email",
+      "feature/property-intelligence-20",
+      "feature/property-management",
+      "feature/provider-settlement-statements-20260903"
     ],
     "new_branches_created": 0,
     "remaining_api_shard": 0,
-    "completed_shard": "final feat/* positions 190-204 plus feature/* positions 1-25 revalidated",
+    "completed_shard": "historical feature/* positions 26-65 revalidated",
     "classification_breakdown": {
-      "main_ancestor": 10,
-      "pr_merged_main": 15,
-      "superseded_or_historical": 6,
-      "unique_useful": 9
+      "main_ancestor_or_merged": 15,
+      "same_head_or_superseded_family": 9,
+      "unique_useful": 16
     },
-    "evidence_corrections": [
-      "PR #212 has a different head; feature/admin-user-communications-mainready-20260906 is DELETE_READY by MAIN_ANCESTOR"
+    "high_risk_notes": [
+      "PR #66 has green API CI 33763991738 but targets staging and requires finance review",
+      "PR #296 is mergeable but API CI 34303975115 failed",
+      "identity PRs #70, #78 and #80 remain open/non-mergeable",
+      "no finance/auth/webhook/migration branch was merged or deleted"
     ],
     "refs_deleted": 0,
-    "next_shard": "owner resolution for nine preserved deltas or further historical DELETE_READY revalidation",
+    "next_shard": "owner resolution for preserved deltas or additional DELETE_READY revalidation",
     "evidence": [
       "All 40 refs freshly compared with API main 5fea1752fb674dd463b65bb2069f2c13117e2749",
-      "PR #526 remains open/mergeable but CI failed",
-      "PR #502 remains open/non-mergeable under finance risk",
-      "branch-audit/w08-api-feat-complete-feature-round1-revalidation-20261003-1538.md",
-      "worklogs/20261003-1538-W08-api-feat-complete-feature-round1-revalidation.md",
-      "messages/20261003-1538-W08-to-api-owners-feat-feature-revalidation.md"
+      "branch-audit/w08-api-feature-round2-revalidation-20261003-1631.md",
+      "worklogs/20261003-1631-W08-api-feature-round2-revalidation.md",
+      "messages/20261003-1631-W08-to-api-owners-feature-round2-revalidation.md"
     ]
   }
 }
