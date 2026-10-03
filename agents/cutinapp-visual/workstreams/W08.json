@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "BRANCH_HYGIENE_AUTOMATION_TAIL_REVALIDATED",
-  "updated_at": "2026-10-03T11:57:00-03:00",
+  "status": "BRANCH_HYGIENE_PHYSICAL_CLEANUP_BATCH_C_VERIFIED",
+  "updated_at": "2026-10-03T19:33:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -394,6 +394,47 @@
         "Frontend Deploy 36417209670 failed at Fetch frontend build environment; build, deploy and health check were skipped"
       ],
       "notes": "Both contracts are merged. Frontend CI is green, but the API retains its pre-existing red test baseline and neither API nor frontend deployment completed. Runtime verification is not claimed."
+    },
+    {
+      "id": "W08-BH-20261003-26",
+      "priority": "P1",
+      "status": "VERIFIED",
+      "title": "API physical branch cleanup batch C",
+      "repository": "petertecnetdev/api.petertecnet.com.br",
+      "admincenter_status": {
+        "branch_count": 2,
+        "main": "KEEP",
+        "pr_1": "KEEP_BLOCKED_NON_MERGEABLE_API_534",
+        "pr_2": "MERGED_SOURCE_ABSENT"
+      },
+      "metrics": {
+        "api_branch_count_before": 599,
+        "deleted_verified": 40,
+        "api_branch_count_after": 559,
+        "net_reduction": 40,
+        "high_risk_second_reviews": 15,
+        "delete_ready_remaining_in_shard": 0,
+        "unique_useful_in_shard": 0,
+        "new_branches_created": 0
+      },
+      "execution": {
+        "workflow_commit": "5d71c9dab4afa9834b2c3df424e95aa67925cf88",
+        "workflow_run": 37158591328,
+        "conclusion": "success",
+        "summary": "deleted=40 already_absent=0 changed=0 failures=0"
+      },
+      "safety": [
+        "exact expected head SHA checked immediately before each deletion",
+        "agent/* and w07/* excluded",
+        "FIN-P0-001 excluded",
+        "no force-push/update_ref deletion/deploy/VPS/new branch"
+      ],
+      "evidence": [
+        "branch-audit/w08-api-physical-cleanup-batch-c-20261003-1931.md",
+        "worklogs/20261003-1931-W08-api-physical-cleanup-batch-c.md",
+        "messages/20261003-1931-W08-to-repo-admin-api-physical-cleanup-batch-c.md",
+        "https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/37158591328"
+      ]
     }
   ],
   "requests_for": {
