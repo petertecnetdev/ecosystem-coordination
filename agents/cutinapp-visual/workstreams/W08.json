@@ -4,7 +4,7 @@
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
   "status": "BRANCH_HYGIENE_RUN_COMPLETED",
-  "updated_at": "2026-10-02T20:38:00-03:00",
+  "updated_at": "2026-10-02T21:30:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -435,32 +435,33 @@
     "Continue auditing only unclaimed relational navigation surfaces."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261002-03",
+    "id": "W08-BH-20261002-04",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED_DEPLOYED",
-      "media_library_pr_1": "KEEP_API_534_CI_BLOCKED"
+      "media_library_pr_1": "KEEP_API_534_VALIDATE_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 32,
-    "high_risk_second_reviews": 24,
-    "unique_useful_this_run": 8,
+    "delete_ready_this_run": 28,
+    "high_risk_second_reviews": 23,
+    "unique_useful_this_run": 12,
     "prs_closed_without_merge": [
-      44,
-      61,
-      62,
-      146
+      56,
+      101,
+      48,
+      166,
+      172
     ],
     "new_branches_created": 0,
-    "remaining_api_shard": 11,
-    "completed_shard": "fix/*",
-    "next_shard": "refactor/* positions 9-19 plus next non-W07 prefix",
+    "remaining_api_shard": 175,
+    "completed_shard": "refactor/*",
+    "next_shard": "feat/* positions 30-69, beginning feat/asaas-payouts",
     "evidence": [
-      "Admin Center main 9c649f5537afe1dbd9bc486a4bf7a2e7df765c4f reports protected=false",
-      "fix/* inventory exhausted",
-      "branch-audit/w08-api-fix-complete-refactor-start-20261002-2038.md",
-      "worklogs/20261002-2038-W08-api-fix-complete-refactor-start.md",
-      "messages/20261002-2038-W08-to-account-main-revenue-financial-payout-family.md"
+      "Admin Center branch inventory remains main, feat/media-library-admin, feat/cutinapp-admin-email-composer",
+      "Admin Center rulesets endpoint returns []",
+      "API PR #534 validate failed: actions job 108687852069",
+      "branch-audit/w08-api-refactor-complete-feat-start-20261002-2130.md",
+      "worklogs/20261002-2130-W08-api-refactor-complete-feat-start.md"
     ]
   }
 }
