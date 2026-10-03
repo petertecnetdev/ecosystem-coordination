@@ -4,7 +4,7 @@
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
   "status": "BRANCH_HYGIENE_RUN_COMPLETED",
-  "updated_at": "2026-10-03T03:50:00-03:00",
+  "updated_at": "2026-10-03T04:50:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -430,35 +430,38 @@
     "Artist identity relation frontend SHA 9144f147d9e1252d07001b756167868d99183779 passed post-merge Validate 36417049343 and Lighthouse 36417049430; frontend Deploy 36417209670 failed before build/deploy. API SHA 5fea1752fb674dd463b65bb2069f2c13117e2749 preserved the same red test-gate pattern as base main."
   ],
   "next": [
-    "Process feature/* positions 66-70 after re-reading W07 and active claims.",
+    "Process automation/* positions 15-54 after re-reading W07 and active claims.",
+    "Preserve feature/revive-event, feature/subscriptions-mercadopago and admincenter-security for selective recovery.",
     "Await API #534 green validation before advancing Admin Center PR #1.",
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-10",
+    "id": "W08-BH-20261003-11",
     "admincenter_status": {
       "main": "KEEP_PROTECTION_GAP",
       "email_composer_source": "DELETE_READY_PR2_MERGED",
       "media_library_pr_1": "KEEP_API_534_VALIDATE_FAILED"
     },
     "reviewed_this_run": 40,
-    "delete_ready_this_run": 24,
-    "high_risk_second_reviews": 16,
-    "unique_useful_this_run": 16,
+    "delete_ready_this_run": 37,
+    "high_risk_second_reviews": 12,
+    "unique_useful_this_run": 3,
     "prs_closed_without_merge": [],
     "new_branches_created": 0,
-    "remaining_api_shard": 5,
+    "remaining_api_shard": 144,
     "remaining_feat_shard": 0,
-    "completed_shard": "feature/* positions 26-65",
-    "next_shard": "feature/* positions 66-70",
+    "remaining_feature_shard": 0,
+    "completed_shard": "feature/* positions 66-70 + 35 mixed-prefix branches",
+    "next_shard": "automation/* positions 15-54",
     "evidence": [
-      "Admin Center still has exactly three branches; main reports protected=false",
+      "Admin Center still has exactly three branches; main SHA 9c649f5 reports protected=false",
       "Admin Center PR #2 is merged; source remains delete-ready",
-      "Admin Center PR #1 remains open/mergeable but depends on API PR #534 with failed validation",
-      "Eight producer-media-library branches share head beb2ab3; merged ready head is 2edcbd8 via API PR #278",
-      "branch-audit/w08-api-feature-round2-20261003-0330.md",
-      "worklogs/20261003-0330-W08-api-feature-round2.md",
-      "messages/20261003-0330-W08-to-owners-api-feature-round2.md"
+      "Admin Center PR #1 is clean but blocked by API PR #534 validate failure",
+      "Nine artist-upgrade-temp* refs share exact head 1c1072e and are main ancestors",
+      "Fresh inventory returned 625 remote branches; 144 non-W07 branches remain unreviewed by W08",
+      "branch-audit/w08-api-feature-tail-mixed-prefix-20261003-0430.md",
+      "worklogs/20261003-0430-W08-api-feature-tail-mixed-prefix.md",
+      "messages/20261003-0430-W08-to-owners-feature-tail-mixed-prefix.md"
     ]
   }
 }
