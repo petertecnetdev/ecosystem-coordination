@@ -1,0 +1,51 @@
+# CLAIM — W08 API automation round 3
+
+- worker: W08
+- status: CLAIMED
+- claimed_at: 2026-10-03T06:35:00-03:00
+- repository: petertecnetdev/api.petertecnet.com.br
+- scope: automation/* positions 55–94 from the ordered GitHub branch search
+- branch_count: 40
+- exclusions: all agent/* and w07/* branches reserved for W07; active claims belonging to other workers
+- policy: classify SAME_HEAD, MAIN_ANCESTOR, PR_MERGED, PATCH_EQUIVALENT, SUPERSEDED_FAMILY; second-review finance/auth/webhook/migrations; no branch creation; no delete-ref
+- branches:
+  - automation/payment-health-diagnosis-r15
+  - automation/payment-health-incidents-r14
+  - automation/payment-health-recovery-attribution-r16
+  - automation/payment-health-recovery-r13
+  - automation/payment-health-risk-r11
+  - automation/payment-reconciliation-persistence-r11
+  - automation/payment-reconciliation-telemetry-r12
+  - automation/payment-retry-after-r11
+  - automation/payout-identity-safety-r11
+  - automation/pix-init-recovery-economics-r11
+  - automation/pix-postcopy-funnel-r11
+  - automation/plat-guest-checkout-r6
+  - automation/plat-guest-pix-api-r9
+  - automation/plat-payment-retry-r12
+  - automation/plat-pix-recovery-deeplink-r19
+  - automation/plat-pix-recovery-deeplink-r20
+  - automation/plat-pix-recovery-deeplink-r21
+  - automation/precheckout-funnel-r11
+  - automation/preserve-profile-photo-ordering-r17
+  - automation/profitability-confidence-adjusted-value
+  - automation/profitability-dashboard-alert-20260907
+  - automation/profitability-financial-dashboard
+  - automation/profitability-recovery-action-cost
+  - automation/profitability-recovery-break-even-margin
+  - automation/profitability-recovery-guardrails
+  - automation/profitability-recovery-roi
+  - automation/profitability-recovery-segment-probability
+  - automation/profitability-risk-queue-v2
+  - automation/profitability-top-recovery-opportunities
+  - automation/profitable-pix-recovery-cta
+  - automation/provider-failure-r11
+  - automation/provider-init-failure-r12
+  - automation/public-event-ticket-availability
+  - automation/public-scheduling-availability-r5
+  - automation/public-sellable-inventory-run11
+  - automation/r11-commerce-webhook-compat-latest
+  - automation/r11-treatment-attribution
+  - automation/r13-reconciliation-alerts
+  - automation/r14-reconciliation-app-breakdown
+  - automation/rasoio-renewal-final-reminder-r6
