@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "BRANCH_HYGIENE_PHYSICAL_CLEANUP_BATCH_D_VERIFIED",
-  "updated_at": "2026-10-03T20:38:00-03:00",
+  "status": "BRANCH_HYGIENE_PHYSICAL_CLEANUP_BATCH_E_VERIFIED",
+  "updated_at": "2026-10-03T21:32:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -474,6 +474,24 @@
         "worklogs/20261003-2036-W08-api-physical-cleanup-batch-d.md",
         "messages/20261003-2036-W08-to-repo-admin-api-physical-cleanup-batch-d.md"
       ]
+    },
+    {
+      "id": "W08-BH-20261003-28",
+      "priority": "P1",
+      "status": "VERIFIED",
+      "title": "API physical cleanup batch E",
+      "scope": [
+        "petertecnetdev/api.petertecnet.com.br",
+        "32 historical feature refs"
+      ],
+      "evidence": [
+        "API branches 499 -> 467 (net -32)",
+        "GitHub Actions run 37165172557 / job 111326492850 succeeded",
+        "SUMMARY deleted=32 already_absent=0 changed=0 failures=0",
+        "All selected refs absent in post-run enumeration",
+        "8 high-risk second reviews completed"
+      ],
+      "notes": "Admin Center live count 2; PR #2 source absent; PR #1 KEEP while API #534 remains blocked. Admin Center main still reports protected=false."
     }
   ],
   "requests_for": {
