@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "BRANCH_HYGIENE_MAIN_ANCESTOR_CLEANUP_BATCH_M_VERIFIED",
-  "updated_at": "2026-10-04T05:38:00-03:00",
+  "status": "BRANCH_HYGIENE_PATCH_EQUIVALENT_CLEANUP_BATCH_N_VERIFIED",
+  "updated_at": "2026-10-04T06:40:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -723,6 +723,28 @@
         "Repository admin: protect Admin Center main (live protected=false)",
         "Next W08 phase: owner-aware review of divergent/unique branches; no automatic deletion"
       ]
+    },
+    {
+      "id": "W08-BH-20261004-37",
+      "priority": "P1",
+      "status": "VERIFIED",
+      "title": "API patch-equivalent physical cleanup batch N",
+      "scope": [
+        "petertecnetdev/api.petertecnet.com.br",
+        ".github/workflows/branch-cleanup-once-20261003.yml"
+      ],
+      "evidence": [
+        "210 API branches before; 208 after",
+        "Two exact-tree duplicate payment refs deleted and independently confirmed absent",
+        "Canonical fix/commerce-card-payment-retry preserved",
+        "All three reviewed commits resolved to tree d2ea75ffb4695b52948e803b964d706ca0ea93de",
+        "Workflow 37192666372: deleted=2 already_absent=0 changed=0 failures=0",
+        "API #534 remains open and API CI run 36343439430 failed"
+      ],
+      "requests_for": [
+        "Repository admin: protect Admin Center main (live protected=false)",
+        "Next W08 phase: continue owner-aware review of divergent/unique API refs; do not auto-delete"
+      ]
     }
   ],
   "requests_for": {
@@ -765,54 +787,37 @@
     "Await repository owner/admin branch protection or ruleset for Admin Center main."
   ],
   "branch_hygiene_latest": {
-    "id": "W08-BH-20261003-25",
+    "id": "W08-BH-20261004-37",
+    "admincenter_count": 2,
     "admincenter_status": {
-      "main": "KEEP_PROTECTION_GAP",
-      "email_composer_source": "DELETE_READY_PR2_MERGED",
-      "media_library_pr_1": "KEEP_BLOCKED_API_534_OPEN_CI_FAILED"
+      "main": "KEEP_PROTECTION_GAP_LIVE_PROTECTED_FALSE",
+      "pr_1": "KEEP_BLOCKED_API_534_OPEN_CI_FAILED",
+      "pr_2": "MERGED_SOURCE_ABSENT"
     },
-    "reviewed_this_run": 40,
-    "delete_ready_this_run": 14,
-    "high_risk_second_reviews": 26,
-    "unique_useful_this_run": 26,
+    "api_branch_count_before": 210,
+    "deleted_verified_this_run": 2,
+    "api_branch_count_after": 208,
+    "net_reduction": 2,
+    "high_risk_second_reviews": 3,
+    "delete_ready_remaining": 0,
+    "unique_useful": 1,
     "new_branches_created": 0,
-    "remaining_api_shard": 0,
-    "completed_shard": "mixed remaining feature deltas, owner-review candidates and DELETE_READY refs",
-    "classification_breakdown": {
-      "pr_merged_or_historical": 12,
-      "main_ancestor": 1,
-      "superseded_family": 1,
-      "unique_useful": 26
+    "classification": {
+      "patch_equivalent_deleted": 2,
+      "canonical_preserved": 1,
+      "divergent_families_preserved": 4
     },
-    "delete_ready_branches": [
-      "perf/ecosystem-hardening-20260908",
-      "production/rasoio-20260902",
-      "profit/recovery-surface-economics-20260909",
-      "profit/recovery-surface-maturity",
-      "profitability/checkout-recovery-deeplink",
-      "profitability/pix-recovery-timing-experiment",
-      "revenue/enforce-staff-entitlement-plat",
-      "revenue/recover-subscription-intent",
-      "revenue/subscription-pix-email-recovery",
-      "review/api-core-hardening",
-      "security/dependency-audit-20260904",
-      "seo/dynamic-sitemap-20260908",
-      "tmp-noop",
-      "w08/artist-claim-relations"
-    ],
-    "high_risk_notes": [
-      "26 refs match finance, checkout, subscription, identity/auth, security, jobs, webhooks or migration surfaces",
-      "PR #66 remains based on staging despite historical green CI",
-      "quality/payout-release-guard, PR #473 and PR #234 remain finance-owner work",
-      "no finance/auth/webhook/migration branch was merged or deleted"
-    ],
-    "refs_deleted": 0,
-    "next_shard": "owner resolution for 26 preserved deltas or another fresh DELETE_READY allowlist",
+    "execution": {
+      "workflow_commit": "1e22742ecaf6499312c0f9b90133d7de07c92688",
+      "workflow_run": 37192666372,
+      "workflow_job": 111407966687,
+      "conclusion": "success",
+      "summary": "deleted=2 already_absent=0 changed=0 failures=0"
+    },
     "evidence": [
-      "All 40 refs freshly compared with API main 5fea1752fb674dd463b65bb2069f2c13117e2749",
-      "branch-audit/w08-api-mixed-owner-resolution-20261003-1831.md",
-      "worklogs/20261003-1831-W08-api-mixed-owner-resolution.md",
-      "messages/20261003-1831-W08-to-api-owners-mixed-resolution.md"
+      "branch-audit/w08-api-patch-equivalent-cleanup-batch-n-20261004-0640.md",
+      "worklogs/20261004-0640-W08-api-patch-equivalent-cleanup-batch-n.md",
+      "messages/20261004-0640-W08-to-repo-admin-api-patch-equivalent-cleanup-batch-n.md"
     ]
   }
 }
