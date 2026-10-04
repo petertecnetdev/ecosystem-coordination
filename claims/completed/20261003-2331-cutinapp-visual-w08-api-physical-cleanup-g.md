@@ -1,0 +1,66 @@
+# CLAIM — W08 API physical cleanup batch G
+
+- Worker: W08
+- Repository: `petertecnetdev/api.petertecnet.com.br`
+- Scope: 40 live historical source refs whose PRs are merged directly into `main`.
+- Exclusion: W07/agent refs, open PR heads, active UNIQUE_USEFUL and FIN-P0 refs.
+- Method: fresh comparison, sensitive diff review, exact-SHA GitHub Actions deletion, post-run verification.
+- Started: 2026-10-03 23:31 America/Sao_Paulo
+- Status: VERIFIED / COMPLETED
+
+## Exact shard
+
+- `audit/cutinapp-courtesy-mutation-lock-2026-09-01` — merged PR #25 to main; head `26ab7c539c34b811ce05d7871dae79137bac829e`
+- `audit/cutinapp-event-capacity-2026-09-01` — merged PR #26 to main; head `aa7af7a2950955f877ffd213b9f838d2b5fb739e`
+- `audit/cutinapp-private-courtesy-guard-2026-09-01` — merged PR #24 to main; head `3de32e42ae846becec02ae6907930083220c3b71`
+- `audit/cutinapp-private-event-visibility-2026-09-01` — merged PR #23 to main; head `a72f0c61f382936015d3e0143db1542a1385d5a4`
+- `audit/cutinapp-public-production-visibility-2026-09-01` — merged PR #20 to main; head `5df70462469c60a745e5fcd40cd23374df31d2e8`
+- `audit/cutinapp-safe-lineup-notifications-2026-09-01` — merged PR #22 to main; head `1eb1033e40b6983c3df37cd8fd4405154a3929ce`
+- `audit/cutinapp-social-visible-targets-2026-09-01` — merged PR #21 to main; head `7ddc0245ada3c188a57cface46150be696f001c7`
+- `audit/platform-hardening-2026-08-28` — merged PR #4 to main; head `47f0e9aaf334ceee9a562b7db734271740e1e55b`
+- `automation/acquisition-net-margin-20260907` — merged PR #233 to main; head `b79a1f772251d16c05230c016f242d5ef00543c6`
+- `automation/agenda-ticket-availability-r10` — merged PR #330 to main; head `6bf3eb34a29cbf0807a8cdadc382e0cf5b65d9df`
+- `automation/cutinapp-r11-gmv` — merged PR #372 to main; head `6ebf9fa2270ea88117f13c6a22ab3b70c5c0c323`
+- `automation/cutinapp-rollout-readiness-api` — merged PR #369 to main; head `bb373c6b2679c9657be0b5dd14358d133492da06`
+- `automation/cutinapp-ticket-availability-status` — merged PR #328 to main; head `c2ee044ee905ada312104971d318193ea0898d4c`
+- `automation/establishment-interaction-funnel-r11` — merged PR #452 to main; head `327b677c03d9b59b39107939441fafab17b678f9`
+- `automation/event-pass-wallet-cta` — merged PR #419 to main; head `bad673d19a0e4675c2cd9a3e21d6ddfe2c65c7b5`
+- `automation/event-sellable-readiness-20260909` — merged PR #318 to main; head `a253b6fdd374fb3eaaa01bc0e071476896713f77`
+- `automation/expected-recovery-contribution` — merged PR #262 to main; head `1a8e0031e5cabb832f8871226184e32f95ef61bb`
+- `automation/expected-recovery-value-20260907` — merged PR #260 to main; head `e6c1a9ed2aafdcc3b92ea1d13a2c79c4b2815adc`
+- `automation/feed-ticket-availability-r11` — merged PR #331 to main; head `fa6f33abe7236f7f9be68cc5141f705475e0bcae`
+- `automation/fix-recovery-seconds-contract` — merged PR #460 to main; head `dc8b20c163bff92463941c196a8e328716c453f8`
+- `automation/fix-revenue-funnel-grouping-r11` — merged PR #407 to main; head `c683b26dd6661b0c45050ad67beac0404c4c3b2a`
+- `automation/frontend-telemetry-environment-r15` — merged PR #399 to main; head `a6f64b748412e6c2ff44aba210f59b15317ba4f5`
+- `automation/preserve-profile-photo-ordering-r17` — merged PR #387 to main; head `dc53373886ffd34ca888ede14887d8f319037b25`
+- `automation/profitability-confidence-adjusted-value` — merged PR #272 to main; head `9d4676bccf77bc183cab76ec02e4ab72e6ab4dd6`
+- `automation/profitability-dashboard-alert-20260907` — merged PR #238 to main; head `c368e128f25cee56d0f788338f3bfcfce5b757f1`
+- `automation/profitability-recovery-action-cost` — merged PR #263 to main; head `dad0a1ea2a3b11bf0aae6bcf47b5ab069766fc1c`
+- `automation/profitability-recovery-break-even-margin` — merged PR #269 to main; head `c886f99f4569ef6be6ce672b1d20bd4426081389`
+- `automation/profitability-recovery-guardrails` — merged PR #268 to main; head `85bd763a1ed2f277169f122bd6e074ec1f9b7262`
+- `automation/profitability-recovery-roi` — merged PR #267 to main; head `84f8f8c46d6b4ffe70982fbd91904e5a5ce932ba`
+- `automation/profitability-recovery-segment-probability` — merged PR #261 to main; head `fba68bca93769fbfb6689573b2fa1d3053ec65d0`
+- `automation/profitability-risk-queue-v2` — merged PR #250 to main; head `dbeb66196793b921e639d34c0f680661efec4fb1`
+- `automation/provider-failure-r11` — merged PR #428 to main; head `d68a261cafe746d4dd02990eb7732b629ef5fc3e`
+- `automation/public-event-ticket-availability` — merged PR #329 to main; head `c2c3aa1c8e6a9b9d2a5a98297b9d2bd29e644ba4`
+- `automation/public-scheduling-availability-r5` — merged PR #427 to main; head `d0958468c887671dc5ebf2a8c18ad40dda68483c`
+- `automation/public-sellable-inventory-run11` — merged PR #325 to main; head `61a84d56280ff3f3565b91b89b4a98f706ea9def`
+- `automation/reconcile-prod-discovery-r11` — merged PR #430 to main; head `23e2430e5d50c14679e1469d3984f6e95bc1687d`
+- `automation/recovery-confidence-r11` — merged PR #343 to main; head `67d7027a3a147d4b49f21b94f9bdf0b41ac133b7`
+- `automation/recovery-decision-policy-r20` — merged PR #342 to main; head `d93d64e99dc1b9d2146ec99632a0c8155cfd04e5`
+- `automation/recovery-incrementality-confidence-20260909` — merged PR #304 to main; head `f6ff4b9be419a4cb4c4ea66314be8c3e1a06f72d`
+- `automation/recovery-platform-revenue-priority` — merged PR #254 to main; head `1cd6be19899d8755b3cbb9ed3b491b967bcc7b11`
+
+## Completion evidence
+
+- API branches: 440 -> 400
+- Deleted and verified absent: 40
+- MAIN_ANCESTOR: 19
+- PR_MERGED_MAIN: 21
+- High-risk second reviews: 8
+- Unique useful: 0
+- Delete-ready remaining in shard: 0
+- Workflow commit: `42edeaa587ba2d71f02bcda51daa47a8dd34955b`
+- Run: https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/37171199357
+- Job: https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/37171199357/job/111344343250
+- Summary: `deleted=40 already_absent=0 changed=0 failures=0`
