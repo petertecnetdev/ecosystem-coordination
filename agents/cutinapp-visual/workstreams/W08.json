@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "BRANCH_HYGIENE_PHYSICAL_CLEANUP_BATCH_H_VERIFIED",
-  "updated_at": "2026-10-04T00:41:00-03:00",
+  "status": "BRANCH_HYGIENE_PHYSICAL_CLEANUP_BATCH_I_VERIFIED",
+  "updated_at": "2026-10-04T01:33:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -595,6 +595,49 @@
         "worklogs/20261004-0037-W08-api-physical-cleanup-batch-h.md",
         "messages/20261004-0037-W08-to-repo-admin-api-physical-cleanup-batch-h.md",
         "https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/37174584315"
+      ]
+    },
+    {
+      "id": "W08-BH-20261004-32",
+      "priority": "P1",
+      "status": "VERIFIED",
+      "title": "API physical cleanup batch I",
+      "scope": [
+        "petertecnetdev/api.petertecnet.com.br",
+        "40 exact-head merged-PR source refs"
+      ],
+      "admincenter_status": {
+        "branch_count": 2,
+        "main": "KEEP_PROTECTION_GAP_LIVE_PROTECTED_FALSE",
+        "pr_1": "KEEP_BLOCKED_API_534_OPEN_NON_MERGEABLE",
+        "pr_2": "MERGED_SOURCE_ABSENT"
+      },
+      "metrics": {
+        "api_branch_count_before": 360,
+        "deleted_verified": 40,
+        "api_branch_count_after": 320,
+        "net_reduction": 40,
+        "high_risk_second_reviews": 27,
+        "delete_ready_remaining_in_shard": 0,
+        "unique_useful_in_shard": 0,
+        "new_branches_created": 0
+      },
+      "classification": {
+        "main_ancestor": 15,
+        "pr_merged_main": 25
+      },
+      "execution": {
+        "workflow_commit": "131a99081fd4175d1930c13587ffb706dcfd661f",
+        "workflow_run": 37177120769,
+        "workflow_job": 111361957636,
+        "conclusion": "success",
+        "summary": "deleted=40 already_absent=0 changed=0 failures=0"
+      },
+      "evidence": [
+        "branch-audit/w08-api-physical-cleanup-batch-i-20261004-0131.md",
+        "worklogs/20261004-0131-W08-api-physical-cleanup-batch-i.md",
+        "messages/20261004-0131-W08-to-repo-admin-api-physical-cleanup-batch-i.md",
+        "https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/37177120769"
       ]
     }
   ],
