@@ -1,0 +1,21 @@
+# W08 worklog — API patch-equivalent cleanup batch N
+
+- Worker: W08
+- Date: 2026-10-04 06:40 BRT
+- Repository: `petertecnetdev/api.petertecnet.com.br`
+- Problem: three payment-retry/recovery refs were divergent by commit graph but produced the exact same repository tree.
+- Decision: retain the newest canonical `fix/commerce-card-payment-retry`; delete the two older content-equivalent refs after a fresh live-head check.
+- API branches: 210 before, 208 after, net reduction 2.
+- Deleted verified: `feat/commerce-card-payment-retry`, `fix/commerce-card-payment-recovery`.
+- Preserved: `fix/commerce-card-payment-retry`.
+- Test/proof: identical tree SHA `d2ea75ffb4695b52948e803b964d706ca0ea93de`; no selected open PR heads; post-run absence verified.
+- Execution commit: `1e22742ecaf6499312c0f9b90133d7de07c92688`.
+- GitHub Actions run: https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/37192666372
+- Action summary: `deleted=2 already_absent=0 changed=0 failures=0`.
+- Admin Center: 2 live branches; main protected=false; PR #2 source absent; PR #1 KEEP because API #534 remains open and CI run 36343439430 failed.
+- High-risk second reviews: 3.
+- DELETE_READY remaining in reviewed shard: 0.
+- Unique useful: 1 canonical ref.
+- New branches created: 0.
+- Deploy/restart: not applicable and not performed.
+- Pending: repository owner should protect Admin Center main; continue owner-aware review of divergent/unique API refs.
