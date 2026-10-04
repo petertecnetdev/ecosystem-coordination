@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "BRANCH_HYGIENE_PHYSICAL_CLEANUP_BATCH_J_VERIFIED",
-  "updated_at": "2026-10-04T02:34:00-03:00",
+  "status": "BRANCH_HYGIENE_PHYSICAL_CLEANUP_BATCH_K_VERIFIED",
+  "updated_at": "2026-10-04T03:34:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -659,6 +659,27 @@
       "requests_for": [
         "Repository admin: enable branch protection or ruleset for Admin Center main (live protected=false)",
         "W08 next batch: 52 exact merged source refs remain DELETE_READY after excluding W07/open heads"
+      ]
+    },
+    {
+      "id": "W08-BH-20261004-34",
+      "priority": "P1",
+      "status": "VERIFIED",
+      "title": "API physical branch cleanup batch K",
+      "scope": [
+        "petertecnetdev/api.petertecnet.com.br",
+        ".github/workflows/branch-cleanup-once-20261003.yml"
+      ],
+      "evidence": [
+        "280 API branches before; 240 after",
+        "40 exact merged PR source refs deleted and independently confirmed absent",
+        "Workflow 37182925745: deleted=40 already_absent=0 changed=0 failures=0",
+        "40 high-risk second reviews; 26 MAIN_ANCESTOR and 14 PR_MERGED",
+        "12 exact merged source refs remain DELETE_READY"
+      ],
+      "requests_for": [
+        "Repository admin: protect Admin Center main (live protected=false)",
+        "W08 next batch: process the 12 remaining exact merged refs, then reassess unique branches"
       ]
     }
   ],
