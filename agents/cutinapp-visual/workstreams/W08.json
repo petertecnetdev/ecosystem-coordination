@@ -3,8 +3,8 @@
   "agent_id": "W08",
   "display_name": "Navigation Weaver",
   "role": "entity_relations_carousels_navigation",
-  "status": "BRANCH_HYGIENE_PHYSICAL_CLEANUP_BATCH_L_VERIFIED",
-  "updated_at": "2026-10-04T04:34:00-03:00",
+  "status": "BRANCH_HYGIENE_MAIN_ANCESTOR_CLEANUP_BATCH_M_VERIFIED",
+  "updated_at": "2026-10-04T05:38:00-03:00",
   "coordination_repository": "petertecnetdev/ecosystem-coordination",
   "code_repository": "petertecnetdev/cutinapp.petertecnet.com.br",
   "current_item": null,
@@ -701,6 +701,27 @@
       "requests_for": [
         "Repository admin: protect Admin Center main (live protected=false)",
         "Next W08 phase: review preserved unique-delta branches; do not auto-delete"
+      ]
+    },
+    {
+      "id": "W08-BH-20261004-36",
+      "priority": "P1",
+      "status": "VERIFIED",
+      "title": "API main-ancestor physical cleanup batch M",
+      "scope": [
+        "petertecnetdev/api.petertecnet.com.br",
+        ".github/workflows/branch-cleanup-once-20261003.yml"
+      ],
+      "evidence": [
+        "228 API branches before; 210 after",
+        "18 MAIN_ANCESTOR refs deleted and independently confirmed absent",
+        "Workflow 37189266420: deleted=18 already_absent=0 changed=0 failures=0",
+        "15 high-risk second reviews",
+        "develop preserved as conventional operational branch; DELETE_READY_REMAINING=0"
+      ],
+      "requests_for": [
+        "Repository admin: protect Admin Center main (live protected=false)",
+        "Next W08 phase: owner-aware review of divergent/unique branches; no automatic deletion"
       ]
     }
   ],
