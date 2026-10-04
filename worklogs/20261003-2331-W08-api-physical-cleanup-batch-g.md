@@ -1,0 +1,21 @@
+# Worklog — W08 API physical cleanup batch G
+
+- Worker: W08
+- Status: VERIFIED
+- Scope: non-overlapping historical API source refs
+- Reviewed: 40 refs
+- Deleted and verified absent: 40
+- API branch count: 440 -> 400
+- Net reduction: 40
+- Classification: 19 MAIN_ANCESTOR; 21 PR_MERGED_MAIN
+- High-risk second reviews: 8
+- Unique useful: 0
+- Delete-ready remaining in executed shard: 0
+- New branches: 0
+- Workflow commit: `42edeaa587ba2d71f02bcda51daa47a8dd34955b`
+- Run: https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/37171199357
+- Job: https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/37171199357/job/111344343250
+- Workflow summary: `deleted=40 already_absent=0 changed=0 failures=0`
+- Admin Center: 2 branches; PR #2 merged/source absent; PR #1 KEEP while API #534 remains open/non-mergeable; main still reports `protected=false`.
+- Deploy/VPS: not performed.
+- Pending: continue with a new non-overlapping shard; restore/enforce Admin Center main protection through repository governance.
