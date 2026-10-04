@@ -1,0 +1,52 @@
+# CLAIM — W08 API physical cleanup batch I
+
+- Worker: W08
+- Repository: `petertecnetdev/api.petertecnet.com.br`
+- Scope: 40 live source refs with PRs merged directly into `main`, exact PR/live head match, and no open PR using the ref.
+- Exclusions: W07/`agent/*`/`preserve/*`/`quality/*`, open PR heads, API #534 and branches with unmerged unique deltas.
+- Method: merged-PR verification, sensitive-file second review, exact-SHA GitHub Actions deletion, post-run absence/count verification.
+- Started: 2026-10-04 01:31 America/Sao_Paulo
+- Status: CLAIMED
+
+## Exact shard
+
+- `fix/guest-order-tracking-transport-boundary-v2` — PR #469 merged to main; exact head `0006ef8fb42c6d960d6293484cd110cae6b5c3b5`
+- `automation/fulfillment-recovery-economics-r11` — PR #449 merged to main; exact head `b35d11c15adedb2504be6fe51e016bee10b23dd6`
+- `automation/fulfillment-recovery-attribution-r11` — PR #448 merged to main; exact head `e49b5b90f0369169b48860c992141806549319fc`
+- `automation/fulfillment-auto-escalation-r11` — PR #447 merged to main; exact head `daae77f2d8d0b6f392630d2f243436668f6f4a71`
+- `automation/fulfillment-sla-r11` — PR #445 merged to main; exact head `51f176a46542403f3e25ff7388aa2686ab27fe99`
+- `automation/admin-fulfillment-reprocess-r11` — PR #443 merged to main; exact head `fac9f91951166df0d21fcd77e4f296113894c4ac`
+- `automation/paid-fulfillment-health-r11` — PR #441 merged to main; exact head `fbd1f0420ec634c4b24e1c79a5656f7190a7beee`
+- `automation/commerce-fulfillment-alert-r11` — PR #438 merged to main; exact head `530ee6a614a0fd11317bdb6901a791b3640ff982`
+- `fix/reconcile-underfulfilled-paid-orders` — PR #436 merged to main; exact head `1860311814ff77dd9c79af6dd9b4d5aba5c08af5`
+- `fix/order-context-integrity-current-main` — PR #431 merged to main; exact head `80a6637edf87b468a421345bf3ef3fa1d76ada46`
+- `automation/guest-order-tracking-r1` — PR #426 merged to main; exact head `2b4bef82f380e10586ac32fa2483825a4c43711f`
+- `fix/plat-recognized-revenue-dashboard` — PR #406 merged to main; exact head `4b27c108bce3ba657cdb7f89129960a84d9fc4b1`
+- `automation/r14-reconciliation-app-breakdown` — PR #378 merged to main; exact head `93b54305902535efd06d556862f4c02f063ebc6e`
+- `automation/recovery-rollout-economics-r11` — PR #366 merged to main; exact head `9fefebd2bf45d8ecc540fdef3112f1fe92be7f4d`
+- `automation/recovery-surface-revenue-r11` — PR #335 merged to main; exact head `4d9b8192b68c524dc1e2c10c25cea8d46ae2faa7`
+- `fix/app-code-invite-activation-url` — PR #320 merged to main; exact head `832e86dbe2d285296c5584b178a6c4791a69828f`
+- `fix/order-modifier-context-integrity` — PR #316 merged to main; exact head `6eb3d31dc18a98f05065d02938d3a42a110c326b`
+- `fix/order-removal-pricing` — PR #313 merged to main; exact head `e7e67db1b31380b3062887921485791c872a3505`
+- `fix/commerce-compatibility-boundary-round13` — PR #303 merged to main; exact head `ab01ccee76e51ac9a74c824f452630e8c02dfdcc`
+- `automation/recovery-realized-profit-20260909` — PR #297 merged to main; exact head `d462d864ac77a29664fbaca66a1d52c511b847e0`
+- `feature/recovery-channel-min-sample` — PR #282 merged to main; exact head `1e34ff67203039a49a8b84c61351e6d5f69c4ff1`
+- `automation/revenue-analytics-index-20260907` — PR #230 merged to main; exact head `edeb460e2593ab081b78f348459a8c4fb201ae27`
+- `feat-acquisition-commission-margin-guard-20260906` — PR #219 merged to main; exact head `90b5fb7615ea26020ed26c224be65e0529ff36fb`
+- `feat/application-admin-access-20260906` — PR #212 merged to main; exact head `20148701f01a075ba1caf6ac679d4a7e61b24e06`
+- `fix/nonroot-verified-backup-deploy-20260906` — PR #213 merged to main; exact head `c7617abab1480fb0facb7f12f1fe104c273d7b79`
+- `infra/database-backups-20260906` — PR #209 merged to main; exact head `56e6c02d5940c2c70d8c4329b7d03135577ca25d`
+- `fix/deploy-preflight-resilience` — PR #207 merged to main; exact head `31aac45f73855e1dd728d9cd8f08ac6847e1fc3d`
+- `fix/api-architecture-gate-sep05` — PR #201 merged to main; exact head `3df8a26d6b388bf27abfa696234329ebf5d37e84`
+- `fix/architecture-gate-all-products-20260904` — PR #144 merged to main; exact head `b015a75cbfa7dc1da04035bbe939647e49deb9e3`
+- `fix/automated-database-backups-20260904` — PR #134 merged to main; exact head `bdc17b3c1ae54c37861727284d55d1cb0e518729`
+- `ops/reconcile-observability-schema-20260904-v2` — PR #133 merged to main; exact head `4ec6573dab02ad94386e70eaef4ebfa5c0cd60f0`
+- `feat/cognitive-consciousness-research-core` — PR #126 merged to main; exact head `17b86fcf18964ae90895a8865f7b00eb422e70e0`
+- `fix/enforce-generic-architecture-20260904` — PR #123 merged to main; exact head `8f979520f7b2e90acd79fbc52bfb86800f30abbb`
+- `fix/organization-soft-delete-20260904` — PR #115 merged to main; exact head `9faa96ce43330967c401f1952a104b1fb9cde0ba`
+- `feat/account-profile-documents-production` — PR #113 merged to main; exact head `32cab78c0c6b6a0400c904df4d3a713502d90d01`
+- `fix/generic-commerce-orders-contract-20260903` — PR #99 merged to main; exact head `d5314d56a2949464e2373fa60b2ac6b32240344d`
+- `refactor/contract-generic-database-storage-20260903` — PR #94 merged to main; exact head `5f9d3521a433e145503be9877ec1a584fcfad882`
+- `refactor/finalize-generic-platform-20260903` — PR #87 merged to main; exact head `1534c0be7712bfd238ec066213a962b9ce09a67b`
+- `refactor/generic-cutinapp-api-20260903` — PR #60 merged to main; exact head `6572da04d1977c26e872932421af511351ba7b05`
+- `feat/commerce-availability-controls` — PR #69 merged to main; exact head `6a4f946cba6268534458dd23acdff4d964ba47ea`
