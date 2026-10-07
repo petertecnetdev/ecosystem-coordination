@@ -33,3 +33,12 @@
   - add a real public-home hamburger;
   - add regression coverage.
 - closure_gate: DO NOT mark hamburger VERIFIED from commit/PR/build alone. Validate served behavior at 320/360/390/430px for public home and internal pages: open, close, Escape, route navigation, post-scroll/auto-hide opening, and body-scroll restoration.
+
+## DEPLOY BLOCKER — 2026-10-07
+- main implementation SHA: `60154ea27c00acfdc52f3a953733f4c53b2b92a9`
+- PR/main CI: PASS
+- deploy status: BLOCKED
+- blocker: `BLOCKED_INFRA_VPS_SSH_UNREACHABLE`
+- evidence: GitHub Deploy VPS run `37660223368` timed out connecting to configured VPS SSH endpoint on two complete deploy attempts, each with 4 SSH connection attempts.
+- public HTTPS still reports release `fc20fe42a251fbdd63009c9b47d99ec67ca2d291`, not the new hamburger SHA.
+- closure rule: keep claim REOPENED until exact main SHA is served publicly and W4 runtime checks pass.
