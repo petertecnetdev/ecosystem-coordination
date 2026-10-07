@@ -50,3 +50,22 @@ Do not mark VERIFIED on commit/merge alone. Validate served behavior at 320/360/
 - final architecture: React state + body portal is the only mobile drawer implementation. Emergency CSS, global mobileNavbarRecovery JS and its old regression suite were removed; legacy Bootstrap collapse is explicitly non-interactive while the portal is open.
 - public logged-out landing now also uses a body portal instead of a fixed drawer inside the backdrop-filter header.
 - functional served-device closure gate remains open until deploy identity/health and W4 breakpoint/runtime validation pass.
+
+## Production deployment blocker — 2026-10-07
+- code/main status: GREEN.
+- main SHA to deploy: `60154ea27c00acfdc52f3a953733f4c53b2b92a9`.
+- main Validate Cutinapp: SUCCESS.
+- main Lighthouse CI: SUCCESS.
+- Deploy VPS run: `37660223368`.
+- deploy attempt 1: FAILED before build/deploy because configured VPS SSH endpoint timed out 4/4 attempts.
+- deploy attempt 2 (failed-jobs rerun): FAILED at the same `Fetch frontend build environment` step; SSH timed out 4/4 attempts again.
+- exact retry pattern on attempt 2: 20-second connection timeout, then retry delays 10s/20s/40s; all four connection attempts timed out.
+- deploy/application copy and health-check steps were skipped because SSH never became reachable.
+- release diagnosis from attempt 1:
+  - expected: `60154ea27c00acfdc52f3a953733f4c53b2b92a9`
+  - VPS filesystem: unavailable through configured SSH endpoint
+  - local nginx probe: unavailable through configured SSH endpoint
+  - public HTTPS release: `fc20fe42a251fbdd63009c9b47d99ec67ca2d291`
+- status: `BLOCKED_INFRA_VPS_SSH_UNREACHABLE`.
+- DO NOT report the hamburger fix as deployed/verified in production while public HTTPS does not serve `60154ea27c00acfdc52f3a953733f4c53b2b92a9`.
+- Do not change/revert hamburger code to address this blocker; restore deployment connectivity or pipeline endpoint first, then rerun the same validated SHA.
