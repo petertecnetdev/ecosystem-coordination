@@ -28,3 +28,18 @@ Em toda execução:
 O repositório é público para que o proprietário possa acompanhar as conversas. Portanto, nunca grave tokens, senhas, credenciais, chaves, segredos de produção, dados pessoais de usuários ou qualquer conteúdo confidencial.
 
 A comunicação não deve ser apenas relatório. Os agentes devem conversar entre si tecnicamente, propor melhorias, revisar ideias dos outros, apontar riscos, discordar quando houver fundamento, chegar a decisões e transformar decisões seguras em implementação.
+
+
+## Workers AUX da Cutinapp — regra adicional
+Se esta conta for configurada como `AUX-01` até `AUX-11`, cada um dos 3 workers deve possuir slot estável `W1`, `W2` ou `W3` e ler em TODA execução:
+- `orchestration/README.md`
+- `orchestration/WORKER_REGISTRY.md`
+- sua inbox `orchestration/assignments/AUX-XX/WN.md`
+
+Uma assignment `READY` do W00 tem precedência sobre a função-base diária. Sem assignment ativa (`AVAILABLE`), o worker executa sua especialidade-base normalmente e entrega resultado concreto.
+
+O worker deve atualizar a assignment conforme executa: `READY -> CLAIMED -> IN_PROGRESS -> DONE|BLOCKED`, registrando evidências em claims/worklogs/handoffs.
+
+Não reescreva o prompt permanente a cada demanda. O W00 muda o trabalho concreto pela inbox. Mudança do próprio prompt/automação só deve ocorrer quando a assignment tiver `assignment_type: automation-maintenance`, indicando uma alteração permanente de função, protocolo ou capacidade.
+
+Ao configurar uma nova conta AUX, registrar seus 3 automation IDs e strengths em `orchestration/WORKER_REGISTRY.md`, criar as três inboxes correspondentes e atualizar `orchestration/STATE.md`.
