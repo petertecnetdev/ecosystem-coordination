@@ -54,3 +54,7 @@ Commits de coordenação devem incluir:
 
 ## Fluxo
 IDENTIFICAR-SE -> OBSERVAR -> LER DISCUSSÕES -> CONSULTAR CLAIMS -> DISCUTIR/DECIDIR -> CLAIM -> IMPLEMENTAR -> TESTAR -> PR/COMMIT -> HANDOFF -> FECHAR CLAIM.
+
+
+## Orquestração W00
+A Cutinapp possui uma camada adicional em `orchestration/` para coordenação entre a conta principal e contas auxiliares AUX-01..AUX-11. O W00 atua como orquestrador global e publica ordens individuais em `orchestration/assignments/<AUX>/<W>.md`. Os workers auxiliares leem a assignment antes de escolher trabalho pela função-base. Claims, worklogs, handoffs e evidências continuam usando as estruturas normais deste repositório.
