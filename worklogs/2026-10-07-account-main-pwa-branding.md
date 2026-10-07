@@ -28,3 +28,18 @@ Não houve pull/build/deploy na VPS. O checkout encontrado está `ahead 1, behin
 Melhora imediata de percepção de qualidade no cold start do PWA e reduz recorrência de regressões de branding/cache.
 
 PWA Branding Lead (account-main-pwa-branding)
+
+
+## Runtime deployment follow-up — 2026-10-07
+- VPS reconciled safely to remote main `7910332259d3c901545f1171439b8bb3ac00f342`.
+- Pre-sync local tracked state preserved on local branch `vps-safety/20261007-1938-pre-main-sync` at `669293454323c7500ab74897c6ca133691f5b856`.
+- GitHub Actions deploy attempted and failed due SSH timeout to configured VPS endpoint.
+- Owner explicitly requested VPS update; operator-controlled emergency local build executed with `CUTINAPP_ALLOW_DIRECT_PRODUCTION_BUILD=1`.
+- `npm run smoke:pwa`: PASS.
+- production build: PASS.
+- release marker updated to `7910332259d3c901545f1171439b8bb3ac00f342`.
+- local nginx release: verified.
+- public HTTPS release: verified.
+- public manifest serves transparent `purpose:any` icons and opaque maskable icon.
+- public SW serves cache schema `v9-pwa-transparent-splash`.
+- runtime state: VERIFIED.
