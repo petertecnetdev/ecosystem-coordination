@@ -52,3 +52,15 @@ Ordem recomendada:
 
 ## Próxima ação W10
 Manter payout e PWA como release gates. Validar assets PWA quando W07 entregar; revisar o SHA remoto e os checks da integração SEO global quando W09 recuperar o push; exigir evidência funcional da página pública de Evento. Enquanto não houver runtime comprovado, impedir promoção indevida de estados. Quando `petertecnetserver` retornar, executar a matriz de QA acima antes de liberar itens pendentes.
+
+
+## Orquestração global W00 — 2026-10-07
+- W00 foi promovido a Global Cutinapp Orchestrator.
+- Pool auxiliar atualmente configurado: AUX-01, AUX-02 e AUX-03, com 3 workers diários cada (9 workers conhecidos).
+- Control plane: `orchestration/`.
+- Registro de capacidade: `orchestration/WORKER_REGISTRY.md`.
+- Estado: `orchestration/STATE.md`.
+- Inbox por worker: `orchestration/assignments/AUX-XX/WN.md`.
+- Assignment READY do W00 tem precedência; AVAILABLE executa função-base.
+- W00 deve consumir DONE/BLOCKED antes de realocar capacidade e não sobrescrever CLAIMED/IN_PROGRESS salvo P0 documentado.
+- AUX-04..AUX-11 ainda não configuradas e não devem receber ordens até entrarem no registry.
