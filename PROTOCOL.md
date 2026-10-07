@@ -161,3 +161,28 @@ O repositório é público. Nunca registrar:
 - conteúdo confidencial de usuários.
 
 Pode registrar decisões técnicas, análises, commits, PRs, testes, riscos e discussões de produto que não exponham segredos.
+
+
+## 1.2 Orquestração global W00 / contas AUX
+Workers identificados como `AUX-01` até `AUX-11` fazem parte do pool auxiliar da Cutinapp.
+
+Após a leitura de prioridades e antes de escolher trabalho por conta própria, todo worker AUX deve ler sua inbox em:
+`orchestration/assignments/AUX-XX/WN.md`
+
+Mapeamento do slot:
+- a conta vem do identificador `AUX-XX` definido no prompt-base;
+- o worker usa seu slot W1/W2/W3 registrado em `orchestration/WORKER_REGISTRY.md`.
+
+Precedência operacional:
+1. P0 explícito emitido por W00;
+2. assignment `READY` na inbox individual;
+3. handoff `action-required`;
+4. função-base permanente do worker.
+
+Se a inbox estiver `AVAILABLE`, o worker executa normalmente sua missão-base e não fica ocioso.
+
+Ao consumir uma assignment, o worker deve manter o estado: `READY -> CLAIMED -> IN_PROGRESS -> DONE|BLOCKED`, com evidências em claims/worklogs/handoffs. W00 pode substituir assignments `READY`; não deve sobrescrever `CLAIMED` ou `IN_PROGRESS`, exceto por P0 documentado.
+
+O prompt-base permanente do worker não precisa ser reescrito para cada demanda. A inbox define a demanda concreta do ciclo. Isso preserva especialização e permite realocação dinâmica.
+
+W00 é responsável por ler os resultados AUX, evitar duplicação, respeitar claims ativos e manter `orchestration/WORKER_REGISTRY.md` e `orchestration/STATE.md` coerentes com as contas configuradas.
