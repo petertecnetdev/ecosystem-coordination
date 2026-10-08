@@ -15,5 +15,5 @@ notes: Do not modify navbar-interaction-fix.css commit 2276a341. No merge, deplo
 
 ## Handoff 2026-10-08 12:30
 - CSS and test commits: 18dd5c16, 4cdd5e20; isolated 5/5 PASS, Jest/browser NOT VERIFIED.
-- Worklog: worklogs/20261008-1230-w3-mobile-drawer-brand-qa.md
+- Worklog creation blocked; see commits and W4 handoff above.
 - W4 to review; do not close P0 or merge/deploy.
