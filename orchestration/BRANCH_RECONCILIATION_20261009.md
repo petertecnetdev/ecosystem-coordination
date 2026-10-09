@@ -37,7 +37,7 @@ Shared integration branch: `develop/cutinapp-shared` (frontend, API, coordinatio
 | fix/social-preview-public-profiles | 4 | 4 | pending paired frontend | W00 assign API profiles owner |
 
 ## Coordination compared with main
-17 historical branches: 5 have no unique commits and are cleanup candidates:
+17 historical branches: 7 have no unique commits and are cleanup candidates:
 - agent/account-09-bootstrap
 - agent/account-09-funnels-bi/pr522-review-20260929
 - agent/aux02-w1/public-file-interaction-privacy-coordination
@@ -46,7 +46,7 @@ Shared integration branch: `develop/cutinapp-shared` (frontend, API, coordinatio
 - cycle/mobile-nav-runtime-validation-20261007
 - hotfix/cutinapp-navbar-prod-coord-20260930
 
-Correction: seven (7) coordination branches listed above have no unique commits. Ten (10) have unique commits and must be preserved for review. Several are old and significantly diverged; do not blindly merge old coordination state.
+Seven (7) coordination branches listed above have no unique commits. Ten (10) have unique commits and must be preserved for review. Several are old and significantly diverged; do not blindly merge old coordination state.
 
 ## Worker assignment registry for this reconciliation
 | Owner | Scope | Execution state |
