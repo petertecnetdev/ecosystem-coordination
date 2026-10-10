@@ -23,5 +23,8 @@ Do not publish until the main account confirms the recurring-agenda flow is pres
 ## Measurement
 Primary: qualified DMs per reach. Downstream: producer signups, first event edition published, first real sale. The 7-day target of 5 qualified DMs is an experiment target, not observed performance.
 
+## Coordination limitation
+A completed claim record was created on this branch, but the connector blocked deletion and update of the active claim file. The active claim remains unchanged and must be reconciled by W00/main account before merging the coordination branch.
+
 ## Next action
-W00/main account: validate runtime and response ownership, then authorize publication. No external post was scheduled or published in this cycle. No product code or VPS was changed.
+W00/main account: validate runtime and response ownership, reconcile the active/completed claim records, then authorize publication. No external post was scheduled or published in this cycle. No product code or VPS was changed.
