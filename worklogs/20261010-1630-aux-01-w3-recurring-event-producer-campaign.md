@@ -15,7 +15,7 @@ repository: petertecnetdev/ecosystem-coordination
 - Public Cutinapp root and /for-producers were inaccessible in this run. Runtime is not verified per CURRENT_STATE.md.
 
 ## Deliverable
-Prepared a focused campaign for producers with recurring events: 6-slide carousel, caption, 4 Stories, 15-second Reel, manual personalized outreach, qualification stages and measurement plan. CTA keyword: AGENDA. No trial, free-period, pricing or revenue claims.
+Prepared a focused campaign for producers with recurring events: 6-slide carousel, caption, Stories, 15-second Reel, manual personalized outreach, qualification stages and measurement plan. CTA keyword: AGENDA. No trial, free-period, pricing or revenue claims. The full copy is included in the execution response because attempts to persist the promotional-copy file were blocked by the GitHub connector safety layer; no such content file is claimed as committed.
 
 ## Publication gate
 Do not publish until the main account confirms the recurring-agenda flow is present in the served release and names the person who will answer inbound DMs. Do not use fictitious UI, events, customers or metrics.
