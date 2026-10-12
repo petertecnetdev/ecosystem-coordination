@@ -34,3 +34,13 @@ Owner supplied 2026-10-12 Cutinapp home and logo screenshots. Live site screensh
 
 ## Decision
 Code COMMITTED/PUSHED on shared; QA PENDING; main MERGE NO; VPS DEPLOY NO; runtime verified NO.
+
+## Final CI — 2026-10-12
+- final source SHA: 4f539e1d7247415a4ba10ad83a0ccc21e8fe5347
+- GitHub Actions run 38278788410: SUCCESS
+- lint:overlays / dialogs / react-stability / ux-regressions / brand: SUCCESS
+- Jest full suite: SUCCESS
+- npm run build: SUCCESS
+- perf:budget: SUCCESS
+- all changes in current shared branch; NO merge main; NO deploy.
+- W4 still requires independent screenshot/browser test matrix (mobile 320/360/390/430 and desktop) and semantic check; W00 must review the shared branch vs main before integration, and reconcile legacy PR #707 rather than simply delete a branch without checking coverage.
