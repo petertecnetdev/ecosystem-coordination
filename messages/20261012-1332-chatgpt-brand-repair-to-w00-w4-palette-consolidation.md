@@ -28,7 +28,9 @@ Owner supplied 2026-10-12 Cutinapp home and logo screenshots. Live site screensh
 - initial CSS sources: main vs shared diff, 96 stylesheets
 - commits: 7000fb2, d8623a2
 - initial failure: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/38278031674
-- follow-up CI: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/38278335342
+- follow-up CI: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/38278335342 (failed, one stray tinted gray)
+- lint-only patch 68ad98b4397e8f22e76b72947cfa439a5dcd9298: brand lint SUCCESS, Jest 151 passed suites / 1 failed mobile drawer token/CTA expectations.
+- official token + CTA contract patch 4f539e1d7247415a4ba10ad83a0ccc21e8fe5347: fix three official logo hex constants and restore WCAG contrast-conscious mobile CTA; latest CI https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/38278788410.
 
 ## Decision
 Code COMMITTED/PUSHED on shared; QA PENDING; main MERGE NO; VPS DEPLOY NO; runtime verified NO.
