@@ -107,3 +107,35 @@ Até que o funil de monetização esteja saudável, todos os agentes devem contr
 - ANALYTICS: medir receita, GMV, take rate, margem, CAC orgânico proxy, conversão, retenção e falhas.
 
 Ao final de cada ciclo, registrar impacto econômico esperado e a próxima ação de maior retorno.
+
+## CMD-005 — Cutinapp: duas branches e encerramento de ciclo
+status: ACTIVE
+target: petertecnetdev/cutinapp.petertecnet.com.br; W00/W0/W1-W4 e AUX-01..AUX-11
+priority: P0-OPERATIONAL
+issued_at: 2026-10-12
+owner: W00 Global Cutinapp Orchestrator
+
+### Invariante obrigatória
+O estado final e cada novo ciclo de desenvolvimento devem ter EXATAMENTE duas branches remotas: `main` e UMA branch de trabalho compartilhada. A branch compartilhada do ciclo atual é `cycle/mobile-nav-runtime-validation-20261007`. Não criar branches por demanda, por worker, por correção/retry nem por conta auxiliar. Todos os workers da Cutinapp implementam apenas na branch compartilhada, com claim de arquivo/escopo, rebase/refresh conservador e sem sobrescrever edições concorrentes. Uma demanda = claim/handoff; NÃO equivale a nova branch. Cada worker pode atuar em demanda diferente simultaneamente, desde que não haja conflito de arquivos/contrato.
+
+### Operação excepcional de redução do legado
+As branches históricas existentes estão CONGELADAS (somente leitura e recuperação). W00 é o único responsável por classificar, integrar, concluir e excluir refs. Não apagar branch que contenha código exclusivo útil, PR aberto relevante, claim `WORKING`, ou pendência de teste sem primeiro preservar/transferir. Comparar cada HEAD com `main` e branch compartilhada; procurar patches equivalentes, não apenas contagem de commits. Registrar SHA antes e depois, arquivo, owner, veredito, CI e destino da recuperação.
+
+1. Classificar e transferir ownership dos claims sobre branches legadas para a branch compartilhada. AUX-01 W1 tem claim ativo de preço de ingresso: preservar até handoff explícito; não apagar só porque está `0 ahead/0 behind`.
+2. Trabalhos exclusivos: completar e integrar seletivamente preços/catálogo e contratos API; carteira/404 de artwork; encontros comunitários; SEO/blog/social previews; identidade visual/guardrails; campanha em docs; monetização apenas após contrato SaaS/30 dias da API/Admin Center. Verificar dependências e conflitos; não realizar merges cegos.
+3. W4 deve atestar testes reais (Jest/build/lint + browser 320/360/390/430 + API/checkout quando aplicável). Sem QA verificável, não declarar concluído; corrigir CI que não dispara em push `cycle/**` mediante PR/checks nativos autorizados.
+4. Ref segura: branch idêntica, ancestral integralmente incorporada ou patch comprovadamente equivalente, SEM claim/PR/trabalho útil/ownership pendente. Excluir com API GitHub DELETE ref ou workflow de GitHub Actions já autorizado com allowlist por SHA exato, confirmar 404 após exclusão. Nunca usar `update_ref` como falso delete, force push, reset hard, clean destrutivo ou atalhos para bloqueio `OPENAI_SAFETY_CHECKS`.
+5. Integrar branch compartilhada na `main` somente após CI/QA e revisão independente. Após merge validado: excluir a branch concluída e verificar remoção; SOMENTE DEPOIS criar a próxima branch única a partir da `main`. Nunca acumular branches entre ciclos.
+6. Até o saneamento terminar, cada rodada W00 deve priorizar reduções reais, preservando código. Se sem mecanismo de exclusão autorizado ou bloqueado por safety, registrar blocker e solicitar ação humana específica; não inventar sucesso nem criar repos/branches de contorno.
+
+### Responsáveis
+- W00/W0: autoridade de merges, cleanup, fila, conflitos, consolidação, ciclo e medição.
+- W1: cadastro/funil/pricing sob claim e escopo definido.
+- W2: carteira/API/QA de regressão; nunca assumir arquivos de W1 sem handoff.
+- W3: UX/CSS/brand/SEO; não sobrepor W1/W2.
+- W4: reviewer independente, evidências Jest/build/mobile/checks e parecer de merge/exclusão.
+- AUX-XX: ler esta regra ANTES de criar refs; entregar na branch compartilhada após claim/handoff, ou somente relatório/patch para W00 quando sem permissão de push.
+
+### Métricas obrigatórias a cada rodada
+`BRANCH_COUNT_BEFORE, BRANCH_COUNT_AFTER, UNIQUE_RECOVERED, MERGED_VERIFIED, DELETED_VERIFIED, MAIN_SHA, SHARED_SHA, CLAIM_CONFLICTS, QA_REAL_STATUS, OPEN_BLOCKERS, NEXT_ACTION`.
+Não reportar contagem reduzida sem lista remota pós-operação. Produção/deploy seguem pipeline oficial; sem dirty build ou Git workaround na VPS.
