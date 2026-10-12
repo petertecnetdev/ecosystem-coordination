@@ -47,3 +47,12 @@ target: 2 remote branches (main + one shared)
 ## Critério de encerramento da operação
 
 Verificação remota retorna exatamente `main` + uma shared branch; todas as quatro source refs legadas desapareceram, com entregas exclusivas recuperadas/validadas; nenhum claim ou PR com ref histórica indefinida; CI e QA documentados.
+
+## Atualização do CI da shared — 12/10
+
+- Workflow `.github/workflows/validate.yml` ampliado na shared para escutar push `cycle/**`: commit `e0dce3b8659e463385369d8ead2e87cb2a711c11`.
+- Primeiro CI real https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/38275320167 FALHOU em `npm run lint:react-stability`: BlogArticlePage.js tinha 5 chaves de índice, orçamento anterior 2; npm ci e lint overlays/dialogs passaram.
+- Correção sem relaxar regra: `InlineText` passou a usar chaves determinísticas por conteúdo/ocorrência; commit `93965bb711981039237ba72d63df1a7672453699`.
+- Baseline de dívida para BlogArticlePage.js removida de `scripts/check-react-stability.js`, commit `6c204447efc9eead4e00cb979016d342282d129d`.
+- RUN de validação do novo HEAD: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/38275599842 — consultar resultado real antes de aprovar merge.
+- HEAD compartilhado conhecido agora `6c204447efc9eead4e00cb979016d342282d129d`.
