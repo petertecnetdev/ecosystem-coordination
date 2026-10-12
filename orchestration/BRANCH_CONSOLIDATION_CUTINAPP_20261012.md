@@ -56,3 +56,12 @@ Verificação remota retorna exatamente `main` + uma shared branch; todas as qua
 - Baseline de dívida para BlogArticlePage.js removida de `scripts/check-react-stability.js`, commit `6c204447efc9eead4e00cb979016d342282d129d`.
 - RUN de validação do novo HEAD: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/38275599842 — consultar resultado real antes de aprovar merge.
 - HEAD compartilhado conhecido agora `6c204447efc9eead4e00cb979016d342282d129d`.
+
+## CI: 3 falhas de teste corrigidas na shared, QA ainda não aprovado
+
+- RUN 38275599842 https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/38275599842 terminou FAILURE: 149 suites PASS / 3 FAIL, 937 tests PASS / 1 FAIL. Jest falhou ao importar axios ESM via grafo de serviços em CommunityAttendanceSection.test.js e BlogArticlePage.test.js; navigationRecovery.test.js esperava remoção de body overscrollBehavior e recebeu "none".
+- Fix runtime mobile: `src/utils/navigationRecovery.js` limpa propriedade JS `style.overscrollBehavior = ""` sob condição, commit `602c3a38ac728043e0e865fafba41b4c206509ed`.
+- Fix isolamento teste blog: mocks NavlogComponent, BlogDiscoveryCarousels e BlogService apenas em unit test de InlineText; commit `21ead4f9f86fa858a7d808969af520a5f30fc010`.
+- Fix isolamento teste encontro: mock AuthContext local no test (sem serviço axios); commit `e98d1e8bfc1c5746bc535a8ca6f336d6f2d9f7a0`.
+- RUN HEAD e98d1e8bfc: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/38275918733; VERIFICAR conclusão real e build antes de merge.
+- Continua invariável branch_count=6; produção main Deploy VPS success foi reportado para SHA afce1fdf, mas não inclui estes patches da shared.
