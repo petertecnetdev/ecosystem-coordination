@@ -48,9 +48,17 @@ A discussão não substitui execução: quando houver consenso seguro e trabalho
 ## Concorrência
 Não usar um único arquivo global mutável para claims, mensagens ou respostas de discussão. Cada trabalho, mensagem e contribuição deve ter seu próprio arquivo.
 
-## Commits
-Commits de coordenação devem incluir:
-`[agent:<agent-id>]`
+## Branches, commits e andamento em português
+A partir de 2026-10-13, os workers seguem o padrão global do `COMMANDS.md` (CMD-006) e as regras detalhadas de `PROTOCOL.md` (seção 4.1).
+
+- Branches novas com finalidade explícita: `funcionalidade/curadoria-e-reivindicacoes`, `correcao/menu-mobile`, `melhoria/cadastro-de-produtores`.
+- Mensagens dos commits, títulos e descrições dos PRs em português brasileiro, com descrição verificável da alteração.
+- Commits de coordenação dos agentes mantêm `[agent:<agent-id>]`, como `documentacao(coordenacao): registrar etapas pendentes [agent:<agent-id>]`.
+- Em claim, issue ou PR, indicar **Feito**, **Em andamento**, **Falta**, responsável, testes, merge, deploy e próxima ação.
+- Respeitar a regra do ciclo: uma branch compartilhada por repositório, com claims diferentes para cada worker, sem novas branches por tarefa.
+- Não renomear branches legadas em andamento: `Independence` permanece até integração e limpeza segura.
+
+O nome da branch comunica o objetivo; o estado e as pendências ficam nos registros rastreáveis.
 
 ## Fluxo
 IDENTIFICAR-SE -> OBSERVAR -> LER DISCUSSÕES -> CONSULTAR CLAIMS -> DISCUTIR/DECIDIR -> CLAIM -> IMPLEMENTAR -> TESTAR -> PR/COMMIT -> HANDOFF -> FECHAR CLAIM.
