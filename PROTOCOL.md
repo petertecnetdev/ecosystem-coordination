@@ -109,6 +109,59 @@ Quando houver consenso e ação segura, abra claim e execute. Quando o tópico e
 - preservar arquitetura central genérica e reutilizável;
 - verificar dependências frontend/backend.
 
+## 4.1 — Identificação e rastreabilidade em português
+Padrão vigente para todas as novas demandas e repositórios do ecossistema, conforme `COMMANDS.md` (CMD-006).
+
+### Branches: descrever a entrega
+- Formato obrigatório para novas branches: `categoria/objetivo-especifico`.
+- Prefixos em português: `funcionalidade`, `correcao`, `melhoria`, `seguranca`, `refatoracao`, `manutencao`, `documentacao`.
+- Usar ASCII minúsculo, palavras com hífen, sem acentos, espaços, datas ou números de worker como identidade principal.
+- Exemplos: `funcionalidade/curadoria-e-reivindicacoes`, `funcionalidade/tipos-de-eventos`, `melhoria/cadastro-de-produtores`, `correcao/menu-mobile`, `seguranca/permissoes-cutinapp`.
+- É o nome da **entrega do ciclo**, não o nome de cada alteração individual: vários workers podem trabalhar nessa mesma branch, em arquivos diferentes sob claims exclusivos.
+- Para a Cutinapp, respeitar o limite de `main` e uma branch compartilhada ativa por repositório após o saneamento de legado. Não abrir branches por worker, por demanda paralela ou por retry. W00 coordena exceções necessárias e preservação do trabalho.
+- `Independence` é um nome legado válido enquanto esse ciclo estiver aberto. Não renomear retroativamente nem reescrever histórico apenas para aplicar o padrão.
+
+### Commits e Pull Requests
+- Commit: `categoria(escopo): verbo + resultado específico` em português brasileiro, com acentos permitidos. Exemplos:
+  - `funcionalidade(reivindicacoes): permitir solicitacao de acesso de artistas`
+  - `correcao(eventos): exibir erros obrigatorios no SweetAlert`
+  - `melhoria(cadastro): organizar formulario no celular`
+  - `teste(permissoes): cobrir isolamento entre aplicativos`
+  - `documentacao(coordenacao): registrar pendencias da curadoria [agent:<agent-id>]`
+- Para commits de agentes neste repositório, manter a assinatura `[agent:<agent-id>]` definida no README.
+- Títulos e descrições dos PRs em português. Referências técnicas imutáveis (endpoints, classes, nomes de bibliotecas) permanecem literais quando fizer sentido.
+- Evitar `ajustes`, `update`, `final`, `mais correcoes` ou mensagens vagas sem objeto verificável.
+
+### Evidência de feito, em andamento e pendente
+Todo trabalho ativo deve ter um issue, PR, claim ou worklog rastreável, com a seguinte seção atualizada a cada ciclo:
+
+```md
+## Andamento
+Objetivo: [entrega exata]
+Estado: planejado | em-andamento | em-revisao | bloqueado | concluido
+Responsável: [agent-id]
+
+### Feito
+- [x] [etapa com SHA/PR e evidência]
+
+### Em andamento
+- [ ] [etapa atual e responsável]
+
+### Falta
+- [ ] [etapa restante, dependência ou critério de aceite]
+
+### Validação e publicação
+Testes/CI: [resultado observado ou não verificado]
+Merge na main: [SHA/PR ou não realizado]
+Deploy: [ambiente/SHA verificado ou não realizado]
+Próxima ação: [quem fará o quê]
+```
+
+- `concluido` exige critérios de aceite, testes e evidências compatíveis com a entrega. Não confundir `commit enviado` com `em produção`.
+- Atualizar status em claims, handoffs e PRs em vez de criar outra branch para sinalizar progresso.
+- Encerrar branch após merge e preservação confirmada; nunca deletar trabalho exclusivo, claims ativos ou PRs relevantes sem handoff.
+- Se a ferramenta bloquear publicação/exclusão, registrar `bloqueado` com a causa e a próxima ação; não declarar sucesso.
+
 ## 5. Handoff
 Crie:
 `messages/YYYYMMDD-HHMM-<from>-to-<to>-<slug>.md`
