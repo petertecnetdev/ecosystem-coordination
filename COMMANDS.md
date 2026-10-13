@@ -116,7 +116,7 @@ issued_at: 2026-10-12
 owner: W00 Global Cutinapp Orchestrator
 
 ### Invariante obrigatória
-O estado final e cada novo ciclo de desenvolvimento devem ter EXATAMENTE duas branches remotas: `main` e UMA branch de trabalho compartilhada. A branch compartilhada do ciclo atual é `cycle/mobile-nav-runtime-validation-20261007`. Não criar branches por demanda, por worker, por correção/retry nem por conta auxiliar. Todos os workers da Cutinapp implementam apenas na branch compartilhada, com claim de arquivo/escopo, rebase/refresh conservador e sem sobrescrever edições concorrentes. Uma demanda = claim/handoff; NÃO equivale a nova branch. Cada worker pode atuar em demanda diferente simultaneamente, desde que não haja conflito de arquivos/contrato.
+O estado final e cada novo ciclo de desenvolvimento devem ter EXATAMENTE duas branches remotas: `main` e UMA branch de trabalho compartilhada. A branch compartilhada atualmente em execução é `Independence` (nome legado; preservar durante este ciclo). Nas próximas demandas, aplicar os nomes descritivos em português definidos no CMD-006. Não criar branches por demanda, por worker, por correção/retry nem por conta auxiliar. Todos os workers da Cutinapp implementam apenas na branch compartilhada, com claim de arquivo/escopo, rebase/refresh conservador e sem sobrescrever edições concorrentes. Uma demanda = claim/handoff; NÃO equivale a nova branch. Cada worker pode atuar em demanda diferente simultaneamente, desde que não haja conflito de arquivos/contrato.
 
 ### Operação excepcional de redução do legado
 As branches históricas existentes estão CONGELADAS (somente leitura e recuperação). W00 é o único responsável por classificar, integrar, concluir e excluir refs. Não apagar branch que contenha código exclusivo útil, PR aberto relevante, claim `WORKING`, ou pendência de teste sem primeiro preservar/transferir. Comparar cada HEAD com `main` e branch compartilhada; procurar patches equivalentes, não apenas contagem de commits. Registrar SHA antes e depois, arquivo, owner, veredito, CI e destino da recuperação.
@@ -139,3 +139,33 @@ As branches históricas existentes estão CONGELADAS (somente leitura e recupera
 ### Métricas obrigatórias a cada rodada
 `BRANCH_COUNT_BEFORE, BRANCH_COUNT_AFTER, UNIQUE_RECOVERED, MERGED_VERIFIED, DELETED_VERIFIED, MAIN_SHA, SHARED_SHA, CLAIM_CONFLICTS, QA_REAL_STATUS, OPEN_BLOCKERS, NEXT_ACTION`.
 Não reportar contagem reduzida sem lista remota pós-operação. Produção/deploy seguem pipeline oficial; sem dirty build ou Git workaround na VPS.
+
+
+## CMD-006 — Git em português e identificação do trabalho
+status: ACTIVE
+target: ALL_AGENTS; ALL_REPOSITORIES
+priority: P0-OPERATIONAL
+issued_at: 2026-10-13
+origin: solicitação direta do responsável pelo ecossistema Peter Tecnet
+
+### Regra obrigatória para trabalhos novos
+- Usar português brasileiro nos nomes de novas branches, mensagens de commits, títulos e descrições de Pull Requests. Preservar nomes técnicos de bibliotecas, APIs, endpoints, arquivos e identificadores quando necessário.
+- Branch: `<categoria>/<objetivo-especifico>`, em letras minúsculas, ASCII (sem acentos), palavras separadas por hífen. Não usar nomes genéricos como `nova-feature`, `fix-1`, `worker-02`, `teste-final` ou nomes de agentes/datas como identificador principal.
+- Categorias recomendadas: `funcionalidade/`, `correcao/`, `melhoria/`, `seguranca/`, `refatoracao/`, `manutencao/`, `documentacao/`.
+- Exemplos: `funcionalidade/curadoria-e-reivindicacoes`, `funcionalidade/tipos-de-eventos`, `melhoria/cadastro-de-produtores`, `correcao/menu-mobile`, `seguranca/permissoes-cutinapp`.
+- Commits: `categoria(escopo): acao concreta em portugues`. Ex.: `funcionalidade(reivindicacoes): adicionar solicitacao de titularidade`; `correcao(eventos): ajustar validacao de campos obrigatorios`. Acentos são permitidos nas mensagens de commits. Commits de agentes na coordenação continuam incluindo `[agent:<agent-id>]`.
+- O nome da branch identifica o OBJETIVO do ciclo, não o worker nem o estado (concluído/pendente). Cada claim, issue e PR deve indicar explicitamente o que foi feito, o que está em andamento, o que falta, quem é responsável, bloqueios, SHA, testes e próximo passo.
+- Para trabalho compartilhado, reutilizar uma única branch ativa por repositório conforme o ciclo; subdemandas diferentes são claims/commits/PRs e não branches novas. Caso vários repositórios participem da mesma funcionalidade, usar o mesmo nome descritivo quando o ciclo seguinte for iniciado.
+- Encerrar o ciclo com revisão, testes e merge na `main`; excluir a branch de trabalho somente depois de confirmar integração e preservação de commits, sem apagar trabalho exclusivo de outros workers. Deploy requer fluxo/autorização próprios.
+- Não renomear, reescrever histórico, reiniciar nem excluir branches existentes apenas para traduzir seus nomes; a branch `Independence` continua válida até o fechamento seguro do ciclo atual. Não gerar novas branches para contornar a regra ou problemas de ferramentas.
+
+### Rastreabilidade mínima da demanda
+Em cada claim/handoff/PR ativo, registrar e manter atualizado:
+- **Objetivo:** uma frase sobre a entrega;
+- **Feito:** itens concluídos com evidência de commit/PR;
+- **Em andamento:** implementação atual e responsável;
+- **Falta:** testes, integração, dependências e demais critérios de aceite não cumpridos;
+- **Estado:** `planejado`, `em-andamento`, `em-revisao`, `bloqueado` ou `concluido`;
+- **Próxima ação:** executor, ação concreta e bloqueio, quando existir.
+
+Regras detalhadas e exemplos estão em `PROTOCOL.md`, seção **4.1 — Identificação e rastreabilidade em português**.
