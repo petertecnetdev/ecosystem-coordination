@@ -169,3 +169,20 @@ Em cada claim/handoff/PR ativo, registrar e manter atualizado:
 - **Próxima ação:** executor, ação concreta e bloqueio, quando existir.
 
 Regras detalhadas e exemplos estão em `PROTOCOL.md`, seção **4.1 — Identificação e rastreabilidade em português**.
+
+
+## CMD-007 — Próximo ciclo Cutinapp: Administração isolada por aplicação
+status: ACTIVE
+target: W00/W0/W01-W06; AUX-01..AUX-11; repositórios Cutinapp/API/Admin Center quando aplicável
+priority: P0-SECURITY / P1-PRODUCT
+issued_at: 2026-10-14
+owner: W00 Global Cutinapp Orchestrator
+issue: https://github.com/petertecnetdev/ecosystem-coordination/issues/12
+
+### Ordem explícita do proprietário
+- O próximo projeto/ciclo da Cutinapp após concluir a **Independence** é **Administração Cutinapp** (colaboradores, papéis customizados e permissões por aplicação).
+- Enquanto Independence tiver entregas pendentes ou não houver fechamento com CI/revisão/merge e branches conciliadas, **não criar nova branch**. Correções P0 de isolamento necessárias à Independence podem continuar na branch `Independence` com claim e revisão independentes.
+- **Somente após** integrar o ciclo anterior na `main` e eliminar sua branch, iniciar o próximo ciclo na branch única compartilhada `funcionalidade/administracao-cutinapp`, obedecendo CMD-005/CMD-006. Se houver mudanças em mais de um repositório, mesmo nome de branch por repositório, e no máximo uma branch de trabalho por repositório.
+- O administrador `cutinapp@gmail.com` é administrador da **Cutinapp**, subordinado apenas à autoridade root do ecossistema (referência institucional `petertecnet@gmail.com`), sem poderes nos demais aplicativos ou sobre o root. Não usar emails hardcoded para autorização; resolver identidades, vínculos e permissões no backend.
+- Reutilizar o `ApplicationAdminService` e RBAC central existentes, verificando as lacunas reais. Segurança P0: issue API #544; reconhecer melhorias prévias de API PR #543 e frontend PR #714.
+- W00 precisa relatar no issue #12 o gate da Independence, owner, claims, arquivos, testes, deploy status e próxima ação. O registro do próximo ciclo não equivale a implementação, merge nem ativação em produção.
