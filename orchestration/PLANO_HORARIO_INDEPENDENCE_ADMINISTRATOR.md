@@ -54,3 +54,11 @@ CONFLITOS/CLAIMS: ...
 GATES: CI, auth/tenant, checkout, deploy, merge
 PLANO PRÓXIMA HORA: 4 entregas únicas com critérios de aceite
 ```
+
+## Demanda incorporada — catálogo independente (issue #13)
+- O pedido de pesquisar e cadastrar continuamente produtoras e eventos foi **incluído na Independence #10**; o primeiro lote e fontes estão em [#13](https://github.com/petertecnetdev/ecosystem-coordination/issues/13): 28 produtoras e 4 eventos candidatos. **Zero cadastros confirmados desse lote.**
+- **W00 (:54):** acompanhar #13 junto a #10, conferir as condições de curadoria/ownership, atribuir descoberta e validação de novas fontes à capacidade disponível que não conflite com W1/W3, registrar números por rodada e só liberar ingestão real após testes dos gates. Não criar nova branch nem automação adicional; acompanhar no ciclo já existente.
+- **W1 (:06):** incluir no contrato da Independence o registro de fontes, propriedade não reivindicada, criador editorial por app, idempotência e bloqueio comercial em fichas não verificadas; preservar migrações e testes existentes.
+- **W3 (:30):** assegurar no frontend ficha informativa de curadoria (não implica endosso) e CTA de reivindicação com estado verificável; manter responsividade e testes.
+- **Limite de escopo:** catálogo em lote é expansão P1 condicionada ao P0 de segurança/claim; não importar via endpoint padrão que marca o usuário como dono/produtor e publica automaticamente; não publicar ingressos, checkout nem repasses antes da aprovação. Sem deploy implícito.
+- **Critério de aceite:** 2–3 registros piloto sem duplicidade nem privilégios indevidos; auditoria, revisão humana, correção/remoção; depois expansão gradual com contadores de pesquisados, verificados, duplicados, cadastrados, reivindicados e aprovados.
