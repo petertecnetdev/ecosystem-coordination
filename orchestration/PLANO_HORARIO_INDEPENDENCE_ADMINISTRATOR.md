@@ -62,3 +62,28 @@ PLANO PRÓXIMA HORA: 4 entregas únicas com critérios de aceite
 - **W3 (:30):** assegurar no frontend ficha informativa de curadoria (não implica endosso) e CTA de reivindicação com estado verificável; manter responsividade e testes.
 - **Limite de escopo:** catálogo em lote é expansão P1 condicionada ao P0 de segurança/claim; não importar via endpoint padrão que marca o usuário como dono/produtor e publica automaticamente; não publicar ingressos, checkout nem repasses antes da aprovação. Sem deploy implícito.
 - **Critério de aceite:** 2–3 registros piloto sem duplicidade nem privilégios indevidos; auditoria, revisão humana, correção/remoção; depois expansão gradual com contadores de pesquisados, verificados, duplicados, cadastrados, reivindicados e aprovados.
+
+
+## Regra de commits e prestação de contas em português — ordem do proprietário (14/10/2026)
+Aplicação obrigatória a **W1, W2, W3, W4 e W00**, em todas as rodadas horárias. Esta seção complementa CMD-005/006/007.
+
+1. **Execução e commit**: W1–W4 devem usar a rodada para desenvolver uma melhoria real de código ou teste automatizado útil e tentar realizar pelo menos **um commit testado por rodada**, na única branch de trabalho autorizada. W00 deve revisar e integrar à `main`, por PR, os commits que estejam prontos e seguros; quando não houver merge seguro, executar a menor correção técnica ou teste de integração que destrave o próximo merge e registrar o resultado. Evitar rodadas limitadas a leitura, relatório ou planejamento.
+2. **Idioma obrigatório**: assunto e corpo de **todos os novos commits, PRs, comentários técnicos e relatos** em **português brasileiro**, preservando nomes técnicos necessários. Padrão do assunto: `categoria(escopo): descrever melhoria concreta [agent:W1]` (ajustar identificador para W2, W3, W4 ou W00). Não usar título genérico como “ajustes”, “update” ou “trabalhos”.
+3. **Corpo explicativo do commit**: registrar **o que foi feito, por que foi feito, componentes/arquivos alterados, comportamento anterior e novo, testes executados e resultado, limitações/riscos**. A mensagem do commit é parte da entrega, não apenas o SHA.
+4. **Comentário no GitHub**: após cada commit, comentar no PR correspondente ou issue do projeto (**Independence #10 / Administrator #12**) em português, com **worker, rodada, link e SHA do commit, resumo do código implementado, testes e resultado, pendências e próxima ação**. Se a integração disponibilizar comentário específico no commit, comentar lá também; caso contrário, corpo do commit + comentário vinculado a PR/issue cumprem a rastreabilidade, sem alegar capacidade não disponível.
+5. **Relato no chat**: encerrar cada execução com mensagem objetiva em português, no próprio chat/resultado da rodada: `Worker | data/hora | implementado | commit SHA e link | testes/resultado | bloqueios | próxima rodada | merge (W00)`. Não limitar a informação ao GitHub.
+6. **Medição real**: W00 deve verificar e divulgar a cada hora quais dos quatro executores realizaram commits de **código ou testes** nesta rodada, quais passaram em testes/CI e quais entraram na `main`. Um commit de documentação, vazio, cosmético ou sem alteração útil **não** conta para meta de engenharia. Não atribuir commits sem evidência ao worker.
+7. **Sem entrega**: se permissão, segurança, CI, conflito de claim ou outra falha impedir o commit/merge, classificar `BLOQUEADA / SEM COMMIT`, relatar no chat e PR/issue o erro exato e a solução planejada. **Não fabricar commits nem forçar merge**; preservar checkout, permissões e dados da VPS.
+8. **Fechamento**: PRs de código só são integrados após critérios verificáveis de testes, revisão e compatibilidade frontend/API; W00 nunca realiza merge de PR draft incompleto ou código que conceda indevidamente privilégios. Deploy somente com liberação, pipeline e VPS íntegra.
+
+**Modelo do corpo do commit**:
+```text
+correcao(independence): proteger edição de item comercial [agent:W1]
+
+O que foi feito: adicionada validação no fluxo de alteração de itens.
+Motivo: impedir mudanças em eventos explicitamente não verificados.
+Arquivos/fluxos: controlador de eventos e testes de regressão.
+Testes: PHPUnit direcionado (aprovado).
+Riscos/limites: sem alteração nas regras de registros legados.
+```
+
