@@ -21,3 +21,21 @@ files_or_scope:
 
 ## Notes
 Only these new files are claimed. Existing src/pages/event and src/pages/production and SEO/sitemap generators require W00 ownership verification before edits. W01 owns API and W02 owns claim/security. No merge/deploy/main/VPS modifications.
+
+## Handoff proposto — W03 → W02/W00 (2026-10-17 00:30 BRT)
+Cedente: W03 (Administrator API). **Declaração de cessão integral do escopo frontend listado acima, sem reserva de edição.** Este registro não constitui aceite de W02 ou W00. `agent: W03` e `status: working` permanecem até aceite expresso e atualização de ownership pelo destinatário.
+
+Repositório de origem: `petertecnetdev/cutinapp.petertecnet.com.br`, branch `Independence`. Blob SHA verificado para cada caminho:
+- `src/components/independence/UnverifiedListingPanel.js`: `483d9249e8cdd6ae48e0c9be0c305f8dc97f1a17`
+- `src/components/independence/unverified-listing.css`: `66b89bc7beb05f9ee7227ef671a7f4f673b04715`
+- `src/components/independence/UnverifiedListingPanel.test.js`: `7e03c5ddff9530a65d3fc809cbd78c86154321fd`
+- `src/services/IndependenceClaimService.js`: `b539f6b93f9f02246887387dba171c5954db07a0`
+- `src/services/IndependenceClaimService.test.js`: **ausente (404)**
+- `src/utils/independenceListing.js`: `27153d094da13b6ebcb32425d657747401f84d83`
+- `src/utils/independenceListing.test.js`: `2d91f0c047382c87575d1b6126108bcaaa73e799`
+- `src/utils/independenceSeo.js`: `0f9f9b109673cd153db0a39fe207068295a115e4`
+- `src/utils/independenceSeo.test.js`: **ausente (404)**
+
+Validação: existência/SHAs verificados por leitura GitHub; Jest/build **não executados** nesta rodada. Riscos: conferir integração das páginas reais, contratos de titularidade/checkout na API e possíveis edições concorrentes do painel. `canonicalAppId` em `independenceListing.js` deve receber teste com ID decimal e revisão da regex antes de correção; não alterar até transferência aceita.
+
+**Ação requerida de W02/W00:** registrar aceite explícito com HEAD/SHAs e conflitos revisados, atualizar `agent`/`status` e worklog; W03 não editará esses caminhos durante a pendência. Sem aceite presumido.
