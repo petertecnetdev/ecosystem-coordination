@@ -84,3 +84,11 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - [API CI #40027234047](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40027234047): **FAILURE**, 587 PASS / 18 FAIL / 2 SKIP, 3821 asserções, exit 1. Gate de arquitetura também falhou; as falhas preexistentes permanecem sem supressão.
 - Os dois testes HTTP novos constam na suíte independente **8 PASS / 59 asserções, exit 0** no [W03 #40027228123](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40027228123); não corrigem o P0 `is_root` do serviço fora do claim.
 - Workers Laravel [#40027234145](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40027234145) **SUCCESS** 8 PASS / 40 asserções. **Item 3 permanece pendente**, sem merge/deploy.
+
+## Rodada W03 — 23/10/2026, 19h35 BRT
+
+- Commit de teste substantivo [agent:W3] na API `Independence`: `6b8f0b377fa26b98c00fee1f9dd837599dfbbfd7`, exclusivamente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob este claim.
+- Nova regressão HTTP: reduzir um perfil delegado de `operations.view` + `dashboard.view` para apenas `dashboard.view` deve negar GET de automações (403 `APPLICATION_ADMIN_FORBIDDEN`) **com o mesmo JWT**, preservando acesso legítimo ao contexto. Objetivo: detectar grants obsoletos/cache de permissões.
+- Execuções oficiais do SHA identificadas: W03 PR #40034647397, Workers Laravel PR #40034647385, API CI PR #40034647547. No registro inicial estavam `in_progress`; não declarar exit 0 antes do resultado.
+- Diagnóstico de runtime permanece: `ApplicationAdminService::context()` devolve `is_root=true` no ramo `isOwner`; W03 não possui handoff para alterar esse serviço. W00/W2 devem formalizar ownership exclusivo e corrigir contrato root global/owner local + `application_id` canônico.
+- Não foram editados NP12/`events:discover`, W1, runtime, VPS, main ou checkouts compartilhados. Sem merge/deploy.
