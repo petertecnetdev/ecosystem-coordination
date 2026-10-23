@@ -26,3 +26,10 @@ Escopo exclusivo em arquivos novos, sem tocar PHP/API W1/W3 nem rotas ou autenti
 - [ ] W2/W3: corrigir regressão is_root owner local na API sob claim próprio; W4 não altera PHP.
 - [ ] Contratos específicos de events:discover, reivindicações e ingressos informativos continuam pendentes; não inferir métricas nem habilitar venda.
 - Merge na main: NÃO. Deploy: NÃO. VPS: intocada.
+
+## Evidência final da rodada — 23/10/2026 09h50 BRT
+- Log oficial Validate 39955988409: 177 suites PASS, 1189 testes PASS, incluindo curatorialAutomationSnapshotW4.test.js e CuratorialAutomationMonitorW4.test.js; build "Compiled successfully"; performance budget OK (126 chunks JS ativos, 1,17 MiB gzip).
+- Lighthouse CI 39955988408: SUCCESS no mesmo SHA.
+- Branches remotas verificadas: 7 (main, Independence e cinco legadas); nenhuma criada/removida nesta rodada. Cleanup reservado W00.
+- MAIN_SHA fe4de92f1d6edb9e144bdbf41358ef9cfdb3fe03; SHARED_SHA f313fa25dde46407719779734b16524f60dd32ef.
+- Estado final: em revisão, sem merge/deploy. W00 deve integrar somente após revisão de segurança e P0 API resolvido.
