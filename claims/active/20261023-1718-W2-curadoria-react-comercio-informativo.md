@@ -45,3 +45,12 @@ Não editar UnverifiedListingPanel.js, seus testes já claimados, os oito arquiv
 - **P0 ainda pendente:** handoff W03 para `UnverifiedListingPanel.js` e estado assíncrono; validação integrada com API NP12 e fluxo comercial.
 - **Impacto econômico esperado:** reduzir risco de exposição indevida de CTA entre tenants sem bloquear IDs legados decimais equivalentes. Resultado econômico ainda não medido.
 - **Próxima ação:** acompanhar CI, corrigir eventuais falhas sem sobrescrever claims; W3 confirmar mesma proteção de `app_id` na API. Nenhum merge/deploy.
+
+## Rodada W2 — 23/10/2026, ~19:18 BRT
+- **Commit real novo:** [f8900790cf5a25c6b39adbdabd0a84d8b5424d78](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/f8900790cf5a25c6b39adbdabd0a84d8b5424d78) — `teste(curadoria): cobrir vínculos comerciais e proveniência segura [agent:W2]`, somente `src/components/independence/CuratorialCommerceBoundaryW2.test.js` sob claim exclusivo W2.
+- **Oito regressões novas:** veto de compra quando produção nega venda, usa flag textual, está pendente ou é payload array; evento aprovado sem data de comprovação; fonte HTTPS com credenciais/IPv6 local e data inválida; link público HTTPS com `noopener noreferrer` e ausência de CTA comercial.
+- **Gates oficiais do SHA:** [Validate Cutinapp #40032345307](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40032345307) **SUCCESS**; Jest 178/178 suítes e 1231/1231 testes; React compilado, lint e perf budget exit 0. [Lighthouse #40032345283](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40032345283) iniciado, conclusão ainda pendente na verificação desta nota.
+- **SEO não validado:** o build SPA concluiu, mas o gerador de snapshots SEO retornou exit 1 interno por hardcode de pt-BR; corrigir `generate-seo-snapshots.mjs` sob ownership próprio antes de atestar indexação.
+- **Bloqueio P0:** claim W03 de `UnverifiedListingPanel.js` permanece `working`, cessão proposta sem aceite formal; não houve edição do painel. Necessário aceite W03/W00 para corrigir stale async, troca de entidade/conta e inconsistência de `ownership_status`. Backend continua autoridade comercial; W3/W1 precisam atestar proteção server-side.
+- **Impacto econômico esperado:** reduzir risco de checkout indevido e perda de confiança por links curatoriais inseguros; efeito não medido.
+- **Publicação:** PR #715 segue Draft, sem merge, sem deploy, sem alteração em produção/VPS.
