@@ -11,7 +11,7 @@ Commit de código [f313fa25dde46407719779734b16524f60dd32ef](https://github.com/
 
 ## Validação
 - Validate Cutinapp run [39955988409](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/39955988409): SUCCESS no SHA f313fa25 (Jest oficial, lint, build, perf:budget; exit 0 por etapa).
-- Lighthouse run [39955988408](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/39955988408): em andamento na última consulta.
+- Lighthouse run [39955988408](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/39955988408): SUCCESS no SHA f313fa25.
 - Teste complementar do adaptador em V8 confirmou precedência de falha e contagens nulas; não substitui Jest.
 - Nenhum browser QA mobile 320/360/390/430; componente não conectado a rota.
 
