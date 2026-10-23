@@ -2,7 +2,7 @@
 
 Owner: AUX-03-W2
 Priority: P1
-Status: COMMITTED_PUSHED — CI_QUEUED — PR_DRAFT — NOT_MERGED — NOT_DEPLOYED
+Status: COMMITTED_PUSHED — CI_SUCCESS — PR_DRAFT — NOT_MERGED — NOT_DEPLOYED
 
 ## Objetivo
 Liberar links internos clicáveis em artigos do blog da Cutinapp para conectar tráfego orgânico a páginas de aquisição de produtores, sem duplicar conteúdo editorial pendente.
@@ -17,7 +17,7 @@ Blog público → links contextuais → landing de produtores → cadastro → p
 - Inspecionado BlogArticlePage.js na mesma branch: zero ocorrências de key={index|idx|i}.
 - Removida exclusivamente a entrada obsoleta; nenhuma outra regra alterada.
 - Commit remoto d717ef3321d362328b908091b6984723fde55351, validado por nova leitura do arquivo.
-- PR #722 permanece draft e mergeable=true; GitHub Actions run 39959804379 estava queued na verificação. Sem testes locais, merge ou deploy.
+- PR #722 permanece draft e mergeable=true; GitHub Actions run 39959804379 concluiu SUCCESS: lint:react-stability, testes Jest, build e perf:budget aprovados. Sem testes locais, merge ou deploy.
 
 ## Entregável / canal
 Commit: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/d717ef3321d362328b908091b6984723fde55351
@@ -32,10 +32,10 @@ Métrica de negócio: primeiros eventos publicados atribuídos ao blog.
 Baseline e conversões: não medidos; não afirmar melhoria de tráfego ou receita.
 
 ## Confirmado, hipótese e recomendação
-Confirmado: commit enviado, arquivo remoto atualizado, PR mergeable e CI disparado.
+Confirmado: commit enviado, arquivo remoto atualizado, PR mergeable e CI concluído com sucesso (job frontend).
 Hipótese: links contextuais podem elevar avanço dos leitores para o cadastro.
 Recomendação: aguardar CI, corrigir eventuais falhas, validar links e mobile (320/360/390/430), revisar/mesclar PR #722; coordenar a revisão da oferta comercial do PR #724 antes de encaminhar tráfego para a landing.
 
 ## Próxima ação / conta principal
-W2: acompanhar CI 39959804379, corrigir eventual falha específica do PR, e entregar evidências.
+W2: entregar CI verde e evidências à conta principal; acompanhar integração e validar os CTAs no ambiente público após merge/deploy.
 Conta principal necessária: SIM — aprovação de PR, QA mobile e integração. Nenhuma alteração em VPS.
