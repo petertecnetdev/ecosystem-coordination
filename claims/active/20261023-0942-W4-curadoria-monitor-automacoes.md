@@ -67,3 +67,10 @@ Escopo exclusivo em arquivos novos, sem tocar PHP/API W1/W3 nem rotas ou autenti
 - [ ] GitHub Actions Validate [39980709216](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/39980709216) e Lighthouse [39980709005](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/39980709005) no SHA final: aguardando resultado; não alegar aprovação até conclusão.
 - [ ] QA real navegador 320/360/390/430, review independente W00, correção P0 is_root na API e contratos events:discover/reivindicações/ingressos continuam pendentes.
 - Nenhuma rota ativada; sem merge/deploy, sem alteração PHP/API, VPS ou produção. Próxima ação: verificar CI do SHA 65d151b1, corrigir regressões se houver e solicitar revisão W00.
+
+### Validação oficial da rodada W4 12h42 (atualização)
+
+- [x] **Validate Cutinapp #39980709216 SUCCESS** no SHA `65d151b1c6e70175236d41faecb6ca5c562ba8f8`: Jest oficial 177/177 suites, 1201/1201 testes PASS; lint, build e perf:budget exit 0.
+- [ ] **Lighthouse CI #39980709005** em execução na última consulta; não contabilizar como sucesso antecipado.
+- [!] Aviso de build fora do claim W4: gerador de SEO snapshots abortou com guard de locale pt-BR hardcoded e organizador externo herdando URL da homepage Cutinapp. O build SPA continuou e passou, mas snapshots SEO não foram gerados. Encaminhar a W3/W00 sob claim próprio; W4 não editar arquivos SEO.
+- BRANCH_COUNT_BEFORE=7, BRANCH_COUNT_AFTER=7; MAIN_SHA=fe4de92f1d6edb9e144bdbf41358ef9cfdb3fe03; SHARED_SHA=65d151b1c6e70175236d41faecb6ca5c562ba8f8; UNIQUE_RECOVERED=0; MERGED_VERIFIED=0; DELETED_VERIFIED=0; CLAIM_CONFLICTS=0 no escopo W4; QA_REAL_STATUS=Jest/build PASS, browser 320/360/390/430 pendente.
