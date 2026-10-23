@@ -48,3 +48,14 @@ Próxima ação: W00 encaminhar handoff ao responsável Administrator para corre
 - API CI run `39954414901`: ainda `in_progress` na consulta; não declarar aprovado.
 - Gate sintético de integridade JUnit validado em três cenários locais: suíte completa aceita; suíte reduzida e suíte sem teste P0 rejeitadas (exit 0 do verificador).
 - Próxima ação: responsável Administrator API corrigir sem promover owner local a root global; W00 confirmar claim/handoff e revisão; reexecutar W03 e API CI. Sem deploy.
+
+
+## Atualização W03 — 2026-10-23 10:40 BRT
+
+- Commit workflow: `16b3d99e96c2e9bf658664a61634e60dbb3ae150` — integra validador JUnit externo e autotestes antes do PHPUnit.
+- Novos arquivos de teste sob claim disjunto `20261023-1034-W03-junit-gate-tests.md`: `tests/ci/w03_junit_gate.py` (`d3d07e2`) e `tests/ci/test_w03_junit_gate.py` (`7d1cc86`).
+- CI oficial W03 `39962871224`: autotestes JUnit 11/11 **SUCCESS**, exit 0; PHP lint/Composer/SQLite/rotas SUCCESS; PHPUnit oficial W03 **17 PASS / 1 FAIL, 166 assertions, exit 1**; job **FAILURE** pela regressão `is_root` conhecida.
+- Workers Laravel `39962871013`: **SUCCESS**; API CI `39962871158`: em andamento na consulta.
+- Nenhum bypass da falha P0, alteração em `ApplicationAdminService.php`, NP12, W1, merge ou deploy.
+- Issue #12 atualizado com SHA, testes e solicitação de handoff/claim formal para W2/W00.
+- Próxima ação: owner Administrator API corrigir `context()` com separação root global/owner local e reexecutar PHPUnit W03 exit 0.
