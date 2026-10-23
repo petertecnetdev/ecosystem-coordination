@@ -93,3 +93,10 @@ Próxima ação: W00 encaminhar handoff ao responsável Administrator para corre
 - P0 `ApplicationAdminService::context()` continua fora do claim W03: W00/W2 devem formalizar ownership e corrigir `is_root` do owner local sem ampliar privilégios globais. O teste de segurança não foi enfraquecido.
 - NP12: sem handoff/delegação ou reatribuição canônica comprovada; curadoria `events:discover` intocada. Sem merge/deploy/VPS.
 - Próxima ação: coletar resultados finais do SHA, registrar PHPUnit/Workers/API CI e cobrar correção autorizada da autoridade root.
+
+## Validação oficial — SHA ddf7ecf, 23/10/2026 12:38 BRT
+
+- [W03 CI #39979768550](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39979768550): **FAILURE**. Autotestes JUnit 11/11 **PASS** (exit 0); PHP lint, Composer, migrações e rotas concluídos. PHPUnit W03 **17 PASS / 1 FAIL (166 asserções, exit 1)**; gate JUnit exit 1, mantendo bloqueio P0 `ApplicationAdminTenantBoundaryW03Test.php:514` (`is_root` indevido para owner local).
+- [Workers Laravel #39979768625](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39979768625): **SUCCESS**, 8 testes / 40 asserções, exit 0.
+- [API CI #39979768610](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39979768610): ainda em execução na consulta; não declarar sucesso.
+- O commit ampliou apenas o gatilho de regressão do CI; não corrigiu o serviço de autoridade nem publicou em produção. P0 permanece bloqueado aguardando claim/handoff do owner W2/W00.
