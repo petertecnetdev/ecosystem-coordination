@@ -87,3 +87,16 @@ Escopo exclusivo em arquivos novos, sem tocar PHP/API W1/W3 nem rotas ou autenti
 - [x] Handoff registrado na issue #12, comentário 6372298323.
 - BRANCH_COUNT_BEFORE=7, BRANCH_COUNT_AFTER=7, UNIQUE_RECOVERED=0, MERGED_VERIFIED=0, DELETED_VERIFIED=0, MAIN_SHA=fe4de92f1d6edb9e144bdbf41358ef9cfdb3fe03, SHARED_SHA=f73f15991014c74db0662618db36765de0588495, CLAIM_CONFLICTS=0 no escopo W4, QA_REAL_STATUS=Jest/build/lint/perf/CI PASS; navegador 320/360/390/430 pendente, OPEN_BLOCKERS=API contract/is_root + browser QA + W00 review, NEXT_ACTION=verificar CI e solicitar integração somente após gates.
 - Sem merge, deploy, alteração PHP/API, VPS ou main. Monitor isolado.
+
+
+## Rodada W4 — 23/10/2026, 16h42 BRT
+
+- [x] Consultados COMMANDS.md, claim W4 e NP12 em `petertecnetdev/petertecnet.com.br/.agents/tasks/TASK-20261022-CURATION-NP12.json`; NP12 permanece escopo API, sem sobreposição.
+- [x] Commit [de23abe55162547d62ab88246d1738bb234914c8](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/de23abe55162547d62ab88246d1738bb234914c8) — adaptador React: `global_enabled` não booleano torna histórico não confiável e impede métricas de sucesso aparente.
+- [x] Commit [8afc5fe3606bf6c5f857d7591faf6eafeba8f505](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/8afc5fe3606bf6c5f857d7591faf6eafeba8f505) — 3 testes Jest novos para `"false"`, `null` e `undefined` no estado global.
+- [x] [Validate #40013304318](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40013304318): **SUCCESS** no SHA final, 177 suites/1206 testes PASS, lint, build e perf:budget exit 0. Log: "Compiled successfully"; budget 126 chunks JS, 1,17 MiB gzip.
+- [x] [Lighthouse #40013304449](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40013304449): **SUCCESS** no mesmo SHA.
+- [x] Smoke complementar V8 5/5 PASS (não substitui Jest).
+- [ ] QA real navegador 320/360/390/430, revisão W00, contrato `application_id` do GET /admin/context, P0 `is_root` da API, testes negativos RBAC/cross-app, contratos específicos de `events:discover`/fontes/reivindicações/ingressos; monitor continua isolado e sem rota ativa.
+- BRANCH_COUNT_BEFORE=7, BRANCH_COUNT_AFTER=7, UNIQUE_RECOVERED=0, MERGED_VERIFIED=0, DELETED_VERIFIED=0, MAIN_SHA=fe4de92f1d6edb9e144bdbf41358ef9cfdb3fe03, SHARED_SHA=8afc5fe3606bf6c5f857d7591faf6eafeba8f505, CLAIM_CONFLICTS=0 no escopo W4, QA_REAL_STATUS=Jest/build/lint/perf/CI PASS; browser pendente, OPEN_BLOCKERS=API contract/is_root + browser QA + W00 review, NEXT_ACTION=W00 revisar; W2/W3 corrigir contratos sob claim e executar QA visual em ambiente DEV autorizado.
+- Nenhum merge, deploy, alteração PHP/API, rota, checkout comercial ou VPS.
