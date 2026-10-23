@@ -68,3 +68,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - API CI [#40019790683](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40019790683): ainda `in_progress` no momento do registro; verificar resultado final antes de declarar gate aprovado.
 - Consulta da árvore canônica `ecosystem-coordination/main`: nenhum claim exclusivo de `ApplicationAdminService.php` nem tarefa NP12 localizados. O issue #12 atribui API Administrator ao W2 no plano, mas isso não equivale a transferência formal do arquivo; W00 precisa designar owner e registrar claim/handoff.
 - Sem mudanças em `events:discover` (NP12), W1, `main`, checkouts existentes ou `/var/www`; sem merge/deploy. Item 3 segue bloqueado por P0 real.
+
+## Rodada W03 — 23/10/2026 18h30 BRT
+
+- Commit novo de código/teste [agent:W3] na API `Independence`: `9c14ba05290f97be8150e370a103a789d5aa31b0`, apenas `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, dentro do claim W03 já existente.
+- Dois testes HTTP adicionais: usuário com `operations.view` não consegue `PUT /admin/automations/workers/{key}` nem `POST /admin/automations/workers/{key}/dispatch`; também não consulta `GET /admin/automations` de outro app usando `app_id` forjado e cabeçalho de seu app. Todos exigem HTTP 403 `APPLICATION_ADMIN_FORBIDDEN` antes de executar ações.
+- CI oficial W03 push #40027228123: suíte isolada **8 PASS / 59 asserções / exit 0**; suíte principal **18 PASS / 1 FAIL / exit 1** no P0 `is_root` (`ApplicationAdminTenantBoundaryW03Test.php:514`); workflow FAILURE sem bypass. W03 PR #40027234142 também FAILURE.
+- Workers Laravel #40027234145: **SUCCESS**, 8 PASS / 40 asserções / exit 0. API CI #40027234047: em andamento na última consulta, sem declarar aprovação.
+- Verificação canônica: nenhum claim em `claims/active` nomeia explicitamente `ApplicationAdminService.php`; W2 consta como owner da API Administrator no plano e issue #12, mas não há handoff/claim formal do arquivo. W03 não editou runtime.
+- NP12: tarefa/lock atualizados não encontrados na árvore canônica da coordenação; sem transferência confirmada, `events:discover` continua intocado. W1, `main`, VPS e checkouts compartilhados intocados. Sem merge/deploy.
+- Próxima ação W00/W2: registrar ownership exclusivo de `app/Domain/Platform/Services/ApplicationAdminService.php`, corrigir `is_root` global versus `is_owner` local, revisar `application_id` canônico solicitado por W4 e exigir PHPUnit W03 + API CI exit 0.
