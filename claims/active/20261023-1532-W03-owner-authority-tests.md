@@ -78,3 +78,9 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Verificação canônica: nenhum claim em `claims/active` nomeia explicitamente `ApplicationAdminService.php`; W2 consta como owner da API Administrator no plano e issue #12, mas não há handoff/claim formal do arquivo. W03 não editou runtime.
 - NP12: tarefa/lock atualizados não encontrados na árvore canônica da coordenação; sem transferência confirmada, `events:discover` continua intocado. W1, `main`, VPS e checkouts compartilhados intocados. Sem merge/deploy.
 - Próxima ação W00/W2: registrar ownership exclusivo de `app/Domain/Platform/Services/ApplicationAdminService.php`, corrigir `is_root` global versus `is_owner` local, revisar `application_id` canônico solicitado por W4 e exigir PHPUnit W03 + API CI exit 0.
+
+### Fechamento API CI — SHA 9c14ba05, 23/10/2026 18h33 BRT
+
+- [API CI #40027234047](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40027234047): **FAILURE**, 587 PASS / 18 FAIL / 2 SKIP, 3821 asserções, exit 1. Gate de arquitetura também falhou; as falhas preexistentes permanecem sem supressão.
+- Os dois testes HTTP novos constam na suíte independente **8 PASS / 59 asserções, exit 0** no [W03 #40027228123](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40027228123); não corrigem o P0 `is_root` do serviço fora do claim.
+- Workers Laravel [#40027234145](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40027234145) **SUCCESS** 8 PASS / 40 asserções. **Item 3 permanece pendente**, sem merge/deploy.
