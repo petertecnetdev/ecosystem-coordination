@@ -82,3 +82,14 @@ Próxima ação: W00 encaminhar handoff ao responsável Administrator para corre
 - Logs e exit codes preservados no artifact do W03. O bloqueio P0 em `ApplicationAdminService::context()` permanece, sem claim de edição do serviço para W03.
 - Não foi possível confirmar nesta rodada novo state/lock canônico NP12 via consultas disponíveis; ownership informado é respeitado integralmente, sem transferência implícita.
 - Sem merge/deploy; próximo passo: handoff formal ao owner Administrator API para correção `is_root` e novo PHPUnit/CI oficiais exit 0.
+
+## Atualização W03 — 2026-10-23 12:37 BRT
+
+- Commit novo API `Independence`: `ddf7ecfed82e52da967117d8d22fa8782598f5e4` — `teste(ci): disparar regressão W03 em alterações de RBAC e isolamento [agent:W3]`.
+- Arquivo exclusivo: `.github/workflows/administrator-w03-ci.yml` (+32 linhas, sem alterar runtime, NP12 ou W1).
+- Falha corrigida no gatilho do CI: mudanças em controllers administrativos, modelos de proprietário/perfis, contexto de aplicação, middleware de autenticação e migrations RBAC antes não acionavam W03 automaticamente. Adicionados 15 filtros em `push` e `pull_request` com paridade verificada, mantendo branch única `Independence` e sem modificar Workers Laravel ou API CI.
+- Preflight: comparação dos dois conjuntos de 25 filtros de paths (PASS); commit e HEAD remoto verificados. Não equivale a PHPUnit aprovado.
+- GitHub Actions disparados no SHA: W03 `39979768550`, Workers Laravel `39979768625`, API CI `39979768610`. Estado inicial: `in_progress`, resultados oficiais pendentes.
+- P0 `ApplicationAdminService::context()` continua fora do claim W03: W00/W2 devem formalizar ownership e corrigir `is_root` do owner local sem ampliar privilégios globais. O teste de segurança não foi enfraquecido.
+- NP12: sem handoff/delegação ou reatribuição canônica comprovada; curadoria `events:discover` intocada. Sem merge/deploy/VPS.
+- Próxima ação: coletar resultados finais do SHA, registrar PHPUnit/Workers/API CI e cobrar correção autorizada da autoridade root.
