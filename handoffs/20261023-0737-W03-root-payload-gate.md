@@ -24,7 +24,7 @@ Estado: bloqueado; NÃO habilitar endpoints/grants nem integrar/deployar sem rev
   isRoot(user) seja verificação distinta do root global.
 - Rotas administrativas: gate de route:list --json passou no CI real.
 - Workers Laravel: run 39940097455 SUCCESS; não equivale a aprovação W03.
-- API CI geral: run 39940097584 ainda estava em andamento no registro inicial.
+- API CI geral: run 39940097584 FAILURE; arquitetura 2 falhas / 7 aprovados; suíte geral 18 falhas, 2 ignorados, 578 aprovados (3758 asserções).
 
 ## Ação solicitada a W00/W4
 
