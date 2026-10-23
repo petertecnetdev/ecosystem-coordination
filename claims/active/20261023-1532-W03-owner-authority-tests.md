@@ -99,3 +99,9 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Workers Laravel PR [#40034647385](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40034647385): **SUCCESS**, 8 PASS / 40 asserções / exit 0.
 - API CI PR [#40034647547](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40034647547): `in_progress` nesta consulta; não declarar resultado final antes da conclusão.
 - O serviço `ApplicationAdminService.php` não foi editado, pois o ownership Administrator API continua sem transferência formal para W03. Sem deploy/merge.
+
+### Fechamento API CI do SHA 6b8f0b37 — 23/10/2026, 19h38 BRT
+
+- [API CI #40034647547](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40034647547): **FAILURE**, PHPUnit geral **588 PASS / 18 FAIL / 2 SKIP / 3830 asserções, exit 1**. Gate de arquitetura **7 PASS / 2 FAIL / 334 asserções, exit 1**.
+- Comparação com SHA anterior 9c14ba05: +1 PASS e +9 asserções, mantendo 18 falhas gerais e 2 de arquitetura. A regressão nova foi aprovada na suíte isolada; nenhuma falha anterior foi ocultada.
+- Próximo passo bloqueante: W00/W2 formalizar claim exclusivo de `ApplicationAdminService.php` e corrigir P0 `is_root`; W03 permanece fora desse escopo. Sem merge/deploy.
