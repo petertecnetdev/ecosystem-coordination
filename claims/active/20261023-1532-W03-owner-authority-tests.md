@@ -58,3 +58,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - [API CI #40012232309](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40012232309): **FAILURE**, 584 PASS / 18 FAIL / 2 SKIP, 3794 asserções, exit 1; gate de arquitetura 7 PASS / 2 FAIL, exit 1. O arquivo de testes W03 novo consta PASS no CI geral.
 - Comparação com SHA anterior `0a7b1ab`: +1 teste aprovado, +11 asserções, mesmas 18 falhas gerais e mesmas 2 de arquitetura. Não há evidência de regressão nova causada pelo commit; ainda não é aprovação de release.
 - Claim do serviço `ApplicationAdminService.php` não transferido a W03. Issue #12 atualizado: comentário #6373128731 pede ownership exclusivo W2 e correção P0. Nenhuma alteração em runtime, NP12, W1, `main` ou VPS. Sem merge/deploy.
+
+## Rodada W03 — 23/10/2026, 17h30 BRT
+
+- Commit novo [agent:W3] na API `Independence`: `8cce841eea6dc4e43711a6e9a690aa1dff7a162f`, exclusivamente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob este claim.
+- Novo teste: transferência persistida de owner da Cutinapp não pode revogar autoridade do owner antigo no Rasoio nem conceder acesso Rasoio ao novo owner. Verifica isolamento de `isOwner`, `hasAccess`, `hasPermission`, `ownerId` e `isRoot` com as mesmas instâncias de serviço; não altera runtime nem implementa endpoint de transferência.
+- PHP lint remoto somente-leitura: exit 0. CI oficial W03 [#40019790741](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40019790741): suíte isolada **6 PASS / 49 assertions / exit 0**; W03 original **18 PASS / 1 FAIL / 170 assertions / exit 1**, mesma divergência `context().is_root`; workflow FAILURE.
+- Workers Laravel [#40019790689](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40019790689): **SUCCESS**, 8 PASS / 40 assertions / exit 0.
+- API CI [#40019790683](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40019790683): ainda `in_progress` no momento do registro; verificar resultado final antes de declarar gate aprovado.
+- Consulta da árvore canônica `ecosystem-coordination/main`: nenhum claim exclusivo de `ApplicationAdminService.php` nem tarefa NP12 localizados. O issue #12 atribui API Administrator ao W2 no plano, mas isso não equivale a transferência formal do arquivo; W00 precisa designar owner e registrar claim/handoff.
+- Sem mudanças em `events:discover` (NP12), W1, `main`, checkouts existentes ou `/var/www`; sem merge/deploy. Item 3 segue bloqueado por P0 real.
