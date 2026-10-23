@@ -23,14 +23,14 @@ Responsável: W2
 - [x] Validate Cutinapp #40018392368 SUCCESS no SHA: 178 suítes / 1215 testes aprovados, incluindo `CuratorialCommerceBoundaryW2.test.js`; Jest exit 0, React build compilado com sucesso, perf budget exit 0.
 
 ### Em andamento
-- [ ] Aguardar Lighthouse #40018392371 e revisão independente do W00.
+- [ ] Aguardar revisão independente do W00; Lighthouse #40018392371 SUCCESS.
 
 ### Falta
 - [ ] Aceite/handoff formal W03 para corrigir respostas assíncronas obsoletas em UnverifiedListingPanel.js (fora deste claim).
 - [ ] Verificação integrada da ausência de CTA nas páginas reais após backend/contratos NP12 e revisão de produção (não realizada).
 
 ### Validação e publicação
-Testes/CI: [Validate Cutinapp #40018392368](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40018392368) SUCCESS; Jest 178/178 suítes, 1215/1215 testes, React build compilado, perf budget OK. Lighthouse #40018392371 pendente na última consulta. Build registrou aviso não bloqueante: geração de snapshot SEO indisponível (exit 1), mas build SPA validado e workflow SUCCESS; não equivale a snapshot SEO aprovado.
+Testes/CI: [Validate Cutinapp #40018392368](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40018392368) SUCCESS; Jest 178/178 suítes, 1215/1215 testes, React build compilado, perf budget OK. Lighthouse #40018392371 SUCCESS no mesmo SHA. Build registrou aviso não bloqueante: geração de snapshot SEO indisponível (exit 1), mas build SPA validado e workflow SUCCESS; não equivale a snapshot SEO aprovado.
 Merge na main: não realizado.
 Deploy: não realizado; proibido sem autorização posterior.
 Próxima ação: W2 conferir Lighthouse e encerrar claim após revisão; W00/W03 formalizar handoff para implementação P0.
