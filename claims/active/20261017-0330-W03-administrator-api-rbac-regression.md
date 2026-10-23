@@ -27,6 +27,6 @@ Próxima ação: criar apenas o arquivo de teste exclusivo, sem tocar arquivos W
 
 - W03 [#39995520580](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39995520580): 19 testes, 18 PASS / 1 FAIL, 170 asserções, PHPUnit exit 1; **novo teste HTTP passou**. Falha P0 existente de `is_root` permanece. Gate JUnit exit 1 corretamente, autotestes do gate 11/11 PASS.
 - Workers Laravel [#39995527707](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39995527707): SUCCESS, 8 testes / 40 asserções, exit 0.
-- API CI [#39995527938](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39995527938): em execução na última consulta; resultado pendente.
+- API CI [#39995527938](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39995527938): **FAILURE**, 579 PASS / 18 FAIL / 2 SKIP, 3762 asserções; gate de arquitetura reprovado. Em comparação ao baseline, +1 PASS e +4 asserções pelo teste novo; falhas P0 permanecem.
 - Issue #12 atualizado com commit, resultados e solicitação ao owner: comentário 6370843173.
 - Item 3 continua bloqueado: sem claim/handoff para serviço de runtime, sem PHPUnit W03 exit 0, sem merge/deploy.
