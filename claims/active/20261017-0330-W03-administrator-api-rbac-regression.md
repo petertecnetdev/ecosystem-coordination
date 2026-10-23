@@ -14,3 +14,11 @@ Em andamento: validar testes contra API real e executar PHPUnit.
 Falta: PHPUnit exit 0, commit, CI e relatório issue #12.
 Estado: em-andamento.
 Próxima ação: criar apenas o arquivo de teste exclusivo, sem tocar arquivos W01/W02 nem habilitar rotas/grants.
+
+## Rodada W03 — 23/10/2026 14:30 BRT
+
+- Novo commit real na API `Independence`: `2c8b0bcef3b094553e16a450851d920b1d82aba8`, `teste(administrator): negar painel global ao proprietário local com app_id forjado [agent:W3]`.
+- Escopo exclusivo deste claim: `tests/Feature/ApplicationAdminTenantBoundaryW03Test.php`; novo caso HTTP assegura que owner local não obtém acesso ao painel global com `app_id` ou `application_id` na query, nem com cabeçalho Cutinapp.
+- CI W03 disparado: https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39995520580 (em execução no registro inicial); resultado final deve ser auditado antes de declarar aprovação.
+- Bloqueio P0 original preservado: `ApplicationAdminService::context()` retorna `is_root=true` para owner local; teste existente não foi alterado nem enfraquecido. Correção de runtime continua exclusiva do owner Administrator API após claim/handoff.
+- NP12 `events:discover` e W1 comércio intocados; sem merge/deploy. Ownership NP12 atualizado não confirmado; nenhuma reatribuição implícita.
