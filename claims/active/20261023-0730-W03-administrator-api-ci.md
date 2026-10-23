@@ -65,3 +65,11 @@ Próxima ação: W00 encaminhar handoff ao responsável Administrator para corre
 - API CI run 39962871158, SHA 16b3d99e96c2e9bf658664a61634e60dbb3ae150: **FAILURE**; arquitetura 2 falhas / 7 aprovados (334 asserções); suíte completa 18 falhas, 2 ignorados, 578 aprovados (3758 asserções), exit não zero.
 - W03 run 39962871224: autotestes JUnit 11/11 **SUCCESS** (exit 0); PHPUnit Laravel 17/18 (exit 1); job **FAILURE**. Workers run 39962871013 **SUCCESS**.
 - Bloqueio de root global permanece, sem alteração de runtime/NP12/W1/produção.
+
+## Atualização W03 — 2026-10-23 11:31 BRT
+
+- Commit novo no escopo exclusivo do workflow: `b979b23cfeea6354a79ef143bfc7e628291c100e` — `teste(ci): preservar diagnóstico JUnit mesmo com PHPUnit falhando [agent:W3]`.
+- Alteração: o gate JUnit é executado mesmo quando PHPUnit falha; os arquivos `junit-gate.log`, `junit-gate-exit-code.txt` e `phpunit-exit-code.txt` são preservados como evidências por SHA. A falha original do PHPUnit continua obrigatoriamente reprovando o job.
+- CI do novo SHA disparado: W03 `39970367863`, Workers Laravel `39970367781`, API CI `39970367784`; aguardando resultados finais nesta atualização.
+- A divergência `is_root` do proprietário local continua sem correção autorizada. W03 não alterou `ApplicationAdminService.php`, `events:discover` (NP12), comércio W1, `main` ou VPS.
+- Próxima ação: verificar os três runs, reportar exits reais e solicitar ao responsável Administrator API claim/handoff formal para corrigir o P0. Sem merge/deploy.
