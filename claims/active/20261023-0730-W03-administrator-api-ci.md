@@ -18,6 +18,7 @@ Feito:
 - CI oficial W03 run 39940097570: 18 testes, 17 passaram, 1 falhou (166 assertions).
 - Gate de rotas passou; PHP lint, Composer, migrações passaram.
 - Workers Laravel run 39940097455: SUCCESS, independente do W03.
+- API CI run 39940097584: FAILURE; arquitetura 2 falhas / 7 aprovados; suíte geral 18 falhas, 2 ignorados, 578 aprovados (3758 asserções).
 - Handoff: handoffs/20261023-0737-W03-root-payload-gate.md.
 
 Em andamento: W00/W4 precisam validar contrato root global vs owner local antes de alterar serviço.
