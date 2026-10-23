@@ -34,3 +34,11 @@ Limites: não editar ApplicationAdminService.php, curadoria NP12/events:discover
 
 Estado: em-revisao (suíte isolada verde; gate Administrator P0 bloqueado).
 Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_root global versus is_owner local, validar PHPUnit W03 e API CI exit 0.
+
+## Fechamento dos CI oficiais — 23/10/2026, 15h37 BRT
+
+- SHA final API Independence: 0a7b1ab762e25856ecdc9ff3d6f4b222fcb3e001.
+- W03 run 40004483787 (PR) e 40004473588 (push): FAILURE por regressão is_root; **etapa independente de autoridade por app SUCCESS**, PHPUnit 4 PASS / 21 assertions, exit 0; PHPUnit original W03 18 PASS / 1 FAIL / 170 assertions, exit 1.
+- Workers Laravel run 40004483875: SUCCESS, exit 0.
+- API CI run 40004483697: FAILURE; suíte completa 583 PASS / 18 FAIL / 2 SKIP, 3783 assertions, exit não zero; gate de arquitetura reprovado. O novo arquivo ApplicationAdminOwnerAuthorityW03Test.php aparece como PASS no log da suíte geral.
+- Nenhum dos 18 erros foi suprimido. P0 de root e demais falhas exigem owner/claims próprios. Nenhum merge/deploy.
