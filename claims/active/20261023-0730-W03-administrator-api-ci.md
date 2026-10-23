@@ -100,3 +100,11 @@ Próxima ação: W00 encaminhar handoff ao responsável Administrator para corre
 - [Workers Laravel #39979768625](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39979768625): **SUCCESS**, 8 testes / 40 asserções, exit 0.
 - [API CI #39979768610](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39979768610): ainda em execução na consulta; não declarar sucesso.
 - O commit ampliou apenas o gatilho de regressão do CI; não corrigiu o serviço de autoridade nem publicou em produção. P0 permanece bloqueado aguardando claim/handoff do owner W2/W00.
+
+## Atualização W03 — 2026-10-23 15:36 BRT
+
+- Novo commit útil de testes c60a6a7885c72451d9b20030366e36f8bef4a7de em arquivo separado sob claim W03 20261023-1532-W03-owner-authority-tests.md: quatro regressões de isolamento do vínculo de proprietário.
+- Commit do workflow existente 0a7b1ab762e25856ecdc9ff3d6f4b222fcb3e001 adiciona execução oficial separada da suíte; não altera filtros nem desativa gate P0.
+- CI W03 run 40004473588: nova suíte **4 PASS / 21 assertions, exit 0**; suíte W03 original **18 PASS / 1 FAIL / 170 assertions, exit 1**; job FAILURE, erro is_root original permanece.
+- Workers Laravel e API CI do SHA final ainda em verificação; não declarar Item 3 concluído.
+- Serviço ApplicationAdminService.php não editado por falta de transferência formal do responsável Administrator API (W2 conforme issue #12). Sem alterações NP12/W1/produção.
