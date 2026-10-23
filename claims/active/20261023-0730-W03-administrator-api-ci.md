@@ -59,3 +59,9 @@ Próxima ação: W00 encaminhar handoff ao responsável Administrator para corre
 - Nenhum bypass da falha P0, alteração em `ApplicationAdminService.php`, NP12, W1, merge ou deploy.
 - Issue #12 atualizado com SHA, testes e solicitação de handoff/claim formal para W2/W00.
 - Próxima ação: owner Administrator API corrigir `context()` com separação root global/owner local e reexecutar PHPUnit W03 exit 0.
+
+## Resultado final API CI — 23/10/2026 10:41 BRT
+
+- API CI run 39962871158, SHA 16b3d99e96c2e9bf658664a61634e60dbb3ae150: **FAILURE**; arquitetura 2 falhas / 7 aprovados (334 asserções); suíte completa 18 falhas, 2 ignorados, 578 aprovados (3758 asserções), exit não zero.
+- W03 run 39962871224: autotestes JUnit 11/11 **SUCCESS** (exit 0); PHPUnit Laravel 17/18 (exit 1); job **FAILURE**. Workers run 39962871013 **SUCCESS**.
+- Bloqueio de root global permanece, sem alteração de runtime/NP12/W1/produção.
