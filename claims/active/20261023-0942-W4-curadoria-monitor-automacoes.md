@@ -21,7 +21,7 @@ Escopo exclusivo em arquivos novos, sem tocar PHP/API W1/W3 nem rotas ou autenti
 - [x] Commit React/Jest útil: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/f313fa25dde46407719779734b16524f60dd32ef
 - [x] Quatro arquivos novos (adaptador, monitor React e dois testes Jest); sem rota, sem API, sem checkout.
 - [x] GitHub Actions Validate Cutinapp https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/39955988409 — SUCCESS no SHA f313fa25: Jest oficial, lint, build e perf:budget concluídos com sucesso (exit 0 por etapa).
-- [ ] Lighthouse CI 39955988408 em andamento na última consulta.
+- [x] Lighthouse CI https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/39955988408 — SUCCESS no SHA f313fa25.
 - [ ] W00: revisão independente, confirmação de contrato/ownership e QA mobile antes de qualquer integração.
 - [ ] W2/W3: corrigir regressão is_root owner local na API sob claim próprio; W4 não altera PHP.
 - [ ] Contratos específicos de events:discover, reivindicações e ingressos informativos continuam pendentes; não inferir métricas nem habilitar venda.
