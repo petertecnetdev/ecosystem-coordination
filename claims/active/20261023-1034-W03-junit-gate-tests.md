@@ -28,3 +28,9 @@ Estado: em-revisao (escopo de teste entregue; P0 upstream bloqueado).
 Próxima ação: W00/W2 corrigir ApplicationAdminService::context() sem conceder root global; W03 revalidar CI e fechar claim após revisão.
 
 Limites: não editar ApplicationAdminService.php, NP12 events:discover, W1 comércio, outros claims, main ou VPS. Sem merge/deploy.
+
+## Resultado final API CI — 23/10/2026 10:41 BRT
+
+- API CI run 39962871158, SHA 16b3d99e96c2e9bf658664a61634e60dbb3ae150: **FAILURE**; arquitetura 2 falhas / 7 aprovados (334 asserções); suíte completa 18 falhas, 2 ignorados, 578 aprovados (3758 asserções), exit não zero.
+- W03 run 39962871224: autotestes JUnit 11/11 **SUCCESS** (exit 0); PHPUnit Laravel 17/18 (exit 1); job **FAILURE**. Workers run 39962871013 **SUCCESS**.
+- Bloqueio de root global permanece, sem alteração de runtime/NP12/W1/produção.
