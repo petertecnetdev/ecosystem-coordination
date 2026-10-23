@@ -92,3 +92,10 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Execuções oficiais do SHA identificadas: W03 PR #40034647397, Workers Laravel PR #40034647385, API CI PR #40034647547. No registro inicial estavam `in_progress`; não declarar exit 0 antes do resultado.
 - Diagnóstico de runtime permanece: `ApplicationAdminService::context()` devolve `is_root=true` no ramo `isOwner`; W03 não possui handoff para alterar esse serviço. W00/W2 devem formalizar ownership exclusivo e corrigir contrato root global/owner local + `application_id` canônico.
 - Não foram editados NP12/`events:discover`, W1, runtime, VPS, main ou checkouts compartilhados. Sem merge/deploy.
+
+### CI oficial do SHA 6b8f0b37 — 23/10/2026, 19h37 BRT
+
+- W03 PR [#40034647397](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40034647397): **FAILURE** somente pelo P0 anterior; suíte isolada W03 **9 PASS / 68 asserções / exit 0** (novo teste aprovado); PHPUnit principal **18 PASS / 1 FAIL / 170 asserções / exit 1**; gate JUnit exit 1, evidências anexadas.
+- Workers Laravel PR [#40034647385](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40034647385): **SUCCESS**, 8 PASS / 40 asserções / exit 0.
+- API CI PR [#40034647547](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40034647547): `in_progress` nesta consulta; não declarar resultado final antes da conclusão.
+- O serviço `ApplicationAdminService.php` não foi editado, pois o ownership Administrator API continua sem transferência formal para W03. Sem deploy/merge.
