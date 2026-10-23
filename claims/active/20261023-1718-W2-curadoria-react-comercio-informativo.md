@@ -54,3 +54,13 @@ Não editar UnverifiedListingPanel.js, seus testes já claimados, os oito arquiv
 - **Bloqueio P0:** claim W03 de `UnverifiedListingPanel.js` permanece `working`, cessão proposta sem aceite formal; não houve edição do painel. Necessário aceite W03/W00 para corrigir stale async, troca de entidade/conta e inconsistência de `ownership_status`. Backend continua autoridade comercial; W3/W1 precisam atestar proteção server-side.
 - **Impacto econômico esperado:** reduzir risco de checkout indevido e perda de confiança por links curatoriais inseguros; efeito não medido.
 - **Publicação:** PR #715 segue Draft, sem merge, sem deploy, sem alteração em produção/VPS.
+
+
+## Rodada W2 — 23/10/2026, ~20:21 BRT
+- **Commit real:** [6b01076575522be4a89ed4ed771ee589af52c595](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/6b01076575522be4a89ed4ed771ee589af52c595), branch única `Independence`, apenas `src/components/independence/CuratorialCommerceBoundaryW2.test.js` (arquivo exclusivo deste claim).
+- **Dez regressões novas:** 6 variações de metadados de curadoria/titularidade incompletos sem concessão comercial e 4 cenários de produção vinculada/evento sem escopo ou verificação suficiente. A UI deve negar CTA mesmo se `can_sell=true` vier em payload curatorial; não representa validação de segurança da API.
+- **Gates oficiais no SHA:** [Validate Cutinapp #40039258937](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40039258937) **SUCCESS** — Jest **178/178 suítes, 1241/1241 testes**, build SPA compilado, lint e performance budget exit 0. [Lighthouse #40039259632](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40039259632) iniciado, resultado ainda pendente nesta anotação.
+- **SEO:** snapshot SEO não gerado (`SEO snapshot global-readiness guard failed`, exit 1 interno não bloqueante). Não atestar SEO; apenas SPA e gates citados.
+- **P0 ainda bloqueado:** `UnverifiedListingPanel.js` segue sob claim W03 `working` com cessão proposta sem aceite. Solicito W00/W03 registrar transferência expressa de ownership para W2 antes de corrigir stale async, sessão/entidade e identificação de ficha curatorial sem `ownership_status`.
+- **Impacto esperado:** reduzir risco de CTA de compra indevido por metadados curatoriais incompletos; sem resultado comercial mensurado. Backend W1/W3 continua autoridade para venda/checkout.
+- **Sem merge/deploy, sem alteração na `main`, VPS, arquivos W03/W4 ou API/NP12.**
