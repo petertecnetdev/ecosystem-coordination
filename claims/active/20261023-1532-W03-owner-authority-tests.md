@@ -42,3 +42,11 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Workers Laravel run 40004483875: SUCCESS, exit 0.
 - API CI run 40004483697: FAILURE; suíte completa 583 PASS / 18 FAIL / 2 SKIP, 3783 assertions, exit não zero; gate de arquitetura reprovado. O novo arquivo ApplicationAdminOwnerAuthorityW03Test.php aparece como PASS no log da suíte geral.
 - Nenhum dos 18 erros foi suprimido. P0 de root e demais falhas exigem owner/claims próprios. Nenhum merge/deploy.
+
+## Rodada W03 — 23/10/2026 16:30 BRT
+
+- Commit novo [agent:W3] na API Independence: `8460fdc123d0c1f569350b5c3606004758fea5c0`, apenas `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` (claim já exclusivo W03).
+- Nova regressão: após reassociação persistida de proprietário em cenário de recuperação administrativa, o proprietário anterior perde imediatamente `isOwner`, `hasAccess` e `admin.access.manage` mesmo sem refresh de sessão/instância; o novo titular obtém somente autoridade local. Não cria endpoint de transferência nem altera runtime.
+- CI oficial iniciado para o SHA: W03 push #40012225511 e PR #40012232346; Workers Laravel #40012232341; API CI #40012232309. **Resultados finais pendentes nesta atualização**; não declarar aprovação antes de coletar logs/exits.
+- Bloqueio P0 inalterado: `ApplicationAdminService::context()` confunde `is_root` global com `is_owner` local. A árvore canônica de claims ativos não contém claim explícito para esse serviço; W2 é o responsável de API no issue #12, mas não há handoff/claim exclusivo confirmados. W3 não editou o serviço.
+- NP12 `events:discover`, W1 comércio, `main`, VPS e checkouts compartilhados intocados; nenhum merge/deploy.
