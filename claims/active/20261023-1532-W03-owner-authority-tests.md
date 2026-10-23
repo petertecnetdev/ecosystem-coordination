@@ -105,3 +105,12 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - [API CI #40034647547](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40034647547): **FAILURE**, PHPUnit geral **588 PASS / 18 FAIL / 2 SKIP / 3830 asserções, exit 1**. Gate de arquitetura **7 PASS / 2 FAIL / 334 asserções, exit 1**.
 - Comparação com SHA anterior 9c14ba05: +1 PASS e +9 asserções, mantendo 18 falhas gerais e 2 de arquitetura. A regressão nova foi aprovada na suíte isolada; nenhuma falha anterior foi ocultada.
 - Próximo passo bloqueante: W00/W2 formalizar claim exclusivo de `ApplicationAdminService.php` e corrigir P0 `is_root`; W03 permanece fora desse escopo. Sem merge/deploy.
+
+## Rodada W03 — 23/10/2026 20h33 BRT
+
+- Commit real [agent:W3] na API `Independence`: `5531a9e93ae8a2c127005e7eece06e1012427327`; único arquivo `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, já sob claim W03. Nenhum arquivo de runtime ou workflow alterado.
+- Regressão nova: revogação persistida de `operations.view` impede GET de workers imediatamente com o mesmo JWT, sem revogar o grant legítimo em outra aplicação. Verifica 403 e `APPLICATION_ADMIN_FORBIDDEN`.
+- CI oficial do SHA: [W03 #40040332444](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40040332444), suíte independente **10 PASS / 77 asserções / exit 0**; gate de rotas SUCCESS; PHPUnit W03 principal **18 PASS / 1 FAIL / 170 asserções / exit 1**, gate JUnit exit 1; job FAILURE por `context().is_root` na linha 514. Não suprimir falha.
+- `Workers Laravel` e `API CI` **não foram disparados por push deste arquivo no SHA 5531a9e**; último SHA anterior `4b517ba8`: Workers [#40039231831](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40039231831) SUCCESS, API CI [#40039231910](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40039231910) FAILURE. Não atribuir esses resultados ao commit novo.
+- Consulta à árvore canônica de claims ativos não encontrou transferência exclusiva de `ApplicationAdminService.php` para W3; issue #12 mantém W2 como responsável planejado da Administrator API, mas não substitui claim/handoff formal. NP12 não teve handoff canônico localizado; nenhum arquivo `events:discover`, W1, produção ou VPS alterado.
+- Próxima ação: W00/W2 registrar claim exclusivo do serviço e corrigir root global versus owner local; W4 revisar `application_id`; reexecutar PHPUnit W03 e API CI com exit 0. Sem merge/deploy.
