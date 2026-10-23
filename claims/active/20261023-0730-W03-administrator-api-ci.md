@@ -108,3 +108,11 @@ Próxima ação: W00 encaminhar handoff ao responsável Administrator para corre
 - CI W03 run 40004473588: nova suíte **4 PASS / 21 assertions, exit 0**; suíte W03 original **18 PASS / 1 FAIL / 170 assertions, exit 1**; job FAILURE, erro is_root original permanece.
 - Workers Laravel e API CI do SHA final ainda em verificação; não declarar Item 3 concluído.
 - Serviço ApplicationAdminService.php não editado por falta de transferência formal do responsável Administrator API (W2 conforme issue #12). Sem alterações NP12/W1/produção.
+
+## Fechamento dos CI oficiais — 23/10/2026, 15h37 BRT
+
+- SHA final API Independence: 0a7b1ab762e25856ecdc9ff3d6f4b222fcb3e001.
+- W03 run 40004483787 (PR) e 40004473588 (push): FAILURE por regressão is_root; **etapa independente de autoridade por app SUCCESS**, PHPUnit 4 PASS / 21 assertions, exit 0; PHPUnit original W03 18 PASS / 1 FAIL / 170 assertions, exit 1.
+- Workers Laravel run 40004483875: SUCCESS, exit 0.
+- API CI run 40004483697: FAILURE; suíte completa 583 PASS / 18 FAIL / 2 SKIP, 3783 assertions, exit não zero; gate de arquitetura reprovado. O novo arquivo ApplicationAdminOwnerAuthorityW03Test.php aparece como PASS no log da suíte geral.
+- Nenhum dos 18 erros foi suprimido. P0 de root e demais falhas exigem owner/claims próprios. Nenhum merge/deploy.
