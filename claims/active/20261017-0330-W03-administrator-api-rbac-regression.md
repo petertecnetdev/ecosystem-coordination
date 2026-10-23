@@ -22,3 +22,11 @@ Próxima ação: criar apenas o arquivo de teste exclusivo, sem tocar arquivos W
 - CI W03 disparado: https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39995520580 (em execução no registro inicial); resultado final deve ser auditado antes de declarar aprovação.
 - Bloqueio P0 original preservado: `ApplicationAdminService::context()` retorna `is_root=true` para owner local; teste existente não foi alterado nem enfraquecido. Correção de runtime continua exclusiva do owner Administrator API após claim/handoff.
 - NP12 `events:discover` e W1 comércio intocados; sem merge/deploy. Ownership NP12 atualizado não confirmado; nenhuma reatribuição implícita.
+
+### Resultado oficial do SHA 2c8b0bc — 23/10/2026, 14h32 BRT
+
+- W03 [#39995520580](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39995520580): 19 testes, 18 PASS / 1 FAIL, 170 asserções, PHPUnit exit 1; **novo teste HTTP passou**. Falha P0 existente de `is_root` permanece. Gate JUnit exit 1 corretamente, autotestes do gate 11/11 PASS.
+- Workers Laravel [#39995527707](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39995527707): SUCCESS, 8 testes / 40 asserções, exit 0.
+- API CI [#39995527938](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39995527938): em execução na última consulta; resultado pendente.
+- Issue #12 atualizado com commit, resultados e solicitação ao owner: comentário 6370843173.
+- Item 3 continua bloqueado: sem claim/handoff para serviço de runtime, sem PHPUnit W03 exit 0, sem merge/deploy.
