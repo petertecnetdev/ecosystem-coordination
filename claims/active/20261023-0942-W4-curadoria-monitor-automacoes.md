@@ -58,3 +58,12 @@ Escopo exclusivo em arquivos novos, sem tocar PHP/API W1/W3 nem rotas ou autenti
 - [ ] QA real em navegador 320/360/390/430, revisão independente W00, correção P0 `is_root` pela API W2/W3, contratos específicos de `events:discover`/fontes/reivindicações/ingressos. Não ativar rota nem checkout.
 - Branches remotas 7 antes/depois; main `fe4de92f1d6edb9e144bdbf41358ef9cfdb3fe03`, Independence `59ecfb20a25fdc2af10b83713a0d130db0831cc1`.
 - Estado: **em revisão**, sem merge, deploy, alteração PHP/API ou escrita em checkout VPS. Próxima ação W00: revisar diffs e atribuir QA real mobile em ambiente DEV autorizado.
+
+## Rodada W4 — 23/10/2026, 12h42 BRT
+
+- [x] Commit [86e562ebf1976640ca30e93c4db1369cd3243784](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/86e562ebf1976640ca30e93c4db1369cd3243784): fail-closed quando histórico de execução ou configuração de worker está inconsistente. O adaptador apaga a indicação de última execução e métricas, e a UI oculta a tabela em vez de anunciar sucesso anterior.
+- [x] Commit [65d151b1c6e70175236d41faecb6ca5c562ba8f8](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/65d151b1c6e70175236d41faecb6ca5c562ba8f8): corrige escape de regex de regressão para detectar tags comerciais de fato.
+- [x] Dois testes de regressão Jest novos em arquivos claimados; smoke de projeção V8 2/2 PASS e regex 6/6 PASS; NÃO equivalem ao Jest oficial.
+- [ ] GitHub Actions Validate [39980709216](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/39980709216) e Lighthouse [39980709005](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/39980709005) no SHA final: aguardando resultado; não alegar aprovação até conclusão.
+- [ ] QA real navegador 320/360/390/430, review independente W00, correção P0 is_root na API e contratos events:discover/reivindicações/ingressos continuam pendentes.
+- Nenhuma rota ativada; sem merge/deploy, sem alteração PHP/API, VPS ou produção. Próxima ação: verificar CI do SHA 65d151b1, corrigir regressões se houver e solicitar revisão W00.
