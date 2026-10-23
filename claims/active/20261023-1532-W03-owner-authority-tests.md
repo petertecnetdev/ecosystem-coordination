@@ -21,3 +21,16 @@ Estado: em-andamento.
 Próxima ação: W03 publicar teste no arquivo acima, verificar CI e registrar evidência; W00/W2 confirmar ownership exclusivo do serviço e corrigir is_root.
 
 Limites: não editar ApplicationAdminService.php, curadoria NP12/events:discover, comércio W1, checkouts DEV compartilhados ou /var/www. Sem merge/deploy.
+
+## Resultado oficial — 23/10/2026, 15h36 BRT
+
+- Claim remoto: commit d7891c3e35d87e30b63c0cc11992285715cb9ba3.
+- Testes PHP publicados na API Independence: c60a6a7885c72451d9b20030366e36f8bef4a7de — tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php.
+- Workflow existente sob claim W03 CI atualizado: 0a7b1ab762e25856ecdc9ff3d6f4b222fcb3e001 — .github/workflows/administrator-w03-ci.yml, adiciona execução isolada sem mascarar falha do teste original.
+- CI oficial W03 do SHA 0a7b1ab: run 40004473588, job 120588750889. Etapa isolada: 4 testes PASS, 21 assertions, exit 0. PHP lint via leitura do arquivo remoto: exit 0.
+- PHPUnit W03 original: 18 PASS, 1 FAIL (170 assertions), exit 1, divergência is_root em ApplicationAdminService::context() linha de teste 514; workflow FAILURE, sem relaxar regressão.
+- Workers Laravel e API CI do SHA final: conferir resultados finais antes de declarar sucesso; API CI ainda em execução nesta atualização.
+- ApplicationAdminService.php permanece fora do claim W03, sem transferência formal do owner Administrator API; curadoria NP12 e comércio W1 intocados. Sem merge/deploy.
+
+Estado: em-revisao (suíte isolada verde; gate Administrator P0 bloqueado).
+Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_root global versus is_owner local, validar PHPUnit W03 e API CI exit 0.
