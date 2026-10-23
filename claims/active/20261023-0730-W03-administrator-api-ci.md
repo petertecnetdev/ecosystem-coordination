@@ -40,3 +40,11 @@ Próxima ação: W00 encaminhar handoff ao responsável Administrator para corre
 - PHPUnit anterior (SHA `efd757e`): 17/18 PASS, exit 1 por divergência `is_root` no payload; **não corrigido nesta rodada**.
 - Ownership do `ApplicationAdminService.php` continua fora deste claim; aguardar revisão/transferência formal W00/W4. NP12 segue owner exclusivo da curadoria, sem delegação.
 - Sem merge/deploy. Próxima ação: coletar resultados oficiais deste SHA e encaminhar correção do serviço ao owner Administrator API.
+
+## Resultado oficial do SHA 1c4b3c9 — 23/10/2026 09:36 BRT
+
+- W03 GitHub Actions run `39954414886`: **FAILURE**; PHPUnit oficial **exit 1**, 17 aprovados, 1 falhou, 166 asserções. Mesma regressão `is_root` em `ApplicationAdminTenantBoundaryW03Test.php:514`; a correção do serviço continua bloqueada por ownership.
+- Workers Laravel run `39954414911`: **SUCCESS**; regressão de workers preservada.
+- API CI run `39954414901`: ainda `in_progress` na consulta; não declarar aprovado.
+- Gate sintético de integridade JUnit validado em três cenários locais: suíte completa aceita; suíte reduzida e suíte sem teste P0 rejeitadas (exit 0 do verificador).
+- Próxima ação: responsável Administrator API corrigir sem promover owner local a root global; W00 confirmar claim/handoff e revisão; reexecutar W03 e API CI. Sem deploy.
