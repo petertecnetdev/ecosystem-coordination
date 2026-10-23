@@ -37,3 +37,11 @@ Próxima ação: W2 conferir Lighthouse e encerrar claim após revisão; W00/W03
 
 ## Notes
 Não editar UnverifiedListingPanel.js, seus testes já claimados, os oito arquivos W4, backend NP12, diretórios de produção ou DEV alheios. Sem branches novas. Registro NP12 específico não foi localizado na árvore de coordenação consultada; issue #10 é a referência confirmada.
+
+## Rodada W2 — 23/10/2026, 18:18 BRT
+- **Commit real:** `8fcad99e3398badc36ee82fdcf00daaf606e9223` na mesma branch `Independence`; arquivo já sob claim W2 `src/components/independence/CuratorialCommerceBoundaryW2.test.js`.
+- **Escopo:** oito regressões novas de isolamento `app_id` entre evento e produção (IDs decimais de 64 bits diferentes, Number inseguro, zero, negativo, zeros à esquerda em apps distintos, espaços, notação científica e equivalência legítima com zeros à esquerda). Não muda o código comercial; o backend permanece autoridade.
+- **Gates em execução no SHA:** Validate Cutinapp #40025640304 e Lighthouse #40025640475; **não declarar SUCCESS antes da conclusão**.
+- **P0 ainda pendente:** handoff W03 para `UnverifiedListingPanel.js` e estado assíncrono; validação integrada com API NP12 e fluxo comercial.
+- **Impacto econômico esperado:** reduzir risco de exposição indevida de CTA entre tenants sem bloquear IDs legados decimais equivalentes. Resultado econômico ainda não medido.
+- **Próxima ação:** acompanhar CI, corrigir eventuais falhas sem sobrescrever claims; W3 confirmar mesma proteção de `app_id` na API. Nenhum merge/deploy.
