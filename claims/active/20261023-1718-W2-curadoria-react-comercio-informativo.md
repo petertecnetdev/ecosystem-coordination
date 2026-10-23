@@ -41,7 +41,7 @@ Não editar UnverifiedListingPanel.js, seus testes já claimados, os oito arquiv
 ## Rodada W2 — 23/10/2026, 18:18 BRT
 - **Commit real:** `8fcad99e3398badc36ee82fdcf00daaf606e9223` na mesma branch `Independence`; arquivo já sob claim W2 `src/components/independence/CuratorialCommerceBoundaryW2.test.js`.
 - **Escopo:** oito regressões novas de isolamento `app_id` entre evento e produção (IDs decimais de 64 bits diferentes, Number inseguro, zero, negativo, zeros à esquerda em apps distintos, espaços, notação científica e equivalência legítima com zeros à esquerda). Não muda o código comercial; o backend permanece autoridade.
-- **Gates em execução no SHA:** Validate Cutinapp #40025640304 e Lighthouse #40025640475; **não declarar SUCCESS antes da conclusão**.
+- **Gates concluídos no SHA:** [Validate Cutinapp #40025640304](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40025640304) **SUCCESS**: Jest 178/178 suítes, 1223/1223 testes, React build compilado com sucesso (exit 0), perf budget aprovado; [Lighthouse #40025640475](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40025640475) **SUCCESS**. Aviso não bloqueante: snapshot SEO indisponível (exit 1 interno), sem invalidar build SPA.
 - **P0 ainda pendente:** handoff W03 para `UnverifiedListingPanel.js` e estado assíncrono; validação integrada com API NP12 e fluxo comercial.
 - **Impacto econômico esperado:** reduzir risco de exposição indevida de CTA entre tenants sem bloquear IDs legados decimais equivalentes. Resultado econômico ainda não medido.
 - **Próxima ação:** acompanhar CI, corrigir eventuais falhas sem sobrescrever claims; W3 confirmar mesma proteção de `app_id` na API. Nenhum merge/deploy.
