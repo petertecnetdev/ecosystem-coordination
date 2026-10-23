@@ -46,3 +46,15 @@ Escopo exclusivo em arquivos novos, sem tocar PHP/API W1/W3 nem rotas ou autenti
 - [ ] Contrato separado de events:discover e métricas por fonte/reivindicações/ingressos permanece pendente; monitor isolado e não operacional em runtime.
 - Branches remotas verificadas: 7, sem criação/exclusão; main `fe4de92f1d6edb9e144bdbf41358ef9cfdb3fe03`, compartilhada `0102cb053d7321bb25d2e6ce8dce0bb32da90d76`.
 - Estado: em revisão; sem merge, deploy, alteração PHP/API ou escrita na VPS. Próxima ação W00: revisão de integração e autorização de QA mobile.
+
+
+## Rodada W4 — 23/10/2026, 11h42–11h51 BRT
+
+- [x] Commit de código/testes [849c9d63f2d465f75deb475efe4ce0d522ea2e17](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/849c9d63f2d465f75deb475efe4ce0d522ea2e17): invalida métricas quando configuração de worker é duplicada/malformada, não assume estado contraditório; textos longos recebem `text-break` para mobile.
+- [x] Commit de correção dos testes [59ecfb20a25fdc2af10b83713a0d130db0831cc1](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/59ecfb20a25fdc2af10b83713a0d130db0831cc1): regex das tags comerciais passa a usar limite de palavra verdadeiro.
+- [x] Jest oficial 177/177 suites, 1199/1199 testes PASS; lint, build e perf:budget SUCCESS no [Validate 39972545197](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/39972545197).
+- [x] [Lighthouse CI 39972545345](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/39972545345) SUCCESS no SHA final.
+- [x] Smoke **estrutural** JSDOM para larguras-alvo 320/360/390/430 e fail-closed sem operations.view; **não equivale** a QA real em navegador nem prova ausência de overflow visual.
+- [ ] QA real em navegador 320/360/390/430, revisão independente W00, correção P0 `is_root` pela API W2/W3, contratos específicos de `events:discover`/fontes/reivindicações/ingressos. Não ativar rota nem checkout.
+- Branches remotas 7 antes/depois; main `fe4de92f1d6edb9e144bdbf41358ef9cfdb3fe03`, Independence `59ecfb20a25fdc2af10b83713a0d130db0831cc1`.
+- Estado: **em revisão**, sem merge, deploy, alteração PHP/API ou escrita em checkout VPS. Próxima ação W00: revisar diffs e atribuir QA real mobile em ambiente DEV autorizado.
