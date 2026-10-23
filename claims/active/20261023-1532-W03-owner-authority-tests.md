@@ -50,3 +50,11 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - CI oficial iniciado para o SHA: W03 push #40012225511 e PR #40012232346; Workers Laravel #40012232341; API CI #40012232309. **Resultados finais pendentes nesta atualização**; não declarar aprovação antes de coletar logs/exits.
 - Bloqueio P0 inalterado: `ApplicationAdminService::context()` confunde `is_root` global com `is_owner` local. A árvore canônica de claims ativos não contém claim explícito para esse serviço; W2 é o responsável de API no issue #12, mas não há handoff/claim exclusivo confirmados. W3 não editou o serviço.
 - NP12 `events:discover`, W1 comércio, `main`, VPS e checkouts compartilhados intocados; nenhum merge/deploy.
+
+## Fechamento dos testes oficiais — SHA 8460fdc1, 23/10/2026 16:35 BRT
+
+- [W03 push #40012225511](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40012225511): suíte isolada de owner **5 PASS, 32 asserções, exit 0**, incluindo o teste novo; W03 original **18 PASS / 1 FAIL, 170 asserções, exit 1** (`is_root` do owner local, linha 514); job FAILURE. [W03 PR #40012232346](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40012232346) também FAILURE.
+- [Workers Laravel #40012232341](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40012232341): **SUCCESS**, 8 testes / 40 asserções, exit 0.
+- [API CI #40012232309](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40012232309): **FAILURE**, 584 PASS / 18 FAIL / 2 SKIP, 3794 asserções, exit 1; gate de arquitetura 7 PASS / 2 FAIL, exit 1. O arquivo de testes W03 novo consta PASS no CI geral.
+- Comparação com SHA anterior `0a7b1ab`: +1 teste aprovado, +11 asserções, mesmas 18 falhas gerais e mesmas 2 de arquitetura. Não há evidência de regressão nova causada pelo commit; ainda não é aprovação de release.
+- Claim do serviço `ApplicationAdminService.php` não transferido a W03. Issue #12 atualizado: comentário #6373128731 pede ownership exclusivo W2 e correção P0. Nenhuma alteração em runtime, NP12, W1, `main` ou VPS. Sem merge/deploy.
