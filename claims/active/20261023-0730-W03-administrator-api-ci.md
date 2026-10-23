@@ -73,3 +73,12 @@ Próxima ação: W00 encaminhar handoff ao responsável Administrator para corre
 - CI do novo SHA disparado: W03 `39970367863`, Workers Laravel `39970367781`, API CI `39970367784`; aguardando resultados finais nesta atualização.
 - A divergência `is_root` do proprietário local continua sem correção autorizada. W03 não alterou `ApplicationAdminService.php`, `events:discover` (NP12), comércio W1, `main` ou VPS.
 - Próxima ação: verificar os três runs, reportar exits reais e solicitar ao responsável Administrator API claim/handoff formal para corrigir o P0. Sem merge/deploy.
+
+## Resultado oficial — SHA b979b23, 23/10/2026 11:33 BRT
+
+- [CI W03 39970367863](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39970367863): **FAILURE**. Autotestes do validador JUnit **11/11 PASS, exit 0**; PHP lint, Composer, migrações e rotas **SUCCESS**; PHPUnit Laravel W03 **17 PASS / 1 FAIL, 166 asserções, exit 1**. Gate JUnit foi **executado apesar da falha PHPUnit** e também retornou **exit 1** pela falha registrada, comprovando a nova coleta independente.
+- [Workers Laravel 39970367781](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39970367781): **SUCCESS**, 8 testes / 40 asserções.
+- [API CI 39970367784](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/39970367784): **FAILURE**, 578 PASS / 18 FAIL / 2 SKIP (3758 asserções), arquitetura 2 falhas. Não declarar item 3 validado.
+- Logs e exit codes preservados no artifact do W03. O bloqueio P0 em `ApplicationAdminService::context()` permanece, sem claim de edição do serviço para W03.
+- Não foi possível confirmar nesta rodada novo state/lock canônico NP12 via consultas disponíveis; ownership informado é respeitado integralmente, sem transferência implícita.
+- Sem merge/deploy; próximo passo: handoff formal ao owner Administrator API para correção `is_root` e novo PHPUnit/CI oficiais exit 0.
