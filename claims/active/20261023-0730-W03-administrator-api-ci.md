@@ -30,3 +30,13 @@ Falta:
 Estado: bloqueado (regressão de segurança real, não falha de infraestrutura).
 
 Próxima ação: W00 encaminhar handoff ao responsável Administrator para correção do serviço com ownership formal; W03 não altera serviço fora do claim. Sem merge/deploy.
+
+## Atualização W03 — 2026-10-23 09:34 BRT
+
+- Commit publicado na branch existente `Independence`: `1c4b3c95dadc21157a973503afdec97d9be76ec1` — `teste(ci): impedir remoção silenciosa da regressão de autoridade W03 [agent:W3]`.
+- Arquivo sob claim: `.github/workflows/administrator-w03-ci.yml` (sem alterações no serviço, curadoria NP12 ou comércio W1).
+- Gate novo: exigir no JUnit no mínimo 18 casos e o teste P0 `test_administrador_principal_da_cutinapp_nao_e_root_do_ecossistema`; manter reprovação por falha/erro/skip.
+- CI disparado pelo SHA: W03 `39954414886`, API CI `39954414901`, Workers Laravel `39954414911`; status inicial `in_progress`, resultados finais pendentes.
+- PHPUnit anterior (SHA `efd757e`): 17/18 PASS, exit 1 por divergência `is_root` no payload; **não corrigido nesta rodada**.
+- Ownership do `ApplicationAdminService.php` continua fora deste claim; aguardar revisão/transferência formal W00/W4. NP12 segue owner exclusivo da curadoria, sem delegação.
+- Sem merge/deploy. Próxima ação: coletar resultados oficiais deste SHA e encaminhar correção do serviço ao owner Administrator API.
