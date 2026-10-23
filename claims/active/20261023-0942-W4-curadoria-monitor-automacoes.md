@@ -74,3 +74,16 @@ Escopo exclusivo em arquivos novos, sem tocar PHP/API W1/W3 nem rotas ou autenti
 - [ ] **Lighthouse CI #39980709005** em execução na última consulta; não contabilizar como sucesso antecipado.
 - [!] Aviso de build fora do claim W4: gerador de SEO snapshots abortou com guard de locale pt-BR hardcoded e organizador externo herdando URL da homepage Cutinapp. O build SPA continuou e passou, mas snapshots SEO não foram gerados. Encaminhar a W3/W00 sob claim próprio; W4 não editar arquivos SEO.
 - BRANCH_COUNT_BEFORE=7, BRANCH_COUNT_AFTER=7; MAIN_SHA=fe4de92f1d6edb9e144bdbf41358ef9cfdb3fe03; SHARED_SHA=65d151b1c6e70175236d41faecb6ca5c562ba8f8; UNIQUE_RECOVERED=0; MERGED_VERIFIED=0; DELETED_VERIFIED=0; CLAIM_CONFLICTS=0 no escopo W4; QA_REAL_STATUS=Jest/build PASS, browser 320/360/390/430 pendente.
+
+
+## Rodada W4 — 23/10/2026, 15h42 BRT
+
+- [x] Consultados COMMANDS.md, claim próprio e NP12 em `petertecnetdev/petertecnet.com.br/.agents/tasks/TASK-20261022-CURATION-NP12.json`; NP12 cuida do cadastro transacional na API, fora do escopo W4.
+- [x] Commit de código [30b60d849aa1e611f2d053d352d6542380586dc5](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/30b60d849aa1e611f2d053d352d6542380586dc5): invalidar confiabilidade de histórico/contagens se `worker.enabled` não for booleano; rejeitar payload de >100 workers.
+- [x] Commit de testes [f73f15991014c74db0662618db36765de0588495](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/f73f15991014c74db0662618db36765de0588495): dois testes Jest de regressão.
+- [x] Smoke complementar JS 3/3 PASS, **não equivale ao Jest oficial**.
+- [ ] Validate [#40006100853](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40006100853) e Lighthouse [#40006100849](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40006100849) no SHA final: PENDING na consulta; não declarar sucesso.
+- [ ] QA visual real 320/360/390/430 e contrato `application_id` do GET /admin/context, is_root owner local, negações RBAC/app_id, revisão independente W00.
+- [x] Handoff registrado na issue #12, comentário 6372298323.
+- BRANCH_COUNT_BEFORE=7, BRANCH_COUNT_AFTER=7, UNIQUE_RECOVERED=0, MERGED_VERIFIED=0, DELETED_VERIFIED=0, MAIN_SHA=fe4de92f1d6edb9e144bdbf41358ef9cfdb3fe03, SHARED_SHA=f73f15991014c74db0662618db36765de0588495, CLAIM_CONFLICTS=0 no escopo W4, QA_REAL_STATUS=smoke JS PASS; Jest/build/CI e navegador pendentes, OPEN_BLOCKERS=API contract/is_root + browser QA + W00 review, NEXT_ACTION=verificar CI e solicitar integração somente após gates.
+- Sem merge, deploy, alteração PHP/API, VPS ou main. Monitor isolado.
