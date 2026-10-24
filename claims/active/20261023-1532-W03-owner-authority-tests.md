@@ -292,3 +292,10 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Commit corretivo `cac86d684c0c7fbf53381cf8fd464beef8f845f9` [agent:W3]: corrigido namespace `\\App\\Models\\ApplicationAdminAudit` para referência PHP válida; CI W03 #40116747213 iniciado, resultado pendente neste registro.
 - O gate original W03 continua com regressão `context().is_root` local/global; sem handoff exclusivo para `ApplicationAdminService.php`, W03 não o altera. W00 deve formalizar responsável Administrator API e claim; W4 mantém QA independente.
 - API CI e Workers Laravel não acionados pelo path do teste, conforme filtros. Sem merge/deploy.
+
+### Resultado oficial — SHA cac86d68, 24/10/2026 14h35 BRT
+
+- [W03 #40116747213](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40116747213): suíte independente de autoridade **27 PASS / 278 asserções / exit 0** (teste novo de isolamento da auditoria aprovado). W03 principal **18 PASS / 1 FAIL / 170 asserções / exit 1**, JUnit gate exit 1; workflow **FAILURE** por `context().is_root` indevido, sem bypass.
+- [CI inicial #40116685562](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40116685562): PHPUnit exit 255 por namespace PHP mal escapado no commit b5a6a877; corrigido no commit cac86d68, não pendente.
+- API CI geral e Workers Laravel não disparados neste SHA pelos filtros. A revisão de `automation-workers.yml`, `api-ci.yml` e `COMMANDS.md` não implicou alterações.
+- Handoff de `ApplicationAdminService.php` ainda não confirmado. Ação P0 W00/responsável Administrator API: claim exclusivo, correção root global/owner local, W03 e API CI completos exit 0. NP12, W1, main, VPS e produção intocados. Sem merge/deploy.
