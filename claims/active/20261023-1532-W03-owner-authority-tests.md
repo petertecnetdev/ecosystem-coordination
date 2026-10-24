@@ -262,3 +262,14 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - NP12 verificado em `petertecnetdev/petertecnet.com.br/.agents/tasks/TASK-20261022-CURATION-NP12.json` e `.agents/state/NP12.json`: `RUNNING`, owner NP12, `delegation_count=0`, heartbeat 23/10 01:43Z, lock histórico expirado 23/10 03:13Z; sem reatribuição formal. Nenhuma edição `events:discover`.
 - `api-ci.yml` e `automation-workers.yml` revisados: os filtros não acionam API CI geral nem Workers Laravel por mudanças apenas neste arquivo de teste; **não executados no SHA**. `COMMANDS.md` canônico da coordenação revisado. Nenhum patch cosmético de workflow.
 - Sem merge, deploy, reset, force-push ou alteração de `/var/www`. Item 3 permanece parcial até gate W03 e API CI verdes.
+
+
+## Rodada W03 — 24/10/2026 12h35 BRT
+
+- Commit real [agent:W3] API `Independence`: `c6e316d675b0f93d73a60ffcd4fb33becc6c7c5f`, somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob este claim.
+- Nova regressão HTTP: após transferência persistida do proprietário Cutinapp, o JWT antigo perde imediatamente GET `/admin/context` (403) apesar de `app_id` forjado; o mesmo JWT conserva o contexto legítimo Rasoio, e o novo proprietário acessa Cutinapp. Não altera runtime.
+- GitHub Actions W03 [#40107607579](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40107607579), job 120912438972: **25 PASS / 242 asserções / exit 0** na suíte independente; **18 PASS / 1 FAIL / 170 asserções / exit 1** na suíte principal (P0 `is_root` owner local em `ApplicationAdminTenantBoundaryW03Test.php:514`); workflow FAILURE. Sintaxe, Composer, migrações, rotas e autotestes JUnit anteriores passaram.
+- API CI geral e Workers Laravel não acionados neste SHA por filtros de workflow; não declarar sucesso.
+- Conferidos workflows `administrator-w03-ci.yml`, `api-ci.yml`, `automation-workers.yml` e `COMMANDS.md`. Serviço `ApplicationAdminService.php` permanece fora do claim, sem handoff exclusivo; não foi editado.
+- NP12: task/state canônicos não localizados na árvore GitHub acessível nem na busca de arquivo da VPS; lock histórico vencido não autoriza reatribuição. `events:discover` não tocado. Nenhum merge/deploy.
+- Próximo passo: W00 definir owner Administrator API e transferir claim exclusivo do serviço; responsável corrigir `is_root` global vs `is_owner` local, rodar W03 e API CI exit 0.
