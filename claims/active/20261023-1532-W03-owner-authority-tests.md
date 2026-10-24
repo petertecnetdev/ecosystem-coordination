@@ -114,3 +114,11 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - `Workers Laravel` e `API CI` **não foram disparados por push deste arquivo no SHA 5531a9e**; último SHA anterior `4b517ba8`: Workers [#40039231831](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40039231831) SUCCESS, API CI [#40039231910](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40039231910) FAILURE. Não atribuir esses resultados ao commit novo.
 - Consulta à árvore canônica de claims ativos não encontrou transferência exclusiva de `ApplicationAdminService.php` para W3; issue #12 mantém W2 como responsável planejado da Administrator API, mas não substitui claim/handoff formal. NP12 não teve handoff canônico localizado; nenhum arquivo `events:discover`, W1, produção ou VPS alterado.
 - Próxima ação: W00/W2 registrar claim exclusivo do serviço e corrigir root global versus owner local; W4 revisar `application_id`; reexecutar PHPUnit W03 e API CI com exit 0. Sem merge/deploy.
+
+## Rodada W03 — 23/10/2026 21h35 BRT
+
+- Novo commit substantivo [agent:W3] API `Independence`: `e06882819bfbb287f9f82a1198a22046cff5861d`, somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, dentro deste claim exclusivo.
+- Nova regressão HTTP: depois de recuperação administrativa persistida do owner Cutinapp, o JWT anterior não pode continuar configurando nem disparando workers por PUT/POST; ambas as respostas devem ser 403 `APPLICATION_ADMIN_FORBIDDEN`. Confirma novo owner e revogação de `admin.access.manage` no mesmo processo.
+- CI oficial W03 push [#40045739991](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40045739991) disparado; `in_progress` na verificação inicial. Não declarar PHPUnit exit 0 antes de conferir o job.
+- Diagnóstico P0 preservado: `ApplicationAdminService::context()` devolve `is_root=true` para owner local; arquivo fora deste claim e sem handoff formal W00/W2. A correção runtime permanece bloqueada por ownership.
+- Consultas de claims ativos e handoffs não comprovaram transferência do serviço nem delegação NP12; curadoria `events:discover`, W1, VPS, `main` e checkouts compartilhados intocados. Sem merge/deploy.
