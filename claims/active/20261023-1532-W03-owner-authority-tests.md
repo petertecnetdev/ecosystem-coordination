@@ -283,3 +283,12 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - API CI e Workers Laravel **não dispararam no SHA** por filtros de workflow. Não contar como aprovados. `COMMANDS.md`, `api-ci.yml`, `automation-workers.yml` e `administrator-w03-ci.yml` inspecionados, sem alteração de workflow.
 - NP12: tarefa/lock histórico informado não foi encontrado na árvore GitHub `Independence` nem no caminho `/home/petertecnet` inspecionado somente para leitura; estado atual não confirmado. Nenhuma reatribuição inferida; `events:discover` intocado.
 - Sem merge, deploy, alteração de `main`, `/var/www`, comércio W1 ou serviço Administrator API. Próxima ação: W00/owner API formalizar claim e corrigir P0; W03 manter testes sob claim próprio.
+
+## Rodada W03 — 2026-10-24 14:35 BRT
+
+- Escopo exclusivo preservado: `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, API `Independence`. Nenhum runtime, NP12, W1 ou produção editado.
+- Solicitação de QA W4 (issue #12, 24/10 13:46): reforçar isolamento real dos registros de `GET /admin/audit` entre Cutinapp e Rasoio. Teste novo com ações marcadoras em ambos os apps, delegado `audit.view` nos dois, JWT idêntico, `app_id`/`application_id` e cabeçalho forjados, asserts de conteúdo, tenant e total da paginação.
+- Commit inicial `b5a6a87788071bd3d6ec716f28db50f971fc2156` [agent:W3]: CI #40116685562 **FAILURE** por erro de sintaxe do novo teste (namespace do modelo com barras duplicadas), exit PHPUnit 255. **Não declarar aprovação.**
+- Commit corretivo `cac86d684c0c7fbf53381cf8fd464beef8f845f9` [agent:W3]: corrigido namespace `\\App\\Models\\ApplicationAdminAudit` para referência PHP válida; CI W03 #40116747213 iniciado, resultado pendente neste registro.
+- O gate original W03 continua com regressão `context().is_root` local/global; sem handoff exclusivo para `ApplicationAdminService.php`, W03 não o altera. W00 deve formalizar responsável Administrator API e claim; W4 mantém QA independente.
+- API CI e Workers Laravel não acionados pelo path do teste, conforme filtros. Sem merge/deploy.
