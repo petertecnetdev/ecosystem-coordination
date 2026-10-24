@@ -315,3 +315,10 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - GitHub Actions W03 `40125928094` iniciado no SHA (status inicialmente QUEUED); registrar resultado final antes de declarar testes aprovados.
 - P0 anterior permanece: `ApplicationAdminService::context()` devolve `is_root=true` ao owner local. Sem handoff exclusivo do serviço; W3 não alterou runtime.
 - NP12: `petertecnetdev/petertecnet.com.br/.agents/tasks/TASK-20261022-CURATION-NP12.json` segue RUNNING/owner NP12, delegation_count=0, lock histórico expirado em 23/10; não reatribuir automaticamente. Nenhum arquivo de curadoria, W1, main ou VPS modificado. Sem merge/deploy.
+
+## Resultado oficial — SHA 1df220a6, 24/10/2026 16:36 BRT
+
+- [CI W03 #40125928094](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40125928094), job 120967188657: **FAILURE** apenas no gate principal já conhecido.
+- Suíte independente `ApplicationAdminOwnerAuthorityW03Test.php`: **29 PASS, 306 assertions, exit 0**, incluindo a nova regressão de revogação imediata de atribuição com JWT antigo.
+- Suíte principal `ApplicationAdminTenantBoundaryW03Test.php`: **18 PASS / 1 FAIL, 170 assertions, exit 1**, falha em `is_root` na linha 514; gate JUnit exit 1. Rotas, composer, migrations e autotestes JUnit passaram.
+- API CI geral e Workers Laravel **não acionados neste SHA** pelos filtros atuais. Sem declaração de aprovação geral, sem merge/deploy.
