@@ -362,3 +362,12 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Lint/preflight, Composer, migrações, rotas e autotestes JUnit: SUCCESS.
 - API CI geral e Workers Laravel: **não acionados no SHA**; não declarar verdes.
 - Handoff de ownership enviado a W00/W2/W4 na issue #12 (comentário 6390413862). Serviço P0 e curadoria NP12 intocados. Sem merge/deploy.
+
+## Rodada W03 — 24/10/2026 20:35 BRT
+
+- Commit real na API `Independence`: `5568203ee2a7cb2898845e08d51b61c2fe50383e` — `teste(administracao): impedir injeção de permissão reservada em perfis por HTTP [agent:W3]`.
+- Escopo exclusivo deste claim: `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`; novo teste HTTP garante que POST e PUT de perfis não aceitam `admin.access.manage`, sem persistência de perfil, escalada de permissões ou auditoria indevida.
+- CI oficial W03 #40143314849: etapa independente **33 PASS, 355 assertions, exit 0**; lint, Composer, migrações, rotas e autotestes JUnit passaram. Suíte principal **18 PASS / 1 FAIL, 170 assertions, exit 1**, falha P0 `ApplicationAdminTenantBoundaryW03Test.php:514` (`is_root` local/global); job FAILURE, gate JUnit exit 1.
+- `API CI` geral e `Workers Laravel` não acionados pelo push neste SHA (filtros dos workflows). Não declarar CI global aprovado.
+- NP12: `TASK-20261022-CURATION-NP12` e `.agents/state/NP12.json` consultados, status `RUNNING`, owner NP12, delegação 0; lock histórico expirado sem handoff/reassign formal. Escopo `events:discover` intocado.
+- `ApplicationAdminService.php` permanece sem claim/handoff para W3; correção P0 deve ser feita pelo owner Administrator API sob transferência formal, seguida de W03 e API CI completos exit 0. Sem alterações W1, NP12, main, VPS; sem merge/deploy.
