@@ -307,3 +307,11 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - CI oficial [Administrator W03 #40120978615](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40120978615), job 120952237607: workflow **FAILURE** pelo P0 preexistente; PHPUnit principal **18 PASS / 1 FAIL / 170 asserções / exit 1**, JUnit gate exit 1 em `ApplicationAdminTenantBoundaryW03Test.php:514` (`context().is_root` marca owner local como root global). Composer, migrações, rotas e autotestes JUnit: SUCCESS. API CI e Workers Laravel não acionados no SHA pelos filtros.
 - Ownership de `ApplicationAdminService.php` não transferido para W03; W00/owner Administrator API devem formalizar claim exclusivo e corrigir semântica `is_root` global versus `is_owner` local. NP12 não foi reatribuído; tarefa/estado canônicos não localizados no repositório de coordenação (404), sem interpretação do lock expirado como handoff.
 - Nenhuma alteração em runtime, `events:discover`, W1, `main`, `/var/www` ou checkouts compartilhados. Sem merge/deploy. Impacto: reduz risco de leitura de auditoria após revogação e de contaminação entre aplicações; **não** libera release.
+
+## Rodada W03 — 24/10/2026 16:34 BRT
+
+- Novo commit real na API `Independence`: `1df220a6b89308faad5c862df01e820f35a49508` — `[agent:W3] Testar revogação imediata de atribuição entre aplicações`.
+- Arquivo exclusivo do claim: `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`; novo teste HTTP revoga grant Cutinapp, nega auditoria/contexto com JWT antigo e tenant forjado, preserva grant Rasoio e verifica banco/auditoria.
+- GitHub Actions W03 `40125928094` iniciado no SHA (status inicialmente QUEUED); registrar resultado final antes de declarar testes aprovados.
+- P0 anterior permanece: `ApplicationAdminService::context()` devolve `is_root=true` ao owner local. Sem handoff exclusivo do serviço; W3 não alterou runtime.
+- NP12: `petertecnetdev/petertecnet.com.br/.agents/tasks/TASK-20261022-CURATION-NP12.json` segue RUNNING/owner NP12, delegation_count=0, lock histórico expirado em 23/10; não reatribuir automaticamente. Nenhum arquivo de curadoria, W1, main ou VPS modificado. Sem merge/deploy.
