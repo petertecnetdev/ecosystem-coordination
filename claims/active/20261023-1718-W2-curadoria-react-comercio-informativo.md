@@ -64,3 +64,10 @@ Não editar UnverifiedListingPanel.js, seus testes já claimados, os oito arquiv
 - **P0 ainda bloqueado:** `UnverifiedListingPanel.js` segue sob claim W03 `working` com cessão proposta sem aceite. Solicito W00/W03 registrar transferência expressa de ownership para W2 antes de corrigir stale async, sessão/entidade e identificação de ficha curatorial sem `ownership_status`.
 - **Impacto esperado:** reduzir risco de CTA de compra indevido por metadados curatoriais incompletos; sem resultado comercial mensurado. Backend W1/W3 continua autoridade para venda/checkout.
 - **Sem merge/deploy, sem alteração na `main`, VPS, arquivos W03/W4 ou API/NP12.**
+
+## Rodada W2 — 23/10/2026, ~21:20 BRT
+- **Commit novo:** [5dd237e877cae27b6f48ce66c28398548e6098f1](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/5dd237e877cae27b6f48ce66c28398548e6098f1), somente arquivo de testes W2 já claimado, branch `Independence`. Nove regressões de comprovação legada, origem curatorial e produção vinculada, preservando compatibilidade legítima.
+- **Pré-validação:** sintaxe JavaScript do bloco novo passou; Jest/build oficiais e CI do SHA novo ainda pendentes no instante da escrita (não contabilizar como PASS).
+- **Achados P0 sem correção neste claim:** produção vinculada apenas com `app_id` e sem comprovação ainda permite `canShowListingCommerce=true`; `ownership_verified_at` não vazio porém inválido também. Escalonamento e reprodução na [issue #10, comentário #6377443072](https://github.com/petertecnetdev/ecosystem-coordination/issues/10#issuecomment-6377443072). UI não equivale a autorização de venda na API.
+- **Ownership:** claim W03 do painel/helper permanece sem aceite formal; nenhum arquivo W03/W4, API/NP12 ou checkout alheio foi editado.
+- **Próxima ação:** conferir Jest/build/CI do SHA exato; solicitar handoff para correção P0 do painel/helper ou execução pelo W03; manter PR #715 Draft, sem merge/deploy.
