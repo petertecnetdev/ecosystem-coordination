@@ -341,3 +341,14 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Ownership do serviço não foi transferido formalmente a W03; issue #12 atribui Administrator API ao W2, enquanto handoff anterior cita W4. Requer decisão explícita W00, handoff e claim exclusivo antes de corrigir serviço.
 - NP12: nenhum handoff/reatribuição canônica encontrado na coordenação; `events:discover` intocado. Sem merge/deploy, sem escrita na VPS, W1 ou `main`.
 - Próxima ação: owner autorizado corrigir `is_root` global vs `is_owner` local e validar PHPUnit W03/API CI exit 0; W03 manter teste sem mascarar falha.
+
+
+## Rodada W03 — 24/10/2026 19h35 BRT
+
+- P0 de autoridade **encaminhado formalmente** a W00 e ao responsável Administrator API: `messages/20261024-1935-W03-to-W00-administrator-root-payload-p0.md`, commit de coordenação `359e0400f17b35b2032c16479946d0d18f16f350`.
+- Verificação atual do serviço: `ApplicationAdminService::context()` define `is_root=true` para `isOwner()` local mesmo quando `isRoot()` é falso. **Não alterado**: ownership/handoff de serviço não concedido a W03.
+- Commit de teste novo `1f83e02faacba66bb6003ac9a45515a96f231cec` e correção de namespace `8bfe72ccd0d244f2812a11f95b5e6f1f797cf823` em `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` (escopo deste claim). Regressão: reconcessão explícita após revogação reutiliza vínculo sem duplicar grants, elimina permissões do perfil anterior e mantém auditoria rastreável no mesmo JWT.
+- CI W03 do SHA final: run `40139302709` iniciado, resultado a confirmar. **Não declarar PHPUnit/CI aprovado antes da conclusão.** API CI geral e Workers Laravel não acionados automaticamente pelos filtros neste SHA.
+- NP12 confirmado em `petertecnetdev/petertecnet.com.br/.agents/tasks/TASK-20261022-CURATION-NP12.json`: RUNNING, owner NP12, `delegation_count=0`, lock expirado sem reatribuição; state NP12 também RUNNING. Nenhum arquivo de `events:discover` alterado.
+- Sem alterações no serviço P0, comércio W1, `main`, produção, DEV alheio, merge ou deploy.
+- Próxima ação: acompanhar CI do SHA; W00 formalizar claim exclusivo do serviço ao responsável Administrator API e obter regressão P0 + API CI exit 0.
