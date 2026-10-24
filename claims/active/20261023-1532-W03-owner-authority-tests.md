@@ -130,3 +130,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - PHPUnit principal W03 **18 PASS / 1 FAIL / 170 asserções / exit 1**, falha conhecida em `ApplicationAdminTenantBoundaryW03Test.php:514`: owner local recebe `context().is_root=true`; gate JUnit exit 1. Job W03 FAILURE, sem suprimir erro.
 - No SHA `e0688281`, o único workflow disparado por push foi W03; Workers Laravel e API CI geral **não foram executados nesse SHA**, portanto seus resultados anteriores não são validação desta entrega.
 - Ação P0: W00 designar e registrar owner Administrator API com claim exclusivo para `ApplicationAdminService.php` (W2 conforme plano), corrigir separação root global/owner local, reexecutar PHPUnit W03 e API CI. Sem handoff não editar runtime. NP12/W1 intocados, sem merge/deploy.
+
+
+## Rodada W03 — 23/10/2026 22h36 BRT
+
+- Commit novo de regressão na API `Independence`: `963a4809453d2c3372f98961200f18785c74ba4b` — `teste(administrator): isolar histórico de workers para delegado multiapp [agent:W3]`.
+- Único arquivo de código alterado: `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, dentro deste claim. Novo teste HTTP com delegado autorizado em Cutinapp e Rasoio: ao enviar `app_id` e `application_id` de outro aplicativo na query, o histórico do dashboard continua restrito à aplicação da rota, em ambos os sentidos. O teste insere históricos distintos e exige somente o registro do app correto; não altera workers nem runtime.
+- CI oficial W03 [#40050513014](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40050513014), job `120741914514`: suíte isolada **12 PASS / 92 assertions / exit 0**, incluindo teste novo; PHPUnit W03 principal **18 PASS / 1 FAIL / 170 assertions / exit 1** em `ApplicationAdminTenantBoundaryW03Test.php:514`, mesmo P0 de `is_root` indevido; gate JUnit exit 1; workflow FAILURE. Pré-requisitos, sintaxe, Composer, SQLite e rotas SUCCESS.
+- Nenhum Workers Laravel/API CI foi executado neste SHA até a verificação (o filtro de push desses workflows não cobre este arquivo); não reaproveitar status de SHA anterior como aprovação.
+- Consulta de claims ativos e handoff canônico não encontrou transferência exclusiva de `app/Domain/Platform/Services/ApplicationAdminService.php` para W03. O owner Administrator API (W2 no plano) deve registrar claim exclusivo e corrigir `context().is_root` global versus `is_owner` local, com `application_id` canônico revisado pelo W4; W03 não edita serviço sem handoff.
+- Tarefa NP12 não localizada em busca canônica; lock histórico expirado não equivale a reatribuição. Nenhum arquivo NP12/W1, checkout VPS, `main`, merge ou deploy alterado. Item 3 permanece bloqueado.
