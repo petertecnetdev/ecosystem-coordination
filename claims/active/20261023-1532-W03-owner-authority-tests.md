@@ -251,3 +251,14 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Workflows `automation-workers.yml`, `api-ci.yml` e `administrator-w03-ci.yml`, e `COMMANDS.md` da coordenação, revisados. Workers/API CI não foram acionados para este SHA (filtros); não afirmar exit 0 deles.
 - Consulta canônica read-only de `claims/active`, `handoffs` e árvore de coordenação: nenhum arquivo NP12/handoff de transferência encontrado. Lock histórico vencido não autoriza W03 assumir `events:discover`. Não houve edição de curadoria NP12, comércio W1, serviço `ApplicationAdminService.php`, `main`, VPS ou checkout compartilhado.
 - Bloqueio P0 e ação W00: definir responsável Administrator API, formalizar handoff/claim exclusivo do serviço, corrigir distinção entre root global e owner local, validar PHPUnit W03/API CI completos com exit 0. Sem merge/deploy.
+
+
+## Rodada W03 — 24/10/2026 11h35 BRT
+
+- Novo commit real `[agent:W3]` na API `Independence`: `7393cdf3e114b80f469fbdcaa3fe576c12c365e2`, apenas `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` (escopo exclusivo W03).
+- Regressão nova: usuário delegado com `operations.view` consulta workers (GET /automations 200), mas não enumera `profiles`, `assignments`, `role-profiles` nem `role-assignments` (HTTP 403); vínculo e ausência de root/owner preservados. Contrato útil para W4/Admin Center.
+- CI oficial W03 [#40103147972](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40103147972), job `120899243125`: **suíte independente 24 PASS / 227 asserções / exit 0**; auditoria de rotas, migrações e sintaxe SUCCESS. PHPUnit principal **18 PASS / 1 FAIL / 170 asserções / exit 1**; gate JUnit exit 1; workflow **FAILURE**.
+- Falha P0 pré-existente: `ApplicationAdminTenantBoundaryW03Test.php:514`; `ApplicationAdminService::context()` retorna `is_root=true` para owner local não-root. **Nenhum claim/handoff exclusivo para esse serviço foi confirmado**; W00 deve formalizar responsável Administrator API (issue #12 aponta W2, operação atual W2 frontend) e corrigir em escopo autorizado. W03 não editou serviço.
+- NP12 verificado em `petertecnetdev/petertecnet.com.br/.agents/tasks/TASK-20261022-CURATION-NP12.json` e `.agents/state/NP12.json`: `RUNNING`, owner NP12, `delegation_count=0`, heartbeat 23/10 01:43Z, lock histórico expirado 23/10 03:13Z; sem reatribuição formal. Nenhuma edição `events:discover`.
+- `api-ci.yml` e `automation-workers.yml` revisados: os filtros não acionam API CI geral nem Workers Laravel por mudanças apenas neste arquivo de teste; **não executados no SHA**. `COMMANDS.md` canônico da coordenação revisado. Nenhum patch cosmético de workflow.
+- Sem merge, deploy, reset, force-push ou alteração de `/var/www`. Item 3 permanece parcial até gate W03 e API CI verdes.
