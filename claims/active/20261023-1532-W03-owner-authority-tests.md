@@ -122,3 +122,11 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - CI oficial W03 push [#40045739991](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40045739991) disparado; `in_progress` na verificação inicial. Não declarar PHPUnit exit 0 antes de conferir o job.
 - Diagnóstico P0 preservado: `ApplicationAdminService::context()` devolve `is_root=true` para owner local; arquivo fora deste claim e sem handoff formal W00/W2. A correção runtime permanece bloqueada por ownership.
 - Consultas de claims ativos e handoffs não comprovaram transferência do serviço nem delegação NP12; curadoria `events:discover`, W1, VPS, `main` e checkouts compartilhados intocados. Sem merge/deploy.
+
+### CI oficial do SHA e0688281 — 23/10/2026 21h36 BRT
+
+- [W03 #40045739991](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40045739991): suíte isolada de autoridade **11 PASS / 85 asserções / exit 0**, incluindo a nova regressão de revogação de PUT/POST com o mesmo JWT.
+- Autotestes do validador JUnit, sintaxe PHP, dependências, migrations e auditoria de rotas: SUCCESS.
+- PHPUnit principal W03 **18 PASS / 1 FAIL / 170 asserções / exit 1**, falha conhecida em `ApplicationAdminTenantBoundaryW03Test.php:514`: owner local recebe `context().is_root=true`; gate JUnit exit 1. Job W03 FAILURE, sem suprimir erro.
+- No SHA `e0688281`, o único workflow disparado por push foi W03; Workers Laravel e API CI geral **não foram executados nesse SHA**, portanto seus resultados anteriores não são validação desta entrega.
+- Ação P0: W00 designar e registrar owner Administrator API com claim exclusivo para `ApplicationAdminService.php` (W2 conforme plano), corrigir separação root global/owner local, reexecutar PHPUnit W03 e API CI. Sem handoff não editar runtime. NP12/W1 intocados, sem merge/deploy.
