@@ -331,3 +331,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - `ApplicationAdminService.php` continua fora do claim W03; sem handoff exclusivo, W03 não altera runtime. Solicitação de owner formal W00/W2/W4 registrada no issue #12, comentário 6389174649.
 - NP12 `events:discover` não foi alterado; task/lock atuais não localizados na árvore GitHub consultada nem nos checkouts DEV inspecionados. Expiração histórica não equivale a reatribuição. Sem merge/deploy/VPS.
 - Próxima ação: W00 formalizar ownership de `ApplicationAdminService.php` para Administrator API, corrigir contrato `is_root` global vs `is_owner` local e exigir PHPUnit W03/API CI exit 0.
+
+## Rodada W03 — 24/10/2026 18h30 BRT
+
+- Commit real API `Independence`: `db2bfae023de6496d4d92ea8e1537bb65ee3c464` — `teste(administracao): impedir autodelegação do proprietário local [agent:W3]`, somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, dentro deste claim.
+- Regressão HTTP nova: owner local não pode atribuir perfil delegado a si mesmo, inclusive com e-mail em maiúsculas. Exige HTTP 422, ausência de grant/auditoria, preservação de autoridade local e ausência de root global.
+- CI oficial no SHA: [Administrator W03 #40134604647](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40134604647) **FAILURE**. Suíte isolada **31 PASS / 325 asserções / exit 0**; PHPUnit principal **18 PASS / 1 FAIL / 170 asserções / exit 1**, gate JUnit exit 1. Mesma falha P0 preexistente `ApplicationAdminTenantBoundaryW03Test.php:514` por `ApplicationAdminService::context()` retornar `is_root=true` para owner local.
+- Pré-requisitos PHP, Composer, migrações, rotas e autotestes JUnit: SUCCESS. API CI geral e Workers Laravel não acionados no SHA por filtros; não afirmar aprovação.
+- Ownership do serviço não foi transferido formalmente a W03; issue #12 atribui Administrator API ao W2, enquanto handoff anterior cita W4. Requer decisão explícita W00, handoff e claim exclusivo antes de corrigir serviço.
+- NP12: nenhum handoff/reatribuição canônica encontrado na coordenação; `events:discover` intocado. Sem merge/deploy, sem escrita na VPS, W1 ou `main`.
+- Próxima ação: owner autorizado corrigir `is_root` global vs `is_owner` local e validar PHPUnit W03/API CI exit 0; W03 manter teste sem mascarar falha.
