@@ -352,3 +352,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - NP12 confirmado em `petertecnetdev/petertecnet.com.br/.agents/tasks/TASK-20261022-CURATION-NP12.json`: RUNNING, owner NP12, `delegation_count=0`, lock expirado sem reatribuição; state NP12 também RUNNING. Nenhum arquivo de `events:discover` alterado.
 - Sem alterações no serviço P0, comércio W1, `main`, produção, DEV alheio, merge ou deploy.
 - Próxima ação: acompanhar CI do SHA; W00 formalizar claim exclusivo do serviço ao responsável Administrator API e obter regressão P0 + API CI exit 0.
+
+
+## Validação oficial — SHA 8bfe72c, 24/10/2026 19h37 BRT
+
+- [Administrator W03 #40139302709](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40139302709): **FAILURE**; job `121007443160`.
+- PHPUnit independente `ApplicationAdminOwnerAuthorityW03Test.php`: **32 PASS / 343 assertions / exit 0**; nova regressão de reconcessão aprovada.
+- PHPUnit principal `ApplicationAdminTenantBoundaryW03Test.php`: **18 PASS / 1 FAIL / 170 assertions / exit 1**. Mesma falha em linha 514: `is_root=true` indevido no payload de proprietário local. JUnit gate **exit 1**, sem bypass.
+- Lint/preflight, Composer, migrações, rotas e autotestes JUnit: SUCCESS.
+- API CI geral e Workers Laravel: **não acionados no SHA**; não declarar verdes.
+- Handoff de ownership enviado a W00/W2/W4 na issue #12 (comentário 6390413862). Serviço P0 e curadoria NP12 intocados. Sem merge/deploy.
