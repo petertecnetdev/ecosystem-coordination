@@ -188,3 +188,15 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - `automation-workers.yml` não inclui este teste nos filtros de push; `api-ci.yml` não dispara em push `Independence`. Portanto, Workers Laravel e API CI geral não foram executados neste SHA. `COMMANDS.md` consultado em `ecosystem-coordination/main` (ausente na raiz API).
 - Auditoria canônica da árvore `ecosystem-coordination/main`: sem arquivo NP12 nem claim/handoff de `ApplicationAdminService.php` identificado; não interpretar lock histórico vencido como transferência. Issue #12 e plano antigo indicam W2 como Administrator API, porém a configuração operacional atual do W2 é frontend. W00 deve resolver ownership e formalizar claim exclusivo do serviço antes de correção.
 - Nenhuma alteração em `ApplicationAdminService.php`, `events:discover` (NP12), W1, `main`, VPS ou `/var/www`. Sem merge/deploy. Próximo passo: owner Administrator API corrigir semântica `is_root` global versus `is_owner` local e reexecutar W03/API CI com exit 0.
+
+
+## Rodada W03 — 24/10/2026 04h34 BRT
+
+- Commit novo de teste real [agent:W3] na API `Independence`: `e95d7308c2343bec4699dc9c9f49636b9b8cfb15`, apenas `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` dentro do claim exclusivo W03.
+- Regressão HTTP: revogação de `audit.view` na Cutinapp invalida acesso no mesmo JWT, mesmo com `app_id` forjado; mantém permissão e histórico isolado do Rasoio. O teste confere marcadores de auditoria sem vazamento entre aplicativos.
+- CI oficial W03 [#40074781278](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40074781278), job 120815700156: suíte isolada **18 PASS / 158 asserções / exit 0**; PHPUnit W03 principal **18 PASS / 1 FAIL / 170 asserções / exit 1**; JUnit gate exit 1; workflow FAILURE pelo P0 preexistente `ApplicationAdminTenantBoundaryW03Test.php:514`.
+- Sintaxe, instalação Composer, SQLite, rotas e autotestes do gate concluídos com sucesso no mesmo SHA; Workers Laravel e API CI geral **não foram executados neste SHA** (filtros de paths).
+- Diagnóstico atual no código: `ApplicationAdminService::context()` retorna `is_root=true` para `isOwner()` local. `isRoot()` é checagem global distinta; a falha real não foi mascarada.
+- O plano canônico e issue #12 designam **W2 como Administrator API**; não existe handoff/claim exclusivo confirmado do serviço para W03. W00 deve resolver a divergência de papéis W2/W4 e formalizar a titularidade antes de editar runtime.
+- Busca na coordenação não identificou estado/reatribuição canônica atual de `TASK-20261022-CURATION-NP12`; lock histórico expirado não é delegação. Sem alteração em `events:discover`, W1, `main`, VPS ou checkouts compartilhados. Sem merge/deploy.
+- Próximo passo: responsável Administrator API obter claim exclusivo de `ApplicationAdminService.php`, corrigir `is_root` global vs `is_owner` local e rodar PHPUnit W03 + API CI com exit 0.
