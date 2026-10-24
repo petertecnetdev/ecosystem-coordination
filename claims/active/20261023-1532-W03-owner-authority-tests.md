@@ -230,3 +230,15 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Ownership: claim W03 permanece limitado ao teste. Sem handoff exclusivo para `app/Domain/Platform/Services/ApplicationAdminService.php` (issue #12 atribui API Administrator ao W2 no planejamento antigo, W2 operacional está em frontend). W00 deve definir owner Administrator API, registrar handoff/claim e corrigir `is_root` global versus `is_owner` local, sem concessão global indevida. W03 não alterou serviço.
 - NP12: não localizado state/task ou handoff atualizado nos diretórios canônicos consultados; lock histórico expirado não autoriza reatribuição sem procedimento seguro. Nenhuma alteração `events:discover`, W1, produção, `main`, VPS, checkouts alheios; sem merge/deploy.
 - Item 3: suíte independente recuperada (exit 0); gate geral W03 e API CI permanecem pendentes. Próxima ação: correção P0 pelo owner formal, novo SHA com PHPUnit W03 exit 0 e API CI.
+
+
+## Rodada W03 — 24/10/2026 09h35 BRT (sem merge/deploy)
+
+- Commit real [agent:W3] na API `Independence`: `465c3e38f0793a49f3c0cfc97664375175cb3ac8`; único arquivo alterado `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, já coberto pelo claim exclusivo.
+- Nova regressão de segurança: perfil legado/importado com `admin.access.manage` indevidamente persistido não deve elevar colaborador a Owner/root nem permitir POST de perfis administrativos. Confirma HTTP 403, ausência de perfil/auditoria indevidos e `context.data.permissions` sem privilégio reservado. Nenhum runtime alterado.
+- CI oficial W03 do mesmo SHA: [run 40094535747](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40094535747), job `120873919837`. Suíte independente **22 PASS / 204 assertions / exit 0**. PHP lint, Composer, SQLite, autotestes JUnit e rotas: SUCCESS.
+- PHPUnit W03 principal **18 PASS / 1 FAIL / 170 assertions / exit 1**; gate JUnit exit 1; workflow **FAILURE**. Mesma falha P0 `ApplicationAdminTenantBoundaryW03Test.php:514`: `ApplicationAdminService::context()` retorna `is_root=true` para Owner apenas local.
+- Workers Laravel e API CI geral não foram acionados neste SHA por filtros; não atribuir resultados anteriores. Workflows `automation-workers.yml`, `api-ci.yml`, `administrator-w03-ci.yml` e `COMMANDS.md` revisados, sem alteração cosmética de gatilhos.
+- Nenhum claim/handoff canônico para W03 editar `app/Domain/Platform/Services/ApplicationAdminService.php`. Plano de orquestração indica W2 como Administrator API, porém alocação operacional recente conflita; W00 deve designar executor e formalizar ownership antes de editar.
+- NP12: tarefa/lock histórico relatados pelo usuário, mas não há transferência formal na coordenação consultada; `events:discover` e arquivos NP12 permanecem intocados. W1 comércio, W2 frontend, W4 Administrator, `main`, VPS e checkouts compartilhados intocados.
+- **Próximo passo P0:** owner Administrator API corrigir distinção `is_root` global/`is_owner` local sob claim exclusivo, reexecutar PHPUnit W03/API CI exit 0 e submeter à revisão W00. Não declarar item 3 validado.
