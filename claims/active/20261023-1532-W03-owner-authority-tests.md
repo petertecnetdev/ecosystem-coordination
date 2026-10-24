@@ -322,3 +322,12 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Suíte independente `ApplicationAdminOwnerAuthorityW03Test.php`: **29 PASS, 306 assertions, exit 0**, incluindo a nova regressão de revogação imediata de atribuição com JWT antigo.
 - Suíte principal `ApplicationAdminTenantBoundaryW03Test.php`: **18 PASS / 1 FAIL, 170 assertions, exit 1**, falha em `is_root` na linha 514; gate JUnit exit 1. Rotas, composer, migrations e autotestes JUnit passaram.
 - API CI geral e Workers Laravel **não acionados neste SHA** pelos filtros atuais. Sem declaração de aprovação geral, sem merge/deploy.
+
+## Rodada W03 — 24/10/2026 17h30 BRT
+
+- Commit real API `Independence`: `69b50433df719bb27d00046f5e8b98d7d197780c`, apenas `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, sob claim exclusivo W03. Teste novo: perfil delegado com atribuição ativa não pode ser excluído sem revogação explícita; após revogação, exclusão sem grant residual.
+- [CI W03 #40130043106](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40130043106), job 120979626017: **FAILURE**. Suíte independente **30 PASS / 317 asserções, exit 0**. PHPUnit W03 principal **18 PASS / 1 FAIL / 170 asserções, exit 1**; gate JUnit exit 1; mesma falha `ApplicationAdminTenantBoundaryW03Test.php:514` (owner local recebe `is_root=true`). PHP/Composer/migrações/rotas/autotestes JUnit SUCCESS.
+- API CI geral e Workers Laravel **não acionados para este SHA**; não declarar aprovação deles. Apenas workflow Administrator W03 foi disparado.
+- `ApplicationAdminService.php` continua fora do claim W03; sem handoff exclusivo, W03 não altera runtime. Solicitação de owner formal W00/W2/W4 registrada no issue #12, comentário 6389174649.
+- NP12 `events:discover` não foi alterado; task/lock atuais não localizados na árvore GitHub consultada nem nos checkouts DEV inspecionados. Expiração histórica não equivale a reatribuição. Sem merge/deploy/VPS.
+- Próxima ação: W00 formalizar ownership de `ApplicationAdminService.php` para Administrator API, corrigir contrato `is_root` global vs `is_owner` local e exigir PHPUnit W03/API CI exit 0.
