@@ -273,3 +273,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Conferidos workflows `administrator-w03-ci.yml`, `api-ci.yml`, `automation-workers.yml` e `COMMANDS.md`. Serviço `ApplicationAdminService.php` permanece fora do claim, sem handoff exclusivo; não foi editado.
 - NP12: task/state canônicos não localizados na árvore GitHub acessível nem na busca de arquivo da VPS; lock histórico vencido não autoriza reatribuição. `events:discover` não tocado. Nenhum merge/deploy.
 - Próximo passo: W00 definir owner Administrator API e transferir claim exclusivo do serviço; responsável corrigir `is_root` global vs `is_owner` local, rodar W03 e API CI exit 0.
+
+
+## Rodada W03 — 24/10/2026 13h30 BRT
+
+- API `Independence` commit real `0f3e3faa28583ffc690d27ccbc5583d4788a8389` — somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob claim W03; teste HTTP novo verifica que `audit.view` permite ler auditoria local, mas não concede `operations.view` ou `admin.access.manage`, nem permite listar/configurar/despachar workers com `app_id` e cabeçalho divergentes. Valida ausência de configuração e jobs e preservação do vínculo legítimo.
+- CI oficial W03 [#40111980873](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40111980873), SHA verificado: suíte independente **26 PASS / 257 asserções / exit 0**; lint/Composer/migrações/rotas/autotestes JUnit SUCCESS; suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1**; gate JUnit exit 1; workflow **FAILURE**.
+- P0 real não corrigido: `ApplicationAdminService::context()` informa `is_root=true` para owner local, teste `ApplicationAdminTenantBoundaryW03Test.php:514`. Sem handoff/claim exclusivo de `ApplicationAdminService.php`; solicitar W00 a atribuição formal ao owner Administrator API e correção com `is_root` global distinto de `is_owner` local.
+- API CI e Workers Laravel **não dispararam no SHA** por filtros de workflow. Não contar como aprovados. `COMMANDS.md`, `api-ci.yml`, `automation-workers.yml` e `administrator-w03-ci.yml` inspecionados, sem alteração de workflow.
+- NP12: tarefa/lock histórico informado não foi encontrado na árvore GitHub `Independence` nem no caminho `/home/petertecnet` inspecionado somente para leitura; estado atual não confirmado. Nenhuma reatribuição inferida; `events:discover` intocado.
+- Sem merge, deploy, alteração de `main`, `/var/www`, comércio W1 ou serviço Administrator API. Próxima ação: W00/owner API formalizar claim e corrigir P0; W03 manter testes sob claim próprio.
