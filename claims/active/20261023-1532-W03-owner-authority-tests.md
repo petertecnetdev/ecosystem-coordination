@@ -555,3 +555,12 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Ownership: issue #12 designa W2 para Administrator API, mas não há handoff/claim exclusivo para `ApplicationAdminService.php` a W3. W00/W2 devem formalizar ownership e corrigir semântica root global versus owner local, depois validar PHPUnit W03 e API CI exit 0. W4 aguarda `application_id` e pendência de worker canônicos para monitor; W1 mantém escopo comercial.
 - NP12 verificado em `petertecnetdev/petertecnet.com.br/main`: task `TASK-20261022-CURATION-NP12` RUNNING, owner NP12, delegação 0, lock histórico expirado 23/10 03:13:22Z sem reatribuição; estado último heartbeat 23/10. `events:discover` intocado.
 - Sem merge, deploy, escrita em `/var/www`, reset de DEV ou alterações W1/NP12. Próxima prioridade: claim/handoff Administrator API e correção P0 por owner autorizado.
+
+## Rodada W03 — 25/10/2026, 14h30 BRT
+
+- Commit real [agent:W3] na API `Independence`: `603212432a7b9761cbf02a2bee967f67ee5476a7`; único arquivo: `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` (claim exclusivo existente).
+- Regressão HTTP+job: após dois dispatches enfileirados em aplicações distintas, desativar o worker da Cutinapp e consumir seu job atrasado deve marcar `skipped`, sem executar o handler; a fila/controle do Rasoio permanece `queued` e habilitada. Novo dispatch da Cutinapp retorna 409 sem criar run. Sem edição de runtime.
+- CI oficial do SHA: [W03 #40216698319](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40216698319), job 121239270482. Suíte independente **51 PASS / 739 asserções / exit 0**; rotas e autotestes JUnit SUCCESS. Suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1** em `ApplicationAdminTenantBoundaryW03Test.php:514` (`context().is_root`); gate JUnit exit 1, workflow FAILURE. Falha P0 não ocultada.
+- API CI geral e Workers Laravel não foram disparados pelo push deste arquivo no SHA; não atribuir status SUCCESS sem execução correspondente.
+- Owner Administrator API segue W2 conforme issue #12, porém **não há handoff/claim exclusivo confirmado** para `app/Domain/Platform/Services/ApplicationAdminService.php`. W3 não editou o serviço. Próximo passo W00/W2: formalizar ownership e corrigir `is_root` global versus `is_owner` local, validar W03/API CI exit 0.
+- NP12: `TASK-20261022-CURATION-NP12` permanece RUNNING/owner NP12, delegation_count 0, lock expirado em 23/10 sem reatribuição; curadoria intocada. W1, W2 frontend, W4 frontend, main, VPS e checkouts compartilhados intocados. Sem merge/deploy.
