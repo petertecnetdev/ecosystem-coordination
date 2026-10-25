@@ -436,3 +436,12 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - `API CI` e `Workers Laravel` não foram disparados para esse SHA; não declarar sucesso desses pipelines. O W03 já é acionado pelo filtro `tests/Feature/ApplicationAdmin*Test.php`.
 - Verificação NP12: `.agents/state/NP12.json` ainda `RUNNING`, `TASK-20261022-CURATION-NP12` com owner NP12 e sem delegação; lock histórico expirado, sem reatribuição formal. `events:discover` intocado.
 - Sem handoff/claim exclusivo para `ApplicationAdminService.php`; issue #12 designa W2 API Administrator, requer confirmação formal W00/W2. Sem edição do serviço, W1, NP12, checkouts compartilhados ou produção; **sem merge/deploy**.
+
+## Rodada W03 — 25/10/2026, 02h30 BRT
+
+- Commit real de teste [agent:W3] na API `Independence`: `18b7fd8c66e56899c7ebf4826750220716ae0d70`, somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, dentro deste claim exclusivo. Nenhum runtime ou workflow modificado.
+- Nova regressão HTTP `test_slug_de_perfil_e_unico_no_app_sem_bloquear_outro_app`: mesmo slug permitido em Cutinapp/Rasoio; duplicidade dentro da Cutinapp recusada em POST e PUT (HTTP 422), sem mutar nome, slug, permissões ou auditoria; `app_id`, `application_id` e `X-Peter-App` externos não mudam o tenant da rota.
+- [CI W03 #40165558188](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40165558188), SHA conferido: suíte isolada **39 PASS / 535 asserções / exit 0**; Composer, sintaxe base, SQLite/migrações, autotestes JUnit e auditoria de rotas SUCCESS. Suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1**; gate JUnit exit 1; workflow **FAILURE**, sem supressão.
+- P0 reproduzido na linha 514 de `ApplicationAdminTenantBoundaryW03Test.php`: `ApplicationAdminService::context()` expõe `is_root=true` para owner local cujo `isRoot(user)` é falso. **W3 não possui handoff/claim do serviço**. W00 deve formalizar proprietário Administrator API (issue #12: W2), aceite e claim exclusivo; responsável corrigir sem conceder root global e exigir PHPUnit W03/API CI exit 0.
+- `API CI` geral e `Workers Laravel` **não dispararam** para esse SHA (consulta de runs retornou apenas W03). Workflow W03 já contém filtro de testes W03; sem alterações cosméticas em CI.
+- NP12 task/state canônicos lidos: `RUNNING`, owner NP12, `delegation_count=0`, heartbeat de 23/10/2026 e lock histórico vencido, sem reatribuição formal. Nenhuma edição em `events:discover`, W1, `main`, VPS, `/var/www` ou checkouts DEV compartilhados. Sem merge/deploy.
