@@ -512,3 +512,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Leitura de `COMMANDS.md` canônico em `ecosystem-coordination/main`, `administrator-w03-ci.yml`, `api-ci.yml`, `automation-workers.yml`; W03 já integra os testes independentes e oficiais sem relaxar gates. `COMMANDS.md` não existe na raiz da API.
 - NP12 confirmado por `.agents/tasks/TASK-20261022-CURATION-NP12.json` e `.agents/state/NP12.json` em `petertecnet.com.br/main`: `RUNNING`, owner NP12, delegation_count 0, lock expirado em 23/10 03:13Z, sem reatribuição/handoff; `events:discover` intocado.
 - Claim/handoff exclusivo de `app/Domain/Platform/Services/ApplicationAdminService.php` ainda não atribuído a W3; issue #12 define W2 como responsável Administrator API. **W00/W2 devem formalizar claim exclusivo e corrigir root global vs owner local, depois validar PHPUnit W03 e API CI exit 0.** Sem merge/deploy/VPS ou alterações comerciais W1.
+
+## Rodada W03 — 25/10/2026, 10h30 BRT
+
+- API `Independence`: commit real `88aee8116f3692335cb06eceb9951e31eb2818bc`, somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob este claim. Regressão HTTP com PUT válido e `app_id`/`application_id`/header de outro app: garante que configurações do worker persistam no app da rota, mesmo com proprietário autorizado nos dois apps, sem runs/jobs ou alteração do outro app.
+- CI oficial [W03 #40197667708](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40197667708): suíte isolada **47 PASS / 678 asserções / exit 0**; rotas, dependências, migrações e autotestes JUnit SUCCESS. PHPUnit principal **18 PASS / 1 FAIL / 170 asserções / exit 1** em `ApplicationAdminTenantBoundaryW03Test.php:514`; gate JUnit exit 1, workflow FAILURE. Sem mascarar falhas.
+- Workers Laravel e API CI geral não foram acionados por esse push de teste; não declarar validação deles no SHA.
+- Owner do serviço `app/Domain/Platform/Services/ApplicationAdminService.php`: **sem claim/handoff exclusivo formal** em `claims/active` e `handoffs`. W2 consta como responsável API Administrator na issue #12; W00/W2 devem formalizar ownership e corrigir `context().is_root` global sem alterar `is_owner` local. W3 não editou o serviço.
+- NP12: `TASK-20261022-CURATION-NP12` segue `RUNNING` com `owner_agent_id=NP12`, `delegation_count=0`; lock expirado em 23/10/2026 03:13:22Z, sem reatribuição formal. `events:discover` intocado.
+- P0 comercial W1, frontend W2 e monitor W4 permanecem fora deste claim. Sem merge, deploy, edição de checkout DEV compartilhado ou produção.
+- Próxima ação: W00/W2 formalizar ownership Administrator API, corrigir `is_root` e validar W03 + API CI exit 0; W4 alinhar `application_id` canônico do dashboard com owner do serviço de automações.
