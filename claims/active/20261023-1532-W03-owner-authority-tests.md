@@ -573,3 +573,12 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Bloqueio P0 real persiste: `app/Domain/Platform/Services/ApplicationAdminService.php` devolve `is_root=true` para owner local. W03 não tem handoff/claim desse serviço; W00 deve designar formalmente owner Administrator API e exigir correção com testes oficiais exit 0. Nenhuma modificação em arquivos W1/W2/W4.
 - `api-ci.yml` não dispara em push `Independence`; `automation-workers.yml` não cobre o arquivo alterado: sem execução nova desses dois workflows para o SHA. Não declarar sucesso geral.
 - NP12: `TASK-20261022-CURATION-NP12` RUNNING, owner NP12, `delegation_count=0`; lock histórico expirou 23/10 03:13:22Z, sem reatribuição canônica. Nenhuma alteração em `events:discover`, `main`, VPS, `/var/www` ou checkouts DEV compartilhados. Sem merge/deploy.
+
+## Rodada W03 — 25/10/2026, 16h29 BRT
+
+- Commit real API `Independence`: `542739b61b3a340dc35c7bccd81096dbe5e34eac`, exclusivamente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` (escopo W03 já claimado).
+- Regressão substantiva: reentrega de jobs de workers com status terminal `succeeded` ou `failed` não pode reexecutar handlers, ressuscitar a execução nem apagar `result`, `last_error` ou `finished_at`; callback de falha atrasado não rebaixa sucesso. Isolamento Cutinapp/Rasoio.
+- CI oficial [W03 #40226136908](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40226136908): **FAILURE**. Suíte independente **53 PASS / 770 asserções / exit 0**; auditoria de rotas SUCCESS; suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1**, gate JUnit exit 1. Falha antiga de `is_root` na linha 514, não suprimida. API CI e Workers Laravel não foram acionados por este SHA.
+- Código fonte confirma a causa: `ApplicationAdminService::context()` retorna `is_root => true` incondicionalmente no ramo de `isOwner`, apesar de `isRoot($user)` testar bootstrap global. Owner Administrator API deve assumir formalmente o arquivo antes de corrigir. Coordenação issue #12 comentário 6402131745.
+- NP12: task RUNNING, owner NP12, delegation_count 0, lock histórico expirado em 23/10; sem reatribuição/handoff formal. Não editar `events:discover`.
+- Sem alterações de runtime, pipelines, W1, NP12, `main`, VPS ou checkouts compartilhados; sem merge/deploy. Item 3 parcial, bloqueio P0 preservado.
