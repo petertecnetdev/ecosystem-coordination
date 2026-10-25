@@ -390,3 +390,11 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - CI W03 por SHA: [#40151141046](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40151141046), em execução no momento deste registro. Não declarar PHPUnit aprovado antes do resultado.
 - P0 `ApplicationAdminService::context()` permanece fora do claim W03; `is_root` global indevido para proprietário local, sem handoff exclusivo. Issue #12 atribui Administrator API a W2; W00 precisa confirmar e formalizar ownership. Nenhuma edição no serviço.
 - NP12: task/state canônicos `RUNNING`, owner NP12, `delegation_count=0`, checkpoint `START`, lock expirado em 23/10 03:13Z, sem reatribuição formal. `events:discover`, W1, `main`, VPS e checkouts alheios intocados. Sem merge/deploy.
+
+### Resultado oficial W03 — SHA a5c401d, 24/10/2026 22h35 BRT
+
+- [W03 #40151141046](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40151141046): **FAILURE**. Suíte independente `ApplicationAdminOwnerAuthorityW03Test.php`: **35 PASS / 395 assertions, exit 0**, incluindo o teste novo de retentativa idempotente. Pré-requisitos PHP/Composer, autotestes JUnit, SQLite/migrações e auditoria de rotas: SUCCESS.
+- Suíte principal `ApplicationAdminTenantBoundaryW03Test.php`: **18 PASS / 1 FAIL / 170 assertions, exit 1**; gate JUnit **exit 1**. Falha P0 original na linha 514 (`is_root=true` para proprietário local sem root global); nenhuma asserção foi enfraquecida.
+- API CI geral e Workers Laravel **não foram acionados no SHA a5c401d**. Não declarar CI completo verde.
+- O commit API foi confirmado como HEAD remoto `Independence` no momento da consulta. Arquivo de teste sob claim próprio; sem alterações no serviço, NP12, W1, `main`, VPS ou checkouts compartilhados. Sem merge/deploy.
+- Próxima ação obrigatória: W00 formalizar owner Administrator API (issue #12: W2) e claim/handoff exclusivo de `ApplicationAdminService.php`; responsável corrigir `context().is_root` e validar W03/API CI no mesmo SHA.
