@@ -482,3 +482,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - `API CI` e `Workers Laravel` **não acionados por este commit** (somente W03 correspondeu aos filtros). Não inferir aprovação desses gates.
 - Estado canônico NP12 relido: `.agents/tasks/TASK-20261022-CURATION-NP12.json` e `.agents/state/NP12.json` em petertecnet.com.br/main continuam `RUNNING`, owner NP12, `delegation_count=0`, heartbeat de 23/10 e lock expirado em 23/10 03:13Z. Sem reatribuição/handoff formal, não tocar `events:discover`.
 - `ApplicationAdminService.php` permanece sem handoff/claim exclusivo para W3; issue #12 designa Administrator API ao W2. W00/W2 precisam formalizar ownership e corrigir `is_root` global versus `is_owner` local, mantendo gates completos. Sem merge/deploy.
+
+
+## Rodada W03 — 25/10/2026 07h30 BRT
+
+- API `Independence` commit real [agent:W3] `4ca6fad48f44091fd5563b4929e3809754f92ebc`, somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob claim exclusivo W03.
+- Regressão HTTP nova: após desabilitar o worker `discovery_quality` na Cutinapp, dispatch forjado com IDs do Rasoio recebe 409 sem run/job; controle e dispatch legítimos do Rasoio continuam independentes. Não toca `events:discover`.
+- CI W03 oficial [#40184922662](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40184922662): suíte isolada **44 PASS / 630 assertions / exit 0**, incluindo novo teste; PHPUnit W03 principal **18 PASS / 1 FAIL / 170 assertions / exit 1**, gate JUnit exit 1, workflow **FAILURE** pela falha preexistente em `ApplicationAdminTenantBoundaryW03Test.php:514`.
+- Causa P0 confirmada no HEAD: `ApplicationAdminService::context()` retorna `is_root=true` no ramo de proprietário local sem verificar `isRoot($user)`. W3 não tem handoff/claim para o serviço; **W00/W2** devem registrar ownership exclusivo, corrigir o contrato sem conceder root global e exigir PHPUnit W03 + API CI completos exit 0.
+- API CI e Workers Laravel não disparados neste SHA (push em arquivo W03). Sintaxe, Composer, SQLite/migrations, rotas e autotestes JUnit do workflow W03 aprovados.
+- NP12: `.agents/tasks/TASK-20261022-CURATION-NP12.json` e `.agents/state/NP12.json` ainda registram `RUNNING`, owner NP12, delegation_count 0, heartbeat antigo de 23/10 e lock expirado; sem reatribuição formal. Curadoria, W1, `main`, VPS e checkouts DEV intocados. Sem merge/deploy.
