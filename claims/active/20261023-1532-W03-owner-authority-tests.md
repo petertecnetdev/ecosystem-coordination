@@ -564,3 +564,12 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - API CI geral e Workers Laravel não foram disparados pelo push deste arquivo no SHA; não atribuir status SUCCESS sem execução correspondente.
 - Owner Administrator API segue W2 conforme issue #12, porém **não há handoff/claim exclusivo confirmado** para `app/Domain/Platform/Services/ApplicationAdminService.php`. W3 não editou o serviço. Próximo passo W00/W2: formalizar ownership e corrigir `is_root` global versus `is_owner` local, validar W03/API CI exit 0.
 - NP12: `TASK-20261022-CURATION-NP12` permanece RUNNING/owner NP12, delegation_count 0, lock expirado em 23/10 sem reatribuição; curadoria intocada. W1, W2 frontend, W4 frontend, main, VPS e checkouts compartilhados intocados. Sem merge/deploy.
+
+## Rodada W03 — 25/10/2026, 15h35 BRT
+
+- Commit real [agent:W3] API `Independence`: `6f5ff12797021b2bd953b67b156df6801ef1f55a`; somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob claim W03 existente.
+- Regressão de segurança: `RunAutomationWorker::failed()` deve persistir somente a classe da exceção, sem expor mensagem privada no banco ou dashboard; a falha de Cutinapp libera reexecução, preservando job pendente do Rasoio e isolamento de `app_id`. Nenhum arquivo de runtime alterado.
+- [CI oficial W03 #40221923931](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40221923931), job `121255148562`, SHA confirmado: **suíte independente 52 PASS / 756 asserções / exit 0**; Composer, SQLite/migrações, rotas e autotestes JUnit SUCCESS. Suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1** na linha 514 de `ApplicationAdminTenantBoundaryW03Test.php`; gate JUnit exit 1; workflow **FAILURE**.
+- Bloqueio P0 real persiste: `app/Domain/Platform/Services/ApplicationAdminService.php` devolve `is_root=true` para owner local. W03 não tem handoff/claim desse serviço; W00 deve designar formalmente owner Administrator API e exigir correção com testes oficiais exit 0. Nenhuma modificação em arquivos W1/W2/W4.
+- `api-ci.yml` não dispara em push `Independence`; `automation-workers.yml` não cobre o arquivo alterado: sem execução nova desses dois workflows para o SHA. Não declarar sucesso geral.
+- NP12: `TASK-20261022-CURATION-NP12` RUNNING, owner NP12, `delegation_count=0`; lock histórico expirou 23/10 03:13:22Z, sem reatribuição canônica. Nenhuma alteração em `events:discover`, `main`, VPS, `/var/www` ou checkouts DEV compartilhados. Sem merge/deploy.
