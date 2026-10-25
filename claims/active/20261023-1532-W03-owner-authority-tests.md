@@ -406,3 +406,11 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Workflow oficial disparado para o SHA: W03 #40154518992; status inicial QUEUED, sem declarar exit 0 antes dos jobs concluírem.
 - Bloqueio P0 preexistente: `ApplicationAdminService::context()` retorna `is_root=true` para owner local, embora `isRoot(user)=false`. Handoff W03 já registrado em `messages/20261024-1935-W03-to-W00-administrator-root-payload-p0.md`; W00/W2 devem confirmar claim exclusivo do serviço e corrigir. W3 não tocou o serviço.
 - NP12: task e state canônicos permanecem `RUNNING`, owner NP12, sem delegação; lock histórico expirou, sem reatribuição formal. Curadoria, comércio W1, main, VPS e checkouts DEV intocados; sem merge/deploy.
+
+### Fechamento CI oficial — SHA 8e2d392, 24/10/2026 23h30 BRT
+
+- [W03 #40154518992](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40154518992), job 121052927643: FAILURE por P0 preexistente.
+- Suíte isolada `ApplicationAdminOwnerAuthorityW03Test.php`: **36 PASS / 472 assertions / exit 0**. Nova regressão de paginação aprovada.
+- PHPUnit oficial `ApplicationAdminTenantBoundaryW03Test.php`: **18 PASS / 1 FAIL / 170 assertions / exit 1**; JUnit gate exit 1. Mesmo `is_root` incorreto para owner local, linha 514.
+- Composer, SQLite/migrations, sintaxe, autotestes JUnit e auditoria de rotas: SUCCESS. API CI geral e Workers Laravel não acionados neste SHA.
+- Sem claim/handoff do serviço; sem merge/deploy.
