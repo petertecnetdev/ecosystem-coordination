@@ -605,3 +605,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - `ApplicationAdminService.php` permanece sem handoff/claim exclusivo para W3; owner Administrator API precisa corrigir `is_root` global versus `is_owner` local e validar W03/API CI completos. Sem alteração runtime.
 - NP12: `TASK-20261022-CURATION-NP12` e `.agents/state/NP12.json` ainda indicam `RUNNING`, owner NP12, delegation_count 0, lock vencido em 23/10 03:13:22Z, sem reatribuição formal. Nenhum arquivo `events:discover` alterado.
 - Sem merge, deploy, force-push, alteração em `main`, W1/W2/W4, checkouts DEV ou `/var/www`. Item 3 ainda parcial.
+
+## Rodada W03 — 25/10/2026, 19h35 BRT
+
+- API `Independence`: commit [agent:W3] `5fec338a78f9662cad3464bd711659a8365e6e4f`, apenas `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` (claim exclusivo existente).
+- Regressão substantiva: transferência persistida de owner **com dois jobs já enfileirados**. O JWT antigo perde imediatamente leitura do histórico, configuração e dispatch na Cutinapp, mas preserva histórico e autoridade no Rasoio; o sucessor vê somente o histórico Cutinapp. Jobs anteriores permanecem `queued` e não são duplicados; query `app_id` e `X-Peter-App` conflitantes não mudam o tenant da rota.
+- [CI W03 #40240780241](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40240780241), job `121311892210`, SHA confirmado: **suíte isolada 56 PASS / 831 assertions / exit 0**; sintaxe, Composer, SQLite/migrações, JUnit autotestes e auditoria de rotas SUCCESS. Gate principal W03 **18 PASS / 1 FAIL / 170 assertions / exit 1**, gate JUnit exit 1, workflow FAILURE. Falha P0 preexistente `ApplicationAdminTenantBoundaryW03Test.php:514`: owner local reportado `is_root=true` em `ApplicationAdminService::context()`.
+- `api-ci.yml` não dispara no push `Independence`; `automation-workers.yml` não cobre o arquivo alterado. Consulta Actions por `head_sha` retornou somente W03; não alegar aprovação desses workflows no SHA.
+- Verificação canônica NP12: `.agents/state/NP12.json` e `.agents/tasks/TASK-20261022-CURATION-NP12.json` ainda `RUNNING`, owner NP12, `delegation_count=0`, lock histórico vencido em 23/10 03:13:22Z, **sem reatribuição/handoff formal**. `events:discover` intocado.
+- `ApplicationAdminService.php` continua sem claim/handoff exclusivo para W03. W00 deve atribuir owner Administrator API e registrar transferência formal antes de corrigir `is_root` global versus `is_owner` local. Nenhum runtime, W1, W2, W4, `main`, VPS, checkout DEV ou `/var/www` alterado; sem merge/deploy.
+- Item 3 parcial: regressão nova aprovada isoladamente, gate oficial W03 permanece vermelho. Próximo passo: owner autorizado corrigir serviço e validar PHPUnit W03 completo + API CI exit 0.
