@@ -582,3 +582,14 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Código fonte confirma a causa: `ApplicationAdminService::context()` retorna `is_root => true` incondicionalmente no ramo de `isOwner`, apesar de `isRoot($user)` testar bootstrap global. Owner Administrator API deve assumir formalmente o arquivo antes de corrigir. Coordenação issue #12 comentário 6402131745.
 - NP12: task RUNNING, owner NP12, delegation_count 0, lock histórico expirado em 23/10; sem reatribuição/handoff formal. Não editar `events:discover`.
 - Sem alterações de runtime, pipelines, W1, NP12, `main`, VPS ou checkouts compartilhados; sem merge/deploy. Item 3 parcial, bloqueio P0 preservado.
+
+
+## Rodada W03 — 25/10/2026 17h35 BRT
+
+- Commit real [agent:W3] na API `Independence`: `ba5799207d5a1fb331d83eec80dc67e07a330cba`, exclusivamente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` (escopo deste claim). Nova regressão HTTP: alteração de perfil operacional compartilhado remove `operations.view` imediatamente de dois delegados com JWTs anteriores; preserva `dashboard.view` e a leitura operacional autorizada de um deles no Rasoio. Verifica ausência de novas execuções e uma auditoria de atualização.
+- CI oficial do SHA: [W03 #40231409253](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40231409253), job 121283745909. Suíte isolada **54 PASS / 792 asserções / exit 0**. Pré-requisitos, Composer, SQLite, rotas e autotestes JUnit SUCCESS.
+- Suíte principal W03 **18 PASS / 1 FAIL / 170 asserções / exit 1**; gate JUnit exit 1. Falha real preexistente em `ApplicationAdminTenantBoundaryW03Test.php:514`: `ApplicationAdminService::context()` reporta `is_root=true` para owner local sem identidade root global. Workflow **FAILURE**; nenhum gate relaxado.
+- Consulta de Actions pelo `head_sha` retornou apenas o workflow W03 neste SHA; **API CI e Workers Laravel não executados neste commit**, portanto sem alegação de validação completa.
+- Ownership: nenhum claim/handoff exclusivo de `app/Domain/Platform/Services/ApplicationAdminService.php` na árvore canônica da coordenação; issue #12 historicamente aponta W2 para API, mas W2 atual executa frontend. W00 precisa formalizar executor, handoff e claim antes de correção runtime. W03 não editou o serviço.
+- NP12: tarefa `TASK-20261022-CURATION-NP12` segue `RUNNING`, owner NP12, `delegation_count=0`, lock histórico expirado em 23/10/2026 03:13Z, sem reatribuição confirmada; `events:discover` intocado. W1, main, VPS e checkouts DEV compartilhados intocados; **sem merge/deploy**.
+- Próxima ação: W00 designar owner Administrator API com claim exclusivo para corrigir `is_root` global versus `is_owner` local; exigir PHPUnit W03 principal + API CI exit 0, sem bypass. Item 3 parcialmente concluído.
