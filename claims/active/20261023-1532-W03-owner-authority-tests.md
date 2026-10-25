@@ -425,3 +425,14 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Leitura canônica de NP12 em `petertecnetdev/petertecnet.com.br/main`: `.agents/tasks/TASK-20261022-CURATION-NP12.json` e `.agents/state/NP12.json` ainda `RUNNING`/owner NP12, `delegation_count=0`, checkpoint `START`, último heartbeat 2026-10-23T01:43:21Z. Lock antigo expirou, mas **não houve reatribuição formal**. `events:discover` intocado.
 - W2 é owner de Administrator API no plano/issue #12, porém **claim/handoff exclusivo de `app/Domain/Platform/Services/ApplicationAdminService.php` continua não confirmado**. Solicitação a W00/W2: registrar ownership exclusivo, corrigir `is_root` global sem retirar `is_owner` local e validar W03/API CI exit 0.
 - Sem alteração de runtime, W1, NP12, `main`, checkouts DEV existentes ou `/var/www`. Sem merge/deploy.
+
+
+## Rodada W03 — 25/10/2026 01h34 BRT
+
+- Commit real [agent:W3] em `petertecnetdev/api.petertecnet.com.br`, branch `Independence`: `9359d8f1a60e3e191dd4c779b6198ff798ef8eb9`. Arquivo exclusivo do claim: `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`.
+- Novo teste HTTP `test_listagens_de_perfis_e_atribuicoes_respeitam_escopo_da_rota`: owner local de Cutinapp/Rasoio lista somente seus perfis e atribuições, mesmo com `app_id`, `application_id` e `X-Peter-App` forjados; listagem cruzada retorna 403, sem alterações no banco.
+- CI oficial W03 [#40162312521](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40162312521): suíte independente **38 PASS, 520 asserções, exit 0**; pré-requisitos, Composer, migrações, rotas e JUnit autotestes SUCCESS.
+- PHPUnit W03 principal: **18 PASS / 1 FAIL, 170 asserções, exit 1**; gate JUnit exit 1; workflow **FAILURE**. Falha P0 persistente em `ApplicationAdminTenantBoundaryW03Test.php:514`: `ApplicationAdminService::context()` devolve `is_root=true` ao owner local não-root.
+- `API CI` e `Workers Laravel` não foram disparados para esse SHA; não declarar sucesso desses pipelines. O W03 já é acionado pelo filtro `tests/Feature/ApplicationAdmin*Test.php`.
+- Verificação NP12: `.agents/state/NP12.json` ainda `RUNNING`, `TASK-20261022-CURATION-NP12` com owner NP12 e sem delegação; lock histórico expirado, sem reatribuição formal. `events:discover` intocado.
+- Sem handoff/claim exclusivo para `ApplicationAdminService.php`; issue #12 designa W2 API Administrator, requer confirmação formal W00/W2. Sem edição do serviço, W1, NP12, checkouts compartilhados ou produção; **sem merge/deploy**.
