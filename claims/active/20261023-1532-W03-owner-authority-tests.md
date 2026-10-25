@@ -522,3 +522,15 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - NP12: `TASK-20261022-CURATION-NP12` segue `RUNNING` com `owner_agent_id=NP12`, `delegation_count=0`; lock expirado em 23/10/2026 03:13:22Z, sem reatribuição formal. `events:discover` intocado.
 - P0 comercial W1, frontend W2 e monitor W4 permanecem fora deste claim. Sem merge, deploy, edição de checkout DEV compartilhado ou produção.
 - Próxima ação: W00/W2 formalizar ownership Administrator API, corrigir `is_root` e validar W03 + API CI exit 0; W4 alinhar `application_id` canônico do dashboard com owner do serviço de automações.
+
+
+## Rodada W03 — 25/10/2026 11h35 BRT
+
+- Commit novo de teste útil [agent:W3] em API `Independence`: `2d3f444b57b363b0b4e7c782a0aea70d16b6c551`, somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob este claim.
+- Regressão HTTP: worker que terminou com status `failed` pode receber uma nova execução com `run_id` distinto; nova tentativa pendente continua impedindo duplicatas (409); histórico e fila permanecem isolados por aplicação. Não alterou runtime nem `events:discover`.
+- Lint sintático PHP 8.4 local do método novo: exit 0. CI oficial W03 [#40202857148](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40202857148): suíte independente **48 PASS / 691 assertions / exit 0**; autotestes JUnit, Composer, migrações e auditoria de rotas SUCCESS; suíte principal **18 PASS / 1 FAIL / 170 assertions / exit 1**, gate JUnit exit 1, workflow **FAILURE** pela regressão preexistente de `is_root` em `ApplicationAdminTenantBoundaryW03Test.php:514`.
+- API CI geral e Workers Laravel não acionados por esse push (filtros de paths); não atribuir a eles resultado de outro SHA.
+- Owner Administrator API W2 permanece designado na issue #12, porém não há transferência/claim exclusivo confirmado de `app/Domain/Platform/Services/ApplicationAdminService.php`. W3 não alterou o serviço; W00/W2 devem formalizar ownership, corrigir `is_root` global versus `is_owner` local e executar W03/API CI exit 0.
+- NP12 verificado diretamente em `petertecnetdev/petertecnet.com.br/main`: `.agents/tasks/TASK-20261022-CURATION-NP12.json` e `.agents/state/NP12.json` continuam RUNNING, sem delegação, último heartbeat 23/10; lock 23/10 03:13:22 UTC expirado sem reatribuição. Não assumir curadoria sem handoff.
+- Nenhum merge/deploy, alteração em `main`, produção `/var/www`, W1, NP12 ou checkouts DEV existentes. Item 3 ainda parcialmente bloqueado por P0 real.
+
