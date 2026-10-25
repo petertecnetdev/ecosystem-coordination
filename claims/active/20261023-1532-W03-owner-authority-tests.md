@@ -445,3 +445,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - P0 reproduzido na linha 514 de `ApplicationAdminTenantBoundaryW03Test.php`: `ApplicationAdminService::context()` expõe `is_root=true` para owner local cujo `isRoot(user)` é falso. **W3 não possui handoff/claim do serviço**. W00 deve formalizar proprietário Administrator API (issue #12: W2), aceite e claim exclusivo; responsável corrigir sem conceder root global e exigir PHPUnit W03/API CI exit 0.
 - `API CI` geral e `Workers Laravel` **não dispararam** para esse SHA (consulta de runs retornou apenas W03). Workflow W03 já contém filtro de testes W03; sem alterações cosméticas em CI.
 - NP12 task/state canônicos lidos: `RUNNING`, owner NP12, `delegation_count=0`, heartbeat de 23/10/2026 e lock histórico vencido, sem reatribuição formal. Nenhuma edição em `events:discover`, W1, `main`, VPS, `/var/www` ou checkouts DEV compartilhados. Sem merge/deploy.
+
+
+## Rodada W03 — 25/10/2026 03h35 BRT
+
+- Commit novo de teste real [agent:W3] na API `Independence`: `8ed3a52bee5cebca4988a111514ca27739303ec0`; único arquivo alterado `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, sob claim W03 já exclusivo.
+- Regressão de autenticação HTTP: cinco leituras e três mutações administrativas sem JWT retornam 401 mesmo com `app_id/application_id` forjados; sem perfis, atribuições, controles de workers ou auditorias extras.
+- CI oficial [W03 #40169586035](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40169586035), SHA acima: suíte independente **40 PASS / 548 asserções / exit 0**; migrações, Composer, rotas e JUnit autotestes SUCCESS. Suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1**; gate JUnit exit 1; workflow **FAILURE**. A falha P0 de `context().is_root` para proprietário local continua em `ApplicationAdminTenantBoundaryW03Test.php:514`.
+- API CI geral e Workers Laravel não acionados pelo filtro deste SHA; não declarar aprovação global.
+- `ApplicationAdminService.php` segue sem handoff/claim exclusivo autorizado a W3; issue #12 nomeia W2 como responsável Administrator API, pendente confirmação de W00. NP12 canônico continua `RUNNING`, proprietário NP12, `delegation_count=0`, lock histórico expirado e sem reatribuição. Nenhum arquivo de curadoria ou W1 alterado.
+- Próximo passo: W00/W2 formalizarem owner e claim exclusivo do serviço, corrigir distinção root global/owner local, exigir PHPUnit W03 e API CI completos no mesmo SHA. Sem merge/deploy.
