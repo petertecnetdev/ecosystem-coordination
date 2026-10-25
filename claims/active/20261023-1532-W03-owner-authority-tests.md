@@ -534,3 +534,14 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - NP12 verificado diretamente em `petertecnetdev/petertecnet.com.br/main`: `.agents/tasks/TASK-20261022-CURATION-NP12.json` e `.agents/state/NP12.json` continuam RUNNING, sem delegação, último heartbeat 23/10; lock 23/10 03:13:22 UTC expirado sem reatribuição. Não assumir curadoria sem handoff.
 - Nenhum merge/deploy, alteração em `main`, produção `/var/www`, W1, NP12 ou checkouts DEV existentes. Item 3 ainda parcialmente bloqueado por P0 real.
 
+
+
+## Rodada W03 — 25/10/2026 12h30 BRT
+
+- Commit [agent:W3] API Independence: `caff06fcd8304c9239a92013400e1294c7245be0`, somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` (+82 linhas), sob claim exclusivo W03.
+- Teste novo reproduz janela truncada do dashboard: 1 execução `running` antiga + 31 terminais mais recentes; `recent_runs` mostra apenas 30 e omite a pendência, mas o backend mantém bloqueio HTTP 409. Outro aplicativo consegue disparar seu worker sem colisão. A UI deve receber `has_pending_run`/estado canônico por worker, conforme revisão W4; não editar `AutomationControlService.php` sem claim próprio.
+- CI oficial [W03 #40207357027](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40207357027), SHA verificado: suíte isolada **49 PASS / 704 asserções / exit 0**; autotestes JUnit, Composer, SQLite, migrações e rotas SUCCESS; suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1**, gate JUnit exit 1, workflow FAILURE. P0 inalterado: `ApplicationAdminService::context()` retorna `is_root=true` para owner local, teste linha 514.
+- `automation-workers.yml` e `api-ci.yml` revisados sem alteração; API CI e Workers não foram acionados neste SHA (filtros/eventos distintos). Não declarar ambos aprovados.
+- Ownership Administrator API indicado na issue #12: **W2**, sem handoff/claim exclusivo localizado para `app/Domain/Platform/Services/ApplicationAdminService.php`. W03 não editou serviço; correção deve ser feita por owner após formalização e validada por PHPUnit/CI completos.
+- NP12: `.agents/tasks/TASK-20261022-CURATION-NP12.json` e `.agents/state/NP12.json` em `petertecnetdev/petertecnet.com.br` ainda registram RUNNING/NP12, sem delegação; lock expirado em 23/10 03:13:22Z, último heartbeat 23/10 01:43:21Z. Sem reatribuição formal: `events:discover` intocado.
+- Sem merge, deploy, edição em `/var/www`, reset de checkouts ou alteração de código comercial W1. Próxima ação: W00/W2 formalizar claim do serviço e corrigir semântica root global vs owner local; W4 e owner Automation API definir contrato de pendência independente de paginação.
