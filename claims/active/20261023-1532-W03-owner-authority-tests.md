@@ -615,3 +615,12 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Verificação canônica NP12: `.agents/state/NP12.json` e `.agents/tasks/TASK-20261022-CURATION-NP12.json` ainda `RUNNING`, owner NP12, `delegation_count=0`, lock histórico vencido em 23/10 03:13:22Z, **sem reatribuição/handoff formal**. `events:discover` intocado.
 - `ApplicationAdminService.php` continua sem claim/handoff exclusivo para W03. W00 deve atribuir owner Administrator API e registrar transferência formal antes de corrigir `is_root` global versus `is_owner` local. Nenhum runtime, W1, W2, W4, `main`, VPS, checkout DEV ou `/var/www` alterado; sem merge/deploy.
 - Item 3 parcial: regressão nova aprovada isoladamente, gate oficial W03 permanece vermelho. Próximo passo: owner autorizado corrigir serviço e validar PHPUnit W03 completo + API CI exit 0.
+
+## Rodada W03 — 25/10/2026 20h30 BRT
+
+- Commit [agent:W3] na API `Independence`: `d4690aaad65337a8a50052a5d1d912d435950321`, exclusivamente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob claim W03.
+- Regressão nova: tentativa manual rejeitada por execução pendente (HTTP 409) não pode avançar `automation_worker_controls.last_dispatched_at` nem enfileirar job duplicado; relógio do teste avança 10 minutos para detectar escrita silenciosa do marcador.
+- [CI W03 #40245304059](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40245304059): PHP lint, Composer, migrações, autotestes JUnit, rotas e suíte isolada **57 PASS / 839 assertions / exit 0**; PHPUnit W03 principal **18 PASS / 1 FAIL / 170 assertions / exit 1**, gate JUnit exit 1, workflow FAILURE pelo P0 preexistente em `ApplicationAdminTenantBoundaryW03Test.php:514` (`context().is_root` de owner local).
+- API CI e Workers Laravel não acionados pelo push deste arquivo neste SHA; não atribuir resultados de SHA anterior.
+- Ownership do `ApplicationAdminService.php` não foi transferido a W03. W00 deve designar responsável Administrator API, registrar claim exclusivo e corrigir `is_root` global versus `is_owner` local, com PHPUnit W03/API CI exit 0. NP12 `events:discover` continua com task RUNNING/lock histórico vencido, sem delegação; nenhum arquivo NP12/W1 foi editado.
+- Sem merge, deploy, force-push ou alterações em VPS/produção.
