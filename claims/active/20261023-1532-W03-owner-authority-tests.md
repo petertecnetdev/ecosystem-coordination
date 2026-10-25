@@ -593,3 +593,15 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Ownership: nenhum claim/handoff exclusivo de `app/Domain/Platform/Services/ApplicationAdminService.php` na árvore canônica da coordenação; issue #12 historicamente aponta W2 para API, mas W2 atual executa frontend. W00 precisa formalizar executor, handoff e claim antes de correção runtime. W03 não editou o serviço.
 - NP12: tarefa `TASK-20261022-CURATION-NP12` segue `RUNNING`, owner NP12, `delegation_count=0`, lock histórico expirado em 23/10/2026 03:13Z, sem reatribuição confirmada; `events:discover` intocado. W1, main, VPS e checkouts DEV compartilhados intocados; **sem merge/deploy**.
 - Próxima ação: W00 designar owner Administrator API com claim exclusivo para corrigir `is_root` global versus `is_owner` local; exigir PHPUnit W03 principal + API CI exit 0, sem bypass. Item 3 parcialmente concluído.
+
+## Rodada W03 — 25/10/2026, 18h30 BRT
+
+- API `Independence`: commit inicial `da8be3334440eb904820d5d5bbedb8fbe8e8e741` e correção do teste `b79fdbcacb21dc1300e35d42ada8eb1f9616d154`, ambos [agent:W3], somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob claim W03.
+- Regressão útil: conclusão bem-sucedida libera nova execução do mesmo worker preservando histórico/resultado anterior, sem desbloquear execuções pendentes nem cruzar o isolamento Cutinapp/Rasoio.
+- Primeira CI [#40235887477](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40235887477): 54 PASS / 1 FAIL na suíte independente porque a quinta chamada de dispatch no cenário recebeu HTTP 429 do rate limit `throttle:6,1`, não 409. Corrigido o teste para validar a pendência do segundo app pelo estado persistido, sem requisição redundante nem relaxamento de middleware.
+- CI final [#40235980568](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40235980568), SHA `b79fdbca`: suíte isolada **55 PASS / 809 asserções / exit 0**; checkout, PHP, Composer, migrações, JUnit e rotas **SUCCESS**. Suíte W03 principal **18 PASS / 1 FAIL / 170 asserções / exit 1**; gate JUnit exit 1; workflow **FAILURE** por `ApplicationAdminTenantBoundaryW03Test.php:514` (`context().is_root` indevido para owner local).
+- `api-ci.yml` não aciona em push `Independence`; `automation-workers.yml` não aciona com o arquivo alterado. Não afirmar testes oficiais desses workflows no SHA.
+- Revisados `administrator-w03-ci.yml`, `automation-workers.yml`, `api-ci.yml` e `ecosystem-coordination/COMMANDS.md`; não modificar gates para contornar falha de serviço.
+- `ApplicationAdminService.php` permanece sem handoff/claim exclusivo para W3; owner Administrator API precisa corrigir `is_root` global versus `is_owner` local e validar W03/API CI completos. Sem alteração runtime.
+- NP12: `TASK-20261022-CURATION-NP12` e `.agents/state/NP12.json` ainda indicam `RUNNING`, owner NP12, delegation_count 0, lock vencido em 23/10 03:13:22Z, sem reatribuição formal. Nenhum arquivo `events:discover` alterado.
+- Sem merge, deploy, force-push, alteração em `main`, W1/W2/W4, checkouts DEV ou `/var/www`. Item 3 ainda parcial.
