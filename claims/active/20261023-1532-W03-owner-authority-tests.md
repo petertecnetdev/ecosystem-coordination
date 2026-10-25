@@ -414,3 +414,14 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - PHPUnit oficial `ApplicationAdminTenantBoundaryW03Test.php`: **18 PASS / 1 FAIL / 170 assertions / exit 1**; JUnit gate exit 1. Mesmo `is_root` incorreto para owner local, linha 514.
 - Composer, SQLite/migrations, sintaxe, autotestes JUnit e auditoria de rotas: SUCCESS. API CI geral e Workers Laravel não acionados neste SHA.
 - Sem claim/handoff do serviço; sem merge/deploy.
+
+
+## Rodada W03 — 25/10/2026 00h30 BRT
+
+- API `Independence`: commit real `ab5dd748bf452b0a318ee0edf436e61e2d2885c6` — somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, sob claim W03 existente. Teste novo cobre identidade que é **owner da Cutinapp** e **delegada de leitura no Rasoio**: consulta do Rasoio permitida; PUT de configuração e POST de despacho proibidos mesmo com `app_id`, `application_id` e `X-Peter-App` forjados; sem controles/jobs no Rasoio; configuração legítima da Cutinapp preservada.
+- CI oficial W03 push [#40158378440](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40158378440): **suíte independente 37 PASS / 490 asserções / exit 0**. Checkout SHA, sintaxe base, autotestes JUnit, Composer, migrações e rotas SUCCESS.
+- Suíte principal W03: **18 PASS / 1 FAIL / 170 asserções / exit 1** na linha 514 de `ApplicationAdminTenantBoundaryW03Test.php`, divergência `ApplicationAdminService::context().is_root` para owner local; gate JUnit exit 1; workflow FAILURE. Nenhuma falha foi mascarada.
+- API CI geral e Workers Laravel **não disparados por este push**: gatilhos existentes não incluem este arquivo/branch nos respectivos workflows; não declarar testes oficiais gerais aprovados.
+- Leitura canônica de NP12 em `petertecnetdev/petertecnet.com.br/main`: `.agents/tasks/TASK-20261022-CURATION-NP12.json` e `.agents/state/NP12.json` ainda `RUNNING`/owner NP12, `delegation_count=0`, checkpoint `START`, último heartbeat 2026-10-23T01:43:21Z. Lock antigo expirou, mas **não houve reatribuição formal**. `events:discover` intocado.
+- W2 é owner de Administrator API no plano/issue #12, porém **claim/handoff exclusivo de `app/Domain/Platform/Services/ApplicationAdminService.php` continua não confirmado**. Solicitação a W00/W2: registrar ownership exclusivo, corrigir `is_root` global sem retirar `is_owner` local e validar W03/API CI exit 0.
+- Sem alteração de runtime, W1, NP12, `main`, checkouts DEV existentes ou `/var/www`. Sem merge/deploy.
