@@ -398,3 +398,11 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - API CI geral e Workers Laravel **não foram acionados no SHA a5c401d**. Não declarar CI completo verde.
 - O commit API foi confirmado como HEAD remoto `Independence` no momento da consulta. Arquivo de teste sob claim próprio; sem alterações no serviço, NP12, W1, `main`, VPS ou checkouts compartilhados. Sem merge/deploy.
 - Próxima ação obrigatória: W00 formalizar owner Administrator API (issue #12: W2) e claim/handoff exclusivo de `ApplicationAdminService.php`; responsável corrigir `context().is_root` e validar W03/API CI no mesmo SHA.
+
+## Rodada W03 — 24/10/2026 23h30 BRT
+
+- Commit novo na API Independence: `8e2d3921f2de2e8343efe782b91e73bf751e0cb6`, exclusivamente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob este claim.
+- Regressão HTTP substantiva: paginação da auditoria em dois apps autorizados com `app_id`, `application_id` e `X-Peter-App` forjados. Exige itens e totais exclusivamente do app da rota, sem duplicação de IDs nas páginas e página fora de faixa vazia.
+- Workflow oficial disparado para o SHA: W03 #40154518992; status inicial QUEUED, sem declarar exit 0 antes dos jobs concluírem.
+- Bloqueio P0 preexistente: `ApplicationAdminService::context()` retorna `is_root=true` para owner local, embora `isRoot(user)=false`. Handoff W03 já registrado em `messages/20261024-1935-W03-to-W00-administrator-root-payload-p0.md`; W00/W2 devem confirmar claim exclusivo do serviço e corrigir. W3 não tocou o serviço.
+- NP12: task e state canônicos permanecem `RUNNING`, owner NP12, sem delegação; lock histórico expirou, sem reatribuição formal. Curadoria, comércio W1, main, VPS e checkouts DEV intocados; sem merge/deploy.
