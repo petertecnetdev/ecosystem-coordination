@@ -796,3 +796,9 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Ownership do serviço `ApplicationAdminService.php` continua sem transferência exclusiva para W03; W2 API conforme issue #12, handoff antigo W4. Solicitação de formalização permanece aberta. Não editar serviço sem claim.
 - NP12 state/task canônicos consultados: owner NP12, status RUNNING, heartbeat 23/10, lock expirado e sem delegação; nenhum arquivo `events:discover` tocado. Workers Laravel e API CI gerais não acionados no novo SHA na consulta.
 - Servidor remoto offline; `/var/www`, checkouts DEV compartilhados, W1 comércio e frontend não alterados. Sem merge/deploy.
+
+### Resultado CI do SHA 85f918f7 — 26/10/2026 16:28 BRT
+
+- GitHub Actions W03 run `40386944689`, job `121797617298`: etapa de suíte independente **SUCCESS**, PHPUnit **76 PASS / 1097 asserções / exit 0**. A regressão JWT adulterado foi executada e aprovada.
+- PHPUnit principal **18 PASS / 1 FAIL / 170 asserções / exit 1**; gate JUnit exit 1. Mesma falha P0 `is_root` no contexto de proprietário local; workflow global **FAILURE**.
+- Item 3 segue PARCIAL, sem declarar API CI geral ou Workers Laravel verdes neste SHA; sem merge/deploy.
