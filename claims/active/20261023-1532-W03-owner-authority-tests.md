@@ -624,3 +624,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - API CI e Workers Laravel não acionados pelo push deste arquivo neste SHA; não atribuir resultados de SHA anterior.
 - Ownership do `ApplicationAdminService.php` não foi transferido a W03. W00 deve designar responsável Administrator API, registrar claim exclusivo e corrigir `is_root` global versus `is_owner` local, com PHPUnit W03/API CI exit 0. NP12 `events:discover` continua com task RUNNING/lock histórico vencido, sem delegação; nenhum arquivo NP12/W1 foi editado.
 - Sem merge, deploy, force-push ou alterações em VPS/produção.
+
+
+## Rodada W03 — 25/10/2026, 21h30 BRT
+
+- Commit real `[agent:W3]` API `Independence`: `394963eaf83f8c99c70001a2522b40ac64f425ce`, apenas `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, dentro do claim exclusivo W03. Nova regressão HTTP: reconfigurar intervalo de worker com execução já enfileirada não modifica `last_dispatched_at`, não duplica jobs e não altera o controle/execução de outra aplicação, inclusive com `X-Peter-App` e `app_id` conflitantes.
+- CI oficial [W03 #40249357884](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40249357884), job `121337636297`, SHA confirmado: **suíte isolada 58 PASS / 856 assertions / exit 0**; checkout, sintaxe PHP, Composer, migrações SQLite, autotestes JUnit e auditoria de rotas SUCCESS.
+- Gate principal W03 **18 PASS / 1 FAIL / 170 assertions / PHPUnit exit 1 / gate JUnit exit 1**, workflow **FAILURE**. Falha P0 preexistente `ApplicationAdminTenantBoundaryW03Test.php:514`: `ApplicationAdminService::context()` retorna `is_root=true` para owner local sem autoridade root global. Não mascarar falha nem declarar CI aprovado.
+- `api-ci.yml` não dispara em push `Independence`; `automation-workers.yml` não dispara pelo arquivo alterado. Não atribuir resultados de SHA anterior.
+- `.agents/state/NP12.json` e `.agents/tasks/TASK-20261022-CURATION-NP12.json`: `RUNNING`, owner NP12, sem delegação, lock histórico expirado em 23/10/2026 03:13:22Z e sem handoff/reassign confirmado. `events:discover` intocado.
+- Sem claim/handoff exclusivo de `ApplicationAdminService.php` para W3; W00 deve formalizar responsável Administrator API e corrigir a semântica `is_root` global vs `is_owner` local. Sem alteração de serviço de produção, W1, W2, W4, `main`, VPS, `/var/www`, merge ou deploy. Item 3 parcial.
