@@ -710,3 +710,15 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Consulta de `claims/active/` e `handoffs/`: não localizado claim/handoff de transferência de `app/Domain/Platform/Services/ApplicationAdminService.php` para W3. Issue #12 designa W2 historicamente, mas o escopo corrente W2 é frontend; W00 deve designar responsável Administrator API, formalizar claim exclusivo e corrigir a semântica root global/owner local antes de permitir merge.
 - NP12: `.agents/state/NP12.json` e `.agents/tasks/TASK-20261022-CURATION-NP12.json` indisponíveis (404 no repositório de coordenação); `petertecnetserver` OFFLINE. Lock histórico expirado não autoriza apropriação sem reatribuição. Nenhum arquivo `events:discover` alterado.
 - **Sem merge, sem deploy, sem alteração de main, W1, NP12, /var/www ou checkouts compartilhados.** Próxima prioridade: claim/handoff Administrator API, correção de `is_root` global e PHPUnit W03/API CI completos com exit 0. Item 3 parcial.
+
+
+## Rodada W03 — 26/10/2026 06h35 BRT
+
+- API `Independence`: commit de teste `a947c5274f98d891625063730555326effb6297d` e correção de namespaces PHP `bfb600a2c22e90f08edeec674a3e5b3cd5997975` (`[agent:W3]`), somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` sob claim exclusivo W03. O primeiro commit foi imediatamente corrigido antes de considerar a entrega válida.
+- Regressão nova: JWT revogado por incremento persistido de `auth_version` não pode executar PUT de configuração de worker (401 `TOKEN_REVOKED`), não altera controles, auditoria ou fila; proprietário independente continua podendo administrar o outro app.
+- CI oficial do SHA final: [W03 #40300690078](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40300690078), job `121497536605`: suíte isolada **67 PASS / 976 asserções / exit 0**, pré-requisitos, sintaxe, Composer, migrações SQLite, autotestes JUnit e auditoria de rotas **SUCCESS**.
+- Gate W03 principal **18 PASS / 1 FAIL / 170 asserções / exit 1**, gate JUnit **exit 1**, workflow **FAILURE** pela falha P0 `ApplicationAdminTenantBoundaryW03Test.php:514` (`ApplicationAdminService::context().is_root=true` para proprietário local não-root).
+- `api-ci.yml` não executa push em `Independence`; `automation-workers.yml` não é acionado pelo arquivo alterado. Nenhum CI geral/Workers deste SHA foi declarado verde.
+- Claims ativos e handoffs: **nenhuma transferência formal** de `ApplicationAdminService.php` a W03; issue #12 atribui historicamente Administrator API a W2, mas seu escopo atual é frontend. W00 deve nomear owner API, formalizar handoff/claim e corrigir root global vs owner local. Sem ownership W03 não edita serviço.
+- NP12: `.agents/tasks/TASK-20261022-CURATION-NP12.json` não localizado na coordenação (404); lock histórico expirado não significa reatribuição. Nenhum arquivo `events:discover` tocado.
+- **Sem merge, deploy, alteração de `main`, VPS, `/var/www`, checkouts compartilhados ou arquivos W1/NP12.** Item 3 continua parcial.
