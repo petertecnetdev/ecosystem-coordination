@@ -722,3 +722,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Claims ativos e handoffs: **nenhuma transferência formal** de `ApplicationAdminService.php` a W03; issue #12 atribui historicamente Administrator API a W2, mas seu escopo atual é frontend. W00 deve nomear owner API, formalizar handoff/claim e corrigir root global vs owner local. Sem ownership W03 não edita serviço.
 - NP12: `.agents/tasks/TASK-20261022-CURATION-NP12.json` não localizado na coordenação (404); lock histórico expirado não significa reatribuição. Nenhum arquivo `events:discover` tocado.
 - **Sem merge, deploy, alteração de `main`, VPS, `/var/www`, checkouts compartilhados ou arquivos W1/NP12.** Item 3 continua parcial.
+
+## Rodada W03 — 26/10/2026, 07h36 BRT
+
+- Commits novos na API `Independence`: `42c6aae41b953dbc5064e715551107f264427fc1` (teste substantivo) e `b047520039c0dd75fe72488eb938923124cf0c26` (correção de namespace PHP); HEAD final confirmado `b047520`.
+- Escopo único deste claim: `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`. Novo teste HTTP impede criar perfil RBAC com JWT revogado, inclusive com `app_id` e `application_id` forjados, exige HTTP 401 `TOKEN_REVOKED`, ausência de efeitos/auditoria e operação válida independente no Rasoio.
+- CI oficial W03 do SHA final: [run #40308615579](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40308615579), job `121523858206`. Suíte isolada **68 PASS / 985 assertions / exit 0**. PHP/sintaxe, Composer, SQLite, autotestes JUnit e rotas: SUCCESS. Suíte principal **18 PASS / 1 FAIL / 170 assertions / exit 1** (mesma divergência `is_root`), gate JUnit exit 1; workflow **FAILURE**.
+- Diagnóstico e pedido explícito de ownership/handoff registrado na [issue #12, comentário #6413944432](https://github.com/petertecnetdev/ecosystem-coordination/issues/12#issuecomment-6413944432). Plano #12 aponta W2 API, handoff anterior aponta W4 API: W00 deve designar owner inequívoco e claim exclusivo de `ApplicationAdminService.php`; W3 não editou serviço.
+- NP12: state/task canônicos consultados via GitHub e retornaram 404; último lock informado expirou, mas sem reatribuição segura. Dispositivo `petertecnetserver` offline na rodada; nenhuma escrita DEV/VPS. Sem alterações em curadoria, comércio W1, `main`, merge ou deploy.
+- API CI geral e Workers Laravel no SHA final: não acionados pelo push desta rodada; não declarar aprovação desses gates.
+- Próxima ação: W00 formalizar owner do serviço, corrigir separação root global/owner local, rodar W03 e API CI oficiais até exit 0.
