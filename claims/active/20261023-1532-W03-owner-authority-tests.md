@@ -732,3 +732,14 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - NP12: state/task canônicos consultados via GitHub e retornaram 404; último lock informado expirou, mas sem reatribuição segura. Dispositivo `petertecnetserver` offline na rodada; nenhuma escrita DEV/VPS. Sem alterações em curadoria, comércio W1, `main`, merge ou deploy.
 - API CI geral e Workers Laravel no SHA final: não acionados pelo push desta rodada; não declarar aprovação desses gates.
 - Próxima ação: W00 formalizar owner do serviço, corrigir separação root global/owner local, rodar W03 e API CI oficiais até exit 0.
+
+
+## Rodada W03 — 26/10/2026 08h30 BRT | JWT revogado e atribuições
+
+- **API Independence, commit final:** `7b8df7ca3ae15833f175d3b9280c7890d0397dac` [agent:W3], precedido por `8b374818976a5162989793382a200918f4a68904` (primeiro commit do teste; corrigido namespace no SHA final).
+- **Arquivo sob claim exclusivo W03:** `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`. Regressão HTTP de segurança: `auth_version` revogado nega POST de atribuição e DELETE de revogação com app_id/application_id forjados, preserva grants e auditoria de dois tenants e mantém sessão válida do outro proprietário.
+- **CI W03 push #40315503266** no SHA final: etapa isolada **69 PASS / 998 assertions / exit 0**; sintaxe, Composer, SQLite, 11 autotestes JUnit e rotas SUCCESS. PHPUnit W03 original **18 PASS / 1 FAIL, 170 assertions / exit 1** em `ApplicationAdminTenantBoundaryW03Test.php:514`, gate JUnit exit 1; **workflow FAILURE**. Evidência: https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40315503266
+- **API CI geral e Workers Laravel no SHA final:** não acionados/sem evidência de execução neste push; não declarar verde.
+- **P0 root:** serviço `app/Domain/Platform/Services/ApplicationAdminService.php` ainda retorna `is_root=true` para owner local sem root global. Issue #12 designa W2 Administrator API, handoff 20261023-0737 aponta W4. Não há claim exclusivo explícito do serviço em `claims/active`; W00 deve resolver ownership e registrar handoff antes da alteração. Solicitação reforçada em https://github.com/petertecnetdev/ecosystem-coordination/issues/12#issuecomment-6414934621
+- **NP12:** `.agents/` canônico não localizado em API/coordenação; `agents/NP12` ausente no repo de coordenação; `petertecnetserver` offline nesta rodada. Lock histórico expirado não comprova reatribuição. Nenhuma edição de `events:discover`.
+- **Sem merge/deploy, sem alterações em `/var/www`, DEV alheio, W1 ou frontend.** Item 3 permanece parcialmente concluído até W03 principal/API CI exit 0.
