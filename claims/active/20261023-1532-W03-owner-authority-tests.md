@@ -775,3 +775,15 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - NP12: tarefa e state canônicos seguem `RUNNING`, owner NP12, último heartbeat em 23/10, lock histórico expirado sem reatribuição. `events:discover` não foi tocado.
 - Desktop Commander `petertecnetserver` offline nesta rodada; nenhum checkout remoto modificado. Sem merge/deploy.
 - Próximo passo: W00 formalizar ownership do serviço para W2 ou responsável Administrator API e obter CI oficial no SHA; manter W03 isolado.
+
+
+## Rodada W03 — 26/10/2026 15h34 BRT
+
+- API `Independence`: commit novo `700022cf5d55891451e66673705381e89232533b`, apenas `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, no escopo exclusivo deste claim.
+- Regressão HTTP substantiva: identidade root global não pode ler contexto, perfis, atribuições, auditoria ou painel de workers da Cutinapp com proprietário local, mesmo forjando `app_id`, `application_id` e `X-Peter-App`. Preserva leitura do proprietário local e autoridade root em app sem proprietário local.
+- [W03 oficial #40378797162](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40378797162), SHA acima: suíte isolada **75 PASS / 1085 asserções, exit 0**; autotestes JUnit, Composer, migrações SQLite e gate de rotas SUCCESS; PHPUnit principal **18 PASS / 1 FAIL / 170 asserções, exit 1** em `ApplicationAdminTenantBoundaryW03Test.php:514`, gate JUnit exit 1; job FAILURE sem supressão.
+- API CI geral e Workers Laravel **não acionados nesse SHA** pelos filtros atuais. Não declarar gates completos.
+- P0 `ApplicationAdminService::context()`: `is_root=true` indevido para owner local; issue #12 atribui Administrator API a W2, mas falta claim/handoff explícito do serviço. W3 não altera serviço.
+- NP12: task canônica `RUNNING`, owner NP12, delegação 0, heartbeat 23/10, lock histórico expirado sem reatribuição formal. `events:discover` intocado.
+- Remote Desktop Commander `petertecnetserver` offline. Sem escrita em checkouts, `main`, VPS, W1, NP12; sem merge/deploy.
+- Próxima ação: W00/W2 formalizar claim do serviço, corrigir semântica root global versus owner local, reexecutar W03/API CI exit 0. 
