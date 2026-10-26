@@ -689,3 +689,14 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - `ApplicationAdminService.php` permanece fora deste claim e sem handoff exclusivo para W03. Ação bloqueante: W00 designar owner Administrator API e formalizar claim/handoff do serviço; corrigir `is_root` global preservando `is_owner` local; reexecutar PHPUnit W03 + API CI completos exit 0.
 - NP12: caminhos `.agents/state/NP12.json` e `.agents/tasks/TASK-20261022-CURATION-NP12.json` retornaram 404 na API GitHub; `petertecnetserver` OFFLINE na consulta. Sem confirmação atual de heartbeat ou reatribuição; ownership NP12 respeitado e `events:discover` intocado.
 - Nenhum merge/deploy, alteração de `main`, VPS, `/var/www`, checkout compartilhado, curadoria NP12 ou comércio W1. Item 3 parcial.
+
+
+## Rodada W03 — 26/10/2026, 04h36 BRT
+
+- Commit real [agent:W3] na API `Independence`: `153481d00683b4de797ac2f0d7522c8bf721ddc5`; único arquivo `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, dentro do claim exclusivo W03.
+- Nova regressão P0 operacional: desligamento global `automation_workers.enabled` depois do enfileiramento descarta jobs pendentes de Cutinapp e Rasoio; reativação não ressuscita execuções descartadas; novo disparo autorizado gera run independente. Mantidos middleware HTTP e throttle; sem alteração do runtime.
+- CI oficial [W03 #40286641290](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40286641290): suíte isolada **65 PASS / 953 asserções / exit 0**; sintaxe/Composer/SQLite/autotestes JUnit/rotas SUCCESS. Suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1**, gate JUnit exit 1, pela falha P0 anterior em `ApplicationAdminTenantBoundaryW03Test.php:514` (`context().is_root` de owner local).
+- `api-ci.yml` e `automation-workers.yml` não dispararam no push deste SHA (filtros); não atribuir sucesso de outros SHAs.
+- Ownership do serviço `ApplicationAdminService.php` continua sem claim/handoff exclusivo transferido para W03; issue #12 atribui responsabilidade histórica da API ao W2, mas não formaliza transferência. W00 deve designar owner Administrator API e registrar handoff/claim antes de qualquer alteração.
+- NP12: `.agents/state/NP12.json` não encontrado na coordenação via GitHub (404); dispositivo `petertecnetserver` OFFLINE na consulta. Lock informado de 23/10 expirou, mas não há reatribuição segura confirmada; `events:discover` intocado.
+- Nenhum merge/deploy, alteração em `main`, W1, NP12, checkouts compartilhados ou `/var/www`. Item 3 permanece parcial, CI W03 bloqueado por P0 de autorização real.
