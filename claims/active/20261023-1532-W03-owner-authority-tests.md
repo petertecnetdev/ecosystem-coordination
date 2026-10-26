@@ -802,3 +802,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - GitHub Actions W03 run `40386944689`, job `121797617298`: etapa de suíte independente **SUCCESS**, PHPUnit **76 PASS / 1097 asserções / exit 0**. A regressão JWT adulterado foi executada e aprovada.
 - PHPUnit principal **18 PASS / 1 FAIL / 170 asserções / exit 1**; gate JUnit exit 1. Mesma falha P0 `is_root` no contexto de proprietário local; workflow global **FAILURE**.
 - Item 3 segue PARCIAL, sem declarar API CI geral ou Workers Laravel verdes neste SHA; sem merge/deploy.
+
+
+## Rodada W03 — 26/10/2026 17h30 BRT
+
+- API `Independence`: commits `20c1579051365e5aa031cf0e01d109e1e825b1d7` (teste JWT alg=none) e **SHA final `6360ef5049c622fbd99d5e8d95692df8fe862e05`** (token com três segmentos não vazios, para testar assinatura/algoritmo e não só sintaxe). Somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` alterado.
+- CI inicial #40396312031: teste novo falhou por token estruturalmente malformado (assinatura vazia), exit 2; corrigido no SHA final sem alterar runtime.
+- **CI oficial W03 final #40396453142:** suíte isolada **77 PASS / 1106 asserções / exit 0**; lint, Composer, SQLite, JUnit e rotas SUCCESS. Suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1** (`ApplicationAdminTenantBoundaryW03Test.php:514`, `is_root` de owner local). Gate JUnit exit 1, workflow FAILURE. API CI e Workers Laravel não acionados neste SHA.
+- Issue #12 atualizada (comentário #6426628070) pedindo owner único W2/W4 e claim/handoff exclusivo para `ApplicationAdminService.php`. W03 não editou o serviço, curadoria NP12, comércio W1, main nem VPS; sem merge/deploy.
+- NP12: `.agents/state/NP12.json` RUNNING nominal, heartbeat 2026-10-23T01:43:21Z; task lock expirou 2026-10-23T03:13:22Z, sem delegação/reassign. Preservado.
+- Próxima ação: W00 formalizar ownership do serviço; responsável corrigir `context().is_root` global versus `is_owner` local; exigir PHPUnit W03/API CI exit 0. Evitar novos testes repetitivos enquanto o P0 não for resolvido.
