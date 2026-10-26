@@ -786,4 +786,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - P0 `ApplicationAdminService::context()`: `is_root=true` indevido para owner local; issue #12 atribui Administrator API a W2, mas falta claim/handoff explícito do serviço. W3 não altera serviço.
 - NP12: task canônica `RUNNING`, owner NP12, delegação 0, heartbeat 23/10, lock histórico expirado sem reatribuição formal. `events:discover` intocado.
 - Remote Desktop Commander `petertecnetserver` offline. Sem escrita em checkouts, `main`, VPS, W1, NP12; sem merge/deploy.
-- Próxima ação: W00/W2 formalizar claim do serviço, corrigir semântica root global versus owner local, reexecutar W03/API CI exit 0. 
+- Próxima ação: W00/W2 formalizar claim do serviço, corrigir semântica root global versus owner local, reexecutar W03/API CI exit 0.
+
+## Rodada W03 — 26/10/2026 16:27 BRT
+
+- Commit API Independence [agent:W3]: `85f918f7ee5152116202258ab5823cbe90bc72ef`, somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php` (+55 linhas). Regressão nova: assinatura JWT adulterada deve ser rejeitada antes de leitura de auditoria/criação de perfil, inclusive com tenant forjado; token íntegro mantém operação legítima. Nenhum serviço/runtime alterado.
+- GitHub confirmou o commit e HEAD da branch. CI oficial do SHA: `40386944689`, em execução na primeira consulta; não declarar exit 0 até fechamento.
+- CI anterior `40378797162`: suíte independente 75 PASS/1085 assertions/exit 0; W03 principal 18 PASS/1 FAIL/exit 1, falha real em `ApplicationAdminTenantBoundaryW03Test.php:514` por `is_root` local indevido. O novo commit NÃO corrige essa falha.
+- Ownership do serviço `ApplicationAdminService.php` continua sem transferência exclusiva para W03; W2 API conforme issue #12, handoff antigo W4. Solicitação de formalização permanece aberta. Não editar serviço sem claim.
+- NP12 state/task canônicos consultados: owner NP12, status RUNNING, heartbeat 23/10, lock expirado e sem delegação; nenhum arquivo `events:discover` tocado. Workers Laravel e API CI gerais não acionados no novo SHA na consulta.
+- Servidor remoto offline; `/var/www`, checkouts DEV compartilhados, W1 comércio e frontend não alterados. Sem merge/deploy.
