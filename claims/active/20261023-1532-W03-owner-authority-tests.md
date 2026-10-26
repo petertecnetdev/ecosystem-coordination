@@ -643,3 +643,11 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Claim/handoff de `ApplicationAdminService.php` não transferido a W03; W00 precisa designar responsável Administrator API e formalizar ownership exclusivo para corrigir `is_root` global versus `is_owner` local, mantendo gate W03 intacto.
 - NP12: arquivos canônicos `.agents/tasks/TASK-20261022-CURATION-NP12.json` e `.agents/state/NP12.json` ainda `RUNNING`, owner NP12, `delegation_count=0`, lock expirado em 23/10 03:13:22Z, sem handoff/reassign comprovado. Curadoria `events:discover`, W1/comércio, serviços runtime, `main`, VPS e checkouts alheios intocados. **Sem merge/deploy**.
 - Item 3 parcial; próximo passo: correção autorizada do serviço e PHPUnit W03/API CI completos exit 0.
+
+## Rodada W03 — 25/10/2026, 23h30 BRT
+
+- Novo commit real [agent:W3] na API `Independence`: `173e6c8ff4626afd632b946f72ebc54c7258f7d7`. Arquivo exclusivo deste claim: `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`. Teste HTTP cobre janela de 30 execuções ordenadas por id, isolamento de Cutinapp/Rasoio e rejeição de `app_id`, `application_id` e `X-Peter-App` conflitantes na seleção de histórico. Não modifica runtime.
+- CI oficial do SHA: [Administrator W03 #40259255904](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40259255904), **FAILURE**. Suíte isolada **60 PASS / 881 asserções / exit 0**; 5 rotas auditadas, Composer, migrações e autotestes JUnit SUCCESS. Suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1**; gate JUnit exit 1, mesma falha P0 de `ApplicationAdminTenantBoundaryW03Test.php:514` (`is_root=true` indevido para owner local).
+- `api-ci.yml` e `automation-workers.yml` não dispararam para este SHA por seus filtros de push; não declarar CI geral ou Workers aprovados neste commit.
+- NP12: state/task canônicos ainda `RUNNING`, `owner_agent_id=NP12`, `delegation_count=0`, heartbeat em 23/10 e lock expirado em 23/10 03:13:22Z, sem reatribuição formal. Nenhuma alteração em `events:discover`.
+- `ApplicationAdminService.php` segue sem handoff/claim exclusivo a W3. P0 depende de W00 nomear executor Administrator API, formalizar ownership e corrigir `context().is_root` sem alterar `is_owner`. Nenhum merge, deploy ou alteração em W1/W2/W4/VPS/produção. Item 3 parcial.
