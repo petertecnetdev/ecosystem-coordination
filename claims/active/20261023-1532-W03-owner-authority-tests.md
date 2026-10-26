@@ -764,3 +764,14 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Git direto do sandbox falha com DNS `Could not resolve host: github.com`; GitHub conector funcionou. Dispositivo `petertecnetserver` offline; nenhum checkout VPS ou produção alterado.
 - NP12 verificado em `petertecnet.com.br/main/.agents/{state,tasks}`: owner NP12, tarefa RUNNING nominal, sem delegação, último heartbeat 23/10; lock expirado, **sem reatribuição**. `events:discover` intocado.
 - P0 `ApplicationAdminService.php` continua fora deste claim; issue #12 aponta W2 API, handoff antigo W4 API. Aguardar decisão W00 e claim exclusivo. Sem merge/deploy.
+
+
+## Atualização W03 — 26/10/2026, 14h34 BRT
+
+- Commit novo na API `Independence`: `a3163c23fae14efdb6a0c98dcc5a21759f63a820`, arquivo exclusivo `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`.
+- Regressão de segurança: identidade root global não pode criar perfil administrativo em aplicação com owner local já vinculado, mesmo forjando `app_id`, `application_id` e `X-Peter-App`; requer 403 e ausência de mutação/auditoria. Controles positivos para root em app sem owner local e owner local em seu próprio app.
+- O commit foi confirmado via GitHub; não há execução de GitHub Actions associada ao SHA na consulta inicial, nem resultado oficial PHPUnit/CI para esta alteração. Não declarar PASS.
+- Falha P0 preexistente: `ApplicationAdminService::context()` ainda marca owner local como `is_root=true`. A issue #12 aponta W2 como responsável pela API, mas handoff anterior menciona W4; sem transferência formal do arquivo de serviço a W03.
+- NP12: tarefa e state canônicos seguem `RUNNING`, owner NP12, último heartbeat em 23/10, lock histórico expirado sem reatribuição. `events:discover` não foi tocado.
+- Desktop Commander `petertecnetserver` offline nesta rodada; nenhum checkout remoto modificado. Sem merge/deploy.
+- Próximo passo: W00 formalizar ownership do serviço para W2 ou responsável Administrator API e obter CI oficial no SHA; manter W03 isolado.
