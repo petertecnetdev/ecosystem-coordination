@@ -754,3 +754,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - **NP12:** arquivo `.agents/tasks/TASK-20261022-CURATION-NP12.json` não localizado (404) na coordenação; lock histórico expirou, mas não há transferência canônica confirmada. `events:discover` intocado. Nenhuma escrita em `/var/www`, checkouts DEV compartilhados, W1 ou W4.
 - **Impacto:** cobre mais uma mutação RBAC crítica após revogação de sessão; P0 permanece bloqueante. Próxima ação prioritária: W00 resolver ownership do serviço, owner Administrator API corrigir e validar PHPUnit W03 + API CI completos com exit 0.
 
+## Rodada W03 — 26/10/2026, 13h30 BRT
+
+- Commit novo real `[agent:W3]` na API `Independence`: `0210d9856327c03e6621abf6fa1facea1cf47ac9`.
+- Arquivo exclusivo do claim: `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`.
+- Regressão HTTP adicional: após revogar `auth_version` de proprietário com dois apps, POST de criação de perfil em cada app, com `app_id`, `application_id` e `X-Peter-App` forjados, deve retornar 401 `TOKEN_REVOKED` sem perfis/auditorias. Token novo deve criar perfis legitimamente nos dois apps, sem root global.
+- Commit e HEAD do PR #546 verificados. **CI do novo SHA não comprovado**: consulta de workflow runs vinculados ao commit e status combinado retornou vazio; PHPUnit/exit code oficiais não executados nesta rodada. Não declarar PASS.
+- Última evidência oficial anterior: W03 #40341500108 FAILURE; etapa independente SUCCESS e PHPUnit principal FAILURE por `ApplicationAdminService::context().is_root`.
+- Git direto do sandbox falha com DNS `Could not resolve host: github.com`; GitHub conector funcionou. Dispositivo `petertecnetserver` offline; nenhum checkout VPS ou produção alterado.
+- NP12 verificado em `petertecnet.com.br/main/.agents/{state,tasks}`: owner NP12, tarefa RUNNING nominal, sem delegação, último heartbeat 23/10; lock expirado, **sem reatribuição**. `events:discover` intocado.
+- P0 `ApplicationAdminService.php` continua fora deste claim; issue #12 aponta W2 API, handoff antigo W4 API. Aguardar decisão W00 e claim exclusivo. Sem merge/deploy.
