@@ -659,3 +659,12 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - `api-ci.yml` e `automation-workers.yml` não acionados neste SHA pelos filtros atuais; não declarar CI geral/Workers verdes.
 - Consultados `COMMANDS.md`, workflows e claims ativos. `ApplicationAdminService.php` permanece sem handoff/claim exclusivo transferido a W03. W00 deve formalizar responsável Administrator API e corrigir `is_root` global sem alterar `is_owner` local; não acumular apenas gatilhos CI.
 - NP12: state/task canônicos ainda `RUNNING`, `delegation_count=0`, último heartbeat 23/10/2026 e lock expirado 23/10/2026 03:13:22Z, sem handoff/reassign. Nenhuma alteração em NP12, W1, W2, W4, produção, VPS, `main`, merge ou deploy.
+
+
+## Rodada W03 — 26/10/2026, 01h28 BRT
+
+- Commit novo [agent:W3] na API `Independence`: `4d62f003ccd356b1bb5e089d3291f4c18dbeb891`; somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, dentro do claim exclusivo já existente. Teste HTTP novo prova que uma execução pendente do mesmo `discovery_quality` na Cutinapp não bloqueia execução independente no Rasoio, com proprietários/JWTs distintos, dois registros `queued` e dois jobs enfileirados; sem alteração de runtime/curadoria NP12.
+- GitHub Actions W03 do SHA: `40269140445` (job `121397959963`). Suíte isolada **62 PASS / 900 asserções / exit 0**; Composer, SQLite, auditoria de rotas e autotestes JUnit SUCCESS. Suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1**; gate JUnit exit 1; falha P0 já conhecida em `ApplicationAdminTenantBoundaryW03Test.php:514`, `context().is_root=true` para owner local.
+- `api-ci.yml` e `automation-workers.yml` não foram acionados neste SHA por filtros de push; não declarar aprovação. O arquivo `ApplicationAdminService.php` permanece sem handoff/claim exclusivo para W03; W00 deve formalizar owner Administrator API e corrigir `is_root` global mantendo `is_owner` local.
+- NP12: consulta de estado/task em `.agents/` via repositórios API/coordenação retornou 404; Desktop Commander `petertecnetserver` OFFLINE nesta rodada. Portanto **não há confirmação nova de heartbeat/reatribuição**; manter a proteção do ownership NP12 e não tocar `events:discover`.
+- Nenhum merge, deploy, reset, force-push, modificação em `main`, W1/W2/W4 ou VPS. Item 3 segue parcial até PHPUnit W03 principal e API CI completos exit 0.
