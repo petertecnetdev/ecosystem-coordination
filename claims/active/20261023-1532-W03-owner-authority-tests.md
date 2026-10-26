@@ -823,3 +823,13 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - NP12: task RUNNING nominal, `lock_expires_at=2026-10-23T03:13:22.516Z`, sem delegação/reassign confirmada. Nenhum arquivo `events:discover` alterado. Sem merge/deploy ou acesso a checkouts de produção.
 
 Estado: regressão independente verde, P0 global bloqueante. Próxima ação: W00/W2 formalizar owner do serviço, corrigir root global vs owner local e reexecutar W03 + API CI completos com exit 0.
+
+
+## Rodada W03 — 26/10/2026 20h35 BRT
+
+- API `Independence`: primeiro commit [agent:W3] `b2261f0d6fd4e009c52611876ed9288d5e8d10a8` adicionou regressão de JWT expirado no arquivo exclusivo `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`; CI W03 #40420554017 **FAILURE** porque o relógio simulado não alterou a expiração usada pela biblioteca JWT (78 PASS / 1 FAIL, 1118 asserções; HTTP 200 inesperado). A suíte W03 principal não executou nesse SHA.
+- Correção real [agent:W3] `937d9a7367ce6440fa083bd2dfb36f50e86c3051`: constrói JWT com expiração no passado e HMAC legítimo usando exclusivamente o segredo do ambiente de testes, evitando teste falso de assinatura/relógio.
+- [CI oficial W03 #40420676373](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40420676373) no SHA final: suíte isolada **79 PASS / 1128 asserções / exit 0**, incluindo o novo caso. Composer, migrações SQLite, autotestes JUnit e rotas SUCCESS. Suíte principal **18 PASS / 1 FAIL / 170 asserções / exit 1** em `ApplicationAdminTenantBoundaryW03Test.php:514`; gate JUnit exit 1; workflow **FAILURE**.
+- `ApplicationAdminService::context()` continua retornando `is_root=true` para owner local; W2 é responsável por Administrator API/RBAC na issue #12, mas não existe handoff/claim exclusivo do serviço para W03. Solicitado a W00/W2 patch no payload para `'is_root' => $this->isRoot($user)` preservando `is_owner=true` e isolamento por app, após análise de consumidores e claim.
+- `COMMANDS.md`, `automation-workers.yml`, `api-ci.yml` e `administrator-w03-ci.yml` revisados. API CI geral não dispara em push `Independence` sem PR; Workers Laravel não dispara por alteração apenas no teste W03. Não declarar esses workflows aprovados neste SHA.
+- NP12 permanece owner de `TASK-20261022-CURATION-NP12` com status nominal RUNNING, heartbeat de 23/10 e lock histórico expirado, sem delegação; nenhuma edição de curadoria. Servidor remoto offline; nenhum checkout, merge ou deploy.
