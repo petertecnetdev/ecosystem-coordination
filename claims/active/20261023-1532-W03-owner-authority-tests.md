@@ -812,3 +812,14 @@ Próxima ação: W00/W2 formalizar claim exclusivo do serviço e corrigir is_roo
 - Issue #12 atualizada (comentário #6426628070) pedindo owner único W2/W4 e claim/handoff exclusivo para `ApplicationAdminService.php`. W03 não editou o serviço, curadoria NP12, comércio W1, main nem VPS; sem merge/deploy.
 - NP12: `.agents/state/NP12.json` RUNNING nominal, heartbeat 2026-10-23T01:43:21Z; task lock expirou 2026-10-23T03:13:22Z, sem delegação/reassign. Preservado.
 - Próxima ação: W00 formalizar ownership do serviço; responsável corrigir `context().is_root` global versus `is_owner` local; exigir PHPUnit W03/API CI exit 0. Evitar novos testes repetitivos enquanto o P0 não for resolvido.
+
+
+## Rodada W03 — 26/10/2026, 18h30 BRT
+
+- Commit novo de teste `[agent:W3]` na API `Independence`: `4f045d902c9f1a82e9a8628aecf853e374cb7f81` (somente `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`, +56 linhas). Teste de assinatura JWT com HMAC de chave externa, reutilizando cabeçalho/payload legítimos, exige HTTP 401 em leitura de auditoria e criação de perfil com tenant forjado; controle positivo mantém acesso local com token válido.
+- CI oficial W03 #40404963913, SHA exato: **FAILURE**. Suíte independente **78 PASS / 1116 assertions / exit 0**; PHPUnit W03 principal **18 PASS / 1 FAIL / 170 assertions / exit 1**; gate JUnit **exit 1**. Falha P0 preexistente em `ApplicationAdminTenantBoundaryW03Test.php:514`: `context().is_root=true` para owner local. Composer, migrações SQLite, autotestes JUnit e rotas administrativas: SUCCESS.
+- API CI geral e Workers Laravel: não acionados neste push (não declarar PASS no SHA). Evidência: https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40404963913 .
+- Ownership do `ApplicationAdminService.php` continua sem handoff/claim exclusivo; issue #12 designa W2 Administrator API e handoff anterior menciona W4. Solicitação W00 reiterada no comentário #6427817245. W03 não edita runtime alheio.
+- NP12: task RUNNING nominal, `lock_expires_at=2026-10-23T03:13:22.516Z`, sem delegação/reassign confirmada. Nenhum arquivo `events:discover` alterado. Sem merge/deploy ou acesso a checkouts de produção.
+
+Estado: regressão independente verde, P0 global bloqueante. Próxima ação: W00/W2 formalizar owner do serviço, corrigir root global vs owner local e reexecutar W03 + API CI completos com exit 0.
