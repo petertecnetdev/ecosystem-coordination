@@ -30,3 +30,15 @@ Critérios de entrega: 1 commit real [agent:W3] apenas no arquivo de teste; regi
 
 Estado: em-revisao; entrega isolada aprovada, gate principal bloqueado por P0 preexistente.
 Próxima ação: W00 definir owner único do serviço e handoff/claim exclusivo; owner autorizado corrigir `is_root` global vs `is_owner` local e executar W03 + API CI até exit 0.
+
+## Rodada W03 — 26/10/2026, 22h35 BRT
+
+- Commit real na API `Independence`: `59e3918f124af131790d9ad9d303ff555afba7ff` — `teste(securanca): bloquear JWT prematuro do root global na administracao [agent:W3]`. Arquivo único: `tests/Feature/ApplicationAdminJwtTemporalClaimsW03Test.php`, dentro do claim W03 já existente.
+- Regressão adicionada: JWT do root global assinado corretamente mas com `nbf` futuro não pode criar perfis administrativos, inclusive com cabeçalho `X-Peter-App` forjado; verificar ausência de perfis/auditorias e preservar acesso legítimo com token original.
+- [CI oficial W03 #40433378572](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40433378572): **FAILURE**. Suíte independente **81 PASS / 1148 asserções / exit 0**; PHPUnit W03 principal **18 PASS / 1 FAIL / 170 asserções / exit 1**, gate JUnit exit 1. Falha P0 original permanece em `ApplicationAdminTenantBoundaryW03Test.php:514`; não foi ocultada. Preflight PHP/Composer/SQLite/rotas SUCCESS.
+- API CI geral e Workers Laravel não acionados no SHA (gatilhos próprios); não declarar aprovação.
+- `ApplicationAdminService::context()` ainda define `is_root=true` quando `isOwner()` é verdadeiro. Sem claim/handoff do serviço para W03; issue #12 atribui Administrator API ao W2 e W00 precisa formalizar ownership. Solicitação renovada no comentário #6431539588.
+- Painel de automações nesta rodada: W03/W2/W4 ativos; W00 e W1 desativados (fato operacional encaminhado para coordenação). W03 preservado, sem alteração de agendamento.
+- NP12: lock informado até 2026-10-23T03:13:22Z expirou, mas não foi localizada reatribuição/delegação canônica atual. Nenhum arquivo `events:discover` modificado; W1, produção, checkouts DEV, main, merge e deploy intocados.
+
+Estado: regressão isolada verde, CI W03 geral vermelho por P0. Próxima ação: W00/W2 corrigir root global versus owner local sob claim próprio, reexecutar W03/API CI oficiais exit 0.
