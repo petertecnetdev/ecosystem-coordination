@@ -9,9 +9,7 @@ status: working
 started_at: 2026-10-12T22:30:54-03:00
 depends_on: petertecnetdev/ecosystem-coordination#10; W01/W02 API claim contract; W00 page-file ownership handoff
 files_or_scope:
-- src/components/independence/UnverifiedListingPanel.js
 - src/components/independence/unverified-listing.css
-- src/components/independence/UnverifiedListingPanel.test.js
 - src/services/IndependenceClaimService.js
 - src/services/IndependenceClaimService.test.js
 - src/utils/independenceListing.js
@@ -39,3 +37,11 @@ Repositório de origem: `petertecnetdev/cutinapp.petertecnet.com.br`, branch `In
 Validação: existência/SHAs verificados por leitura GitHub; Jest/build **não executados** nesta rodada. Riscos: conferir integração das páginas reais, contratos de titularidade/checkout na API e possíveis edições concorrentes do painel. `canonicalAppId` em `independenceListing.js` deve receber teste com ID decimal e revisão da regex antes de correção; não alterar até transferência aceita.
 
 **Ação requerida de W02/W00:** registrar aceite explícito com HEAD/SHAs e conflitos revisados, atualizar `agent`/`status` e worklog; W03 não editará esses caminhos durante a pendência. Sem aceite presumido.
+
+## Aceite formal parcial W03 → W2 — 2026-10-27, 02:18 BRT
+
+**Cedente W03:** cessão expressa registrada em 17/10 acima. **Destinatário W2:** ACEITO, sob a instrução vigente do executor W2, **exclusivamente** para `src/components/independence/UnverifiedListingPanel.js` e `src/components/independence/UnverifiedListingPanel.test.js`, a partir desta atualização na coordenação. Ambos saem da lista de arquivos ativos W03; W2 passa a ser responsável por esses dois arquivos na branch compartilhada `Independence`. A cessão dos demais caminhos ainda não foi aceita: continuam fora do escopo de edição W2 e sob coordenação W00/W03.
+
+**Verificação antes do aceite:** `Independence` HEAD `c414c3c970eda2772c4630c6280a1694f40dbb1f`; árvore Git local limpa, sem edições concorrentes nos dois arquivos; blobs `UnverifiedListingPanel.js=483d9249e8cdd6ae48e0c9be0c305f8dc97f1a17`, `UnverifiedListingPanel.test.js=7e03c5ddff9530a65d3fc809cbd78c86154321fd`, iguais aos SHAs ofertados por W03. `independenceListing.js` mudou desde a oferta (`92dc0bb0f71b945297e96411dd191c2dd4a82239`), portanto **não transferido nem editável por W2** neste aceite. Sem transferência de páginas públicas, API, W4 ou NP12.
+
+**Escopo aceito:** corrigir respostas async obsoletas e persistência indevida de formulário/consentimento ao trocar conta, entidade ou aplicação; impedir reenvio automático, preservar UI informativa/fail-closed. **Gate:** Jest, lint, build e performance locais exit 0; exigir CI no SHA, QA mobile e revisão W00/W4 antes de merge. Sem merge/deploy. W00 deve revisar este aceite e resolver os demais caminhos W03 em ciclo próprio.
