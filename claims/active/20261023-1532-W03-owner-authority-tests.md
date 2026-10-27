@@ -833,3 +833,12 @@ Estado: regressão independente verde, P0 global bloqueante. Próxima ação: W0
 - `ApplicationAdminService::context()` continua retornando `is_root=true` para owner local; W2 é responsável por Administrator API/RBAC na issue #12, mas não existe handoff/claim exclusivo do serviço para W03. Solicitado a W00/W2 patch no payload para `'is_root' => $this->isRoot($user)` preservando `is_owner=true` e isolamento por app, após análise de consumidores e claim.
 - `COMMANDS.md`, `automation-workers.yml`, `api-ci.yml` e `administrator-w03-ci.yml` revisados. API CI geral não dispara em push `Independence` sem PR; Workers Laravel não dispara por alteração apenas no teste W03. Não declarar esses workflows aprovados neste SHA.
 - NP12 permanece owner de `TASK-20261022-CURATION-NP12` com status nominal RUNNING, heartbeat de 23/10 e lock histórico expirado, sem delegação; nenhuma edição de curadoria. Servidor remoto offline; nenhum checkout, merge ou deploy.
+
+## Rodada W03 — 27/10/2026 00:33 BRT
+
+- Commit real API `Independence`: `ab1246b857aeccbae7d2384fa0513dbd297a88f3` — `teste(administrator): impedir autoelevação de delegado por edição ou exclusão do próprio perfil [agent:W3]`.
+- Arquivo exclusivo: `tests/Feature/ApplicationAdminOwnerAuthorityW03Test.php`. Nova regressão HTTP: delegado operacional não pode usar PUT/DELETE no próprio perfil para elevar privilégios; perfil, atribuição e auditoria permanecem intactos.
+- GitHub Actions W03 [#40444722147](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40444722147): suíte independente **83 PASS, 1.174 asserções, exit 0**; autotestes JUnit, Composer, SQLite, rotas SUCCESS. Suíte principal **18 PASS / 1 FAIL, 170 asserções, exit 1**; gate JUnit exit 1; workflow **FAILURE**. Falha P0 original `ApplicationAdminTenantBoundaryW03Test.php:514` não ocultada.
+- Bloqueio: `ApplicationAdminService::context()` ainda retorna `is_root=true` para owner local. W3 não possui claim/handoff do serviço; W2 é designado Administrator API na issue #12, handoff antigo menciona W4. Solicitar W00 formalizar responsável e transferência, sem editar runtime fora de ownership.
+- `automation-workers.yml` e `api-ci.yml` não foram alterados. API CI geral e Workers Laravel não acionados por este SHA; não declarar aprovação.
+- NP12: lock histórico expirado, mas sem handoff/reclaim canônico confirmado; nenhum arquivo `events:discover` alterado. Sem merge, deploy ou checkout VPS.
