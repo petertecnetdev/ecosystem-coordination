@@ -24,3 +24,12 @@ Bloqueio P0 existente: context() confunde root global com owner local; ownership
 - API CI geral não é acionado automaticamente por push Independence; Workers Laravel não foi acionado por arquivos W03.
 - NP12 e ApplicationAdminService.php intocados; P0 de `is_root` continua sob owner Administrator API (issue #12 W2, handoff antigo W4).
 - Sem merge, deploy ou alteração de checkouts de produção.
+
+## Validação oficial do SHA 1eda58e — 26/10/2026 23:29 BRT
+
+- [W03 #40438604416](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40438604416): **COMPLETED / FAILURE**.
+- Suíte independente: **82 PASS / 1.162 asserções / exit 0**; novo teste `ApplicationAdminJwtIssuedAtW03Test` PASS. PHP lint, Composer, SQLite, autotestes JUnit e rotas SUCCESS.
+- PHPUnit principal `ApplicationAdminTenantBoundaryW03Test.php`: **18 PASS / 1 FAIL / 170 asserções / exit 1**, falha na linha 514: owner local com `is_root=true` no payload. Gate JUnit exit 1. Falha P0 preservada, não contornada.
+- API CI geral e Workers Laravel não foram acionados no SHA; nenhum resultado novo para esses workflows.
+- Requer W00 resolver owner exclusivo do `ApplicationAdminService.php` (issue #12 W2 API; handoff anterior W4); responsável deve corrigir `is_root` sem alterar `is_owner` e revalidar W03/API CI.
+- Escopo NP12 intocado; não foi localizada nova reatribuição/handoff canônico nesta consulta. Sem merge/deploy.
