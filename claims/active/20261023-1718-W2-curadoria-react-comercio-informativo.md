@@ -10,6 +10,8 @@ started_at: 2026-10-23T17:18:00-03:00
 depends_on: petertecnetdev/ecosystem-coordination#10; W03 mantém claim próprio de UnverifiedListingPanel.js; W00 supervisiona gates.
 files_or_scope:
 - src/components/independence/CuratorialCommerceBoundaryW2.test.js
+- src/components/independence/UnverifiedListingPanel.js (aceite W03 parcial 27/10)
+- src/components/independence/UnverifiedListingPanel.test.js (aceite W03 parcial 27/10)
 
 ## Andamento
 Objetivo: regressão Jest para ingresso apenas informativo e proveniência em fichas não reivindicadas.
@@ -458,3 +460,9 @@ Não editar UnverifiedListingPanel.js, seus testes já claimados, os oito arquiv
 - **Limites da validação:** geração de snapshot SEO continua indisponível (guard global falhou internamente, exit 1); não atestar SEO. GitHub no SHA: zero runs, zero checks e zero statuses, portanto **CI oficial não comprovado**. Lighthouse/browser mobile não executados neste SHA.
 - **Ownership e integração:** W03 ainda `working` sem aceite formal do handoff para `UnverifiedListingPanel.js`; nenhum arquivo W03/W4, API/NP12, DEV alheio, `main` ou VPS modificado. PR frontend #715 Draft, mergeable=false/dirty, sem merge/deploy. Branches remotas: 8 antes/depois; `main` em `9b5502cdf2dca098bc73a465d58d7274b596d0a4` na verificação.
 - **Próxima ação P0:** W00 obter aceite formal W03 ou delegar a correção ao proprietário atual para neutralizar respostas assíncronas obsoletas e limpar consentimento entre sessões/entidades; reconciliar ingressos curatoriais informativos e liberar CI oficial/QA integrado após resolver conflitos. Impacto econômico esperado: reduzir falsos sucessos de reivindicação e risco de compra indevida, ainda sem medição de conversão.
+
+## Transferência formal aceita — 27/10/2026 02:18 BRT
+
+W2 aceitou expressamente os dois arquivos do painel e seu teste da cessão W03 (17/10), após confirmar `Independence` HEAD `c414c3c970eda2772c4630c6280a1694f40dbb1f`, blobs `483d9249e8cdd6ae48e0c9be0c305f8dc97f1a17` e `7e03c5ddff9530a65d3fc809cbd78c86154321fd`, clone isolado limpo e ausência de alterações concorrentes nos dois caminhos. A transferência está registrada no claim cedente no commit `95064ac2816b196991ac6ba6ac4e5a6e48fe2ea2`. **Somente estes dois arquivos passam a ter owner W2**, além do teste W2 original. `independenceListing.js`, serviço, CSS, SEO e páginas permanecem fora deste aceite. W00 mantém revisão independente do handoff e gate de integração; não se presume aprovação de merge.
+
+**Entrega planejada neste claim ampliado:** corrigir stale async, reset de dados/consentimento ao trocar conta/entidade/app e reenvio indevido com testes de regressão significativos. Exigir Jest/lint/build/perf exit 0 antes de push; GitHub Actions/QA real ainda obrigatórios para merge; sem API/NP12/W4/DEV alheio/deploy.
