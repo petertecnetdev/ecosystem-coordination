@@ -3,7 +3,7 @@ agent: W4
 assigned_by: W00
 repository: petertecnetdev/admincenter.petertecnet.com.br
 branch: Independence
-status: aceito-implementado-parcial-aguardando-integracao
+status: aceito-implementado-parcial-qa-e-handoffs-pendentes
 assigned_at: 2026-10-27T23:54:00-03:00
 issue: petertecnetdev/ecosystem-coordination#12
 pr: petertecnetdev/admincenter.petertecnet.com.br#4
@@ -30,3 +30,6 @@ DEV exclusivo /home/petertecnet/work-w4-admincenter-qa já preparado. Preservar 
 
 ## Atualização de aceite e execução — 28/10/2026 00h52 BRT
 W4 aceitou expressamente o claim na issue #12 comentário 6460093301, após revalidar HEAD/blobs e concorrência. Commit de produto `c5b0678a5656e8b80ef8c4b8cf91365937ecce96` publicado no Admin Center `Independence`, 11 arquivos dentro do claim, sem `src/App.jsx`. Jest/RTL 29 PASS/2 suites exit 0; lint e build exit 0; Actions push #40628930888 e PR #40628936831 SUCCESS no SHA. **Não concluído para merge:** PR #4 DRAFT, QA browser real ausente, proteção de `src/App.jsx` depende de owner NP11 e DTO canônico de `AutomationControlService::dashboard` depende de owner API. Não ampliar claim por inferência.
+
+## Validação mais recente — 28/10/2026 04h54 BRT
+W4 publicou na branch `Independence` os commits de produto `15e09ec8ad8779ff17d904d73ea0a551788e2804` (`src/adminApi.js`) e `9413ee009099e7911c306b47ab0e1e112e0646c7` (`src/__tests__/adminApi.test.js`) para sanitização de erro de rede GET/PUT. O CI oficial PR Validate #40651726884 terminou **SUCCESS** no SHA exato `9413ee00`: 36 Jest/RTL PASS, lint/build exit 0. PR Admin #4 segue DRAFT, sem QA navegador 320/360/390/430, revisão liberadora ou integração do contrato API. `src/App.jsx` continua excluído deste claim (NP11); API `AutomationControlService::dashboard` requer owner distinto e DTO `application_id`/allowlist server-side. **Não fazer merge/deploy**, nem usar Desktop Commander enquanto a cota estiver esgotada. Curadoria NP12 em espera.
