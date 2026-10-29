@@ -26,3 +26,13 @@ files_or_scope:
 - Preservar lock transacional do evento e ticket, limites e idempotência por usuário, sem alterar carteira, QR/check-in ou passes pagos já persistidos.
 - Testes HTTP para negações e cortesia legítima; validar CI oficial no novo SHA.
 - Sem editar arquivos de outros owners, main, merge, deploy, produção, NP12 ou contornar OPENAI_SAFETY_CHECKS.
+
+## Entrega W1 — 29/10/2026 ~12h18 BRT
+- ACEITO W1 registrado na issue #10 comentário 6500448127, após revalidar HEAD/blob e ausência de claim concorrente.
+- Commits de produto somente na API Independence: `e1f0a942` (gate de titularidade no EventPassService), `fdd2867c` (regressões HTTP), `08d05385` (notificação específica), `407122b8` (informational_only e preço desconhecido), `751332df` (regressão ticket informativo), `6c8f99e8` (alinhar teste ao schema real).
+- HEAD API final `6c8f99e8a6dd3cb54f0c950016f92aa81f320f37`; blobs `EventPassService.php=20d3c7c11d5c8eb372df41f2870b536ee48fffdc`, `CutinappCourtesyOwnershipBoundaryW1Test.php=7a71e6e4adadfa62abec5b858f6fa6d06b3470cb`.
+- GitHub Actions push [#40899744122](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40899744122), job 123538439699: **FAILURE**, `php artisan test` **687 PASS / 28 FAIL / 2 SKIP, 5.096 asserções, exit 1**; arquitetura 7 PASS / 2 FAIL, exit 1 (já incluídas nas 28). PHP syntax PASS, testes novos W1 **5/5 PASS**.
+- Baseline anterior [#40892243764](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40892243764) HEAD 890fa141: 692 PASS / 18 FAIL / 2 SKIP, exit 1. **Dez falhas novas** em fixtures antigas de cortesias/portaria/fluxos que esperavam HTTP 201 para fichas sem proveniência; agora recebem 403. Não mascarar a regressão nem relaxar fail-closed.
+- Testes MySQL isolado, concorrência simultânea e navegador: NÃO EXECUTADOS. Não foi feito merge/deploy/main/produção.
+- Estado: **em-revisao-bloqueado** até reconciliar autorização de novos eventos de produtor e fixtures legítimas sem aceitar NULL/NULL sem prova de origem. Owner de arbitragem: W00; não editar arquivos de terceiros sem claim/cessão.
+- **UMA PRÓXIMA AÇÃO:** W00 designar owner/claims específicos para reconciliar a persistência de proveniência no fluxo de criação legítima e as dez fixtures HTTP antigas, exigindo patch e CI sem flexibilizar ListingCommercePolicy.
