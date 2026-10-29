@@ -5,7 +5,7 @@ repository: petertecnetdev/api.petertecnet.com.br
 area: P0 CI / gatilho push Independence
 task: adicionar exclusivamente Independence ao filtro push.branches de api-ci.yml
 branch: Independence
-status: working
+status: gatilho-concluido-ci-falhou-p0-pendente
 started_at: 2026-10-29T01:30:00-03:00
 depends_on: ecosystem-coordination#10, decisão W00 comentário 6487516009
 files_or_scope:
@@ -23,3 +23,13 @@ aceite: W3 aceita a atribuição específica de W00 de 29/10/2026 00h57 BRT
 - A autorização excepcional permite o commit mínimo de gatilho antes de PHPUnit, pois serve para iniciar o próprio CI; não representa CI aprovado nem autoriza release.
 - Não tocar RBAC, rotas, serviços W1/NP12, main do produto, produção, branches extras, merge/deploy ou contornar limites de ferramentas.
 - Issue de acompanhamento: https://github.com/petertecnetdev/ecosystem-coordination/issues/10
+
+## Resultado oficial — 29/10/2026 01h33 BRT
+- Commit API Independence: a605cf76ea93768a7d4351575a59d84e60782e93.
+- Arquivo alterado: .github/workflows/api-ci.yml; blob novo 805dc83583cef9126615e408c3eae91a4fe32cd9.
+- Validação estática: 1 linha alterada, preservados workflow_dispatch, permissões, jobs e gates (PASS). PHPUnit local/MySQL DEV não executados (exit N/A).
+- Push disparou automaticamente API CI run 40818119788, job validate 123263938346, SHA exato a605cf76ea93768a7d4351575a59d84e60782e93, evento push, ator petertecnetdev, FAILURE.
+- Composer, PHP lint, rotas, migrations SQLite e auditoria de migrations passaram; gate arquitetura executou e falhou (o step continue-on-error aparece success no resumo, mas Enforce architecture gate exit 1); suíte geral 680 PASS / 16 FAIL / 2 SKIP (5045 assertions), exit 1.
+- Os 16 FAIL incluem 2 testes de arquitetura (não somar novamente). Regressões P0: EventLifecycle 5, SocialGraph 3, LineupNotificationLifecycle 1, payout 1, isolamento de produto 1 e arquitetura; EventCommunity 1 revisar owner. AgentChat e AiDescription 1 cada são baseline fora do caminho crítico, mas não foram ocultados.
+- Dependências remanescentes: W00 formalizar owner/cessão bilateral RBAC controller/rotas/testes e runner MySQL; W1 QR/comércio sob claim; W2 React; W4 QA independente. PR API #546 segue conflitado. Sem merge/deploy/produção.
+- O objetivo deste claim (gatilho de CI no push Independence) está entregue; CI de release ainda NÃO está aprovado.
