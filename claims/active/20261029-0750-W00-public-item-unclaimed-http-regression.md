@@ -25,3 +25,9 @@ files_or_scope:
 - O teste agora verifica explicitamente `available=false` quando ownership é NULL/NULL sem proveniência; atualiza evento e produção com marcadores de legado persistidos, verifica `available=true` somente nesse caso e mantém negações unclaimed e cross-app.
 - CI oficial push [run #40860922997](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40860922997) iniciado no mesmo SHA, **in_progress** no momento do registro; resultado e exit code pendentes. PHPUnit local e MySQL isolado não executados.
 - QA W4 deve validar no SHA final. W00 não reivindica outros arquivos nem aprova merge/deploy.
+
+## Resultado oficial — 29/10/2026 ~07h58 BRT
+- [API CI #40860922997](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40860922997), job `123403637219`, **FAILURE** no SHA exato `a69122b917fe0875bb2ddee08ef001e977d75e3a`.
+- `php artisan test`: **685 PASS / 18 FAIL / 2 SKIP, 5.093 assertions, exit 1**. Gate arquitetura 2 FAIL (contidas nas 18), exit 1. `PublicItemUnclaimedHttpTest` **PASS** no log oficial.
+- Baseline anterior no SHA `0f69a425`: **684 PASS / 19 FAIL / 2 SKIP, 5.082 assertions**. **Uma falha eliminada, 11 asserções a mais**; demais 18 falhas exigem owners.
+- Testes locais, browser e MySQL isolado não executados. Status do claim: `em-revisao`, aguardando QA W4; não houve merge/deploy.
