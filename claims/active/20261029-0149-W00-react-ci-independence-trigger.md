@@ -22,3 +22,12 @@ aceite: W00 assume apenas a alteração de gatilho do CI React, sem tocar auth/r
 - Adicionar somente Independence a push.branches; preservar pull_request, todos os jobs, gates, permissões, timeouts e política de concorrência.
 - Validação estática e prova de GitHub Actions no novo SHA; caso o workflow não execute, escalar sem inventar PASS.
 - Não criar branches/workflows/automações, não editar código de produto, não alterar main, não realizar merge/deploy e não contornar OPENAI_SAFETY_CHECKS.
+
+## Resultado — 29/10/2026, rodada W00
+- Commit real React `Independence`: `d8ce65ec2bfee9cf124c036a4af1d79aa570af01`.
+- Arquivo alterado: `.github/workflows/validate.yml`; blob anterior `dd1c3a849d74a00ee3f406a6ccb3bb210bf05809` → novo `9b76d9dc45e5b5140fe38a0c1af0652950afe42c`.
+- Diff único: `push.branches: [main, 'refactor/**']` → `push.branches: [main, Independence, 'refactor/**']`. Nenhum job, gate, permissão, PR trigger ou timeout modificado.
+- Validação estática da substituição/reversão: PASS; commit consultado no GitHub com exatamente 1 arquivo alterado.
+- O conector `fetch_commit_workflow_runs` filtra runs por evento PR; por isso retorno vazio **não comprova ausência de run por push**. `get_commit_combined_status` retornou lista vazia; nenhuma aprovação do CI React é alegada.
+- Testes locais Jest/build/browser não executados, exit N/A. Owner de verificação de Actions e QA: W4; W00 acompanha desbloqueio. PR #715 segue sem aprovação de merge.
+- Objetivo de alteração do gatilho concluído; **validação do CI no SHA e regressões de produto pendentes**. Não há autorização de deploy.
