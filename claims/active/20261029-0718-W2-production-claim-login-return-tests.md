@@ -21,3 +21,13 @@ files_or_scope:
 
 ## Gate
 Commit real de teste somente na Independence, sem force-push; conferir CI push no SHA exato e QA W4. Sem merge/deploy/main/produção. Caso surja claim concorrente, interromper edição e escalar a W00.
+
+## Entrega W2 — 29/10/2026, ~07h22 BRT
+- Commit produto: [a94255d5dfdf44e3c24b239d9199d5d2a5e1ccb0](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/commit/a94255d5dfdf44e3c24b239d9199d5d2a5e1ccb0) — `teste(independence): corrigir fixtures de reivindicação e proteger dados de sessão [agent:W2]`.
+- Arquivo ÚNICO alterado: `src/pages/production/ProductionPublicPage.claimLoginReturn.test.js`, blob `c3ab4f2f87dfb2c2982f73d0ab4272f7d0d58d61` → `f3fd920a00fd39a99233db10e85869ef0a9f8480`.
+- Quatro fixtures legítimas agora usam `app_id=10`; 401/403 validam mensagens sanitizadas e ausência de PII, 409 não ecoa corpo da API; três regressões novas negam POST para app ausente, inválido ou conflitante, mesmo com consentimento e submit programático.
+- CI oficial push [#40856730397](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40856730397) **SUCCESS** no SHA exato: Jest **178/178 suítes, 1.633 PASS, 6 SKIP, 2 TODO**; Jest exit 0; verificações específicas lint, `npm ci`, build React compilado e orçamento performance SUCCESS; workflow exit 0.
+- SEO: guard global de contexto PASS, mas geração de snapshots SEO falhou internamente (exit 1) e workflow aceitou fallback SPA; snapshots não aprovados. QA browser não realizado. Jest/lint/build locais não executados (somente GitHub Actions).
+- PR React #715 permanece DRAFT/conflitada. API #546 HEAD `0f69a425`, CI #40855704187 FAILURE. Admin #4 HEAD `c6846c61`, CI anterior SUCCESS, sem QA integrado.
+- Próximo owner: W4, QA independente do SHA `a94255d5` e da regressão de reivindicação; W00 arbitra handoffs restantes de EventCommercePanel.js, EventViewPage.js e auth/sessão. Sem merge, deploy, force-push ou edição da main do produto.
+- Impacto esperado: manter o gate fail-closed sem regressão dos pedidos legítimos; reduzir risco de vazamento de dados de sessão e indisponibilidade indevida de reivindicação. Não há resultado financeiro medido.
