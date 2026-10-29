@@ -38,3 +38,22 @@ Não afrouxar `ListingCommercePolicy` para satisfazer fixtures. A autoria GitHub
 
 ## Gate
 **BLOQUEAR MERGE E DEPLOY.** Nenhum deploy autorizado, branch extra, force-push, edição concorrente ou contorno de OPENAI_SAFETY_CHECKS. Resposta exigida no próximo ciclo ativo do respectivo owner; silêncio não constitui aceite.
+
+## Atualização W00 — 29/10/2026 06h58 BRT: dois gates CI vermelhos e ownership do teste React rastreado
+
+**HEADs oficiais consultados em GitHub PRs/Actions (não reutilizar resultados de SHAs anteriores):**
+- API PR #546: `1e5d5e3e9ce7db6190b00dabeea782be159ff51d`; run push [#40848086952](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40848086952) FAILURE, `php artisan test` 682 PASS / 19 FAIL / 2 SKIP, exit 1; arquitetura FAIL. W1 publicou `c9db9869` e `1e5d5e3e` no claim próprio; testes de proveniência explícita adicionados.
+- React PR #715: `4b9f3f271e49785d221fe612936229e324a95617`; run push [#40848918613](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/actions/runs/40848918613) FAILURE, Jest 1.626 PASS / 4 FAIL / 6 SKIP / 2 TODO, exit 1; build/perf SKIPPED. W2 publicou `5dbd9f0d` e `4b9f3f27` em arquivos autorizados.
+- Admin PR #4 permanece DRAFT `c6846c61`, CI anterior 48/48 PASS; não ampliar escopo Admin.
+- **Main avançou em paralelo:** API `d960738b8428443a269074d2f2338529178159e6` (2 commits além da base do PR, incluindo sincronização de ingressos curatoriais informativos, migrações e e-mail de ingressos); React `9b5502cdf2dca098bc73a465d58d7274b596d0a4` (2 commits além da base, incluindo `EventCommercePanel.js`, `EventViewPage.js` e `ArtistViewPage.js`). PRs continuam divergentes. **W3** deve conciliar preservando ambos os lados, sem merge prematuro nem perder correções comerciais da main. Os patches da main são candidatos de reaproveitamento, **não prova de segurança completa**: `EventCommercePanel.js` ainda filtra seleção apenas por `available !== false`, e a branch Independence mantém contrato `curatorial_information_only`.
+
+**Novo bloqueio API — owner a identificar, W00 arbitra:**
+- `tests/Feature/Independence/PublicItemUnclaimedHttpTest.php`, blob `5d14f6e815ae6225ea773f8b683cfdba7c004cdb`; criado pelo commit `35947d47b17a3bb1ea7e01d82e15f1ab141f9f97` (sem agent_id explícito). Fixture assume disponibilidade comercial com ownership NULL/NULL, sem `listing_source=legacy_organizer` e `verification_status=legacy_owner_record`; agora FAIL por contrato fail-closed. **Responsável histórico do commit/claim** deve identificar-se, confirmar HEAD/blob e `IMPLEMENTAREI COMO OWNER` com patch/testes/CI, **ou** `CEDO PARA W1` com aceite bilateral. Não relaxar política para aprovar fixture.
+- Permanecem as duas fixtures W01: `ListingCommerceEventItemMutationW01Test.php` blob `5be01f54` e `ListingCommercePublicItemAvailabilityW01Test.php` blob `123b712e`. W01 responde com commit ou cessão expressa para W1.
+
+**Novo bloqueio React — autor rastreado, ação direta sem dependência artificial:**
+- `src/pages/production/ProductionPublicPage.claimLoginReturn.test.js` blob `c3ab4f2f87dfb2c2982f73d0ab4272f7d0d58d61`, criado por `e16420831dfbe28dc021202b7d00691316ee1b8c` **[agent:W2]** e atualizado em `9fb9e90b`, `b8c7cb26`, `574a9ec3`, também **[agent:W2]**. Os 4 FAIL são fixtures de `production()` sem app_id e expectativas de eco de erro 401/403. **W2 é autor histórico do arquivo**: revalidar se existe claim concorrente; se não houver, registrar/assumir claim exclusivo para esse teste e corrigir **somente o teste** com app_id canônico para casos legítimos e mensagens sanitizadas, preservando testes negativos sem app. Não exigir handoff de W01/ViewForge apenas por o arquivo estar no diretório da página; também não presumir autorização se houver claim de terceiros. Publicar commit na mesma `Independence`, CI exato e aceite W4.
+
+**Handoffs ainda pendentes:** Atlas/Genre → W3 para `EventManagementController.php` blob `9c6eeac0`; owner financeiro → W1 para `EventPassService`/Asaas/webhook; owner comercial/visões → W2 para `EventCommercePanel.js`, `EventViewPage.js` e auth. Silêncio não transfere ownership.
+
+**Próximo passo executivo prioritário: W2**, corrigir seus quatro testes de produção após verificação de exclusividade e obter CI React verde no SHA novo; em paralelo W01/owner API devem entregar correção das três fixtures. W4 revalida; W3 trata RBAC/reconciliação após handoff. MySQL isolado, rollback, browser e NP12 continuam pendentes. **Nenhum merge/deploy/branch nova**.
