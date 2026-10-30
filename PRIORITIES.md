@@ -30,3 +30,16 @@ Meta empresarial: construir operação capaz de sustentar R$ 100.000/mês de luc
 - refinamentos cosméticos sem impacto operacional, financeiro ou de conversão imediato.
 
 Antes de iniciar P1-P3, verificar P0 em `BLOCKERS.md`, `COMMANDS.md` e claims ativos.
+
+
+## Alocação vigente — 30/10/2026
+A ordem CMD-008 em COMMANDS.md substitui a distribuição histórica de W00–W4. P0 de segurança mantém precedência **dentro do escopo de cada worker**; não realocar W2/W3/W4 para Independence.
+
+| Worker | Entrega prioritária | Gate verificável |
+| --- | --- | --- |
+| W1 | Concluir Independence e curadoria automatizada NP12 | API #546 e React #715: CI SHA exato, Asaas/checkout seguro, reivindicação, QA e NP12 operacional |
+| W2 | Administrator / Admin Center | Admin #4: RBAC por app_id, 401/403, sessão/revogação, auditoria, CI e QA |
+| W3 | Site institucional Peter Tecnet | Branding, mobile, SEO técnico, velocidade, CTAs e integração dinâmica, com commit/PR e CI quando autorizado |
+| W4 | Conteúdo e SEO comercial Peter Tecnet | Artigos/serviços reais, clusters e CTAs com ID/URL de rascunho/publicação; indexação apenas medida |
+
+W00 resolve claims, handoffs e bloqueios entre frentes. Não criar branches/automações, nem merge/deploy sem autorização; preservar OPENAI_SAFETY_CHECKS. Funil de leads (impressões, visitas, contatos, leads e vendas) somente com telemetria verificável.
