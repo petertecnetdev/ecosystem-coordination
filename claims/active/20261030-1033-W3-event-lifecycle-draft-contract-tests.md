@@ -33,3 +33,9 @@ Actions #41038109186, validate exit 1: CutinappEventLifecycleTest.php linhas 29 
 - As 3 falhas DELETE bulk 404 permanecem no mesmo arquivo; não editar controller Atlas/Genre nem expor alias inseguro.
 - CI MySQL ainda em execução no instante deste registro; não presumir conclusão.
 - PR #546 comentário #6524164604 atualizado com prova.
+
+## CI final no SHA exato (run #41064583758)
+- Workflow API CI: FAILURE por validate, 736 PASS / 20 FAIL / 3 SKIP (5550 asserções), PHPUnit exit 1, arquitetura exit 1.
+- Job MySQL 8 efêmero #124092537250: SUCCESS, 38 testes / 389 asserções, exit 0.
+- Workers Laravel #41064583102: SUCCESS; Administrator W03 #41064583019: SUCCESS.
+- Revisão W4 pendente, sem merge/deploy/main.
