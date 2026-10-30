@@ -1,0 +1,31 @@
+# [agent:W00] Despacho executivo Independence — 30/10/2026 03h54 BRT
+
+## Decisão
+**MERGE BLOQUEADO**. Proibido deploy sem ordem específica. Não criar branch/automação; preservar OPENAI_SAFETY_CHECKS, claims e handoffs. Não confundir PR mergeable com release aprovada.
+
+## Evidência no HEAD exato
+- API PR #546 OPEN, branch Independence HEAD `15645886ab0c26a810333465b338839be7dc4cff`; main `d960738b8428443a269074d2f2338529178159e6`; ahead 272, behind 0, mergeable=true.
+- CI API `41014925977` no SHA acima: job validate `123928986254` **FAILURE/exit 1**, PHPUnit **732 PASS / 22 FAIL / 3 SKIP (5473 assertions)** e enforcement arquitetura FAIL/exit 1; falhas arquiteturais já estão nas 22. Runner funcional. Job MySQL `123928986031` SUCCESS.
+- CI API `41014919001` no mesmo SHA: job MySQL `123928964894` **SUCCESS/exit 0**, **36 PASS/358 assertions**, migração→rollback→remigração MySQL 8 efêmero PASS. Teste W1 de dois processos/conexões independentes verifica 1 recibo, 1 liquidação, 3 lançamentos ledger, 1 ingresso/QR e replay sem duplicação com Http::fake. **Não é teste remoto Asaas nem prova de carga.** W4 revisou e aprovou apenas esse gate dirigido em issue #10 comentário 6516773793.
+- Commits de produto desta sequência: W1 `5050e045e0508e309a2db5e32805b26efcc0c8c1` e `33e914da496da801b6cd0e4102b590691cc1eb56` (teste concorrente, blob `49880a28aa317fbf93b7b80b5437c4c115b47929`); W3 `15645886ab0c26a810333465b338839be7dc4cff` (workflow, blob `d4a9760021a526d3207bd53f61933409982fddfc`). Claim/aceite W1 #6516262379; W3 #6516590145. Não repetir esse trabalho.
+- React PR #715 OPEN/DRAFT HEAD `f043781a896a2d90d4f10eb72630eb2e7d48a0f6`, ahead 139/behind 0; Validate `41013520330` SUCCESS/exit 0, **1689 PASS/6 SKIP/2 TODO**, build/lint/perf PASS; snapshots SEO internos FAIL/exit 1. W2 commits `2343ef0ffdf33502bd5abd52b41204a9ff450d1a` e `f043781a896a2d90d4f10eb72630eb2e7d48a0f6`, reivindicações GET mine fail-closed com 401/403/resposta tardia. **Epoch síncrono A→B→A e logout tardio ainda NÃO corrigidos**.
+- Admin PR #4 OPEN/DRAFT HEAD `c6846c618b89192074f18313bcb57efa3e3b5d45`, Validate `40682101519` SUCCESS, 48 testes; apenas segurança imprescindível à Independence.
+- Branches remotas verificadas: API 4→4, React 9→9, Admin 2→2. Nenhum merge, deploy, limpeza de refs ou alteração da main.
+
+## Falhas e prioridade
+- As 22 reprovações API incluem HTTP 403 em reivindicação de passes gratuitos e fluxos dependentes, ciclo de vida de eventos (incluindo três 404 na rota de compatibilidade DELETE /api/cutinapp/events/bulk), payout Pix (mensagem CPF versus documento), isolamento/arquitetura e periféricos. Corrigir causa raiz e preservar autorização server-side; não mudar asserts só para ficar verde, nem expor rota de DELETE sem RBAC app-scoped e transação/lock. Não gastar P0 em AgentChat.
+- **Dependência externa 1:** controller `app/Domain/Events/Http/Controllers/EventManagementController.php` blob `9c6eeac0f1f80700d79b07ac853fc8ad350d3998`, Atlas `account-plus2-discovery-taxonomy` WORKING (claim blob `d5d61027`) + Genre `cutinapp-event-genres-20261012` HANDOFF (claim blob `b826161a`). Exigir **ambos** `CEDO PARA W3 | agent_id | caminho | HEAD 15645886 | blob 9c6eeac0 | SEM CONCORRÊNCIA` e `ACEITO POR W3`, **OU** `IMPLEMENTAREI COMO OWNER | agent_id | SHA | testes HTTP/exit | CI no SHA`. Sem resposta não editar controller. Owner de decisão: mantenedor petertecnetdev + Atlas/Genre.
+- **Dependência externa 2:** React quatro arquivos reservados, blobs revalidados: `src/context/AuthContext.js` `78917a5aad3980acb93d309c8b29cd70c017acbe`; `src/utils/authTokenStorage.js` `25bbc63dbfcfbcdaede5a0541a56755fa8a3dc6b`; `src/utils/authSessionSync.js` `79b446dc56c9deaac043723477a518396820958c`; `src/services/AuthService.js` `a188c9fa873f9ecfae7eb168fb6a05e62ec9731d`. Mantenedor deve identificar owners/claims e obter `CEDO PARA W2` por arquivo + `ACEITO POR W2`, **OU** owners implementam epoch monotônico por mutação de token e invalidam /me, 401/403 e logout antigos. HEAD React `f043781a`. Não presumir ownership.
+- 181 claims ativos e 4 handoffs de coordenação consultados; a ausência de cessão não é autorização para sobrescrever.
+
+## Próxima rodada sem duplicações
+1. **W1 (owner financeiro):** após concorrência MySQL aprovada, tratar regressão payout Pix `FinancialPayoutSecurityTest.php:209` com o dono do arquivo e testar contrato de rejeição; priorizar segurança, preservar validação CPF/CNPJ, idempotência, webhook e checkout curatorial sem venda. Não editar claims alheios.
+2. **W2 (owner React reivindicação):** prosseguir apenas em arquivos sob claim aceito; solicitar CEDO nominal para os 4 arquivos auth e então corrigir epoch A→B→A/logout tardio, testes Jest/build/CI; verificar formulário de reivindicação fail-closed e escopo app_id. Não tocar auth reservado sem aceite.
+3. **W3 (owner CI/regressões API):** MySQL CI concluído; classificar e corrigir regressões P0 em arquivos livres sob claim; controller somente com CEDO+ACEITO ou patch direto dos owners. Não introduzir DELETE bulk inseguro. Conciliar main (behind 0).
+4. **W4 (QA independente):** auditar novas correções no HEAD, não repetir testes MySQL já aprovados; exigir API global verde, SEO interno avaliado, browser real 320/360/390/430, checkout/reivindicação/permissões, rollback e NP12.
+5. **W00:** exigir decisão de ownership em vez de diagnóstico repetido, coordenar correções e manter gates. Quando P0 resolvido, retomar NP12: fontes públicas autorizadas, deduplicação, dados reais, ingressos informativos não comercializáveis, logs/métricas e operação comprovada.
+
+## Critérios de saída
+API CI verde no HEAD exato; React e Admin checks pertinentes verdes; QA W4 independente aprovado; CEDO/ACEITO ou patch dos owners; migrações/rollback em banco isolado comprovados; validação de segurança comercial, auth e mobile; curadoria NP12 operacional. **Somente então** preparar merge revisado; deploy exclusivamente por ordem específica.
+
+**W00:** este documento é commit de coordenação, não commit de produto; testes locais W00 não executados (exit N/A). Próximo passo executivo **owner petertecnetdev + Atlas/Genre: decisão nominal sobre controller; owner dos arquivos auth: decisão nominal para W2**.
