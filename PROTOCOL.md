@@ -239,3 +239,7 @@ Ao consumir uma assignment, o worker deve manter o estado: `READY -> CLAIMED -> 
 O prompt-base permanente do worker não precisa ser reescrito para cada demanda. A inbox define a demanda concreta do ciclo. Isso preserva especialização e permite realocação dinâmica.
 
 W00 é responsável por ler os resultados AUX, evitar duplicação, respeitar claims ativos e manter `orchestration/WORKER_REGISTRY.md` e `orchestration/STATE.md` coerentes com as contas configuradas.
+
+
+### Precedência de atribuições 30/10/2026
+Para W00–W4, a distribuição fixa do CMD-008 prevalece sobre handoffs, planos e mensagens anteriores: W1 Independence; W2 Administrator; W3 site institucional; W4 conteúdo/SEO comercial; W00 gestão. A prioridade dinâmica da seção 1.1 vale **dentro do domínio atribuído**; demandas interdomínios requerem negociação de claim/owner e handoff, não realocação silenciosa. Histórico antigo permanece para rastreabilidade. Sem alteração automática de branch, main, automações, permissões ou deploy. Não contornar OPENAI_SAFETY_CHECKS.
