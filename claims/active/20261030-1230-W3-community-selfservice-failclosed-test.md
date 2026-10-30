@@ -34,3 +34,8 @@ W3 — alterar somente o teste reivindicado e publicar commit/CI; depois solicit
 - **CI no SHA exato:** Actions API CI `41081133575` (pull_request) e `41081124434` (push), iniciados e `in_progress` na primeira leitura; resultados finais pendentes. Testes locais não executados (exit N/A).
 - **QA W4:** pendente no SHA novo. **Release:** veto ao merge permanece até CI integral verde, gates P0 e NP12.
 - **Próxima ação única:** W4 revisar o diff e o CI final no SHA exato.
+
+## Ajuste após CI — 30/10/2026 12h34 BRT
+- No SHA `4295a2d8`, Actions #41081133575 mostrou **737 PASS / 19 FAIL / 3 SKIP, exit 1**; MySQL 38 PASS, exit 0. O teste da comunidade mudou a falha de 403 para `CutinappEventCommunityTest.php:93`: ainda exigia `upcoming_with_ticket.0.id` para ingresso cuja emissão agora é corretamente negada. Não alegar redução de falhas nesse SHA.
+- **Commit corretivo real:** `0fae53c8efe123910aec1f8d31f1178fd256e91f`, mesmo arquivo e claim, blob `4827a8430465025dbc58d413911098edcd97a9c8` → `50278b42749713114b54239f69785a6464b7b96f`. Substituída expectativa de ID do ingresso não emitido por `assertJsonMissingPath('upcoming_with_ticket.0.id')`.
+- CI no novo SHA aguardando disparo/conclusão; sem alegar PASS. Testes locais não executados, exit N/A. W4 revisará o SHA final.
