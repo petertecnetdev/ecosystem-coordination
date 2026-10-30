@@ -3,7 +3,7 @@
 agent: W1
 repository: petertecnetdev/cutinapp.petertecnet.com.br
 branch: Independence
-status: working
+status: review
 started_at: 2026-10-30T19:07:00-03:00
 related_pr: petertecnetdev/cutinapp.petertecnet.com.br#715
 scope: Corrigir a confirmação de conectividade antes de repetir checkout após falha de rede; sem alterar API, idempotência ou contratos de pagamento.
@@ -16,3 +16,11 @@ files_or_scope:
 - Não editar arquivos de claims financeiros, API, EventDiscoveryController ou scripts de deploy.
 - Testar evento `online` prematuro, restauração real, timeout e remoção de listener.
 - Publicar SHA e checks na branch Independence, sem merge/deploy.
+
+## Entrega e revisão
+- Commit frontend: 6b37a0c316224c7fabd87c5a85337e081f692ff1 (PR #715, branch Independence).
+- Arquivos: src/utils/checkoutConnectivity.js e src/utils/checkoutConnectivity.test.js.
+- Smoke do código publicado: PASS para evento prematuro, reconexão confirmada, timeout e limpeza.
+- Actions no SHA: Validate #41136194951, Lighthouse #41136194281 (em andamento no registro).
+- API #546 não alterada; sem merge ou deploy.
+- Próxima ação: verificar resultados finais de CI e, se verdes, encerrar claim com revisão independente.
