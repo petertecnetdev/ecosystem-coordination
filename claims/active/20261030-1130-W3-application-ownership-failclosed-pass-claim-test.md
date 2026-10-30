@@ -33,3 +33,10 @@ Commit real em Independence, CI no SHA exato, QA W4 independente. Preservar OPEN
 - **CI no SHA:** workflow API CI #41072181823 disparado, inicialmente `in_progress`; resultados finais a registrar. Testes locais não executados (exit N/A).
 - **Escopo não tocado:** `OrganizationService.php` sob bloqueio OPENAI_SAFETY_CHECKS; `EventManagementController.php` Atlas/Genre; W1 EventPassService/ListingCommercePolicy; main/merge/deploy.
 - **Próxima ação única:** W4 revisar o SHA e confirmar o contrato fail-closed no CI oficial, sem liberar merge antes do gate integral.
+
+## Validação CI final — SHA 028d5dc5 (30/10/2026 11h33 BRT)
+- Workflow oficial API CI #41072181823, job validate #124118854613 **FAILURE/exit 1**: **737 PASS / 19 FAIL / 3 SKIP**, 5.556 asserções. Comparado ao HEAD anterior: **+1 PASS / -1 FAIL**. `CutinappApplicationOwnershipTest` consta **PASS** e sintaxe PHP do arquivo passou. Arquitetura segue 2 FAIL, gate exit 1, não silenciado.
+- Job MySQL 8 efêmero #124118854926 **SUCCESS/exit 0**: **38/38 PASS**, 389 asserções, migrations/rollback/remigrate conforme job. Não houve novo setup de MySQL fora do CI disparado automaticamente.
+- API PR #546 HEAD `028d5dc5da75c2794689a4d80a68e62cbb2d61db`; main...Independence **278 ahead/0 behind** na verificação.
+- Testes locais W3: **NOT_RUN**, exit N/A. QA W4 neste SHA: **NOT_RUN**; merge/deploy/main: **não realizados**.
+- Estado: **REVIEW**. Próxima ação única: **W4** revisar este diff e o CI no SHA exato; manter veto à integração até o gate geral verde.
