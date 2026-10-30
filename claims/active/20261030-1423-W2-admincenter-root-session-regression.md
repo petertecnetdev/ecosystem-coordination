@@ -25,3 +25,12 @@ Registrar regressões executáveis para impedir que login/validação antigos li
 - publicar commit real na Independence com SHA, Actions e resultado exato;
 - preservar OPENAI_SAFETY_CHECKS; se escrita recusada, não contornar;
 - handoff owner NP11 / W00 para corrigir App.jsx; QA independente antes de merge.
+
+## Entrega 30/10/2026 — 14h26 BRT
+- Código/teste real publicado no Admin Center Independence: `fd1ad3d99b43e3455a5a963a0d19efb82fe19363`.
+- Arquivo criado: `src/__tests__/AdminRootSessionW2.test.jsx`, blob `5511c83337cb0fc2f19ba7f5de3e1383ec02f1d6`.
+- Validate PR `41098709307` e push `41098700251`: FAILURE no SHA exato; `npm ci` PASS; Jest 48 PASS/2 FAIL, exit 1; lint/build SKIPPED. Ambos falham por `Expected: sessao-B; Received: null`.
+- Evidência reproduzida: 401 antigo de `/auth/me` A e erro tardio de login A apagam token B de outra aba. Google callback análogo apenas por inspeção.
+- Handoff nominal: [PR #4 comentário 6529033708](https://github.com/petertecnetdev/admincenter.petertecnet.com.br/pull/4#issuecomment-6529033708) e [issue #12 comentário 6529036708](https://github.com/petertecnetdev/ecosystem-coordination/issues/12#issuecomment-6529036708).
+- Estado: `bloqueado` para correção do runtime por falta de CEDO+ACEITO de `src/App.jsx` (owner NP11, blob `d40c5228`); testes red intencionais preservados como gate.
+- Próxima ação única: W00 obter CEDO+ACEITO NP11 para W2 no HEAD/blob atuais ou exigir patch direto do owner, depois Jest/lint/build/CI/QA. Nenhum merge/deploy.
