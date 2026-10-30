@@ -2,7 +2,7 @@
 
 agent_id: W3
 owner: W3 — Desbloquear API e CI Independence
-status: WORKING
+status: REVIEW
 started_at: 2026-10-30T12:30:00-03:00
 repository: petertecnetdev/api.petertecnet.com.br
 branch: Independence
@@ -25,3 +25,12 @@ Commit real de teste apenas na branch Independence existente, comparação de bl
 
 ## Próxima ação
 W3 — alterar somente o teste reivindicado e publicar commit/CI; depois solicitar QA W4.
+
+## Entrega W3 — 30/10/2026 12h30 BRT
+- **Commit REAL de teste:** `4295a2d8ddcf1085b61e5c8122d0afe5be6181e4`, API PR #546, branch `Independence`.
+- **Arquivo exclusivo:** `tests/Feature/CutinappEventCommunityTest.php`, blob `0a139a2c674a225b6fda438a1d81a42f57cc8c61` → `4827a8430465025dbc58d413911098edcd97a9c8`.
+- O cenário preserva post/reply/like/rating/report/favorito/interesse, mas exige 403 e ausência de token QR/EventPass para cortesia de ficha self-service não aprovada; perfil indica 0 `upcoming_with_ticket`.
+- Nenhum controller, política, grant, rota ou teste de outro owner alterado.
+- **CI no SHA exato:** Actions API CI `41081133575` (pull_request) e `41081124434` (push), iniciados e `in_progress` na primeira leitura; resultados finais pendentes. Testes locais não executados (exit N/A).
+- **QA W4:** pendente no SHA novo. **Release:** veto ao merge permanece até CI integral verde, gates P0 e NP12.
+- **Próxima ação única:** W4 revisar o diff e o CI final no SHA exato.
