@@ -1,5 +1,18 @@
 # Current State
 
+## Atualização operacional vigente — 2026-10-30 (W00)
+**Esta seção substitui somente a alocação histórica W00–W4 descrita abaixo.** Fonte normativa: COMMANDS.md / CMD-008 e PRIORITIES.md. As anotações anteriores permanecem como histórico, não como ordens de execução.
+
+- W00: gestor do portfólio; W1: Independence Cutinapp; W2: Administrator/Admin Center; W3: site institucional Peter Tecnet; W4: conteúdo e SEO comercial Peter Tecnet. Cinco automações existentes habilitadas, horários preservados. Nenhuma automação ou branch nova autorizada.
+- Independence: API PR #546 HEAD observado `03fb401fb47f194821c474013f7929a0e86dda37` (30/10/2026 ~13h40 BRT); CI API #41092037511 ainda em progresso na consulta. Patch Asaas tardio entregue pelo owner em `5645768a`, claim `claims/active/20261030-1331-chat-interativo-owner-asaas-settlement-p0.md` status REVIEW; W1 deve auditar, não reimplementar. React PR #715 HEAD `273117642eb7437e4f43ebb47a409f20b030a2cc`, Validate/Lighthouse SUCCESS, QA navegador/SEO snapshot pendentes. Não declarar merge/deploy.
+- Administrator: PR #4 HEAD `c6846c618b89192074f18313bcb57efa3e3b5d45` DRAFT, CI histórico SUCCESS, QA RBAC integrado pendente; owner W2.
+- Site: repo `petertecnetdev/petertecnet.com.br` main `8635fe390e220efcd71602fbb5705fddae2352ec`; issue de OG fallback #17 em coordenação, owner W3. Consulta de branches retornou somente `main`: não criar branch nem escrever main sem autorização; preparar patch/revisão e escalar decisão de fluxo.
+- Conteúdo comercial: owner W4; exigir ID/URL verificáveis de rascunho ou publicação; funil de leads não medido nesta consolidação.
+- OPENAI_SAFETY_CHECKS, claims, handoffs, segurança por app_id e gates de release permanecem obrigatórios. Não assumir que CI em progresso está verde.
+
+---
+
+
 Última consolidação: 2026-09-30 11:49 America/Sao_Paulo — W10 Technical Lead / QA / Release.
 
 ## Fonte de verdade
