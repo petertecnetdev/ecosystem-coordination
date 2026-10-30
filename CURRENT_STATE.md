@@ -1,3 +1,15 @@
+## Atualização W00 — 2026-10-30 ~16h54 BRT (CMD-008; rodada de gestão)
+**Distribuição inalterada:** W1 Independence, W2 Administrator, W3 site institucional, W4 conteúdo/SEO; W00–W4 habilitados. Sem merge/deploy/branch adicional. **Nenhum commit de produto novo comprovado por W00 nesta rodada.**
+
+- **W1 / Independence:** API #546 HEAD `275a3ff8` com CI #41104759462 **761 PASS/1 FAIL/3 SKIP, exit 1** (guard arquitetural), MySQL **44 PASS/459 asserções, exit 0**. React #715 HEAD `8fec0a6d` Validate/Lighthouse SUCCESS. Novo bloqueio formal: tentativa de escrita de teste Pix/replay recusada por `OPENAI_SAFETY_CHECKS`; não repetir/contornar. Claim Atlas de `EventDiscoveryController.php` ainda exige CEDO+ACEITO. Auditoria W1 da NP12 confirmou que `DiscoveryFeedService::scan()` persiste **candidatos**, sem criar eventos/produções/artistas; importador separado requer revisão/--apply e está limitado a BH/MG. **NP12 nacional operacional não demonstrada.** Owner W1: especificar pipeline candidato→revisão→importação segura e testes isolados; owner autorizado resolve bloqueio de escrita.
+- **W2 / Administrator:** Admin #4 HEAD `63e140f7`; Validate #41105820405 **48 PASS/3 FAIL, exit 1**. Falhas de sessão A→B→A (401/403/login tardios) continuam; `src/App.jsx` reservado a NP11. Owner NP11/mantenedor: corrigir diretamente ou formalizar CEDO+ACEITO W2; depois 51/51, lint/build e QA RBAC por app_id.
+- **W3 / site Peter Tecnet:** `main` `8635fe39`; patch OG V2 e complemento **locais, não publicados**. Novo achado confirmado no `src/PublicBlogArticle.jsx` blob `3a5c003d`: `ApiBody` mostra links Markdown de artigos como texto, sem âncoras clicáveis. Rota `/orcamento?servico=api-e-integracoes` reconhecida no código, **não validada no browser**. Owner proprietário autoriza fluxo Git revisável; W3 então corrige renderização segura, testa CTA e OG, sem escrever main diretamente.
+- **W4 / SEO comercial:** três artigos preparados, **zero IDs de rascunho/publicação verificados**. W4 preparou handoff local e validador de payload para ERP/loja virtual, mas consulta API falhou por DNS (curl exit 6), sem sessão administrativa; testes de fixture/compilação passaram, cadastro NOT_RUN. Owner editorial autorizado: conferir `application_id`/slug e cadastrar rascunho; não anunciar CTA editorial clicável até correção W3. Tráfego/leads/receita: **sem medição comprovada**.
+
+**Próxima ação executiva W00:** obter do mantenedor autorização/cessão dos arquivos NP11 e Atlas, fluxo Git revisável W3 e operador editorial W4; W1 deve delimitar lacuna real NP12 sem dispersar em novas frentes. Testes próprios W00: NOT_RUN/exit N/A.
+
+---
+
 ## Atualização W00 — 2026-10-30 ~15h54 BRT (CMD-008; rodada 11)
 **Distribuição fixa verificada:** W1 Independence; W2 Administrator; W3 site institucional; W4 conteúdo/SEO. W00–W4 continuam habilitados nos horários originais. Sem automações/branches adicionais, merge, deploy ou alteração de código de produto por W00.
 
