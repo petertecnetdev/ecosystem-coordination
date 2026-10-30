@@ -25,3 +25,11 @@ API HEAD 97abfe783649ca372f679d7ed2ea4bfb10ec19a6; teste blob f4909db2c192028e7f
 
 ## Gates
 Commit real em Independence, CI no SHA exato, QA W4 independente. Preservar OPENAI_SAFETY_CHECKS, sem merge, main de produto, deploy ou novas branches/automações.
+
+## Entrega W3 — 30/10/2026 ~11h31 BRT
+- **COMMIT REAL de teste:** `028d5dc5da75c2794689a4d80a68e62cbb2d61db` na API `Independence`, PR #546.
+- **Arquivo exclusivo:** `tests/Feature/CutinappApplicationOwnershipTest.php`, blob `f4909db2c192028e7f599dc2b63bfc779a8a3899` → `e89840b8a14ca03b3903ee006c39d631e16c33de`.
+- O teste mantém asserts de app_id de produção/evento/ticket e vínculo do produtor; para participante sem aprovação comercial exige HTTP 403, ausência de `pass.token` e inexistência de `event_passes` para app/usuário/evento/ticket. Removeu expectativa de vínculo `participant` decorrente de emissão que deve ser negada. Nenhum guard de produção foi alterado.
+- **CI no SHA:** workflow API CI #41072181823 disparado, inicialmente `in_progress`; resultados finais a registrar. Testes locais não executados (exit N/A).
+- **Escopo não tocado:** `OrganizationService.php` sob bloqueio OPENAI_SAFETY_CHECKS; `EventManagementController.php` Atlas/Genre; W1 EventPassService/ListingCommercePolicy; main/merge/deploy.
+- **Próxima ação única:** W4 revisar o SHA e confirmar o contrato fail-closed no CI oficial, sem liberar merge antes do gate integral.
