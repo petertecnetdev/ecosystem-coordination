@@ -21,6 +21,6 @@ files_or_scope:
 - Commit frontend: 6b37a0c316224c7fabd87c5a85337e081f692ff1 (PR #715, branch Independence).
 - Arquivos: src/utils/checkoutConnectivity.js e src/utils/checkoutConnectivity.test.js.
 - Smoke do código publicado: PASS para evento prematuro, reconexão confirmada, timeout e limpeza.
-- Actions no SHA: Validate #41136194951, Lighthouse #41136194281 (em andamento no registro).
+- Actions no SHA: Validate #41136194951 SUCCESS (181 suites, 1706 PASS / 6 SKIP / 2 TODO; lint/build/perf PASS); Lighthouse #41136194281 SUCCESS.
 - API #546 não alterada; sem merge ou deploy.
-- Próxima ação: verificar resultados finais de CI e, se verdes, encerrar claim com revisão independente.
+- Próxima ação: revisão independente do PR #715; QA integrado mobile/API ainda NOT_RUN.
