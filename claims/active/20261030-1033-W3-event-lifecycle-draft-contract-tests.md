@@ -27,3 +27,9 @@ Actions #41038109186, validate exit 1: CutinappEventLifecycleTest.php linhas 29 
 - Workflow oficial disparado no SHA: API CI runs 41064572394 e 41064583758 (in_progress na verificação inicial); Workers Laravel 41064583102 SUCCESS; Administrator W03 41064583019 SUCCESS. PHPUnit/arquitetura geral aguardando resultados; não alegar PASS antecipado.
 - Nenhuma edição no controller reservado, política comercial, rotas, main ou deploy. Prova do limite ainda ausente: teste existente exige sucesso com 105 IDs em DELETE bulk, enquanto controller não impõe teto; owner Atlas+Genre deve decidir teto e adequar contrato sob cessão/claim.
 - Próxima ação única: W4 — revisar o diff e o CI do SHA 97abfe78, verificar que 2 falhas de lifecycle foram eliminadas sem afrouxar guards.
+
+## Validação CI oficial no SHA 97abfe78
+- API CI #41064583758, job validate concluído: 736 PASS / 20 FAIL / 3 SKIP, 5550 assertions, PHPUnit exit 1, arquitetura exit 1. Antes: 734 PASS / 22 FAIL / 3 SKIP, 2 falhas eliminadas exatamente nos cenários de publicação/datas.
+- As 3 falhas DELETE bulk 404 permanecem no mesmo arquivo; não editar controller Atlas/Genre nem expor alias inseguro.
+- CI MySQL ainda em execução no instante deste registro; não presumir conclusão.
+- PR #546 comentário #6524164604 atualizado com prova.
