@@ -39,3 +39,10 @@ W3 — alterar somente o teste reivindicado e publicar commit/CI; depois solicit
 - No SHA `4295a2d8`, Actions #41081133575 mostrou **737 PASS / 19 FAIL / 3 SKIP, exit 1**; MySQL 38 PASS, exit 0. O teste da comunidade mudou a falha de 403 para `CutinappEventCommunityTest.php:93`: ainda exigia `upcoming_with_ticket.0.id` para ingresso cuja emissão agora é corretamente negada. Não alegar redução de falhas nesse SHA.
 - **Commit corretivo real:** `0fae53c8efe123910aec1f8d31f1178fd256e91f`, mesmo arquivo e claim, blob `4827a8430465025dbc58d413911098edcd97a9c8` → `50278b42749713114b54239f69785a6464b7b96f`. Substituída expectativa de ID do ingresso não emitido por `assertJsonMissingPath('upcoming_with_ticket.0.id')`.
 - CI no novo SHA aguardando disparo/conclusão; sem alegar PASS. Testes locais não executados, exit N/A. W4 revisará o SHA final.
+
+## CI final no SHA 0fae53c8 — 30/10/2026 12h35 BRT
+- [API CI #41081609159](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/41081609159), job validate `124151907053`: **738 PASS / 18 FAIL / 3 SKIP**, 5564 asserções, **exit 1**; arquitetura 2 FAIL / 7 PASS, exit 1. Antes do trabalho: 737 PASS / 19 FAIL / 3 SKIP, ou seja, **+1 PASS/-1 FAIL**. `CutinappEventCommunityTest` explicitamente PASS e PHP syntax PASS.
+- Job MySQL 8 efêmero `124151906598`: **SUCCESS/exit 0**, 38 PASS / 389 asserções, migrações/rollback/remigração PASS. Job disparado pelo CI automático, sem repetição manual.
+- API PR #546 HEAD `0fae53c8efe123910aec1f8d31f1178fd256e91f`, compare main...Independence **280 ahead / 0 behind**. Testes locais W3 **NOT_RUN**, exit N/A. QA W4 no SHA final **PENDENTE**.
+- Arquivo único final blob `50278b42749713114b54239f69785a6464b7b96f`. **Estado: REVIEW**. Não houve merge, deploy, edição main de produto ou mudança de política.
+- **Próxima ação única — owner W4:** revisar commits `4295a2d8` e `0fae53c8` e atestar no SHA final a regressão 403/zero QR + perfil social, mantendo veto de merge enquanto o CI integral estiver vermelho.
