@@ -1,0 +1,31 @@
+# [agent:W00] Despacho de execução — 29/10/2026 23h54 BRT
+
+status: ACTION_REQUIRED — BLOQUEAR MERGE
+owner: W00; execução W1 financeiro, W2 auth/reivindicação, W3 API/CI, W4 QA
+fonte de regras: `COMMANDS.md` main blob `3f3e61ba797331cdf8833e0262aaeb1076ef2311`; issues #10/#12; claims Atlas/Genre; PRs API #546, React #715, Admin #4.
+**Este commit é exclusivamente de coordenação. Não é correção de produto, aceite de claim, QA de navegador, nem autorização de merge/deploy.**
+
+## Estado exato revalidado
+
+- API #546 OPEN/mergeable, `Independence` HEAD **`2e50a2823ccf2fc83d8e38a507dd474e48be9840`**; base main `d960738b8428443a269074d2f2338529178159e6`. CI [#40990275563](https://github.com/petertecnetdev/api.petertecnet.com.br/actions/runs/40990275563), job `123850719163`, executado no HEAD: **730 PASS / 22 FAIL / 2 SKIP, 5.443 assertions, PHPUnit exit 1, enforcement arquitetura exit 1**; migrações **SQLite** PASS. Gate arquitetura: 2 falhas, **incluídas** nas 22. Runner/operador de CI não é mais bloqueio.
+- W1 commit de produto **`2e50a282`**, arquivo único `tests/Feature/AsaasCommerceWebhookReplayP0Test.php`, blob `35e83b99` → `a8453e478df0cfa751394bf6bb9775ad1866f2b8`. Dois testes `PAYMENT_RECEIVED` Pix persistidos: fluxo legítimo com GET remoto simulado/ledger/QR/replay e rejeição fail-closed de referência divergente. Suite Asaas **19/19 PASS**; W4 revisou; não confundir `Http::fake`/SQLite com Asaas real/MySQL.
+- React #715 DRAFT/mergeable, HEAD **`3ccc323dda72ee6b52e61620a0a4056618e12c28`**, base `9b5502cdf2dca098bc73a465d58d7274b596d0a4`; Validate #40965446872 1.678 PASS, exit 0, geração interna SEO snapshot FAIL; A→B→A sem correção.
+- Admin #4 DRAFT/mergeable, HEAD **`c6846c618b89192074f18313bcb57efa3e3b5d45`**, 48 testes históricos, QA integrado pendente; somente segurança indispensável à Independence.
+- Divergência `main...Independence`: API **+261/0 behind**, React **+136/0**, Admin **+17/0**. Branches remotas verificadas e preservadas: API **4→4**, React **9→9**, Admin **2→2**; nenhuma branch criada/excluída, merge ou deploy.
+- QA independente W4 #6513628452 mantém veto: 22 FAIL API (11 HTTP 403, 5 lifecycle, 3 arquitetura, 1 Pix payout, 1 AgentChat, 1 IA), browser 320/360/390/430, MySQL concorrente/rollback, gateway real e NP12 **NÃO EXECUTADOS**. AgentChat/IA fora da fila P0 de implementação, mas CI integral continua exigido antes de merge.
+
+## Decisões/entregas para o próximo ciclo, sem trabalho duplicado
+
+**W1 — claim financeiro já ACEITO:** não repetir testes `CHECKOUT_PAID` nem `PAYMENT_RECEIVED` já entregues; consolidar matriz de risco Pix/Asaas e checkout curatorial informativo sem venda, com evidência HTTP negativa em rota de emissão/claim se arquivo livre e claim válido. Não tocar Ledger/Settlement/EventPassService ou controller sem cessão. MySQL não pode ser declarado validado por mocks. Próximo owner de ambiente: **@petertecnetdev/W00** providenciar banco **MySQL isolado e descartável, sem dados/credenciais de produção**, com endpoint e runner autorizados.
+
+**W2 — decisão nominal de ownership:** auth React continua sem CEDO+ACEITO para `src/context/AuthContext.js` blob `78917a5a`, `src/utils/authTokenStorage.js` `25bbc63d`, `src/utils/authSessionSync.js` `79b446dc` no HEAD `3ccc323d`. **Achado adicional reproduzido isoladamente pelo W2:** `src/services/AuthService.js` blob `a188c9fa873f9ecfae7eb168fb6a05e62ec9731d`, `logout()` faz `await POST` e depois `finally clearToken()`; logout antigo A pode limpar token B novo. O token A→B→A idêntico exige **epoch monotônico** em cada set/clear; comparar apenas strings não basta. Solicitar cedente/claim também para `AuthService.js`; após aceite, teste Jest controlado de logout A pendente→login B→resposta A e de A→B→A síncrono, /me e 401/403 tardios; fail-closed de reivindicação. Não editar arquivos reservados antes do aceite.
+
+**W3 — diagnóstico de regressão com caminho de correção específico:** três falhas de lifecycle são 404 em `DELETE /api/cutinapp/events/bulk`. Rota canônica `routes/api_v1.php` blob `efac2aea` possui `/events/bulk`; rota de compatibilidade `routes/compatibility.php` blob `10b6d8cf56d75a6548c75bcea3c81b61fee6f4ec` não a registra. Antes de acrescentar alias, revisar `destroyMany()` para autorização por app e titularidade, limites de IDs e retorno seguro; registrar claim do arquivo de rota e obter cessão do controller quando necessário. Controller `app/Domain/Events/Http/Controllers/EventManagementController.php` blob `9c6eeac0f1f80700d79b07ac853fc8ad350d3998` permanece sob Atlas `d5d61027` WORKING e Genre `b826161a` HANDOFF. **Decisão @petertecnetdev + Atlas + Genre:** cada cedente publica `CEDO PARA W3 | agent_id | caminho | HEAD 2e50a282 | blob 9c6eeac0 | SEM CONCORRÊNCIA` e W3 responde `ACEITO`, OU proprietário atual entrega patch direto com SHA, testes HTTP e CI. Sem autorização, somente patch proposto/revisão em arquivo livre. Prioridade máxima corrigir 11 HTTP 403 de proveniência comercial, sem habilitar venda curatorial.
+
+**W4 — QA independente:** revisar W1 commit `2e50a282` (já revisado, não repetir), revisar qualquer novo commit W2/W3 e os gates: checkout curatorial sem QR/checkout, claim/ownership e isolamento de app, mobile e migrações/rollback. Verificar disponibilidade de runner MySQL e staging autorizado; se offline, manter **NÃO EXECUTADO**. Desktop Commander consultado nesta rodada: `petertecnetserver` OFFLINE (9h), `srv1900287` OFFLINE (1032h). Não usar VPS de produção para testes destrutivos.
+
+## Gate de conclusão / release
+
+CI API integral verde no HEAD exato; React SEO interno corrigido e A→B→A testado; claims/handoffs bilaterais aceitos; W4 QA HTTP/browser; MySQL isolado com concorrência, migrations e rollback; proveniência legítima sem venda curatorial; NP12 funcionando com fontes autorizadas, dados reais, deduplicação e ingressos informativos. Registrar plano de release e aguardar ordem explícita para deploy. Nenhum bypass de `OPENAI_SAFETY_CHECKS`.
+
+**Próxima ação executiva única e owner:** **@petertecnetdev com Atlas e Genre** decidir agora a cessão do controller ou patch direto do proprietário; essa decisão desbloqueia as 11 regressões comerciais e evita mais ciclos de diagnósticos. Em paralelo, disponibilizar ambiente MySQL isolado para W4. **MERGE BLOQUEADO.**
