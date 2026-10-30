@@ -1,5 +1,8 @@
 # Global Commands
 
+> **Ordem vigente — 30/10/2026 (CMD-008):** W00 gerencia o portfólio Peter Tecnet; W1 executa Independence Cutinapp; W2 executa Administrator/Admin Center; W3 executa site institucional Peter Tecnet; W4 executa conteúdo e SEO comercial Peter Tecnet. Esta divisão **substitui todas as atribuições W1–W4 anteriores** contidas em CMD-005, CMD-007, planos, claims ou mensagens legadas. Preservam-se as regras de segurança, ownership, histórico, CI e release que não conflitem com a nova divisão. Não criar novas automações/branches, nem merge/deploy sem autorização.
+
+
 Este arquivo contém ordens operacionais globais para os agentes do ecossistema Peter Tecnet.
 
 Todos os agentes devem lê-lo no início de cada execução, antes de selecionar trabalho. Também devem consultar `REVENUE_TARGET.md` e `PROFITABILITY_PLAN.md` para entender a meta econômica e a fila estratégica.
@@ -172,7 +175,7 @@ Regras detalhadas e exemplos estão em `PROTOCOL.md`, seção **4.1 — Identifi
 
 
 ## CMD-007 — Próximo ciclo Cutinapp: Administração isolada por aplicação
-status: ACTIVE
+status: LEGACY — atribuições W00–W4 substituídas por CMD-008; regras de segurança mantidas
 target: W00/W0/W01-W06; AUX-01..AUX-11; repositórios Cutinapp/API/Admin Center quando aplicável
 priority: P0-SECURITY / P1-PRODUCT
 issued_at: 2026-10-14
@@ -187,3 +190,34 @@ issue: https://github.com/petertecnetdev/ecosystem-coordination/issues/12
 - O administrador `cutinapp@gmail.com` é administrador da **Cutinapp**, subordinado apenas à autoridade root do ecossistema (referência institucional `petertecnet@gmail.com`), sem poderes nos demais aplicativos ou sobre o root. Não usar emails hardcoded para autorização; resolver identidades, vínculos e permissões no backend.
 - Reutilizar o `ApplicationAdminService` e RBAC central existentes, verificando as lacunas reais. Segurança P0: issue API #544; reconhecer melhorias prévias de API PR #543 e frontend PR #714.
 - W00 precisa relatar no issue #12 o gate da Independence, owner, claims, arquivos, testes, deploy status e próxima ação. O registro do próximo ciclo não equivale a implementação, merge nem ativação em produção.
+
+
+## CMD-008 — Distribuição fixa W00–W4 e encerramento com aquisição contínua
+status: ACTIVE
+target: W00; W1; W2; W3; W4
+priority: P0-OPERATIONAL / P0-SECURITY / P1-BUSINESS
+issued_at: 2026-10-30
+owner: W00 — Gestor do portfólio Peter Tecnet
+source: nova ordem explícita do proprietário em 30/10/2026
+
+### Precedência
+Este comando substitui **somente as atribuições e a coordenação de W00/W1/W2/W3/W4** nas ordens antigas (inclusive CMD-005/CMD-007 e plano horário Independence/Administrator). As normas de segurança, escopo por aplicação, claims, QA, integridade financeira, preservação de branches, OPENAI_SAFETY_CHECKS e proibição de deploy sem ordem permanecem válidas. O histórico antigo é mantido para auditoria, não para redistribuir trabalho. Não se exige que W3/W4 abandonem seus produtos para atuar na Independence.
+
+### Responsabilidade exclusiva por worker
+- **W00 — gestão do portfólio:** consultar resultados/PRs/CI/claims de W1–W4; priorizar P0 e impacto comercial; negociar ownership e handoffs, sem editar arquivos reservados nem inventar testes. Preservar automações atuais e horários :06 W1, :18 W2, :30 W3, :42 W4, :54 W00 (America/Sao_Paulo).
+- **W1 — Independence Cutinapp:** único executor dedicado ao encerramento da Independence, API PR #546, React PR #715, issues de coordenação #10/#12. Corrigir P0 financeiro/Asaas, reivindicação, auth, CI e testes; concluir NP12 com fontes autorizadas e ingressos informativos não comercializáveis. Onde existir claim de outro owner, obter cessão/aceite ou solicitar implementação pelo owner; não competir com ele. QA independente/CI verde antes de merge.
+- **W2 — Administrator/Admin Center:** PR Admin #4, RBAC e permissões por app_id, isolamento de root e gestores, UX e testes de segurança. API compartilhada somente mediante claim/handoff explícito, sem tocar em escopos W1. Não ativar privilégios globais nem fazer deploy.
+- **W3 — site institucional Peter Tecnet:** repo petertecnetdev/petertecnet.com.br, identidade visual, mobile, SEO técnico, desempenho, CTAs e integração dinâmica de itens/blogs. Inspecionar PRs e claims existentes antes de editar; não tocar na Independence. Sem branch de trabalho autorizada, entregar patch/revisão e pedir decisão do owner; não escrever diretamente na main.
+- **W4 — conteúdo e SEO comercial Peter Tecnet:** conteúdo original e verificável de serviços, itens, artigos, clusters e CTAs, por API/admin autorizado, com evidência de rascunho/publicação (ID/URL) e indexação somente se comprovada. Não editar código do site/API sem handoff; não executar QA da Independence como atribuição-base.
+
+### Controle de concorrência e critérios de entrega
+- **API:** W1 tem precedência nos arquivos financeiros/reivindicação Independence; W2, W3 e W4 devem negociar claim específico antes de tocar API central. **Site:** W3 é owner de layout/SEO técnico; W4 é owner editorial. Não editar os mesmos arquivos ou conteúdos simultaneamente.
+- Preservar claims/handoffs anteriores como histórico; revalidar owners e HEAD/blob antes de retomar escopo. Não presumir cessão por inatividade ou comentário; registrar CEDO + ACEITO quando aplicável.
+- W1/W2/W3: preferir commit real útil, SHA, arquivos e testes/exit code, ou bloqueio comprovado. W4: ID/URL de rascunho/publicação ou evidência concreta de bloqueio; não criar commits artificiais.
+- W00 reporta por rodada quatro linhas (worker, entrega comprovada, bloqueio, próxima ação), CI/PR/SHAs quando disponíveis, riscos e funil de leads somente com dados medidos.
+- Não criar automações, branches adicionais, merges ou deploys VPS sem ordem específica. Não repetir nem contornar OPENAI_SAFETY_CHECKS.
+
+### Gates atuais
+- **Independence:** CI API integral verde no HEAD, QA React/API/checkout/reivindicação, segurança Asaas, migrações/rollback e NP12 operacional antes de conclusão; nenhum merge/deploy automático.
+- **Administrator:** RBAC por app_id, 401/403, revogação, sessão, auditoria e QA no PR #4; integração com API compartilhada mediante autorização.
+- **Site/conteúdo:** SEO técnico e conteúdo comercial podem evoluir em paralelo aos gates de produto, sem afirmar publicação/indexação sem prova.
