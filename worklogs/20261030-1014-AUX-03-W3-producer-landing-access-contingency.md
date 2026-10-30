@@ -64,4 +64,4 @@ Preparado roteiro de contingência para abordagem humana individual, **sem links
 - owner: AUX-03-W3 (copy e handoff); W00/conta principal (teste real e escalonamento).
 - NEXT_ACTION: confirmar ou refutar falha de acesso em navegador móvel real antes de qualquer link de aquisição.
 - Conta principal necessária: SIM.
-- Estado: ACCESS_NOT_VERIFIED — COPY_READY — WORKLOG_PENDING_COMMIT — NO_MESSAGES_SENT — NO_CONVERSIONS_VERIFIED.
+- Estado: ACCESS_NOT_VERIFIED — COPY_READY — WORKLOG_COMMITTED — NO_MESSAGES_SENT — NO_CONVERSIONS_VERIFIED.
