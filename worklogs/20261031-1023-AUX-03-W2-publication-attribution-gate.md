@@ -1,0 +1,15 @@
+# AUX-03 — 2026-10-31 10:23 BRT
+- **Objetivo:** destravar a publicação mensurável do primeiro artigo Cutinapp sem duplicar material.
+- **Área:** SEO editorial, aquisição de produtores, landing e atribuição.
+- **Oportunidade:** transformar o rascunho do guia de Instagram em tráfego qualificado e primeira publicação de evento.
+- **Trabalho realizado:** leitura de CURRENT_STATE.md, PRIORITIES.md, BLOCKERS.md, claims ativos e inventário AUX-03; verificação direta dos PRs #722/#724/#725 (open, unmerged); criação de gate de publicação com nove verificações e definição de eventos/métricas.
+- **Entregável:** [Gate de publicação e medição](../deliverables/AUX-03/20261031-W2-gate-publicacao-medicao-primeiro-artigo.md).
+- **Canal:** Google/blog → landing /for-producers → onboarding; Instagram orgânico após publicação.
+- **CTA:** Conheça a Cutinapp para produtores.
+- **Métrica:** CTR único do artigo para landing; produtores que publicam primeiro evento em 30 dias.
+- **Evidências:** [PR 722](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/722), [PR 724](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/724), [PR 725](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/725), payload CMS 29/10 e pacote social 30/10.
+- **Confirmado:** material criado; PRs abertos; nenhum ID/URL de CMS verificado nesta rodada.
+- **Hipótese:** jornada editorial instrumentada pode elevar aquisição qualificada; sem dados de conversão.
+- **Recomendação / próxima ação:** operador autorizado confirmar duplicidade e registrar ID/URL do rascunho; conta principal revisar integrações #722/#724; AUX-03 executar QA e distribuição quando publicado.
+- **Precisa da conta principal:** SIM.
+- **Execução de produto:** sem branch, merge, deploy, VPS ou publicação social.
