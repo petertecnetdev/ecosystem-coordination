@@ -5,7 +5,7 @@ repository: petertecnetdev/cutinapp.petertecnet.com.br
 area: SEO editorial / public discovery / producer acquisition
 task: Create a concrete SEO acquisition asset focused on producers while runtime validation is unavailable.
 branch: fix/aux03-producer-seo-offer-truth-20261102
-status: pending_ci_review_and_pr724_integration
+status: pending_lighthouse_and_pr724_integration
 started_at: 2026-10-08T16:00:00+03:00
 depends_on: none
 files_or_scope:
