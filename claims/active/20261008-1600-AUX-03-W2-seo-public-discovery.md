@@ -22,7 +22,7 @@ Current coordination state marks Cutinapp release readiness NOT_READY and runtim
 - Confirmed API truth: Cutinapp `subscription_enabled=false`, `monetization_model=transaction_fee`, `plans=[]`.
 - Removed stale 30-day trial and mandatory-subscription language from title, meta description and WebPage/Service JSON-LD.
 - Branch: `fix/aux03-producer-seo-offer-truth-20261102`.
-- PR: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/727 (draft; CI was in progress at worklog time).
+- PR: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/727 (draft; Validate Cutinapp SUCCESS; Lighthouse CI still in progress at latest check).
 - The change does not modify W09's `/production/:slug/public` metadata functions, event SEO utilities, `SeoHead.js` or global snapshot generator. It is limited to the separate producer landing route.
 - Dependency: integrate only with or after PR #724 so visible landing copy and metadata change together.
 - Worklog: `worklogs/20261102-1104-AUX-03-W2-producer-seo-metadata.md`.
