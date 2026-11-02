@@ -40,7 +40,7 @@ Google orgânico → /for-producers → cadastro → produção → primeiro eve
 - PR #724: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/724
 - PR #727: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/727
 - HEAD PR #727: `b745b97ecfe1753cddb6aa34d3f3da6ffe1ca72e`
-- CI Validate #41459268768 e Lighthouse #41459268813: ambos `in_progress` na última consulta.
+- CI Validate #41459268768: `completed / success`; Lighthouse CI #41459268813: `in_progress` na última consulta.
 - O site público abre no crawler de pesquisa apenas com o shell “Ative o JavaScript”; isso não comprova falha para visitantes reais nem indexação. Não houve QA de runtime/crawler nesta execução.
 
 ## Próxima ação
