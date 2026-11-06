@@ -43,7 +43,7 @@ Baseline: N/D; nenhum contato enviado e nenhuma conversão medida.
 ## Evidências
 - Sympla — GERAÇÃO 2K: https://www.sympla.com.br/evento/geracao-2k/3626527
 - Sympla — linhas da página confirmam produtor Taberna Music Pub, data, horário, local e WhatsApp público.
-- Worklog de 05/11 — prospecto Raphaela Gentil: https://github.com/petertecnetdev/ecosystem-coordination/blob/main/worklogs/20261105-1012-AUX-03-W3-prospecto-raphaela-gentil-gentil.md
+- Worklog de 05/11 — prospecto Raphaela Gentil: https://github.com/petertecnetdev/ecosystem-coordination/blob/main/worklogs/20261105-1012-AUX-03-W3-prospecto-raphaela-gentil.md
 - Runbook de 04/11: https://github.com/petertecnetdev/ecosystem-coordination/blob/main/deliverables/AUX-03/20261104-W3-producer-funnel-go-live-runbook.md
 - PR #724: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/724 — open, not merged.
 - PR #725: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/pull/725 — open, not merged.
