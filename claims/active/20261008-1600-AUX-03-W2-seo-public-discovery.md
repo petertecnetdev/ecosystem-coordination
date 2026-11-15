@@ -28,3 +28,12 @@ Current coordination state marks Cutinapp release readiness NOT_READY and runtim
 - Worklog: `worklogs/20261102-1104-AUX-03-W2-producer-seo-metadata.md`.
 - Deliverable: `deliverables/AUX-03/20261102-W2-seo-metadados-landing-produtores.md`.
 - NEXT_ACTION: wait for Validate/Lighthouse; then request review. Account principal is required for integration and live/mobile QA.
+
+
+## Revalidação AUX-03-W2 — 2026-11-15
+- PR #727 permanece OPEN e NÃO MERGED; sua dependência comercial PR #724 também permanece OPEN.
+- Validate Cutinapp run `41459268768`: job frontend concluído com SUCCESS; inclui lint, testes, build e perf budget.
+- Lighthouse CI run `41459268813`: job lighthouse concluído com SUCCESS.
+- Esses resultados confirmam os checks desses runs, não integração nem publicação.
+- Estado atualizado: `CHECKS_PASS — WAITING_PR724_INTEGRATION_AND_REVIEW — NOT_MERGED — NOT_DEPLOYED`.
+- Próxima ação: W00/conta principal revisar a integração coordenada de #724 + #727; após merge, validar metadados servidos e mobile.
