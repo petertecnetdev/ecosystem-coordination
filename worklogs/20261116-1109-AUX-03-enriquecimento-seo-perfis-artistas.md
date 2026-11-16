@@ -28,6 +28,7 @@ O perfil artístico já apresenta próximos eventos e produções relacionadas n
 - ArtistViewPage diferencia solo, banda, duo, grupo, coletivo e orquestra e separa eventos confirmados de pendentes.
 - Google documenta performer como Person ou PerformingGroup e requer URL própria por evento, com página focada no evento.
 - Issue #643 permanece OPEN; consulta atual da raiz retornou HTTP 530. /artist e /blog não puderam ser abertas pela ferramenta.
+- BLOCKERS.md ainda lista apenas FIN-P0-001 e não espelha #643; CURRENT_STATE.md está consolidado em 30/10.
 - Busca de site: para páginas /artist, /production e /blog não retornou resultados nesta consulta; isso não comprova ausência de indexação.
 - PRs #722, #724, #725 e #726 permanecem OPEN/não merged; #727 permanece OPEN/Draft.
 - Metricool brand cutinapp (id 7119630) está em America/Sao_Paulo; networksData contém apenas gbpData, sem Instagram. Agenda 16–23/11 vazia.
