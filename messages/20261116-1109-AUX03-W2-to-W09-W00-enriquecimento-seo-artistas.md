@@ -39,6 +39,8 @@ Ver entregável completo: `deliverables/AUX-03/20261116-1109-AUX-03-enriquecimen
 ## Gate
 Issue #643 continua OPEN. Consulta de 16/11 à raiz pública retornou HTTP 530; /artist e /blog não puderam ser abertas. PRs #722/#724/#725/#726 OPEN; #727 OPEN/Draft. Nenhum link de conversão deve ser distribuído até runtime GO. Nenhuma publicação/indexação foi comprovada.
 
+**Coordenação:** BLOCKERS.md ainda lista somente FIN-P0-001 e não espelha a issue Cutinapp #643; W00 deve reconciliar o bloqueio P0 no registro compartilhado. CURRENT_STATE.md permanece consolidado em 30/10 e precisa de atualização quando W00 fizer a próxima consolidação.
+
 ## Ownership
 W09 mantém `scripts/generate-seo-snapshots.mjs`. AUX-03-W2 não reivindica esse arquivo e não fez alteração de produto.
 
