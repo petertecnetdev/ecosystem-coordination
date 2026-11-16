@@ -24,6 +24,7 @@ O perfil artístico já apresenta próximos eventos e produções relacionadas n
 - CutinappService.publicArtist consulta GET /artists/{slug}.
 - buildArtistSnapshot em scripts/generate-seo-snapshots.mjs gera ProfilePage/Person, H1, imagem e descrição; não inclui eventos futuros, links de evento ou links de produção.
 - eventSchema marca todos os artistas como MusicGroup, sem considerar artist_type.
+- applySeo injeta `robots=index,follow` em todos os snapshots, sem guard específico para perfis artísticos sem conteúdo público diferenciador.
 - ArtistViewPage diferencia solo, banda, duo, grupo, coletivo e orquestra e separa eventos confirmados de pendentes.
 - Google documenta performer como Person ou PerformingGroup e requer URL própria por evento, com página focada no evento.
 - Issue #643 permanece OPEN; consulta atual da raiz retornou HTTP 530. /artist e /blog não puderam ser abertas pela ferramenta.
