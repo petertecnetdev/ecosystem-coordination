@@ -40,6 +40,7 @@ Em `scripts/generate-seo-snapshots.mjs`:
 - Não inclui os próximos eventos confirmados, links para eventos ou links para as produções relacionadas.
 - O snapshot não usa `artist_type` para diferenciar artista solo de formação coletiva.
 - `eventSchema()` classifica todos os performers como `MusicGroup`, independentemente de `artist_type`.
+- `applySeo()` injeta `robots=index,follow` em todos os snapshots; perfis com apenas nome e descrição genérica não recebem um guard específico de qualidade/indexabilidade.
 
 Referências de código:
 - [ArtistViewPage.js](https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/blob/main/src/pages/artist/ArtistViewPage.js)
