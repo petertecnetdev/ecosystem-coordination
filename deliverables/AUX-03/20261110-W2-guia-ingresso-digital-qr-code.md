@@ -105,7 +105,7 @@ Esse cuidado também ajuda a evitar confusão entre o link de divulgação e o i
 
 ## Encontre seu próximo evento
 
-Ainda está escolhendo onde ir? [Explore os eventos publicados na Cutinapp](/events) e consulte os detalhes de cada página antes de decidir.
+Ainda está escolhendo onde ir? [Explore os eventos publicados na Cutinapp](/eventos) e consulte os detalhes de cada página antes de decidir.
 
 ---
 
