@@ -142,7 +142,7 @@ Para convidar alguém, compartilhe a página do evento — não seu ingresso.
 
 - **Canal principal:** blog / busca orgânica.
 - **Canal secundário:** Instagram carrossel, após criação da arte e validação do canal de publicação.
-- **CTA do artigo:** explorar eventos publicados em `/events`.
+- **CTA do artigo:** explorar eventos publicados em `/eventos`.
 - **CTA social:** salvar o guia e compartilhar a página pública do evento, nunca o QR.
 - **Métrica de negócio:** sessões orgânicas do artigo que avançam para páginas de eventos e, quando instrumentado, para seleção de ingresso/checkout.
 - **Baseline:** N/D; não há dados de Search Console ou Analytics consultados nesta execução.
@@ -151,7 +151,7 @@ Para convidar alguém, compartilhe a página do evento — não seu ingresso.
 
 1. PR #722 continua aberto e não integrado na verificação de 10/11. O renderizador da `main` ainda não transforma links Markdown do artigo em âncoras clicáveis. O CTA Markdown acima só deve ser publicado depois da integração e QA do PR #722, ou ser configurado por um campo de CTA comprovadamente suportado pelo CMS.
 2. W09 mantém ownership do gerador global de snapshots SEO. A publicação deve aguardar confirmação de que o corpo integral do artigo está presente no HTML inicial/snapshot ou validação equivalente de rastreabilidade; esta entrega não modifica o gerador compartilhado.
-3. O gate público AUX-03 de 09/11 permanece NO-GO para campanhas com link direto. A rota `/events` não foi validada em smartphone real, Wi-Fi e rede móvel nesta execução.
+3. O gate público AUX-03 de 09/11 permanece NO-GO para campanhas com link direto. A rota `/eventos` não foi validada em smartphone real, Wi-Fi e rede móvel nesta execução.
 4. Não foi confirmado um evento publicado específico da Cutinapp nesta execução. Por isso, o artigo é evergreen e não inventa nome, data, local, preço, artista ou disponibilidade.
 5. O carrossel não foi criado, agendado ou publicado. A conexão Metricool consultada não apresenta `instagramData`; a peça depende de arte original e canal Instagram devidamente conectado.
 
