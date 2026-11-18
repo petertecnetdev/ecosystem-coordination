@@ -7,7 +7,7 @@ Converter a pesquisa comercial acumulada em uma fila acionável, com prioridade 
 Aquisição de produtores, relacionamento comercial, qualificação e conversão.
 
 ## Oportunidade
-Há sete produtores/organizações com eventos identificados e mensagens preparadas entre 05 e 16/11. Nenhum dos worklogs correspondentes registra contato enviado. O primeiro prospecto pronto para contato pós-evento é Taberna Music Pub: GERAÇÃO 2K encerrou em 15/11. A oportunidade imediata é transformar uma mensagem preparada em uma conversa comercial autorizada, sem encaminhar cadastro público não validado.
+Há oito produtores/organizações com eventos identificados e mensagens preparadas entre 05 e 16/11. Nenhum dos worklogs correspondentes registra contato enviado. O primeiro prospecto pronto para contato pós-evento é Taberna Music Pub: GERAÇÃO 2K encerrou em 15/11. A oportunidade imediata é transformar uma mensagem preparada em uma conversa comercial autorizada, sem encaminhar cadastro público não validado.
 
 ## Coordenação consultada
 - CURRENT_STATE.md, PRIORITIES.md, BLOCKERS.md, COMMANDS.md, REVENUE_TARGET.md e PROFITABILITY_PLAN.md.
