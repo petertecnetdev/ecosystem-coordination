@@ -13,7 +13,7 @@ Parar de acumular prospectos com mensagens não enviadas e transformar a pesquis
 
 ### Confirmado
 
-- Os worklogs AUX-03 de 05 a 16/11 contêm sete prospectos com evento ou produção identificada: Raphaela Gentil, Taberna Music Pub, Joint Records Brasil, NC Entretenimento, Funclube, Raiza Morgana/Noite Infame, Debora Machado/Blue Velvet e Undergoth (oito registros, contando os dois eventos/prospectos independentes).
+- Os worklogs AUX-03 de 05 a 16/11 contêm oito prospectos com evento ou produção identificada: Raphaela Gentil, Taberna Music Pub, Joint Records Brasil, NC Entretenimento, Funclube, Raiza Morgana/Noite Infame, Debora Machado/Blue Velvet e Undergoth (oito registros, contando os dois eventos/prospectos independentes).
 - As abordagens anteriores foram preparadas, mas os respectivos worklogs registram que nenhuma mensagem foi enviada.
 - O evento GERAÇÃO 2K do Taberna Music Pub ocorreu de 14/11/2026 às 20h até 15/11 às 03h e a página pública agora informa “O evento já encerrou”. A página oferece “Fale com o produtor” e lista WhatsApp de reservas.
 - Mosh Pit Fest / Joint Records Brasil: 21/11/2026, 22h–06h.
