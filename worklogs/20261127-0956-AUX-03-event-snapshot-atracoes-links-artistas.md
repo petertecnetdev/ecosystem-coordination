@@ -4,6 +4,8 @@
 ## Objetivo
 Melhorar a completude das páginas públicas pré-renderizadas de eventos e criar uma ligação interna verificável entre eventos e perfis de artistas, sem duplicar o trabalho de SEO global de W09.
 
+**Prioridade sugerida:** P2 — melhoria incremental de completude e links internos; não bloqueia publicação nem substitui gates P0/P1.
+
 ## Área
 SEO de páginas públicas, descoberta de artistas, links internos, compartilhamento e aquisição de participantes.
 
