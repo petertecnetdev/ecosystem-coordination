@@ -67,6 +67,8 @@ https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/issues/730
 - Issue #646: https://github.com/petertecnetdev/cutinapp.petertecnet.com.br/issues/646
 - Claim W09: https://github.com/petertecnetdev/ecosystem-coordination/blob/main/claims/active/20260930-0838-w09-seo-global-snapshot-root-cause.md
 
+**Prioridade sugerida:** P2 — melhoria incremental de completude e links internos; não bloqueia a publicação do evento nem substitui gates P0/P1.
+
 ## Próxima ação
 W00 encaminhar a issue #730 a W09 para revisão e implementação dentro do ownership existente. Após runtime GO, validar o HTML bruto de uma página real de evento e acompanhar cliques Evento → Artista e tráfego orgânico.
 
