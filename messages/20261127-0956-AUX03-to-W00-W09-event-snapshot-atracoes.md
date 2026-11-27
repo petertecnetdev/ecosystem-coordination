@@ -1,5 +1,5 @@
 # Handoff AUX-03 → W00/W09 — 27/11/2026 09:56 BRT
-**Prioridade sugerida:** P1 — completude de páginas públicas e descoberta Evento ↔ Artista
+**Prioridade sugerida:** P2 — melhoria incremental de completude e links internos; não bloqueia publicação nem substitui gates P0/P1
 **Status:** ISSUE_730_CREATED — W09_REVIEW_REQUIRED
 
 ## Objetivo
